@@ -14,14 +14,14 @@ const EPISODES = [
 ];
 
 const MATERIALS = [
-  { id:1, title:'LLM Comparison Matrix 2026',   desc:'Pełna tabela 6 modeli AI',            type:'md',   icon:'vi-md',   locked:false, serie:1 },
-  { id:2, title:'Perplexity Research SOP',       desc:'Gotowy SOP do researchu',             type:'md',   icon:'vi-md',   locked:false, serie:1 },
-  { id:3, title:'Clay Enrichment Flow',          desc:'Blueprint do importu w Clay',         type:'json', icon:'vi-json', locked:false, serie:1 },
-  { id:4, title:'Marketing Stack 2026',          desc:'Pełny stack w formacie JSON',         type:'json', icon:'vi-json', locked:true,  serie:1 },
-  { id:5, title:'Outbound Machine Complete',     desc:'End-to-end: ICP → signed deal',       type:'json', icon:'vi-json', locked:true,  serie:2 },
-  { id:6, title:'Cold Email Framework 2026',     desc:'Co działa, co spamuje',               type:'md',   icon:'vi-md',   locked:true,  serie:2 },
-  { id:7, title:'Series 1 Complete Vault',       desc:'Wszystkie materiały Serii 1',         type:'zip',  icon:'vi-zip',  locked:true,  serie:1 },
-  { id:8, title:'ElevenLabs Full Guide',         desc:'Voices, Clones, Agents, Sound FX',   type:'md',   icon:'vi-md',   locked:true,  serie:3 },
+  { id:1, title:'LLM Comparison Matrix 2026',   file:'llm-comparison-matrix.md',       desc:'Pełna tabela 6 modeli AI',            type:'md',   icon:'vi-md',   locked:false, serie:1 },
+  { id:2, title:'Perplexity Research SOP',       file:'perplexity-research-sop.md',     desc:'Gotowy SOP do researchu',             type:'md',   icon:'vi-md',   locked:false, serie:1 },
+  { id:3, title:'Clay Enrichment Flow',          file:'clay-enrichment-flow.json',      desc:'Blueprint do importu w Clay',         type:'json', icon:'vi-json', locked:false, serie:1 },
+  { id:4, title:'Marketing Stack 2026',          file:'marketing-stack-2026.json',      desc:'Pełny stack w formacie JSON',         type:'json', icon:'vi-json', locked:true,  serie:1 },
+  { id:5, title:'Outbound Machine Complete',     file:'outbound-machine-complete.json', desc:'End-to-end: ICP → signed deal',       type:'json', icon:'vi-json', locked:true,  serie:2 },
+  { id:6, title:'Cold Email Framework 2026',     file:'cold-email-framework-2026.md',   desc:'Co działa, co spamuje',               type:'md',   icon:'vi-md',   locked:true,  serie:2 },
+  { id:7, title:'Series 1 Complete Vault',       file:'series-1-vault.zip',             desc:'Wszystkie materiały Serii 1',         type:'zip',  icon:'vi-zip',  locked:true,  serie:1 },
+  { id:8, title:'ElevenLabs Full Guide',         file:'elevenlabs-full-guide.md',       desc:'Voices, Clones, Agents, Sound FX',   type:'md',   icon:'vi-md',   locked:true,  serie:3 },
 ];
 
 const QUIZZES = {
@@ -273,7 +273,7 @@ function renderVault(isPro) {
     const isLocked = m.locked && !isPro;
     return `
       <div class="vault-card ${isLocked ? 'locked' : ''}" data-type="${m.type}"
-           onclick="${isLocked ? 'showUpgrade()' : `downloadFile('${m.title}.${m.type}')`}">
+           onclick="${isLocked ? 'showUpgrade()' : `downloadFile('${m.file}','${m.title}')`}">
         <div class="vault-icon ${m.icon}"><span style="font-size:1rem">${sym[m.type] || '◈'}</span></div>
         <div class="vault-info">
           <h4>${m.title}${isLocked ? ' <span style="color:var(--text-4);font-size:.7rem">●</span>' : ''}</h4>
@@ -715,7 +715,13 @@ function showUpgrade() {
   modal.addEventListener('click', e => { if (e.target === modal) modal.style.display = 'none'; });
 }
 
-function downloadFile(name) { toast('Pobieranie: ' + name); }
+function downloadFile(file, title) {
+  const a = document.createElement('a');
+  a.href = 'vault/' + file;
+  a.download = file;
+  a.click();
+  toast('Pobieranie: ' + (title || file));
+}
 
 // ── PLAYER ALIASES ────────────────────────────
 window.playerToggle = () => togglePlay();
