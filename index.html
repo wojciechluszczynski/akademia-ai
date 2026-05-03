@@ -267,6 +267,12 @@
       border-radius: 2px;
       filter: brightness(0.9);
     }
+    .tc-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      opacity: 0.85;
+    }
 
     /* Animated workflow */
     .workflow-section {
@@ -1357,18 +1363,18 @@
 <div class="logo-bar">
   <div class="logo-bar-label">Narzędzia w programie</div>
   <div class="logo-bar-track">
-    <span class="tool-chip"><img src="https://cdn.simpleicons.org/anthropic/f97316" alt="">Claude</span>
-    <span class="tool-chip"><img src="https://cdn.simpleicons.org/openai/ffffff" alt="">ChatGPT</span>
-    <span class="tool-chip"><img src="https://cdn.simpleicons.org/google/4285F4" alt="">Gemini</span>
-    <span class="tool-chip"><img src="https://cdn.simpleicons.org/perplexity/20B2AA" alt="">Perplexity</span>
-    <span class="tool-chip"><img src="https://cdn.simpleicons.org/notion/ffffff" alt="">NotebookLM</span>
-    <span class="tool-chip"><img src="https://cdn.simpleicons.org/airtable/18BFFF" alt="">Clay</span>
-    <span class="tool-chip"><img src="https://cdn.simpleicons.org/zapier/FF4A00" alt="">n8n</span>
-    <span class="tool-chip"><img src="https://cdn.simpleicons.org/elevenlabs/f97316" alt="">ElevenLabs</span>
-    <span class="tool-chip"><img src="https://cdn.simpleicons.org/github/ffffff" alt="">Cursor</span>
-    <span class="tool-chip"><img src="https://cdn.simpleicons.org/midjourney/ffffff" alt="">Midjourney</span>
-    <span class="tool-chip"><img src="https://cdn.simpleicons.org/hubspot/FF7A59" alt="">HubSpot</span>
-    <span class="tool-chip"><img src="https://cdn.simpleicons.org/linkedin/0A66C2" alt="">LinkedIn</span>
+    <span class="tool-chip"><span class="tc-dot" style="background:#f97316"></span>Claude</span>
+    <span class="tool-chip"><span class="tc-dot" style="background:#10a37f"></span>ChatGPT</span>
+    <span class="tool-chip"><span class="tc-dot" style="background:#4285F4"></span>Gemini</span>
+    <span class="tool-chip"><span class="tc-dot" style="background:#20B2AA"></span>Perplexity</span>
+    <span class="tool-chip"><span class="tc-dot" style="background:#e84d3d"></span>NotebookLM</span>
+    <span class="tool-chip"><span class="tc-dot" style="background:#FFBF00"></span>Clay</span>
+    <span class="tool-chip"><span class="tc-dot" style="background:#ea4b23"></span>n8n</span>
+    <span class="tool-chip"><span class="tc-dot" style="background:#f97316"></span>ElevenLabs</span>
+    <span class="tool-chip"><span class="tc-dot" style="background:#7c6cf6"></span>Cursor</span>
+    <span class="tool-chip"><span class="tc-dot" style="background:#5e6ad2"></span>Midjourney</span>
+    <span class="tool-chip"><span class="tc-dot" style="background:#FF7A59"></span>HubSpot</span>
+    <span class="tool-chip"><span class="tc-dot" style="background:#0A66C2"></span>LinkedIn</span>
   </div>
 </div>
 
@@ -1433,7 +1439,10 @@
     <div class="workflow-track reveal">
       <div class="workflow-step active">
         <div class="ws-icon">
-          <img src="https://cdn.simpleicons.org/anthropic/f97316" alt="Audio">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
+            <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+          </svg>
         </div>
         <div class="ws-label">Słuchasz</div>
         <div class="ws-sub">10-15 min audio<br>PL lub EN</div>
@@ -1441,7 +1450,10 @@
       </div>
       <div class="workflow-step">
         <div class="ws-icon">
-          <img src="https://cdn.simpleicons.org/notion/c4bfba" alt="Notes">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c4bfba" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 11 12 14 22 4"/>
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+          </svg>
         </div>
         <div class="ws-label">Quiz</div>
         <div class="ws-sub">3 pytania<br>60% = zaliczone</div>
@@ -1449,7 +1461,11 @@
       </div>
       <div class="workflow-step">
         <div class="ws-icon">
-          <img src="https://cdn.simpleicons.org/airtable/18BFFF" alt="Download">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#18BFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
         </div>
         <div class="ws-label">Pobierasz</div>
         <div class="ws-sub">JSON, MD, Blueprint<br>gotowe do użycia</div>
@@ -1457,7 +1473,9 @@
       </div>
       <div class="workflow-step">
         <div class="ws-icon">
-          <img src="https://cdn.simpleicons.org/zapier/FF4A00" alt="Workflow">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF4A00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
         </div>
         <div class="ws-label">Wdrażasz</div>
         <div class="ws-sub">Workflow w Clay,<br>n8n lub Zapier</div>
@@ -1465,7 +1483,10 @@
       </div>
       <div class="workflow-step">
         <div class="ws-icon" style="border-color: var(--orange); background: var(--orange-soft);">
-          <img src="https://cdn.simpleicons.org/linkedin/0A66C2" alt="Certificate">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="6"/>
+            <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+          </svg>
         </div>
         <div class="ws-label">Certyfikat</div>
         <div class="ws-sub">PDF z podpisem<br>link na LinkedIn</div>
