@@ -795,8 +795,26 @@
       <a href="login.html" class="btn btn-secondary btn-sm">Zaloguj</a>
       <a href="register.html" class="btn btn-primary btn-sm">Zacznij za darmo</a>
     </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- MOBILE NAV DRAWER -->
+<div class="mobile-nav" id="mobile-nav">
+  <a href="#program" class="mobile-nav-link" onclick="closeMenu()">Program</a>
+  <a href="#pricing" class="mobile-nav-link" onclick="closeMenu()">Cennik</a>
+  <a href="#prowadzacy" class="mobile-nav-link" onclick="closeMenu()">Prowadzący</a>
+  <div class="mobile-nav-divider"></div>
+  <div class="mobile-nav-lang">
+    <button class="lang-btn active" onclick="setLang('pl'); closeMenu()">PL</button>
+    <button class="lang-btn" onclick="setLang('en'); closeMenu()">EN</button>
+  </div>
+  <div class="mobile-nav-divider"></div>
+  <a href="login.html" class="btn btn-secondary" style="width:100%; justify-content:center; margin-bottom:8px;">Zaloguj się</a>
+  <a href="register.html" class="btn btn-primary" style="width:100%; justify-content:center;">Zacznij za darmo</a>
+</div>
 
 <!-- HERO -->
 <section class="lp-hero">
@@ -1160,6 +1178,28 @@
 </footer>
 
 <script>
+  // Hamburger menu
+  function toggleMenu() {
+    const btn = document.getElementById('hamburger');
+    const nav = document.getElementById('mobile-nav');
+    const open = btn.classList.toggle('open');
+    nav.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  function closeMenu() {
+    document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('mobile-nav').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  // Close on outside tap
+  document.addEventListener('click', e => {
+    const nav = document.getElementById('mobile-nav');
+    const btn = document.getElementById('hamburger');
+    if (nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) closeMenu();
+  });
+  // Close on scroll
+  window.addEventListener('scroll', () => { if (document.getElementById('mobile-nav').classList.contains('open')) closeMenu(); }, { passive: true });
+
   // Scroll reveal
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
