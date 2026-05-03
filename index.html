@@ -739,12 +739,26 @@
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      height: 96%;
-      width: auto;
-      object-fit: contain;
-      object-position: bottom center;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: top center;
       z-index: 2;
-      filter: brightness(0.95) contrast(1.05);
+      filter: brightness(0.88) contrast(1.08) saturate(0.9);
+      mix-blend-mode: luminosity;
+    }
+
+    /* Second image layer on top with normal blend for color */
+    .host-cutout-color {
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      height: 100%; width: 100%;
+      object-fit: cover;
+      object-position: top center;
+      z-index: 2;
+      filter: brightness(0.82) contrast(1.1) saturate(1.15);
+      opacity: 0.72;
     }
 
     /* Name/role overlaid on photo at bottom */
@@ -1113,16 +1127,18 @@
       <img src="assets/logo.svg" alt="Akademia AI" style="height:36px;width:auto;">
     </a>
     <div class="nav-right">
-      <a href="#program" class="nav-link">Program</a>
-      <a href="#workflow" class="nav-link">Jak to działa</a>
-      <a href="#pricing" class="nav-link">Cennik</a>
-      <a href="#prowadzacy" class="nav-link">Prowadzący</a>
+      <div class="nav-links">
+        <a href="#program" class="nav-link">Program</a>
+        <a href="#workflow" class="nav-link">Jak to działa</a>
+        <a href="#pricing" class="nav-link">Cennik</a>
+        <a href="#prowadzacy" class="nav-link">Prowadzący</a>
+      </div>
       <div class="lang-switch">
         <button class="lang-btn active" onclick="setLang('pl')">PL</button>
         <button class="lang-btn" onclick="setLang('en')">EN</button>
       </div>
       <a href="login.html" class="btn btn-secondary btn-sm">Zaloguj</a>
-      <a href="register.html" class="btn btn-primary btn-sm">Zacznij za darmo</a>
+      <a href="register.html" class="btn btn-primary btn-sm">Zacznij za darmo →</a>
     </div>
     <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -1677,8 +1693,10 @@
         <!-- Dark atmospheric background -->
         <div class="host-visual-bg"></div>
 
-        <!-- Cutout photo blending into dark bg -->
-        <img src="assets/wojciech-cutout.png" alt="Wojciech Łuszczyński" class="host-cutout">
+        <!-- Real photo — luminosity layer for blending -->
+        <img src="assets/wojciech-portrait.jpg" alt="" class="host-cutout">
+        <!-- Color layer on top -->
+        <img src="assets/wojciech-portrait.jpg" alt="Wojciech Łuszczyński" class="host-cutout-color">
 
         <!-- Atmospheric overlays -->
         <div class="host-visual-grain"></div>
