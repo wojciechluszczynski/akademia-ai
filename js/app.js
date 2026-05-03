@@ -116,7 +116,35 @@ function initApp(user) {
     audioEl.onended      = onAudioEnded;
   }
 
-  renderAll(user.plan === 'pro');
+  // Check if returning from Stripe
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('payment') === 'success') {
+    // Clean URL
+    window.history.replaceState({}, '', window.location.pathname);
+    // Re-fetch fresh plan from Supabase after webhook has fired
+    setTimeout(async () => {
+      try {
+        const freshUser = await window.AkademiaAuth.verifySession();
+        if (freshUser) {
+          currentUser = freshUser;
+          // Update sidebar plan badge
+          const planEl = document.getElementById('user-plan');
+          if (planEl) {
+            planEl.textContent = freshUser.plan === 'pro' ? 'Pro' : freshUser.plan || 'Pro';
+            planEl.classList.remove('free');
+          }
+          renderAll(true); // treat as pro regardless — webhook may be slightly delayed
+        }
+      } catch (e) { /* ignore */ }
+      toast('Dostęp aktywowany! Odśwież stronę jeśli odcinki są nadal zablokowane.', 'ok');
+    }, 1800);
+  } else if (params.get('payment') === 'cancelled') {
+    window.history.replaceState({}, '', window.location.pathname);
+    toast('Płatność anulowana.', 'err');
+  }
+
+  const isPro = user.plan === 'pro' || user.plan === 'serie1' || user.plan === 'serie2';
+  renderAll(isPro);
   updateSidebarProgress();
 }
 
@@ -580,7 +608,100 @@ function toast(msg, type = 'ok') {
 }
 
 // ── UTILITIES ─────────────────────────────────
-function showUpgrade() { toast('Dostęp wymaga planu Pro. Sprawdź cennik.', 'err'); }
+function showUpgrade() {
+  // Build paywall modal
+  const existing = document.getElementById('upgrade-modal');
+  if (existing) { existing.style.display = 'flex'; return; }
+
+  const modal = document.createElement('div');
+  modal.id = 'upgrade-modal';
+  modal.style.cssText = `
+    position:fixed;inset:0;z-index:9999;
+    background:rgba(10,9,8,0.88);backdrop-filter:blur(12px);
+    display:flex;align-items:center;justify-content:center;padding:24px;
+  `;
+
+  const user = currentUser || {};
+  const userId = user.id || '';
+  const email  = encodeURIComponent(user.email || '');
+
+  modal.innerHTML = `
+    <div style="
+      background:var(--bg-card);border:1px solid var(--line-1);
+      border-radius:20px;padding:40px 36px;max-width:480px;width:100%;
+      position:relative;
+      box-shadow:0 0 0 1px rgba(249,115,22,0.15), 0 32px 64px rgba(0,0,0,0.6);
+    ">
+      <button onclick="document.getElementById('upgrade-modal').style.display='none'"
+        style="position:absolute;top:16px;right:16px;background:none;border:1px solid var(--line-1);
+        color:var(--text-3);width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:0.9rem;
+        display:flex;align-items:center;justify-content:center;">×</button>
+
+      <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--orange);margin-bottom:12px;">
+        Odblokuj dostęp
+      </div>
+      <h2 style="font-size:1.5rem;font-weight:900;letter-spacing:-0.04em;color:var(--text-1);margin:0 0 8px;">
+        Ten odcinek wymaga planu Pro
+      </h2>
+      <p style="color:var(--text-3);font-size:0.9rem;line-height:1.6;margin:0 0 28px;">
+        Kup dostęp do jednej serii lub do całości. Płacisz raz — masz dożywotnio.
+      </p>
+
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:28px;">
+        <a href="/api/create-checkout?plan=serie1&userId=${userId}&email=${email}"
+          style="display:flex;align-items:center;justify-content:space-between;
+          background:var(--bg-input);border:1px solid var(--line-1);border-radius:10px;
+          padding:14px 18px;text-decoration:none;transition:border-color .15s;"
+          onmouseover="this.style.borderColor='var(--orange-line)'"
+          onmouseout="this.style.borderColor='var(--line-1)'">
+          <div>
+            <div style="font-size:0.875rem;font-weight:700;color:var(--text-1);">Seria 1 — AI Stack 2026</div>
+            <div style="font-size:0.75rem;color:var(--text-3);">12 odcinków · ChatGPT, Claude, Gemini, Cursor...</div>
+          </div>
+          <div style="font-size:1rem;font-weight:900;color:var(--orange);flex-shrink:0;margin-left:16px;">97 PLN</div>
+        </a>
+
+        <a href="/api/create-checkout?plan=serie2&userId=${userId}&email=${email}"
+          style="display:flex;align-items:center;justify-content:space-between;
+          background:var(--bg-input);border:1px solid var(--line-1);border-radius:10px;
+          padding:14px 18px;text-decoration:none;transition:border-color .15s;"
+          onmouseover="this.style.borderColor='var(--orange-line)'"
+          onmouseout="this.style.borderColor='var(--line-1)'">
+          <div>
+            <div style="font-size:0.875rem;font-weight:700;color:var(--text-1);">Seria 2 — Outbound Machine</div>
+            <div style="font-size:0.75rem;color:var(--text-3);">12 odcinków · Apollo, Clay, n8n, Smartlead...</div>
+          </div>
+          <div style="font-size:1rem;font-weight:900;color:var(--orange);flex-shrink:0;margin-left:16px;">97 PLN</div>
+        </a>
+
+        <a href="/api/create-checkout?plan=all&userId=${userId}&email=${email}"
+          style="display:flex;align-items:center;justify-content:space-between;
+          background:linear-gradient(135deg,rgba(249,115,22,0.12),rgba(249,115,22,0.04));
+          border:1px solid var(--orange-line);border-radius:10px;
+          padding:14px 18px;text-decoration:none;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:6px;right:56px;
+            background:var(--orange);color:#fff;font-size:0.6rem;font-weight:800;
+            letter-spacing:0.06em;text-transform:uppercase;padding:2px 8px;border-radius:99px;">
+            Najlepszy wybór
+          </div>
+          <div>
+            <div style="font-size:0.875rem;font-weight:700;color:var(--text-1);">Wszystkie serie — pełny dostęp</div>
+            <div style="font-size:0.75rem;color:var(--text-3);">36 odcinków · Vault · Certyfikaty · ok. 7 PLN/odcinek</div>
+          </div>
+          <div style="font-size:1rem;font-weight:900;color:var(--orange);flex-shrink:0;margin-left:16px;">249 PLN</div>
+        </a>
+      </div>
+
+      <div style="font-size:0.75rem;color:var(--text-4);text-align:center;line-height:1.5;">
+        Płatność przez Stripe · Karta lub BLIK · Faktura na żądanie
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+  modal.addEventListener('click', e => { if (e.target === modal) modal.style.display = 'none'; });
+}
+
 function downloadFile(name) { toast('Pobieranie: ' + name); }
 
 // ── PLAYER ALIASES ────────────────────────────
