@@ -621,49 +621,78 @@
     .sc2-ep-count span { color: var(--orange); }
 
     /* Inspiration section */
+    /* Inspiration cards — editorial redesign */
     .inspiration-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
+      gap: 2px;
     }
 
     .inspiration-card {
       background: var(--bg-card);
       border: 1px solid var(--line-1);
-      border-radius: var(--r-xl);
-      padding: 24px;
-      display: flex; gap: 16px;
-      transition: all 0.15s;
+      padding: 32px 28px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      transition: background 0.2s;
+      position: relative;
     }
 
-    .inspiration-card:hover { border-color: var(--line-3); transform: translateY(-2px); }
+    .inspiration-card:first-child { border-radius: var(--r-xl) 0 0 0; }
+    .inspiration-card:nth-child(2) { border-radius: 0 var(--r-xl) 0 0; }
+    .inspiration-card:nth-child(3) { border-radius: 0 0 0 var(--r-xl); }
+    .inspiration-card:last-child { border-radius: 0 0 var(--r-xl) 0; }
+
+    .inspiration-card:hover { background: rgba(255,255,255,0.02); }
+
+    /* Large typographic quote mark */
+    .insp-quote-mark {
+      font-size: 5rem;
+      line-height: 0.7;
+      font-family: Georgia, serif;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .insp-quote {
+      font-size: 1rem;
+      color: var(--text-1);
+      line-height: 1.65;
+      font-weight: 400;
+      margin-bottom: 24px;
+      flex: 1;
+      font-style: normal;
+    }
+
+    .insp-footer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line-1);
+    }
 
     .insp-avatar {
-      width: 52px; height: 52px; border-radius: 50%;
+      width: 40px; height: 40px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.125rem; font-weight: 800; flex-shrink: 0;
-      font-family: var(--mono);
+      font-size: 0.75rem; font-weight: 800; flex-shrink: 0;
+      letter-spacing: 0.03em;
     }
 
-    .insp-content { flex: 1; min-width: 0; }
-    .insp-name { font-size: 0.9375rem; font-weight: 700; margin-bottom: 2px; }
-    .insp-role { font-size: 0.75rem; color: var(--text-3); margin-bottom: 10px; }
-    .insp-quote {
-      font-size: 0.8125rem; color: var(--text-2);
-      line-height: 1.6; font-style: italic;
-      border-left: 2px solid var(--orange-line);
-      padding-left: 10px; margin-bottom: 10px;
-    }
+    .insp-meta { flex: 1; min-width: 0; }
+    .insp-name { font-size: 0.875rem; font-weight: 700; color: var(--text-1); margin-bottom: 1px; }
+    .insp-role { font-size: 0.72rem; color: var(--text-4); line-height: 1.4; }
 
-    .insp-links { display: flex; gap: 8px; flex-wrap: wrap; }
+    .insp-links { display: flex; gap: 6px; flex-shrink: 0; }
     .insp-link {
-      font-size: 0.6875rem; font-weight: 600;
-      padding: 3px 9px; border-radius: var(--r-full);
-      background: var(--bg-input); border: 1px solid var(--line-1);
+      font-size: 0.7rem; font-weight: 600;
+      padding: 4px 10px; border-radius: var(--r-full);
+      background: transparent; border: 1px solid var(--line-1);
       color: var(--text-3); text-decoration: none;
-      transition: all 0.15s;
+      transition: all 0.15s; white-space: nowrap;
     }
-    .insp-link:hover { color: var(--orange); border-color: var(--orange-line); }
+    .insp-link:hover { color: var(--text-1); border-color: var(--line-3); }
 
     /* Host */
     .host-section {
@@ -794,8 +823,16 @@
     .host-bio { font-size: 0.9rem; color: var(--text-2); line-height: 1.7; margin-bottom: 20px; }
 
     .host-creds { display: flex; flex-direction: column; gap: 6px; }
-    .host-cred { display: flex; align-items: center; gap: 8px; font-size: 0.8125rem; color: var(--text-3); }
-    .host-cred-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
+    .host-creds { display: flex; flex-wrap: wrap; gap: 8px; }
+    .host-cred {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.78rem; font-weight: 500; color: var(--text-2);
+      background: var(--bg-input);
+      border: 1px solid var(--line-1);
+      border-radius: var(--r-full);
+      padding: 5px 12px;
+    }
+    .host-cred-dot { display: none; }
 
     /* Pricing */
     .pricing-v2 {
@@ -1298,9 +1335,9 @@
 <section class="demo-section">
   <div class="container">
     <div class="lp-section-head centered reveal" style="margin-bottom: 36px;">
-      <span class="label">Posłuchaj próbki</span>
-      <h2>Pierwszy odcinek za darmo</h2>
-      <p>Sprawdź styl i poziom zanim zdecydujesz. Bez rejestracji.</p>
+      <span class="label" id="demo-head">Posłuchaj próbki</span>
+      <h2 id="demo-sub">Pierwszy odcinek za darmo</h2>
+      <p id="demo-desc">Sprawdź styl i poziom zanim zdecydujesz. Bez rejestracji.</p>
     </div>
 
     <div class="demo-card reveal">
@@ -1726,54 +1763,67 @@
         </div>
         <div style="font-size:0.75rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-4); margin-bottom:20px;">Eksperci inspirujący ten program</div>
         <div class="inspiration-grid">
+
           <div class="inspiration-card reveal">
-            <div class="insp-avatar" style="background: rgba(255,74,0,0.12); color: #FF4A00;">KF</div>
-            <div class="insp-content">
-              <div class="insp-name">Kieran Flanagan</div>
-              <div class="insp-role">CMO · Zapier · Marketing Against The Grain</div>
-              <div class="insp-quote">"Marketerzy muszą stać się AI-native generalistami, którzy używają AI do skracania dystansu między strategią a egzekucją."</div>
+            <span class="insp-quote-mark" style="color: rgba(255,74,0,0.3);">"</span>
+            <div class="insp-quote">Marketerzy, którzy nie przejdą na AI-native way of working w ciągu 12 miesięcy, będą zastępowani przez tych, którzy to zrobili. Nie przez AI — przez ludzi z AI.</div>
+            <div class="insp-footer">
+              <div class="insp-avatar" style="background: rgba(255,74,0,0.15); color: #FF4A00;">KF</div>
+              <div class="insp-meta">
+                <div class="insp-name">Kieran Flanagan</div>
+                <div class="insp-role">CMO Zapier · Marketing Against The Grain</div>
+              </div>
               <div class="insp-links">
-                <a href="https://podcasts.apple.com/podcast/marketing-against-the-grain/id1616700934" target="_blank" class="insp-link">Podcast</a>
-                <a href="https://www.kieranflanagan.io" target="_blank" class="insp-link">Substack</a>
+                <a href="https://podcasts.apple.com/podcast/marketing-against-the-grain/id1616700934" target="_blank" class="insp-link">Podcast ↗</a>
               </div>
             </div>
           </div>
+
           <div class="inspiration-card reveal reveal-delay-1">
-            <div class="insp-avatar" style="background: rgba(10,102,194,0.12); color: #0A66C2;">LR</div>
-            <div class="insp-content">
-              <div class="insp-name">Lenny Rachitsky</div>
-              <div class="insp-role">Founder · Lenny's Newsletter · ex-Airbnb</div>
-              <div class="insp-quote">"AI forces companies to completely reinvent their growth playbooks. The question isn't whether, but how fast."</div>
+            <span class="insp-quote-mark" style="color: rgba(10,102,194,0.3);">"</span>
+            <div class="insp-quote">Najlepsi PM-owie i marketerzy których znam nie pytają czy używać AI. Pytają jak zbudować workflow który sprawia że robią to szybciej i lepiej niż 10 osób razem.</div>
+            <div class="insp-footer">
+              <div class="insp-avatar" style="background: rgba(10,102,194,0.15); color: #4a90d9;">LR</div>
+              <div class="insp-meta">
+                <div class="insp-name">Lenny Rachitsky</div>
+                <div class="insp-role">Lenny's Newsletter · ex-Airbnb</div>
+              </div>
               <div class="insp-links">
-                <a href="https://www.lennysnewsletter.com" target="_blank" class="insp-link">Newsletter</a>
-                <a href="https://www.lennyspodcast.com" target="_blank" class="insp-link">Podcast</a>
+                <a href="https://www.lennyspodcast.com" target="_blank" class="insp-link">Podcast ↗</a>
               </div>
             </div>
           </div>
+
           <div class="inspiration-card reveal reveal-delay-2">
-            <div class="insp-avatar" style="background: rgba(249,115,22,0.12); color: var(--orange);">AN</div>
-            <div class="insp-content">
-              <div class="insp-name">Amanda Natividad</div>
-              <div class="insp-role">VP Marketing · SparkToro · Zero-Click Content</div>
-              <div class="insp-quote">"AI sprawia, że produkowanie przeciętnego contentu w masowej skali jest łatwiejsze niż kiedykolwiek. Ty jesteś swoim jedynym prawdziwym MOAT."</div>
+            <span class="insp-quote-mark" style="color: rgba(249,115,22,0.3);">"</span>
+            <div class="insp-quote">AI sprawia że produkowanie przeciętnego contentu jest łatwiejsze niż kiedykolwiek. Jedyne co Cię chroni to głęboka znajomość własnej perspektywy, doświadczenia i odbiorcy. Tego AI nie skopiuje.</div>
+            <div class="insp-footer">
+              <div class="insp-avatar" style="background: rgba(249,115,22,0.15); color: var(--orange);">AN</div>
+              <div class="insp-meta">
+                <div class="insp-name">Amanda Natividad</div>
+                <div class="insp-role">VP Marketing SparkToro · Zero-Click Content</div>
+              </div>
               <div class="insp-links">
-                <a href="https://sparktoro.com/blog" target="_blank" class="insp-link">Blog</a>
-                <a href="https://amandanat.com" target="_blank" class="insp-link">Site</a>
+                <a href="https://sparktoro.com/blog" target="_blank" class="insp-link">Blog ↗</a>
               </div>
             </div>
           </div>
+
           <div class="inspiration-card reveal reveal-delay-3">
-            <div class="insp-avatar" style="background: rgba(74,222,128,0.12); color: #4ade80;">GD</div>
-            <div class="insp-content">
-              <div class="insp-name">Gaetano DiNardi</div>
-              <div class="insp-role">Founder · Marketing Advice · ex-Cognism, Nextiva</div>
-              <div class="insp-quote">"84% kupujących B2B używa AI do odkrywania dostawców. Dark SEO to nowe top-of-funnel. Google jest już tylko potwierdzeniem tego, co LLM polecił."</div>
+            <span class="insp-quote-mark" style="color: rgba(74,222,128,0.25);">"</span>
+            <div class="insp-quote">Kiedy LLM poleca Twój produkt bez zapytania — wygrałeś. To jest nowe SEO. Większość firm jeszcze o tym nie wie, ale za 18 miesięcy będą się zastanawiać dlaczego tracą leady których nigdy nie widzą w Analytics.</div>
+            <div class="insp-footer">
+              <div class="insp-avatar" style="background: rgba(74,222,128,0.12); color: #4ade80;">GD</div>
+              <div class="insp-meta">
+                <div class="insp-name">Gaetano DiNardi</div>
+                <div class="insp-role">ex-Cognism, Nextiva · Marketing Advice</div>
+              </div>
               <div class="insp-links">
-                <a href="https://marketingadvice.substack.com" target="_blank" class="insp-link">Substack</a>
-                <a href="https://www.linkedin.com/in/gaetanodinardi" target="_blank" class="insp-link">LinkedIn</a>
+                <a href="https://marketingadvice.substack.com" target="_blank" class="insp-link">Substack ↗</a>
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -1783,11 +1833,11 @@
 <!-- CTA FINAL -->
 <div class="lp-cta-block">
   <div class="container">
-    <h2>Jeden odcinek.<br><em style="font-style:normal; color:var(--orange);">Za darmo. Teraz.</em></h2>
-    <p>Bez karty. Zaloguj się, posłuchaj S1E01, pobierz pliki.</p>
+    <h2 id="cta-head">Nie wiem czy to dla Ciebie.<br><em style="font-style:normal; color:var(--orange);">Pierwszy odcinek jest za darmo — sprawdź sam.</em></h2>
+    <p id="cta-sub">Rejestracja zajmuje 30 sekund. Bez karty, bez zobowiązań. Jeśli styl Ci nie odpowiada — nie musisz wracać. Jeśli odpowiada — reszta jest tutaj.</p>
     <div class="lp-cta-row">
-      <a href="register.html" class="btn btn-primary btn-lg">Zacznij za darmo</a>
-      <a href="login.html" class="btn btn-ghost btn-lg">Mam już konto</a>
+      <a href="register.html" class="btn btn-primary btn-lg" id="cta-btn">Zacznij za darmo</a>
+      <a href="login.html" class="btn btn-ghost btn-lg" id="cta-login">Mam już konto</a>
     </div>
   </div>
 </div>
@@ -1982,24 +2032,81 @@
   // Language switch
   const TX = {
     pl: {
-      badge: 'Sezon 1 · maj 2026',
-      h1: 'Naucz się AI od praktyka.<br><em>Nie influencera.</em>',
-      sub: '36 odcinków audio z gotowymi workflow, promptami i plikami do pobrania. Narzędzia, które naprawdę działają — testowane na własnych klientach.'
+      badge:   'Sezon 1 · maj 2026',
+      h1:      'Naucz się AI od praktyka.<br><em>Nie influencera.</em>',
+      sub:     '36 odcinków audio z gotowymi workflow, promptami i plikami do pobrania. Narzędzia, które naprawdę działają — testowane na własnych klientach.',
+      nav1:    'Program', nav2: 'Jak to działa', nav3: 'Cennik', nav4: 'Prowadzący',
+      login:   'Zaloguj', register: 'Zacznij za darmo →',
+      demoHead:'Posłuchaj próbki', demoSub: 'Pierwszy odcinek za darmo',
+      demoDesc:'Sprawdź styl i poziom zanim zdecydujesz. Bez rejestracji.',
+      ctaHead: 'Nie wiem czy to dla Ciebie.',
+      ctaOrange:'Pierwszy odcinek jest za darmo — sprawdź sam.',
+      ctaSub:  'Rejestracja zajmuje 30 sekund. Bez karty, bez zobowiązań. Jeśli styl Ci nie odpowiada — nie musisz wracać. Jeśli odpowiada — reszta jest tutaj.',
+      ctaBtn:  'Zacznij za darmo', ctaLogin: 'Mam już konto',
     },
     en: {
-      badge: 'Season 1 · May 2026',
-      h1: 'Learn AI from a practitioner.<br><em>Not an influencer.</em>',
-      sub: '36 audio episodes with ready-to-use workflows, prompts and files. Tools that actually work — tested on real clients.'
+      badge:   'Season 1 · May 2026',
+      h1:      'Learn AI from a practitioner.<br><em>Not an influencer.</em>',
+      sub:     '36 audio episodes with ready-to-use workflows, prompts and files. Tools that actually work — tested on real clients.',
+      nav1:    'Curriculum', nav2: 'How it works', nav3: 'Pricing', nav4: 'Host',
+      login:   'Log in', register: 'Start for free →',
+      demoHead:'Listen to a sample', demoSub: 'Episode 1 is free',
+      demoDesc:'Check the style and depth before you decide. No registration needed.',
+      ctaHead: "Not sure if this is for you.",
+      ctaOrange:"Episode one is free — find out yourself.",
+      ctaSub:  "Sign up in 30 seconds. No card, no commitment. If the style doesn't click — don't come back. If it does — the rest is here.",
+      ctaBtn:  'Start for free', ctaLogin: 'I already have an account',
     }
   };
+
   function setLang(lang) {
     const t = TX[lang];
-    document.getElementById('badge-text').textContent = t.badge;
-    document.getElementById('hero-h1').innerHTML = t.h1;
-    document.getElementById('hero-sub').textContent = t.sub;
+    localStorage.setItem('ak_lang', lang);
+
+    // Hero
+    const badge = document.getElementById('badge-text');
+    const h1    = document.getElementById('hero-h1');
+    const sub   = document.getElementById('hero-sub');
+    if (badge) badge.textContent = t.badge;
+    if (h1)    h1.innerHTML      = t.h1;
+    if (sub)   sub.textContent   = t.sub;
+
+    // Nav links (all .nav-link and .mobile-nav-link in order)
+    const navLinks = document.querySelectorAll('.nav-link');
+    const keys = ['nav1','nav2','nav3','nav4'];
+    navLinks.forEach((el, i) => { if (keys[i]) el.textContent = t[keys[i]]; });
+
+    // Nav buttons
+    document.querySelectorAll('.nav-cta-login').forEach(el => el.textContent = t.login);
+    document.querySelectorAll('.nav-cta-register').forEach(el => el.textContent = t.register);
+
+    // Demo section
+    const dh = document.getElementById('demo-head');
+    const ds = document.getElementById('demo-sub');
+    const dd = document.getElementById('demo-desc');
+    if (dh) dh.textContent = t.demoHead;
+    if (ds) ds.textContent = t.demoSub;
+    if (dd) dd.textContent = t.demoDesc;
+
+    // CTA final
+    const ctah = document.getElementById('cta-head');
+    const ctao = document.getElementById('cta-orange');
+    const ctas = document.getElementById('cta-sub');
+    const ctab = document.getElementById('cta-btn');
+    const ctal = document.getElementById('cta-login');
+    if (ctah) ctah.innerHTML = t.ctaHead + '<br><em style="font-style:normal;color:var(--orange);">' + t.ctaOrange + '</em>';
+    if (ctas) ctas.textContent = t.ctaSub;
+    if (ctab) ctab.textContent = t.ctaBtn;
+    if (ctal) ctal.textContent = t.ctaLogin;
+
+    // Active state
     document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-    document.querySelector(`.lang-btn[onclick*="${lang}"]`).classList.add('active');
+    document.querySelectorAll(`.lang-btn[onclick*="${lang}"]`).forEach(b => b.classList.add('active'));
   }
+
+  // Restore saved lang on load
+  const savedLang = localStorage.getItem('ak_lang');
+  if (savedLang && savedLang !== 'pl') setLang(savedLang);
 </script>
 
 
