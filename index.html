@@ -4,15 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Akademia AI — Wojciech Łuszczyński</title>
-  <meta name="description" content="36 odcinków audio, gotowe workflow i blueprinty. AI w marketingu B2B od praktyka — nie teoretyka.">
+  <meta name="description" content="36 odcinków audio o AI, growth i outbound B2B. Gotowe workflow, prompty i blueprinty od praktyka.">
+  <meta property="og:title" content="Akademia AI — Wojciech Łuszczyński">
+  <meta property="og:description" content="AI w marketingu B2B. Bez bullshitu. Gotowe flow, audio, certyfikat.">
+  <meta property="og:image" content="https://academy.wojciech.io/assets/og.png">
+  <meta property="og:url" content="https://academy.wojciech.io">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <style>
-    /* ── LANDING-ONLY OVERRIDES ─────────────────── */
+    /* ── LANDING PAGE STYLES ───────────────────── */
 
-    /* Centered hero */
     .lp-hero {
       min-height: 100vh;
       display: flex;
@@ -41,18 +44,18 @@
     }
 
     .lp-h1 {
-      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
       font-weight: 900;
       letter-spacing: -0.05em;
       line-height: 1.0;
       color: var(--text-1);
-      max-width: 900px;
+      max-width: 860px;
       margin-bottom: 24px;
     }
 
     .lp-h1 em {
       font-style: normal;
-      background: linear-gradient(115deg, #fff 0%, #fcd9b6 40%, var(--orange) 70%);
+      background: linear-gradient(115deg, #fff 0%, #fcd9b6 40%, var(--orange) 75%);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -77,21 +80,20 @@
     /* Product UI mockup */
     .product-mockup {
       width: 100%;
-      max-width: 1000px;
+      max-width: 960px;
       background: var(--bg-card);
-      border: 1px solid var(--line-2);
+      border: 1px solid rgba(255,255,255,0.1);
       border-radius: 18px;
       overflow: hidden;
       box-shadow:
         0 0 0 1px rgba(249,115,22,0.08),
-        0 40px 120px -20px rgba(0,0,0,0.8),
-        0 0 80px -20px rgba(249,115,22,0.15);
-      position: relative;
+        0 40px 120px -20px rgba(0,0,0,0.9),
+        0 0 80px -20px rgba(249,115,22,0.18);
     }
 
     .mock-topbar {
       height: 40px;
-      background: rgba(12,11,10,0.9);
+      background: rgba(10,9,8,0.95);
       border-bottom: 1px solid var(--line-1);
       display: flex;
       align-items: center;
@@ -99,10 +101,7 @@
       gap: 8px;
     }
 
-    .mock-dot {
-      width: 10px; height: 10px;
-      border-radius: 50%;
-    }
+    .mock-dot { width: 10px; height: 10px; border-radius: 50%; }
     .mock-dot.r { background: #ff5f57; }
     .mock-dot.y { background: #febc2e; }
     .mock-dot.g { background: #28c840; }
@@ -118,16 +117,16 @@
     .mock-body {
       display: grid;
       grid-template-columns: 200px 1fr;
-      height: 360px;
+      height: 340px;
     }
 
     .mock-sidebar {
       background: var(--bg-card);
       border-right: 1px solid var(--line-1);
-      padding: 16px 12px;
+      padding: 14px 10px;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 2px;
     }
 
     .mock-logo {
@@ -135,33 +134,24 @@
       align-items: center;
       gap: 7px;
       padding: 6px 8px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .mock-logo-mark {
       width: 22px; height: 22px;
       background: var(--orange);
       border-radius: 5px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.6rem;
-      font-weight: 900;
-      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.55rem; font-weight: 900; color: #fff;
     }
 
-    .mock-logo-text {
-      font-size: 0.8125rem;
-      font-weight: 700;
-    }
+    .mock-logo-text { font-size: 0.8125rem; font-weight: 700; }
 
     .mock-nav-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      display: flex; align-items: center; gap: 8px;
       padding: 7px 8px;
       border-radius: 7px;
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       color: var(--text-3);
     }
 
@@ -172,188 +162,186 @@
     }
 
     .mock-nav-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--line-2);
-      flex-shrink: 0;
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--line-2); flex-shrink: 0;
     }
-
     .mock-nav-item.active .mock-nav-dot { background: var(--orange); }
 
-    .mock-content {
-      padding: 20px;
-      overflow: hidden;
-    }
+    .mock-content { padding: 18px; overflow: hidden; }
 
-    .mock-ep-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+    .mock-ep-list { display: flex; flex-direction: column; gap: 8px; }
 
     .mock-ep {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      display: flex; align-items: center; gap: 10px;
       padding: 10px 12px;
       background: var(--bg-input);
       border-radius: 10px;
       border: 1px solid var(--line-1);
-      transition: border-color 0.15s;
     }
 
-    .mock-ep.playing {
-      border-color: var(--orange-line);
-      background: var(--orange-soft);
-    }
+    .mock-ep.playing { border-color: var(--orange-line); background: rgba(249,115,22,0.05); }
 
     .mock-ep-play {
-      width: 28px; height: 28px;
-      border-radius: 50%;
+      width: 28px; height: 28px; border-radius: 50%;
       background: var(--bg-hover);
       display: flex; align-items: center; justify-content: center;
-      font-size: 0.625rem;
-      color: var(--text-3);
-      flex-shrink: 0;
+      font-size: 0.625rem; color: var(--text-3); flex-shrink: 0;
     }
 
-    .mock-ep.playing .mock-ep-play {
-      background: var(--orange);
-      color: #fff;
-    }
+    .mock-ep.playing .mock-ep-play { background: var(--orange); color: #fff; }
 
     .mock-ep-info { flex: 1; min-width: 0; }
-
     .mock-ep-num {
-      font-size: 0.5625rem;
-      font-family: var(--mono);
-      color: var(--text-4);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 1px;
+      font-size: 0.5rem; font-family: var(--mono); color: var(--text-4);
+      text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 2px;
     }
-
     .mock-ep.playing .mock-ep-num { color: var(--orange); }
+    .mock-ep-title { font-size: 0.78rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .mock-ep-dur { font-size: 0.5625rem; font-family: var(--mono); color: var(--text-4); flex-shrink: 0; }
 
-    .mock-ep-title {
-      font-size: 0.78rem;
-      font-weight: 600;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .mock-ep-dur {
-      font-size: 0.5625rem;
-      font-family: var(--mono);
-      color: var(--text-4);
-      flex-shrink: 0;
-    }
-
-    .mock-progress-bar {
-      height: 2px;
-      background: var(--line-1);
-      border-radius: 1px;
-      margin-top: 6px;
-    }
-
-    .mock-progress-fill {
-      height: 100%;
-      border-radius: 1px;
-      background: var(--orange);
-    }
+    .mock-progress-bar { height: 2px; background: var(--line-1); border-radius: 1px; margin-top: 5px; }
+    .mock-progress-fill { height: 100%; border-radius: 1px; background: var(--orange); animation: progress-pulse 2s ease-in-out infinite; }
+    @keyframes progress-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.7; } }
 
     .mock-player {
       grid-column: 1 / -1;
       height: 52px;
-      background: rgba(12,11,10,0.95);
+      background: rgba(10,9,8,0.97);
       border-top: 1px solid var(--line-1);
-      display: flex;
-      align-items: center;
-      gap: 16px;
+      display: flex; align-items: center; gap: 16px;
       padding: 0 16px 0 212px;
     }
 
     .mock-pb-info { flex: 1; min-width: 0; }
-    .mock-pb-serie { font-size: 0.5625rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--orange); }
-    .mock-pb-title { font-size: 0.8rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .mock-pb-serie { font-size: 0.5rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange); }
+    .mock-pb-title { font-size: 0.78rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
     .mock-pb-controls { display: flex; align-items: center; gap: 8px; }
-
     .mock-pb-btn {
-      width: 26px; height: 26px;
-      border-radius: 50%;
-      background: var(--bg-input);
-      border: none;
-      color: var(--text-3);
-      font-size: 0.6rem;
+      width: 26px; height: 26px; border-radius: 50%;
+      background: var(--bg-input); border: none;
+      color: var(--text-3); font-size: 0.55rem;
       display: flex; align-items: center; justify-content: center;
     }
+    .mock-pb-btn.play { background: var(--orange); color: #fff; width: 32px; height: 32px; }
 
-    .mock-pb-btn.play {
-      background: var(--orange);
-      color: #fff;
-      width: 32px; height: 32px;
-    }
-
-    .mock-pb-track {
-      width: 180px; height: 2px;
-      background: var(--line-1);
-      border-radius: 1px;
-      position: relative;
-    }
-
-    .mock-pb-fill {
-      width: 42%;
-      height: 100%;
-      background: var(--orange);
-      border-radius: 1px;
-    }
+    .mock-pb-track { width: 180px; height: 2px; background: var(--line-1); border-radius: 1px; position: relative; }
+    .mock-pb-fill { width: 42%; height: 100%; background: var(--orange); border-radius: 1px; }
 
     /* Logo bar */
     .logo-bar {
-      position: relative;
-      z-index: 1;
-      padding: 32px 0;
+      position: relative; z-index: 1;
+      padding: 28px 0;
       border-top: 1px solid var(--line-1);
       border-bottom: 1px solid var(--line-1);
-      overflow: hidden;
     }
 
     .logo-bar-label {
       text-align: center;
-      font-size: 0.6875rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-4);
-      margin-bottom: 20px;
+      font-size: 0.625rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text-4); margin-bottom: 18px;
     }
 
     .logo-bar-track {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
+      display: flex; gap: 8px;
+      justify-content: center; flex-wrap: wrap;
       padding: 0 24px;
     }
 
     .tool-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      display: inline-flex; align-items: center; gap: 7px;
       padding: 6px 14px;
       border-radius: var(--r-full);
       background: var(--bg-card);
       border: 1px solid var(--line-1);
-      font-size: 0.8125rem;
-      font-weight: 500;
+      font-size: 0.8125rem; font-weight: 500;
       color: var(--text-2);
       transition: all 0.15s;
     }
 
     .tool-chip:hover { border-color: var(--orange-line); color: var(--text-1); }
-    .tool-chip .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--orange); opacity: 0.6; }
+
+    .tool-chip img {
+      width: 14px; height: 14px;
+      border-radius: 2px;
+      filter: brightness(0.9);
+    }
+
+    /* Animated workflow */
+    .workflow-section {
+      padding: 120px 0;
+      position: relative; z-index: 1;
+    }
+
+    .workflow-track {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+
+    .workflow-step {
+      flex: 1;
+      min-width: 160px;
+      text-align: center;
+      position: relative;
+    }
+
+    .workflow-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 28px;
+      right: -1px;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--orange-line), transparent);
+      z-index: 0;
+    }
+
+    .ws-icon {
+      width: 56px; height: 56px;
+      border-radius: 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--line-1);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 12px;
+      position: relative; z-index: 1;
+      transition: all 0.2s;
+    }
+
+    .ws-icon img { width: 24px; height: 24px; }
+
+    .workflow-step.active .ws-icon {
+      border-color: var(--orange);
+      background: var(--orange-soft);
+      box-shadow: 0 0 20px rgba(249,115,22,0.25);
+      animation: ws-pulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes ws-pulse {
+      0%, 100% { box-shadow: 0 0 20px rgba(249,115,22,0.25); }
+      50% { box-shadow: 0 0 40px rgba(249,115,22,0.45); }
+    }
+
+    .ws-label { font-size: 0.75rem; font-weight: 600; color: var(--text-2); margin-bottom: 4px; }
+    .ws-sub { font-size: 0.6875rem; color: var(--text-4); line-height: 1.4; }
+    .ws-arrow {
+      position: absolute;
+      top: 20px;
+      right: -16px;
+      color: var(--orange);
+      font-size: 1rem;
+      z-index: 2;
+      animation: arrow-bounce 1.5s ease-in-out infinite;
+    }
+    @keyframes arrow-bounce {
+      0%, 100% { transform: translateX(0); opacity: 0.6; }
+      50% { transform: translateX(4px); opacity: 1; }
+    }
+
+    .workflow-step:last-child .ws-arrow { display: none; }
 
     /* Bento grid */
     .bento-grid {
@@ -373,7 +361,6 @@
     }
 
     .bento-card:hover { border-color: var(--line-3); transform: translateY(-2px); }
-
     .bento-span-7  { grid-column: span 7; }
     .bento-span-5  { grid-column: span 5; }
     .bento-span-4  { grid-column: span 4; }
@@ -382,50 +369,26 @@
     .bento-span-12 { grid-column: span 12; }
 
     .bento-label {
-      font-size: 0.625rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--orange);
-      margin-bottom: 10px;
+      font-size: 0.625rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 10px;
     }
 
-    .bento-card h3 {
-      font-size: 1.125rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .bento-card p {
-      font-size: 0.875rem;
-      color: var(--text-3);
-      line-height: 1.6;
-    }
+    .bento-card h3 { font-size: 1.125rem; font-weight: 700; margin-bottom: 8px; }
+    .bento-card p { font-size: 0.875rem; color: var(--text-3); line-height: 1.6; }
 
     .bento-big-num {
-      font-size: 4.5rem;
-      font-weight: 900;
-      letter-spacing: -0.05em;
-      line-height: 1;
-      color: var(--text-1);
-      margin: 16px 0 8px;
+      font-size: 4.5rem; font-weight: 900;
+      letter-spacing: -0.05em; line-height: 1;
+      color: var(--text-1); margin: 16px 0 8px;
     }
-
     .bento-big-num span { color: var(--orange); }
-
-    .bento-visual {
-      margin-top: 20px;
-      border-radius: var(--r-md);
-      overflow: hidden;
-    }
 
     .bento-cert-preview {
       background: var(--bg-input);
       border: 1px solid var(--orange-line);
-      border-radius: 10px;
-      padding: 20px;
-      text-align: center;
-      margin-top: 16px;
+      border-radius: 10px; padding: 20px;
+      text-align: center; margin-top: 16px;
     }
 
     .bento-cert-ring {
@@ -439,337 +402,494 @@
       color: var(--orange);
     }
 
-    .bento-cert-name {
-      font-family: Georgia, serif;
-      font-style: italic;
-      font-size: 1.125rem;
-      margin-bottom: 4px;
-    }
+    .bento-cert-name { font-family: Georgia, serif; font-style: italic; font-size: 1.125rem; margin-bottom: 4px; }
+    .bento-cert-course { font-size: 0.6875rem; color: var(--orange); font-weight: 600; }
 
-    .bento-cert-course {
-      font-size: 0.6875rem;
-      color: var(--orange);
-      font-weight: 600;
-    }
-
-    .bento-quiz-preview {
-      margin-top: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
+    .bento-quiz-preview { margin-top: 16px; display: flex; flex-direction: column; gap: 6px; }
 
     .bento-quiz-option {
-      padding: 8px 12px;
-      border-radius: 7px;
-      font-size: 0.78rem;
-      border: 1px solid var(--line-1);
-      background: var(--bg-input);
-      color: var(--text-2);
+      padding: 8px 12px; border-radius: 7px;
+      font-size: 0.78rem; border: 1px solid var(--line-1);
+      background: var(--bg-input); color: var(--text-2);
     }
 
     .bento-quiz-option.correct {
       border-color: rgba(74,222,128,0.4);
-      background: rgba(74,222,128,0.07);
-      color: #4ade80;
+      background: rgba(74,222,128,0.07); color: #4ade80;
     }
 
-    .bento-file-list {
-      margin-top: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-    }
+    .bento-file-list { margin-top: 16px; display: flex; flex-direction: column; gap: 7px; }
 
     .bento-file {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      display: flex; align-items: center; gap: 10px;
       padding: 8px 10px;
-      background: var(--bg-input);
-      border-radius: 7px;
+      background: var(--bg-input); border-radius: 7px;
       font-size: 0.78rem;
     }
 
     .bento-file-ext {
-      font-family: var(--mono);
-      font-size: 0.5625rem;
-      font-weight: 700;
-      padding: 2px 5px;
-      border-radius: 3px;
-      letter-spacing: 0.04em;
+      font-family: var(--mono); font-size: 0.5625rem;
+      font-weight: 700; padding: 2px 5px; border-radius: 3px;
+      letter-spacing: 0.04em; flex-shrink: 0;
     }
 
     .ext-md   { background: rgba(249,115,22,0.12); color: var(--orange); }
     .ext-json { background: rgba(96,165,250,0.12); color: #60a5fa; }
     .ext-zip  { background: rgba(234,179,8,0.12);  color: #eab308; }
 
-    /* Section spacing */
-    .lp-section {
-      padding: 120px 0;
-      position: relative;
-      z-index: 1;
-    }
-
+    /* Section */
+    .lp-section { padding: 120px 0; position: relative; z-index: 1; }
     .lp-section-alt { background: rgba(22,20,18,0.5); }
 
-    .lp-section-head {
-      margin-bottom: 60px;
-    }
-
+    .lp-section-head { margin-bottom: 60px; }
     .lp-section-head .label { display: block; margin-bottom: 12px; }
     .lp-section-head h2 { margin-bottom: 12px; }
-    .lp-section-head p  { max-width: 480px; }
-
+    .lp-section-head p { max-width: 480px; }
     .lp-section-head.centered { text-align: center; }
     .lp-section-head.centered p { margin: 0 auto; }
 
-    /* Series cards v2 */
-    .series-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
+    /* Series */
+    .series-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 
     .series-card-v2 {
       background: var(--bg-card);
       border: 1px solid var(--line-1);
       border-radius: var(--r-xl);
       padding: 32px;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.15s;
-      cursor: pointer;
+      position: relative; overflow: hidden;
+      transition: all 0.2s; cursor: pointer;
     }
 
-    .series-card-v2:hover {
-      border-color: var(--orange-line);
-      transform: translateY(-3px);
-    }
+    .series-card-v2:hover { border-color: var(--orange-line); transform: translateY(-4px); }
 
     .series-card-v2::after {
       content: '';
-      position: absolute;
-      top: 0; right: 0;
-      width: 160px; height: 160px;
-      background: radial-gradient(circle at top right, rgba(249,115,22,0.12), transparent 70%);
+      position: absolute; top: 0; right: 0;
+      width: 180px; height: 180px;
+      background: radial-gradient(circle at top right, rgba(249,115,22,0.1), transparent 70%);
       pointer-events: none;
     }
 
     .sc2-num {
-      font-size: 5rem;
-      font-weight: 900;
-      font-family: var(--mono);
-      line-height: 1;
-      letter-spacing: -0.05em;
-      color: var(--line-1);
-      margin-bottom: 20px;
-      display: block;
+      font-size: 5rem; font-weight: 900;
+      font-family: var(--mono); line-height: 1;
+      letter-spacing: -0.05em; color: var(--line-1);
+      margin-bottom: 20px; display: block;
     }
 
     .sc2-badge {
-      display: inline-flex;
-      font-size: 0.625rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 3px 10px;
-      border-radius: var(--r-full);
-      margin-bottom: 12px;
+      display: inline-flex; font-size: 0.625rem;
+      font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 3px 10px;
+      border-radius: var(--r-full); margin-bottom: 12px;
     }
 
     .sc2-badge.free { background: rgba(74,222,128,0.1); color: #4ade80; border: 1px solid rgba(74,222,128,0.2); }
     .sc2-badge.pro  { background: var(--orange-soft); color: var(--orange); border: 1px solid var(--orange-line); }
+    .sc2-badge.coming { background: var(--bg-input); color: var(--text-4); border: 1px solid var(--line-1); }
 
-    .sc2-title {
-      font-size: 1.0625rem;
-      font-weight: 700;
-      line-height: 1.35;
-      margin-bottom: 10px;
-    }
-
-    .sc2-tools {
-      font-size: 0.78rem;
-      color: var(--text-3);
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
+    .sc2-title { font-size: 1.0625rem; font-weight: 700; line-height: 1.35; margin-bottom: 10px; }
+    .sc2-tools { font-size: 0.78rem; color: var(--text-3); line-height: 1.6; margin-bottom: 20px; }
 
     .sc2-ep-count {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--text-3);
-      padding-top: 16px;
-      border-top: 1px solid var(--line-1);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      font-size: 0.75rem; font-weight: 600; color: var(--text-3);
+      padding-top: 16px; border-top: 1px solid var(--line-1);
+      display: flex; align-items: center; justify-content: space-between;
     }
 
     .sc2-ep-count span { color: var(--orange); }
 
-    /* Host section */
+    /* Inspiration section */
+    .inspiration-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .inspiration-card {
+      background: var(--bg-card);
+      border: 1px solid var(--line-1);
+      border-radius: var(--r-xl);
+      padding: 24px;
+      display: flex; gap: 16px;
+      transition: all 0.15s;
+    }
+
+    .inspiration-card:hover { border-color: var(--line-3); transform: translateY(-2px); }
+
+    .insp-avatar {
+      width: 52px; height: 52px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.125rem; font-weight: 800; flex-shrink: 0;
+      font-family: var(--mono);
+    }
+
+    .insp-content { flex: 1; min-width: 0; }
+    .insp-name { font-size: 0.9375rem; font-weight: 700; margin-bottom: 2px; }
+    .insp-role { font-size: 0.75rem; color: var(--text-3); margin-bottom: 10px; }
+    .insp-quote {
+      font-size: 0.8125rem; color: var(--text-2);
+      line-height: 1.6; font-style: italic;
+      border-left: 2px solid var(--orange-line);
+      padding-left: 10px; margin-bottom: 10px;
+    }
+
+    .insp-links { display: flex; gap: 8px; flex-wrap: wrap; }
+    .insp-link {
+      font-size: 0.6875rem; font-weight: 600;
+      padding: 3px 9px; border-radius: var(--r-full);
+      background: var(--bg-input); border: 1px solid var(--line-1);
+      color: var(--text-3); text-decoration: none;
+      transition: all 0.15s;
+    }
+    .insp-link:hover { color: var(--orange); border-color: var(--orange-line); }
+
+    /* Host */
     .host-section {
       display: grid;
-      grid-template-columns: 380px 1fr;
-      gap: 60px;
-      align-items: start;
+      grid-template-columns: 360px 1fr;
+      gap: 60px; align-items: start;
     }
 
     .host-card-main {
       background: var(--bg-card);
       border: 1px solid var(--line-2);
-      border-radius: var(--r-2xl);
-      padding: 32px;
+      border-radius: var(--r-2xl); padding: 32px;
       position: relative;
     }
 
-    .host-avatar-large {
-      width: 80px; height: 80px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--orange), #fb923c);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      font-weight: 900;
-      color: #fff;
-      margin-bottom: 16px;
+    .host-photo-circle {
+      width: 88px; height: 88px; border-radius: 50%;
+      border: 2px solid var(--orange-line);
+      overflow: hidden; margin-bottom: 16px;
+      background: var(--bg-input);
     }
 
-    .host-name {
-      font-size: 1.25rem;
-      font-weight: 800;
-      margin-bottom: 4px;
-    }
+    .host-photo-circle img { width: 100%; height: 100%; object-fit: cover; }
 
-    .host-role {
-      font-size: 0.8125rem;
-      color: var(--orange);
-      font-weight: 600;
-      margin-bottom: 14px;
-    }
+    .host-name { font-size: 1.25rem; font-weight: 800; margin-bottom: 4px; }
+    .host-role { font-size: 0.8125rem; color: var(--orange); font-weight: 600; margin-bottom: 14px; }
+    .host-bio { font-size: 0.9rem; color: var(--text-2); line-height: 1.7; margin-bottom: 20px; }
 
-    .host-bio {
-      font-size: 0.9rem;
-      color: var(--text-2);
-      line-height: 1.7;
-      margin-bottom: 20px;
-    }
-
-    .host-creds {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .host-cred {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.8125rem;
-      color: var(--text-3);
-    }
-
+    .host-creds { display: flex; flex-direction: column; gap: 6px; }
+    .host-cred { display: flex; align-items: center; gap: 8px; font-size: 0.8125rem; color: var(--text-3); }
     .host-cred-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
 
-    .host-guests {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-
-    .guest-card {
-      background: var(--bg-card);
-      border: 1px solid var(--line-1);
-      border-radius: var(--r-lg);
-      padding: 20px 18px;
-      text-align: center;
-      transition: all 0.15s;
-    }
-
-    .guest-card:hover { border-color: var(--line-3); }
-
-    .guest-avatar {
-      width: 48px; height: 48px;
-      border-radius: 50%;
-      background: var(--bg-input);
-      border: 1px solid var(--line-2);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.125rem;
-      font-weight: 700;
-      color: var(--text-3);
-      margin: 0 auto 10px;
-    }
-
-    .guest-name {
-      font-size: 0.875rem;
-      font-weight: 600;
-      margin-bottom: 3px;
-    }
-
-    .guest-role {
-      font-size: 0.75rem;
-      color: var(--text-3);
-      margin-bottom: 8px;
-    }
-
-    .guest-chip {
-      font-size: 0.625rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 3px 9px;
-      border-radius: var(--r-full);
-      background: var(--bg-input);
-      color: var(--text-4);
-      border: 1px solid var(--line-1);
-    }
-
-    /* CTA block */
-    .lp-cta-block {
-      text-align: center;
-      padding: 120px 24px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .lp-cta-block h2 {
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      font-weight: 900;
-      letter-spacing: -0.04em;
-      margin-bottom: 16px;
-    }
-
-    .lp-cta-block p {
-      font-size: 1.0625rem;
-      color: var(--text-3);
-      margin-bottom: 36px;
-    }
-
-    /* Pricing v2 */
+    /* Pricing */
     .pricing-v2 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 14px;
-      max-width: 900px;
+      max-width: 960px; margin: 0 auto;
+    }
+
+    /* Video / inspiration video */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .video-card {
+      background: var(--bg-card);
+      border: 1px solid var(--line-1);
+      border-radius: var(--r-xl);
+      overflow: hidden; cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .video-card:hover { border-color: var(--orange-line); transform: translateY(-3px); }
+
+    .video-thumb {
+      height: 160px;
+      background: var(--bg-input);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+
+    .video-thumb-bg {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      filter: brightness(0.4);
+      transition: filter 0.2s;
+    }
+
+    .video-card:hover .video-thumb-bg { filter: brightness(0.5); }
+
+    .video-play {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(249,115,22,0.9);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; color: #fff; position: relative; z-index: 1;
+      box-shadow: 0 0 24px rgba(249,115,22,0.4);
+    }
+
+    .video-info { padding: 16px; }
+    .video-channel { font-size: 0.625rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange); margin-bottom: 5px; }
+    .video-title { font-size: 0.875rem; font-weight: 600; line-height: 1.4; color: var(--text-1); }
+
+    /* CTA block */
+    .lp-cta-block {
+      text-align: center; padding: 120px 24px;
+      position: relative; z-index: 1;
+    }
+
+    .lp-cta-block h2 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 900; letter-spacing: -0.04em; margin-bottom: 16px;
+    }
+
+    .lp-cta-block p { font-size: 1.0625rem; color: var(--text-3); margin-bottom: 36px; }
+
+    /* Demo audio player */
+    .demo-section {
+      padding: 80px 0 100px;
+      position: relative; z-index: 1;
+    }
+
+    .demo-card {
+      max-width: 760px;
       margin: 0 auto;
+      background: var(--bg-card);
+      border: 1px solid var(--line-1);
+      border-radius: var(--r-xl);
+      padding: 40px 44px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .demo-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--orange), transparent);
+    }
+
+    .demo-card::after {
+      content: '';
+      position: absolute;
+      top: -120px; right: -80px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(249,115,22,0.08), transparent 70%);
+      pointer-events: none;
+    }
+
+    .demo-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .demo-live-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 0 0 rgba(74,222,128,0.5);
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(74,222,128,0.5); }
+      50% { box-shadow: 0 0 0 6px rgba(74,222,128,0); }
+    }
+
+    .demo-eyebrow-text {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #4ade80;
+    }
+
+    .demo-series-tag {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      color: var(--text-4);
+      background: var(--bg-input);
+      padding: 3px 10px;
+      border-radius: var(--r-full);
+      border: 1px solid var(--line-1);
+      margin-left: auto;
+    }
+
+    .demo-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-1);
+      margin-bottom: 6px;
+    }
+
+    .demo-meta {
+      font-size: 0.8125rem;
+      color: var(--text-3);
+      margin-bottom: 32px;
+    }
+
+    .demo-waveform {
+      width: 100%;
+      height: 48px;
+      margin-bottom: 12px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .demo-waveform-bar {
+      flex: 1;
+      border-radius: 2px;
+      background: var(--line-1);
+      transition: background 0.2s;
+      cursor: pointer;
+    }
+
+    .demo-waveform-bar.played {
+      background: var(--orange);
+    }
+
+    .demo-progress-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .demo-time {
+      font-size: 0.75rem;
+      font-family: var(--mono);
+      color: var(--text-4);
+      min-width: 36px;
+    }
+
+    .demo-track {
+      flex: 1;
+      height: 3px;
+      background: var(--line-1);
+      border-radius: 99px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .demo-track-fill {
+      height: 100%;
+      background: var(--orange);
+      border-radius: 99px;
+      width: 0%;
+      transition: width 0.3s linear;
+    }
+
+    .demo-controls {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .demo-play-btn {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--orange);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: #fff;
+      transition: all 0.15s;
+      flex-shrink: 0;
+    }
+
+    .demo-play-btn:hover { background: #ea6a10; transform: scale(1.05); }
+    .demo-play-btn:active { transform: scale(0.97); }
+
+    .demo-skip-btn {
+      background: none;
+      border: 1px solid var(--line-1);
+      color: var(--text-3);
+      border-radius: var(--r-full);
+      padding: 6px 14px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .demo-skip-btn:hover { border-color: var(--orange-line); color: var(--text-1); }
+
+    .demo-speed-btn {
+      background: none;
+      border: 1px solid var(--line-1);
+      color: var(--text-3);
+      border-radius: var(--r-full);
+      padding: 6px 14px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: var(--mono);
+      transition: all 0.15s;
+    }
+
+    .demo-speed-btn:hover { border-color: var(--orange-line); color: var(--text-1); }
+
+    .demo-cta-row {
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line-1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .demo-cta-text {
+      font-size: 0.875rem;
+      color: var(--text-3);
+    }
+
+    .demo-cta-text strong {
+      color: var(--text-1);
+    }
+
+    @media (max-width: 768px) {
+      .demo-card { padding: 28px 24px; }
+      .demo-cta-row { flex-direction: column; align-items: flex-start; }
     }
 
     /* Scroll animations */
     .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.55s ease, transform 0.55s ease;
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-delay-1 { transition-delay: 0.08s; }
     .reveal-delay-2 { transition-delay: 0.16s; }
     .reveal-delay-3 { transition-delay: 0.24s; }
     .reveal-delay-4 { transition-delay: 0.32s; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-right { display: none; }
+      .hamburger { display: flex; }
+      .lp-hero { padding: 120px 20px 60px; }
+      .lp-h1 { font-size: clamp(2.2rem, 9vw, 3.2rem); }
+      .lp-sub { font-size: 0.9375rem; }
+      .mock-sidebar { display: none; }
+      .mock-body { grid-template-columns: 1fr; height: auto; }
+      .mock-player { padding-left: 16px; }
+      .mock-pb-track { display: none; }
+      .bento-span-7, .bento-span-5, .bento-span-8, .bento-span-4 { grid-column: span 12; }
+      .series-grid { grid-template-columns: 1fr; }
+      .inspiration-grid { grid-template-columns: 1fr; }
+      .host-section { grid-template-columns: 1fr; gap: 32px; }
+      .pricing-v2 { grid-template-columns: 1fr; max-width: 420px; }
+      .video-grid { grid-template-columns: 1fr; }
+      .lp-section { padding: 80px 0; }
+      .workflow-track { gap: 8px; }
+    }
   </style>
 </head>
 <body>
@@ -786,6 +906,7 @@
     </a>
     <div class="nav-right">
       <a href="#program" class="nav-link">Program</a>
+      <a href="#workflow" class="nav-link">Jak to działa</a>
       <a href="#pricing" class="nav-link">Cennik</a>
       <a href="#prowadzacy" class="nav-link">Prowadzący</a>
       <div class="lang-switch">
@@ -801,9 +922,9 @@
   </div>
 </nav>
 
-<!-- MOBILE NAV DRAWER -->
 <div class="mobile-nav" id="mobile-nav">
   <a href="#program" class="mobile-nav-link" onclick="closeMenu()">Program</a>
+  <a href="#workflow" class="mobile-nav-link" onclick="closeMenu()">Jak to działa</a>
   <a href="#pricing" class="mobile-nav-link" onclick="closeMenu()">Cennik</a>
   <a href="#prowadzacy" class="mobile-nav-link" onclick="closeMenu()">Prowadzący</a>
   <div class="mobile-nav-divider"></div>
@@ -820,7 +941,7 @@
 <section class="lp-hero">
   <div class="lp-badge">
     <span class="live-dot"></span>
-    <span id="badge-text">Sezon 1 — maj 2026</span>
+    <span id="badge-text">Sezon 1 · maj 2026</span>
   </div>
   <h1 class="lp-h1" id="hero-h1">
     AI w marketingu B2B.<br>
@@ -828,14 +949,13 @@
   </h1>
   <p class="lp-sub" id="hero-sub">
     36 odcinków audio, gotowe workflow i pliki do pobrania.
-    20 lat w growth marketingu skondensowane w jednym miejscu.
+    20 lat w B2B skondensowane w jednym miejscu.
   </p>
   <div class="lp-cta-row">
     <a href="register.html" class="btn btn-primary btn-lg">Zacznij za darmo</a>
     <a href="#program" class="btn btn-ghost btn-lg">Zobacz program</a>
   </div>
 
-  <!-- Product UI mockup -->
   <div class="product-mockup reveal">
     <div class="mock-topbar">
       <div class="mock-dot r"></div>
@@ -850,28 +970,23 @@
           <div class="mock-logo-text">Akademia AI</div>
         </div>
         <div class="mock-nav-item active">
-          <div class="mock-nav-dot"></div>
-          AI Stack 2026
+          <div class="mock-nav-dot"></div> AI Stack 2026
         </div>
         <div class="mock-nav-item">
-          <div class="mock-nav-dot"></div>
-          Outbound Machine
+          <div class="mock-nav-dot"></div> Outbound Machine
         </div>
         <div class="mock-nav-item">
-          <div class="mock-nav-dot"></div>
-          Voice &amp; Video
+          <div class="mock-nav-dot"></div> Voice &amp; Video
         </div>
         <div class="mock-nav-item" style="margin-top: 8px;">
-          <div class="mock-nav-dot"></div>
-          Vault
+          <div class="mock-nav-dot"></div> Vault
         </div>
         <div class="mock-nav-item">
-          <div class="mock-nav-dot"></div>
-          Certyfikat
+          <div class="mock-nav-dot"></div> Certyfikat
         </div>
       </div>
       <div class="mock-content">
-        <div style="font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-4); margin-bottom: 12px;">Seria 1 — AI Stack 2026</div>
+        <div style="font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-4); margin-bottom: 12px;">Seria 1 · AI Stack 2026</div>
         <div class="mock-ep-list">
           <div class="mock-ep playing">
             <div class="mock-ep-play">▶</div>
@@ -890,7 +1005,7 @@
             </div>
             <div class="mock-ep-dur">09:47</div>
           </div>
-          <div class="mock-ep" style="opacity: 0.5;">
+          <div class="mock-ep" style="opacity: 0.45;">
             <div class="mock-ep-play" style="font-size: 0.7rem;">●</div>
             <div class="mock-ep-info">
               <div class="mock-ep-num">S1E03 · zablokowane</div>
@@ -907,7 +1022,7 @@
         <div class="mock-pb-title">ChatGPT vs Claude vs Gemini vs Grok: mój werdykt po 20 latach</div>
       </div>
       <div class="mock-pb-controls">
-        <div class="mock-pb-btn">−15</div>
+        <div class="mock-pb-btn">-15</div>
         <div class="mock-pb-btn play">▶</div>
         <div class="mock-pb-btn">+15</div>
       </div>
@@ -921,36 +1036,138 @@
 <div class="logo-bar">
   <div class="logo-bar-label">Narzędzia w programie</div>
   <div class="logo-bar-track">
-    <span class="tool-chip"><span class="dot"></span>Claude</span>
-    <span class="tool-chip"><span class="dot"></span>ChatGPT</span>
-    <span class="tool-chip"><span class="dot"></span>Gemini</span>
-    <span class="tool-chip"><span class="dot"></span>Perplexity</span>
-    <span class="tool-chip"><span class="dot"></span>NotebookLM</span>
-    <span class="tool-chip"><span class="dot"></span>Clay</span>
-    <span class="tool-chip"><span class="dot"></span>Apollo</span>
-    <span class="tool-chip"><span class="dot"></span>n8n</span>
-    <span class="tool-chip"><span class="dot"></span>ElevenLabs</span>
-    <span class="tool-chip"><span class="dot"></span>HeyGen</span>
-    <span class="tool-chip"><span class="dot"></span>Cursor</span>
-    <span class="tool-chip"><span class="dot"></span>Midjourney</span>
+    <span class="tool-chip"><img src="https://cdn.simpleicons.org/anthropic/f97316" alt="">Claude</span>
+    <span class="tool-chip"><img src="https://cdn.simpleicons.org/openai/ffffff" alt="">ChatGPT</span>
+    <span class="tool-chip"><img src="https://cdn.simpleicons.org/google/4285F4" alt="">Gemini</span>
+    <span class="tool-chip"><img src="https://cdn.simpleicons.org/perplexity/20B2AA" alt="">Perplexity</span>
+    <span class="tool-chip"><img src="https://cdn.simpleicons.org/notion/ffffff" alt="">NotebookLM</span>
+    <span class="tool-chip"><img src="https://cdn.simpleicons.org/airtable/18BFFF" alt="">Clay</span>
+    <span class="tool-chip"><img src="https://cdn.simpleicons.org/zapier/FF4A00" alt="">n8n</span>
+    <span class="tool-chip"><img src="https://cdn.simpleicons.org/elevenlabs/f97316" alt="">ElevenLabs</span>
+    <span class="tool-chip"><img src="https://cdn.simpleicons.org/github/ffffff" alt="">Cursor</span>
+    <span class="tool-chip"><img src="https://cdn.simpleicons.org/midjourney/ffffff" alt="">Midjourney</span>
+    <span class="tool-chip"><img src="https://cdn.simpleicons.org/hubspot/FF7A59" alt="">HubSpot</span>
+    <span class="tool-chip"><img src="https://cdn.simpleicons.org/linkedin/0A66C2" alt="">LinkedIn</span>
   </div>
 </div>
 
+<!-- DEMO AUDIO PLAYER -->
+<section class="demo-section">
+  <div class="container">
+    <div class="lp-section-head centered reveal" style="margin-bottom: 36px;">
+      <span class="label">Posłuchaj próbki</span>
+      <h2>Pierwszy odcinek za darmo</h2>
+      <p>Sprawdź styl i poziom zanim zdecydujesz. Bez rejestracji.</p>
+    </div>
+
+    <div class="demo-card reveal">
+      <div class="demo-eyebrow">
+        <div class="demo-live-dot"></div>
+        <span class="demo-eyebrow-text">Próbka audio</span>
+        <span class="demo-series-tag">Seria 1 · Odcinek 01</span>
+      </div>
+
+      <div class="demo-title">AI Stack 2026 — Które modele wygrywają i dlaczego</div>
+      <div class="demo-meta">ChatGPT · Claude · Gemini · Grok · fragment 1:00 z 13:42 min</div>
+
+      <div class="demo-waveform" id="demo-waveform"></div>
+
+      <div class="demo-progress-row">
+        <span class="demo-time" id="demo-time-now">0:00</span>
+        <div class="demo-track" id="demo-track" onclick="demoSeek(event)">
+          <div class="demo-track-fill" id="demo-track-fill"></div>
+        </div>
+        <span class="demo-time" id="demo-time-total">1:00</span>
+      </div>
+
+      <div class="demo-controls">
+        <button class="demo-play-btn" id="demo-play-btn" onclick="demoToggle()">▶</button>
+        <button class="demo-skip-btn" onclick="demoSkip(-10)">−10s</button>
+        <button class="demo-skip-btn" onclick="demoSkip(10)">+10s</button>
+        <button class="demo-speed-btn" id="demo-speed-btn" onclick="demoSpeed()">1.0×</button>
+        <span style="flex:1"></span>
+        <span style="font-size:0.8125rem;color:var(--text-4);">🎧 Słuchaj w aplikacji po rejestracji</span>
+      </div>
+
+      <div class="demo-cta-row">
+        <div class="demo-cta-text">
+          <strong>Podoba się?</strong> Zarejestruj się i odblokuj całą Serię 1 za darmo.
+        </div>
+        <a href="login.html" class="btn btn-primary btn-sm">Zacznij za darmo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<audio id="demo-audio" preload="metadata" src="audio/s1e01.mp3"></audio>
+
+<!-- ANIMATED WORKFLOW -->
+<section class="workflow-section" id="workflow">
+  <div class="container">
+    <div class="lp-section-head centered reveal">
+      <span class="label">Jak to działa</span>
+      <h2>Od słuchania do działania</h2>
+      <p>Każdy odcinek to konkretny krok. Żadnego padding contentu.</p>
+    </div>
+    <div class="workflow-track reveal">
+      <div class="workflow-step active">
+        <div class="ws-icon">
+          <img src="https://cdn.simpleicons.org/anthropic/f97316" alt="Audio">
+        </div>
+        <div class="ws-label">Słuchasz</div>
+        <div class="ws-sub">10-15 min audio<br>PL lub EN</div>
+        <div class="ws-arrow">&#8250;</div>
+      </div>
+      <div class="workflow-step">
+        <div class="ws-icon">
+          <img src="https://cdn.simpleicons.org/notion/c4bfba" alt="Notes">
+        </div>
+        <div class="ws-label">Quiz</div>
+        <div class="ws-sub">3 pytania<br>60% = zaliczone</div>
+        <div class="ws-arrow">&#8250;</div>
+      </div>
+      <div class="workflow-step">
+        <div class="ws-icon">
+          <img src="https://cdn.simpleicons.org/airtable/18BFFF" alt="Download">
+        </div>
+        <div class="ws-label">Pobierasz</div>
+        <div class="ws-sub">JSON, MD, Blueprint<br>gotowe do użycia</div>
+        <div class="ws-arrow">&#8250;</div>
+      </div>
+      <div class="workflow-step">
+        <div class="ws-icon">
+          <img src="https://cdn.simpleicons.org/zapier/FF4A00" alt="Workflow">
+        </div>
+        <div class="ws-label">Wdrażasz</div>
+        <div class="ws-sub">Workflow w Clay,<br>n8n lub Zapier</div>
+        <div class="ws-arrow">&#8250;</div>
+      </div>
+      <div class="workflow-step">
+        <div class="ws-icon" style="border-color: var(--orange); background: var(--orange-soft);">
+          <img src="https://cdn.simpleicons.org/linkedin/0A66C2" alt="Certificate">
+        </div>
+        <div class="ws-label">Certyfikat</div>
+        <div class="ws-sub">PDF z podpisem<br>link na LinkedIn</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- BENTO FEATURES -->
-<section class="lp-section" id="features">
+<section class="lp-section lp-section-alt">
   <div class="container">
     <div class="lp-section-head reveal">
       <span class="label">Co dostajesz</span>
-      <h2>Wszystko co potrzebne,<br>żeby zacząć działać jutro</h2>
+      <h2>Wszystko żeby zacząć działać jutro</h2>
       <p>Nie kurs teoretyczny. Każdy odcinek kończy się plikiem do użycia w pracy.</p>
     </div>
     <div class="bento-grid">
       <div class="bento-card bento-span-7 reveal">
         <div class="bento-label">Audio</div>
-        <h3>36 odcinków. Każdy 10–15 min.</h3>
-        <p>Słuchasz w drodze, w pracy, na siłowni. Transkrypt do skanowania w 30 sekund. PL i EN — przełączasz jednym kliknięciem.</p>
+        <h3>36 odcinków. Każdy 10-15 min.</h3>
+        <p>Słuchasz w drodze, w pracy, na siłowni. Transkrypt do skanowania w 30 sekund. PL i EN jednym kliknięciem.</p>
         <div class="bento-big-num"><span>36</span></div>
-        <div style="font-size: 0.78rem; color: var(--text-3);">odcinków w 3 seriach · PL + EN</div>
+        <div style="font-size: 0.78rem; color: var(--text-3);">odcinków w 4 seriach · PL + EN</div>
       </div>
       <div class="bento-card bento-span-5 reveal reveal-delay-1">
         <div class="bento-label">Vault</div>
@@ -966,25 +1183,25 @@
       </div>
       <div class="bento-card bento-span-5 reveal reveal-delay-2">
         <div class="bento-label">Quizy</div>
-        <h3>Sprawdź czy wiesz co robisz</h3>
+        <h3>Sprawdź wiedzę w praktyce</h3>
         <p>3 pytania po każdym odcinku. Pojawia się automatycznie na 95% postępu.</p>
         <div class="bento-quiz-preview">
-          <div class="bento-quiz-option">Claude — ma 200k context window</div>
-          <div class="bento-quiz-option correct">Gemini 2.5 Pro — ma 1M context window</div>
-          <div class="bento-quiz-option">ChatGPT — ma 128k context window</div>
+          <div class="bento-quiz-option">Claude ma 128k context window</div>
+          <div class="bento-quiz-option correct">Gemini 2.5 Pro ma 1M context window ✓</div>
+          <div class="bento-quiz-option">GPT-4o ma największy context</div>
         </div>
       </div>
       <div class="bento-card bento-span-7 reveal reveal-delay-3">
         <div class="bento-label">Certyfikat</div>
         <h3>Certyfikat który coś znaczy</h3>
-        <p>Unikalny ID, PDF z podpisem, link na LinkedIn — generowany po zaliczeniu wszystkich quizów w serii. Nie możesz go dostać bez rzeczywistego ukończenia.</p>
+        <p>Unikalny ID, PDF z podpisem, link na LinkedIn. Generowany po zaliczeniu wszystkich quizów w serii. Nie możesz go dostać bez rzeczywistego ukończenia.</p>
         <div class="bento-cert-preview">
           <div class="bento-cert-ring">
             <span style="font-size: 0.35rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;">Verified</span>
             <span style="font-size: 0.7rem; font-weight: 900;">AI</span>
           </div>
           <div class="bento-cert-name">Wojciech Łuszczyński</div>
-          <div class="bento-cert-course">AI Stack 2026 — Seria 1</div>
+          <div class="bento-cert-course">AI Stack 2026 · Seria 1</div>
         </div>
       </div>
     </div>
@@ -992,18 +1209,18 @@
 </section>
 
 <!-- SERIES -->
-<section class="lp-section lp-section-alt" id="program">
+<section class="lp-section" id="program">
   <div class="container">
     <div class="lp-section-head reveal">
       <span class="label">Program</span>
-      <h2>3 serie · 12 odcinków każda</h2>
-      <p>Możesz kupić jedną serię lub całość. Płacisz raz, masz dożywotnio.</p>
+      <h2>4 serie · 12 odcinków każda</h2>
+      <p>Kup jedną serię lub całość. Płacisz raz, masz dożywotnio. Nowe odcinki bez dopłat.</p>
     </div>
-    <div class="series-grid">
+    <div class="series-grid" style="grid-template-columns: repeat(2, 1fr);">
       <div class="series-card-v2 reveal">
         <span class="sc2-num">01</span>
         <div class="sc2-badge free">1 odcinek free</div>
-        <div class="sc2-title">AI Stack 2026 — porównania, które robią różnicę</div>
+        <div class="sc2-title">AI Stack 2026 · porównania, które robią różnicę</div>
         <div class="sc2-tools">ChatGPT · Claude · Gemini · Grok · Perplexity · NotebookLM · Cursor · Claude Code</div>
         <div class="sc2-ep-count">
           <span>12 odcinków</span>
@@ -1012,8 +1229,8 @@
       </div>
       <div class="series-card-v2 reveal reveal-delay-1">
         <span class="sc2-num">02</span>
-        <div class="sc2-badge pro">Pro · 19,99 zł</div>
-        <div class="sc2-title">Outbound Machine — od ICP do podpisanej umowy</div>
+        <div class="sc2-badge pro">97 PLN</div>
+        <div class="sc2-title">Outbound Machine · od ICP do podpisanej umowy</div>
         <div class="sc2-tools">Apollo · Clay · Hunter · Smartlead · n8n · Zapier · Make · Airtable · HubSpot</div>
         <div class="sc2-ep-count">
           <span>12 odcinków</span>
@@ -1022,14 +1239,67 @@
       </div>
       <div class="series-card-v2 reveal reveal-delay-2">
         <span class="sc2-num">03</span>
-        <div class="sc2-badge pro">Pro · 19,99 zł</div>
-        <div class="sc2-title">Voice, Video, Brand — produkcja contentu z AI</div>
+        <div class="sc2-badge pro">97 PLN</div>
+        <div class="sc2-title">Voice, Video, Brand · produkcja contentu z AI</div>
         <div class="sc2-tools">ElevenLabs · HeyGen · Veo 3.1 · Midjourney · Runway · Descript · Notion</div>
         <div class="sc2-ep-count">
           <span>12 odcinków</span>
           <a href="register.html?plan=single&serie=3" class="btn btn-secondary btn-sm">Kup serię</a>
         </div>
       </div>
+      <div class="series-card-v2 reveal reveal-delay-3" style="border-color: var(--orange-line); background: rgba(249,115,22,0.03);">
+        <span class="sc2-num" style="color: rgba(249,115,22,0.15);">04</span>
+        <div class="sc2-badge coming">Wkrótce</div>
+        <div class="sc2-title">B2B Marketing Masterclass · poza AI</div>
+        <div class="sc2-tools">Demand Gen · ABM · Content · Positioning · GTM · RevOps · SEO · Brand</div>
+        <div class="sc2-ep-count">
+          <span style="color: var(--text-4);">Q3 2026</span>
+          <a href="mailto:hello@wojciech.io?subject=Seria 4" class="btn btn-ghost btn-sm">Daj znać</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO INSPIRATION -->
+<section class="lp-section lp-section-alt">
+  <div class="container">
+    <div class="lp-section-head reveal">
+      <span class="label">Inspiracje video</span>
+      <h2>Skąd czerpiemy</h2>
+      <p>Odcinki nagrywane w duchu tych rozmów. Konkret, bez panelowych ogólników.</p>
+    </div>
+    <div class="video-grid">
+      <a href="https://www.youtube.com/@MarketingAgainstTheGrain" target="_blank" class="video-card reveal">
+        <div class="video-thumb">
+          <div class="video-thumb-bg" style="background: linear-gradient(135deg, #1a0533, #2d1b69);"></div>
+          <div class="video-play">▶</div>
+        </div>
+        <div class="video-info">
+          <div class="video-channel">Marketing Against The Grain</div>
+          <div class="video-title">Kieran Flanagan · jak zbudować AI-native marketing team od podstaw</div>
+        </div>
+      </a>
+      <a href="https://www.lennyspodcast.com" target="_blank" class="video-card reveal reveal-delay-1">
+        <div class="video-thumb">
+          <div class="video-thumb-bg" style="background: linear-gradient(135deg, #0a1628, #1e3a5f);"></div>
+          <div class="video-play">▶</div>
+        </div>
+        <div class="video-info">
+          <div class="video-channel">Lenny's Podcast</div>
+          <div class="video-title">Lenny Rachitsky · nowy AI growth playbook dla 2026</div>
+        </div>
+      </a>
+      <a href="https://sparktoro.com/blog" target="_blank" class="video-card reveal reveal-delay-2">
+        <div class="video-thumb">
+          <div class="video-thumb-bg" style="background: linear-gradient(135deg, #1a0a00, #3d1a00);"></div>
+          <div class="video-play">▶</div>
+        </div>
+        <div class="video-info">
+          <div class="video-channel">SparkToro · Amanda Natividad</div>
+          <div class="video-title">Zero-Click Content · jak wygrywać w erze AI search</div>
+        </div>
+      </a>
     </div>
   </div>
 </section>
@@ -1040,105 +1310,138 @@
     <div class="lp-section-head centered reveal">
       <span class="label">Cennik</span>
       <h2>Płacisz raz. Masz na zawsze.</h2>
-      <p>Bez subskrypcji. Bez automatycznych odnowień. Bez kredytówki na start.</p>
+      <p>Bez subskrypcji. Bez automatycznych odnowień. Jeden odcinek za darmo, bez karty.</p>
     </div>
     <div class="pricing-v2">
       <div class="price-card reveal">
         <div class="price-tier">Free</div>
-        <div class="price-amount">0 <sub style="font-size:1rem;color:var(--text-3);vertical-align:baseline;">zł</sub></div>
+        <div class="price-amount">0 <span style="font-size:1rem;font-weight:400;color:var(--text-3);">zł</span></div>
         <div class="price-period">Zawsze · bez karty</div>
         <ul class="price-list">
           <li><span class="check">✓</span> 1 odcinek demo (S1E01)</li>
           <li><span class="check">✓</span> Pliki bonusowe do odcinka</li>
-          <li><span class="check">✓</span> Quiz + pasek postępu</li>
+          <li><span class="check">✓</span> Quiz i pasek postępu</li>
           <li class="off"><span class="cross">×</span> Pozostałe 35 odcinków</li>
           <li class="off"><span class="cross">×</span> Certyfikat</li>
         </ul>
         <a href="register.html" class="btn btn-secondary btn-xl" style="margin-top:auto;">Załóż konto</a>
       </div>
-      <div class="price-card reveal reveal-delay-1">
+      <div class="price-card featured reveal reveal-delay-1">
+        <div class="price-top-label">Najlepszy wybór</div>
+        <div class="price-tier price-featured-tier">Wszystkie serie</div>
+        <div class="price-amount">249 <span style="font-size:1rem;font-weight:400;color:var(--text-3);">PLN</span></div>
+        <div class="price-period">Jednorazowo · dożywotni dostęp · ok. 7 PLN/odcinek</div>
+        <ul class="price-list">
+          <li><span class="check">✓</span> Wszystkie 36 odcinków (4 serie)</li>
+          <li><span class="check">✓</span> Pełny Vault (100+ plików)</li>
+          <li><span class="check">✓</span> Certyfikat LinkedIn i PDF</li>
+          <li><span class="check">✓</span> Nowe odcinki bez dopłat</li>
+          <li><span class="check">✓</span> Token-secured · 1 sesja na konto</li>
+        </ul>
+        <a href="register.html?plan=full" class="btn btn-primary btn-xl" style="margin-top:auto;">Kup wszystko · 249 PLN</a>
+      </div>
+      <div class="price-card reveal reveal-delay-2">
         <div class="price-tier">Pojedyncza seria</div>
-        <div class="price-amount">19,99 <sub style="font-size:1rem;color:var(--text-3);vertical-align:baseline;">zł</sub></div>
+        <div class="price-amount">97 <span style="font-size:1rem;font-weight:400;color:var(--text-3);">PLN</span></div>
         <div class="price-period">Jednorazowo · dożywotni dostęp</div>
         <ul class="price-list">
           <li><span class="check">✓</span> 12 odcinków wybranej serii</li>
           <li><span class="check">✓</span> Vault tej serii (~30 plików)</li>
-          <li><span class="check">✓</span> Quiz + certyfikat serii</li>
+          <li><span class="check">✓</span> Quiz i certyfikat serii</li>
           <li><span class="check">✓</span> Aktualizacje dożywotnio</li>
-          <li class="off"><span class="cross">×</span> Tylko 1 z 3 serii</li>
+          <li class="off"><span class="cross">×</span> Tylko 1 z 4 serii</li>
         </ul>
         <a href="register.html?plan=single" class="btn btn-secondary btn-xl" style="margin-top:auto;">Wybierz serię</a>
       </div>
-      <div class="price-card featured reveal reveal-delay-2">
-        <div class="price-top-label">Najlepszy wybór</div>
-        <div class="price-tier price-featured-tier">Wszystkie 3 serie</div>
-        <div class="price-amount">35,00 <sub style="font-size:1rem;color:var(--text-3);vertical-align:baseline;">zł</sub></div>
-        <div class="price-period">Jednorazowo · pełen dostęp</div>
-        <ul class="price-list">
-          <li><span class="check">✓</span> Wszystkie 36 odcinków</li>
-          <li><span class="check">✓</span> Pełny Vault (100+ plików)</li>
-          <li><span class="check">✓</span> Certyfikat LinkedIn + PDF</li>
-          <li><span class="check">✓</span> Nowe odcinki bez dopłat</li>
-          <li><span class="check">✓</span> Token-secured · 1 sesja/konto</li>
-        </ul>
-        <a href="register.html?plan=full" class="btn btn-primary btn-xl" style="margin-top:auto;">Kup wszystko — 35 zł</a>
-      </div>
     </div>
-    <p style="text-align:center; margin-top:20px; font-size:0.8125rem; color:var(--text-4);">
-      Płatność w PLN · Faktura VAT na życzenie · Zwrot w 14 dni bez pytań
-    </p>
+    <div style="text-align:center; margin-top:20px; display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap;">
+      <span style="font-size:0.8125rem; color:var(--text-4);">Płatność w PLN</span>
+      <span style="color:var(--text-4);">·</span>
+      <span style="font-size:0.8125rem; color:var(--text-4);">Faktura VAT na życzenie</span>
+      <span style="color:var(--text-4);">·</span>
+      <span style="font-size:0.8125rem; color:var(--text-4);">Zwrot w 14 dni bez pytań</span>
+      <span style="color:var(--text-4);">·</span>
+      <span style="font-size:0.8125rem; color:var(--text-4);">Przelew · karta · BLIK</span>
+    </div>
   </div>
 </section>
 
-<!-- HOST -->
+<!-- HOST + INSPIRACJE -->
 <section class="lp-section lp-section-alt" id="prowadzacy">
   <div class="container">
     <div class="lp-section-head reveal">
       <span class="label">Prowadzący</span>
-      <h2>Ludzie za Akademią AI</h2>
+      <h2>Kto za tym stoi</h2>
     </div>
     <div class="host-section">
       <div class="host-card-main reveal">
-        <div class="host-avatar-large">W</div>
+        <div class="host-photo-circle">
+          <img src="assets/wojciech-avatar.png" alt="Wojciech Łuszczyński">
+        </div>
         <div class="host-name">Wojciech Łuszczyński</div>
         <div class="host-role">Founder · Growth Marketer · Host</div>
         <div class="host-bio">
-          20+ lat w B2B SaaS. Buduję i testuję AI stacki na własnym budżecie i własnych klientach.
-          Piszę o tym na Substack. Prowadzę Akademię AI żeby nie musieć tłumaczyć każdemu z osobna.
+          20 lat w B2B SaaS. Buduję i testuję AI stacki na własnym budżecie i własnych klientach.
+          Piszę o tym na Substack. Prowadzę Akademię AI, bo nie chcę tłumaczyć każdemu z osobna tego samego.
         </div>
         <div class="host-creds">
-          <div class="host-cred"><div class="host-cred-dot"></div>Growth marketing B2B SaaS — 20 lat</div>
-          <div class="host-cred"><div class="host-cred-dot"></div>Clay · Claude · n8n w codziennej pracy</div>
-          <div class="host-cred"><div class="host-cred-dot"></div>Substack: wojciech.io · app.wojciech.io</div>
+          <div class="host-cred"><div class="host-cred-dot"></div>Growth marketing B2B SaaS · 20 lat</div>
+          <div class="host-cred"><div class="host-cred-dot"></div>Clay · Claude · n8n · Apollo w codziennej pracy</div>
+          <div class="host-cred"><div class="host-cred-dot"></div>Substack · wojciech.io · app.wojciech.io</div>
           <div class="host-cred"><div class="host-cred-dot"></div>LinkedIn: 5k+ obserwujących</div>
         </div>
       </div>
+
       <div>
-        <div style="font-size:0.75rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-4); margin-bottom:16px;">Goście — wkrótce</div>
-        <div class="host-guests">
-          <div class="guest-card reveal reveal-delay-1">
-            <div class="guest-avatar">?</div>
-            <div class="guest-name">Gość serii 2</div>
-            <div class="guest-role">Outbound Specialist</div>
-            <span class="guest-chip">Wkrótce</span>
+        <div style="font-size:0.75rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-4); margin-bottom:20px;">Eksperci i głosy inspirujące ten program</div>
+        <div class="inspiration-grid">
+          <div class="inspiration-card reveal">
+            <div class="insp-avatar" style="background: rgba(255,74,0,0.12); color: #FF4A00;">KF</div>
+            <div class="insp-content">
+              <div class="insp-name">Kieran Flanagan</div>
+              <div class="insp-role">CMO · Zapier · Marketing Against The Grain</div>
+              <div class="insp-quote">"Marketerzy muszą stać się AI-native generalistami, którzy używają AI do skracania dystansu między strategią a egzekucją."</div>
+              <div class="insp-links">
+                <a href="https://podcasts.apple.com/podcast/marketing-against-the-grain/id1616700934" target="_blank" class="insp-link">Podcast</a>
+                <a href="https://www.kieranflanagan.io" target="_blank" class="insp-link">Substack</a>
+              </div>
+            </div>
           </div>
-          <div class="guest-card reveal reveal-delay-2">
-            <div class="guest-avatar">?</div>
-            <div class="guest-name">Gość serii 3</div>
-            <div class="guest-role">AI Video Creator</div>
-            <span class="guest-chip">Wkrótce</span>
+          <div class="inspiration-card reveal reveal-delay-1">
+            <div class="insp-avatar" style="background: rgba(10,102,194,0.12); color: #0A66C2;">LR</div>
+            <div class="insp-content">
+              <div class="insp-name">Lenny Rachitsky</div>
+              <div class="insp-role">Founder · Lenny's Newsletter · ex-Airbnb</div>
+              <div class="insp-quote">"AI forces companies to completely reinvent their growth playbooks. The question isn't whether, but how fast."</div>
+              <div class="insp-links">
+                <a href="https://www.lennysnewsletter.com" target="_blank" class="insp-link">Newsletter</a>
+                <a href="https://www.lennyspodcast.com" target="_blank" class="insp-link">Podcast</a>
+              </div>
+            </div>
           </div>
-          <div class="guest-card reveal reveal-delay-3">
-            <div class="guest-avatar">?</div>
-            <div class="guest-name">Gość specjalny</div>
-            <div class="guest-role">B2B SaaS Founder</div>
-            <span class="guest-chip">Wkrótce</span>
+          <div class="inspiration-card reveal reveal-delay-2">
+            <div class="insp-avatar" style="background: rgba(249,115,22,0.12); color: var(--orange);">AN</div>
+            <div class="insp-content">
+              <div class="insp-name">Amanda Natividad</div>
+              <div class="insp-role">VP Marketing · SparkToro · Zero-Click Content</div>
+              <div class="insp-quote">"AI sprawia, że produkowanie przeciętnego contentu w masowej skali jest łatwiejsze niż kiedykolwiek. Ty jesteś swoim jedynym prawdziwym MOAT."</div>
+              <div class="insp-links">
+                <a href="https://sparktoro.com/blog" target="_blank" class="insp-link">Blog</a>
+                <a href="https://amandanat.com" target="_blank" class="insp-link">Site</a>
+              </div>
+            </div>
           </div>
-        </div>
-        <div style="margin-top:16px; padding:16px 18px; background:var(--bg-card); border:1px solid var(--line-1); border-radius:var(--r-lg);">
-          <div style="font-size:0.8125rem; color:var(--text-3); line-height:1.6;">
-            Zapraszam ekspertów z konkretnych narzędzi na pogłębione rozmowy. Chcesz pojawić się jako gość?
-            <a href="mailto:hello@wojciech.io" style="color:var(--orange);">Napisz do mnie.</a>
+          <div class="inspiration-card reveal reveal-delay-3">
+            <div class="insp-avatar" style="background: rgba(74,222,128,0.12); color: #4ade80;">GD</div>
+            <div class="insp-content">
+              <div class="insp-name">Gaetano DiNardi</div>
+              <div class="insp-role">Founder · Marketing Advice · ex-Cognism, Nextiva</div>
+              <div class="insp-quote">"84% kupujących B2B używa AI do odkrywania dostawców. Dark SEO to nowe top-of-funnel. Google jest już tylko potwierdzeniem tego, co LLM polecił."</div>
+              <div class="insp-links">
+                <a href="https://marketingadvice.substack.com" target="_blank" class="insp-link">Substack</a>
+                <a href="https://www.linkedin.com/in/gaetanodinardi" target="_blank" class="insp-link">LinkedIn</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1150,7 +1453,7 @@
 <div class="lp-cta-block">
   <div class="container">
     <h2>Jeden odcinek.<br><em style="font-style:normal; color:var(--orange);">Za darmo. Teraz.</em></h2>
-    <p>Bez kredytówki. Zaloguj się, posłuchaj S1E01, pobierz pliki.</p>
+    <p>Bez karty. Zaloguj się, posłuchaj S1E01, pobierz pliki.</p>
     <div class="lp-cta-row">
       <a href="register.html" class="btn btn-primary btn-lg">Zacznij za darmo</a>
       <a href="login.html" class="btn btn-ghost btn-lg">Mam już konto</a>
@@ -1166,7 +1469,7 @@
         <span class="logo-mark">AA</span>
         <span class="footer-copy">© 2026 Wojciech Łuszczyński</span>
         <span class="footer-sep">·</span>
-        <a href="https://wojciech.io" class="nav-link" style="color:var(--orange);">wojciech.io</a>
+        <a href="https://wojciech.io" style="font-size:0.875rem; color:var(--orange);">wojciech.io</a>
       </div>
       <div class="footer-links">
         <a href="https://www.linkedin.com/in/wojciech-luszczynski/">LinkedIn</a>
@@ -1191,32 +1494,151 @@
     document.getElementById('mobile-nav').classList.remove('open');
     document.body.style.overflow = '';
   }
-  // Close on outside tap
   document.addEventListener('click', e => {
     const nav = document.getElementById('mobile-nav');
     const btn = document.getElementById('hamburger');
     if (nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) closeMenu();
   });
-  // Close on scroll
-  window.addEventListener('scroll', () => { if (document.getElementById('mobile-nav').classList.contains('open')) closeMenu(); }, { passive: true });
+  window.addEventListener('scroll', () => {
+    if (document.getElementById('mobile-nav').classList.contains('open')) closeMenu();
+  }, { passive: true });
+
+  // ── DEMO AUDIO PLAYER ────────────────────────
+  (function() {
+    const DEMO_LIMIT = 60; // seconds
+    const audio = document.getElementById('demo-audio');
+    const playBtn = document.getElementById('demo-play-btn');
+    const timeNow = document.getElementById('demo-time-now');
+    const trackFill = document.getElementById('demo-track-fill');
+    const speedBtn = document.getElementById('demo-speed-btn');
+    const waveform = document.getElementById('demo-waveform');
+
+    // Generate fake waveform bars
+    if (waveform) {
+      const BARS = 80;
+      const heights = [];
+      for (let i = 0; i < BARS; i++) {
+        const h = 10 + Math.abs(Math.sin(i * 0.4 + 1.2) * 22 + Math.sin(i * 0.9 + 0.6) * 14 + Math.random() * 8);
+        heights.push(Math.round(h));
+      }
+      heights.forEach((h, i) => {
+        const bar = document.createElement('div');
+        bar.className = 'demo-waveform-bar';
+        bar.style.height = h + 'px';
+        bar.dataset.idx = i;
+        bar.addEventListener('click', () => {
+          if (!audio) return;
+          audio.currentTime = (i / BARS) * DEMO_LIMIT;
+        });
+        waveform.appendChild(bar);
+      });
+    }
+
+    function fmtTime(s) {
+      s = Math.floor(s);
+      return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+    }
+
+    function updateUI() {
+      if (!audio) return;
+      const t = Math.min(audio.currentTime, DEMO_LIMIT);
+      const pct = (t / DEMO_LIMIT) * 100;
+      if (trackFill) trackFill.style.width = pct + '%';
+      if (timeNow) timeNow.textContent = fmtTime(t);
+
+      // Waveform sync
+      if (waveform) {
+        const bars = waveform.querySelectorAll('.demo-waveform-bar');
+        const playedCount = Math.floor((t / DEMO_LIMIT) * bars.length);
+        bars.forEach((b, i) => {
+          b.classList.toggle('played', i < playedCount);
+        });
+      }
+
+      // Stop at limit
+      if (audio.currentTime >= DEMO_LIMIT) {
+        audio.pause();
+        audio.currentTime = DEMO_LIMIT;
+        playBtn.textContent = '▶';
+      }
+    }
+
+    if (audio) {
+      audio.addEventListener('timeupdate', updateUI);
+      audio.addEventListener('play',  () => { if (playBtn) playBtn.textContent = '⏸'; });
+      audio.addEventListener('pause', () => { if (playBtn) playBtn.textContent = '▶'; });
+      audio.addEventListener('ended', () => { if (playBtn) playBtn.textContent = '▶'; });
+    }
+
+    window.demoToggle = function() {
+      if (!audio) return;
+      if (audio.currentTime >= DEMO_LIMIT) audio.currentTime = 0;
+      if (audio.paused) audio.play();
+      else audio.pause();
+    };
+
+    window.demoSkip = function(sec) {
+      if (!audio) return;
+      audio.currentTime = Math.max(0, Math.min(DEMO_LIMIT, audio.currentTime + sec));
+      updateUI();
+    };
+
+    const speeds = [1.0, 1.25, 1.5, 1.75, 2.0];
+    let speedIdx = 0;
+    window.demoSpeed = function() {
+      if (!audio) return;
+      speedIdx = (speedIdx + 1) % speeds.length;
+      audio.playbackRate = speeds[speedIdx];
+      if (speedBtn) speedBtn.textContent = speeds[speedIdx].toFixed(2).replace('.00','').replace('.', '.') + '×';
+    };
+
+    window.demoSeek = function(e) {
+      if (!audio) return;
+      const rect = document.getElementById('demo-track').getBoundingClientRect();
+      const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+      audio.currentTime = pct * DEMO_LIMIT;
+      updateUI();
+    };
+  })();
+
+  // Animated workflow steps cycling
+  (function() {
+    const steps = document.querySelectorAll('.workflow-step');
+    if (!steps.length) return;
+    let current = 0;
+    setInterval(() => {
+      steps[current].classList.remove('active');
+      current = (current + 1) % steps.length;
+      steps[current].classList.add('active');
+    }, 1800);
+  })();
 
   // Scroll reveal
   const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-  }, { threshold: 0.08 });
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.07 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-  // Language
+  // Immediate reveal for above-fold elements
+  setTimeout(() => {
+    document.querySelectorAll('.reveal').forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('visible');
+    });
+  }, 80);
+
+  // Language switch
   const TX = {
     pl: {
-      badge: 'Sezon 1 — maj 2026',
+      badge: 'Sezon 1 · maj 2026',
       h1: 'AI w marketingu B2B.<br><em>Bez bullshitu.</em>',
-      sub: '36 odcinków audio, gotowe workflow i pliki do pobrania. 20 lat w growth marketingu skondensowane w jednym miejscu.'
+      sub: '36 odcinków audio, gotowe workflow i pliki do pobrania. 20 lat w B2B skondensowane w jednym miejscu.'
     },
     en: {
-      badge: 'Season 1 — May 2026',
+      badge: 'Season 1 · May 2026',
       h1: 'AI in B2B marketing.<br><em>Without the hype.</em>',
-      sub: '36 audio episodes, ready workflows and downloadable files. 20 years of growth marketing in one place.'
+      sub: '36 audio episodes, ready workflows and downloadable files. 20 years of B2B experience in one place.'
     }
   };
   function setLang(lang) {
@@ -1225,16 +1647,8 @@
     document.getElementById('hero-h1').innerHTML = t.h1;
     document.getElementById('hero-sub').textContent = t.sub;
     document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-    document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+    document.querySelector(`.lang-btn[onclick*="${lang}"]`).classList.add('active');
   }
-
-  // Make the reveal happen immediately for first visible elements
-  setTimeout(() => {
-    document.querySelectorAll('.reveal').forEach(el => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight) el.classList.add('visible');
-    });
-  }, 100);
 </script>
 
 </body>
