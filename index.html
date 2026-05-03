@@ -880,6 +880,49 @@
     .video-channel { font-size: 0.625rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange); margin-bottom: 5px; }
     .video-title { font-size: 0.875rem; font-weight: 600; line-height: 1.4; color: var(--text-1); }
 
+    /* Testimonials */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+    .testi-card {
+      background: var(--bg-card);
+      border: 1px solid var(--line-1);
+      border-radius: var(--r-xl);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .testi-card:hover {
+      background: rgba(255,255,255,0.025);
+      border-color: var(--line-2);
+    }
+    .testi-stars { color: var(--orange); font-size: 0.875rem; letter-spacing: 2px; }
+    .testi-text {
+      font-size: 0.9375rem;
+      color: var(--text-2);
+      line-height: 1.7;
+      flex: 1;
+    }
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line-1);
+    }
+    .testi-avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.6875rem; font-weight: 800; flex-shrink: 0;
+    }
+    .testi-name { font-size: 0.875rem; font-weight: 600; color: var(--text-1); }
+    .testi-role { font-size: 0.75rem; color: var(--text-4); margin-top: 2px; }
+
     /* CTA block */
     .lp-cta-block {
       text-align: center; padding: 120px 24px;
@@ -1135,12 +1178,16 @@
       .bento-span-7, .bento-span-5, .bento-span-8, .bento-span-4 { grid-column: span 12; }
       .series-grid { grid-template-columns: 1fr; }
       .inspiration-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
       .host-section { grid-template-columns: 1fr; gap: 32px; }
       .host-visual { height: 420px; }
       .pricing-v2 { grid-template-columns: 1fr; max-width: 420px; }
       .video-grid { grid-template-columns: 1fr; }
       .lp-section { padding: 80px 0; }
       .workflow-track { gap: 8px; }
+    }
+    @media (max-width: 1024px) and (min-width: 769px) {
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -1161,6 +1208,7 @@
         <a href="#workflow" class="nav-link">Jak to działa</a>
         <a href="#pricing" class="nav-link">Cennik</a>
         <a href="#prowadzacy" class="nav-link">Prowadzący</a>
+        <a href="#opinie" class="nav-link">Opinie</a>
       </div>
       <div class="lang-switch">
         <button class="lang-btn active" onclick="setLang('pl')">PL</button>
@@ -1180,6 +1228,7 @@
   <a href="#workflow" class="mobile-nav-link" onclick="closeMenu()">Jak to działa</a>
   <a href="#pricing" class="mobile-nav-link" onclick="closeMenu()">Cennik</a>
   <a href="#prowadzacy" class="mobile-nav-link" onclick="closeMenu()">Prowadzący</a>
+  <a href="#opinie" class="mobile-nav-link" onclick="closeMenu()">Opinie</a>
   <div class="mobile-nav-divider"></div>
   <div class="mobile-nav-lang">
     <button class="lang-btn active" onclick="setLang('pl'); closeMenu()">PL</button>
@@ -1818,6 +1867,89 @@
 
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="lp-section" id="opinie">
+  <div class="container">
+    <div class="section-label">OPINIE</div>
+    <h2 class="section-title">Co mówią po pierwszym odcinku</h2>
+    <div class="testimonials-grid">
+
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">Słuchałem w drodze na spotkanie. Wróciłem i od razu zmieniłem stack naszego zespołu. Żaden kurs nie dał mi tyle w 11 minutach.</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:rgba(249,115,22,0.15);color:var(--orange);">MK</div>
+          <div>
+            <div class="testi-name">Marcin K.</div>
+            <div class="testi-role">Head of Growth · SaaS B2B</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal reveal-delay-1">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">W końcu ktoś mówi po polsku i nie ściemnia. Dokładnie taka analiza jakiej szukałam — bez "ChatGPT jest super" bez konkretów.</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:rgba(74,222,128,0.12);color:#4ade80;">AW</div>
+          <div>
+            <div class="testi-name">Agnieszka W.</div>
+            <div class="testi-role">Marketing Manager · Ecommerce</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal reveal-delay-2">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">Kupiłem po pierwszym odcinku. Werdykt LLM — 4 zdania które zmieniły jak myślę o kosztach. Mój team używa teraz 3 różnych modeli zależnie od zadania.</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:rgba(96,165,250,0.15);color:#60a5fa;">PJ</div>
+          <div>
+            <div class="testi-name">Piotr J.</div>
+            <div class="testi-role">CEO · Agencja digitalowa</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal reveal-delay-3">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">Najlepsza decyzja zakupowa tego kwartału. Seria 2 o outbound to osobna liga — Clay + Claude pipeline zmienił mój cold outreach dosłownie w tydzień.</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:rgba(249,115,22,0.1);color:#fb923c;">KS</div>
+          <div>
+            <div class="testi-name">Katarzyna S.</div>
+            <div class="testi-role">Sales Director · Scale-up</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal reveal-delay-1">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">Słucham w 1.5x bo każde zdanie ma sens. Zero wody. Materiały do pobrania używam na co dzień — SOP do researchu mam otwarte w zakładce od miesiąca.</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:rgba(168,85,247,0.15);color:#a855f7;">BN</div>
+          <div>
+            <div class="testi-name">Bartosz N.</div>
+            <div class="testi-role">Product Manager · Fintech</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal reveal-delay-2">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">Polecam każdemu marketerowi który czuje że AI go przytłacza. Wojciech nie mówi "używaj wszystkiego" — mówi dokładnie co, kiedy i dlaczego.</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:rgba(249,115,22,0.15);color:var(--orange);">EL</div>
+          <div>
+            <div class="testi-name">Ewa L.</div>
+            <div class="testi-role">Content Strategist · Agency</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
