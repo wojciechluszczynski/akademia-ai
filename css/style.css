@@ -149,7 +149,14 @@ p { color: var(--text-2); font-size: 0.9375rem; }
   height: 64px;
   display: flex;
   align-items: center;
-  background: rgba(12, 11, 10, 0.85);
+  background: rgba(12, 11, 10, 0.0);
+  backdrop-filter: blur(0px) saturate(100%);
+  border-bottom: 1px solid transparent;
+  transition: background 0.3s var(--ease), border-color 0.3s var(--ease), backdrop-filter 0.3s var(--ease);
+}
+
+.navbar.scrolled {
+  background: rgba(12, 11, 10, 0.88);
   backdrop-filter: blur(24px) saturate(180%);
   border-bottom: 1px solid var(--line-1);
 }
@@ -2221,7 +2228,7 @@ p { color: var(--text-2); font-size: 0.9375rem; }
 .mobile-nav {
   display: none;
   position: fixed;
-  top: 56px;
+  top: 64px;
   left: 0; right: 0;
   z-index: 99;
   background: rgba(12, 11, 10, 0.98);
@@ -2365,6 +2372,16 @@ p { color: var(--text-2); font-size: 0.9375rem; }
 
   /* Host */
   .host-guests { grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  /* Inspiration grid: single column on mobile */
+  .inspiration-grid { grid-template-columns: 1fr; gap: 2px; }
+  .inspiration-card:first-child { border-radius: var(--r-xl) var(--r-xl) 0 0; }
+  .inspiration-card:nth-child(2) { border-radius: 0; }
+  .inspiration-card:nth-child(3) { border-radius: 0; }
+  .inspiration-card:last-child { border-radius: 0 0 var(--r-xl) var(--r-xl); }
+
+  /* Demo card */
+  .demo-card { padding: 28px 22px; }
 
   /* Logo bar */
   .logo-bar-track { gap: 8px; }
