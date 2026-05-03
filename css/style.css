@@ -68,12 +68,21 @@ img { max-width: 100%; display: block; }
 /* ─ TYPOGRAPHY ─────────────────────────────── */
 
 h1 {
-  font-size: clamp(2rem, 4.5vw, 3.5rem);
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 1.05;
+  font-size: clamp(2.4rem, 5.6vw, 4.5rem);
+  font-weight: 900;
+  letter-spacing: -0.045em;
+  line-height: 1.02;
   color: var(--text-1);
 }
+
+.gradient {
+  background: linear-gradient(110deg, #fff 0%, #fdba74 45%, var(--orange) 75%, #fb923c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-orange { color: var(--orange); }
 
 h2 {
   font-size: clamp(1.4rem, 2.8vw, 2.2rem);
@@ -113,10 +122,22 @@ p { color: var(--text-2); font-size: 0.9375rem; }
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 80% 50% at 50% -5%,
-      rgba(249, 115, 22, 0.12) 0%,
-      transparent 60%);
+    radial-gradient(ellipse 60% 45% at 75% 10%,  rgba(249, 115, 22, 0.18) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 15% 60%,  rgba(249, 115, 22, 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 50% at 50% -5%,  rgba(249, 115, 22, 0.10) 0%, transparent 60%);
   z-index: 0;
+}
+
+.grid-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 70% 50% at 50% 0%, #000 30%, transparent 70%);
 }
 
 /* ─ NAVBAR ──────────────────────────────────── */
@@ -625,13 +646,24 @@ p { color: var(--text-2); font-size: 0.9375rem; }
   background: var(--bg-card);
   border: 1px solid var(--line-1);
   border-radius: var(--r-xl);
-  padding: 24px 28px;
+  padding: 28px 32px;
   display: flex;
   align-items: center;
   gap: 28px;
   cursor: pointer;
   transition: all var(--t);
+  position: relative;
+  overflow: hidden;
 }
+.series-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 60%, rgba(249,115,22,0.06));
+  opacity: 0;
+  transition: opacity var(--t);
+}
+.series-card:hover::before { opacity: 1; }
 
 .series-card:hover {
   border-color: var(--orange-line);
@@ -640,14 +672,19 @@ p { color: var(--text-2); font-size: 0.9375rem; }
 }
 
 .series-num {
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: 900;
   font-family: var(--mono);
-  color: var(--line-2);
+  background: linear-gradient(180deg, var(--orange), rgba(249,115,22,0.25));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   line-height: 1;
-  width: 64px;
+  width: 84px;
   flex-shrink: 0;
+  letter-spacing: -0.04em;
 }
+.series-info, .series-badge { position: relative; z-index: 1; }
 
 .series-info { flex: 1; }
 .series-info h3 { margin-bottom: 4px; }
@@ -707,16 +744,25 @@ p { color: var(--text-2); font-size: 0.9375rem; }
   background: var(--bg-card);
   border: 1px solid var(--line-1);
   border-radius: var(--r-xl);
-  padding: 28px;
+  padding: 32px 28px;
   position: relative;
-  transition: transform var(--t);
+  transition: all var(--t);
+  display: flex;
+  flex-direction: column;
+}
+.price-card:not(.featured):hover {
+  border-color: var(--line-3);
 }
 
 .price-card:hover { transform: translateY(-3px); }
 
 .price-card.featured {
-  border-color: var(--orange-line);
-  background: linear-gradient(160deg, var(--bg-card), rgba(249,115,22,0.04));
+  border-color: var(--orange);
+  background:
+    linear-gradient(165deg, rgba(249,115,22,0.10), rgba(249,115,22,0.02) 60%),
+    var(--bg-card);
+  box-shadow: 0 0 0 1px var(--orange), 0 20px 60px -20px rgba(249,115,22,0.35);
+  transform: scale(1.02);
 }
 
 .price-top-label {

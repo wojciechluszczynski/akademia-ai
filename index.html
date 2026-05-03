@@ -12,6 +12,7 @@
 </head>
 <body>
 
+<div class="grid-bg"></div>
 <div class="glow-bg"></div>
 
 <nav class="navbar">
@@ -44,13 +45,13 @@
         </div>
         <h1 id="hero-title">
           Narzędzia AI<br>
-          które naprawdę działają<br>
+          które <span class="gradient">naprawdę działają</span><br>
           w marketingu B2B
         </h1>
         <p class="hero-desc" id="hero-desc">
-          Akademia AI to 36 odcinków rozmów, case studies i gotowych workflow.
-          Growth marketing, outbound, AI stack — testowane na własnym budżecie i klientach.
-          Po polsku i angielsku.
+          36 odcinków audio, gotowe workflow, prompty i blueprinty.
+          20 lat w growth marketingu skondensowane w trzech seriach.
+          Płacisz raz — masz na zawsze.
         </p>
         <div class="hero-actions">
           <a href="register.html" class="btn btn-primary btn-lg">Zacznij za darmo</a>
@@ -207,52 +208,55 @@
 <section id="pricing" style="padding: 96px 0; position: relative; z-index: 1;">
   <div class="container">
     <div class="section-header" style="text-align: center;">
-      <span class="label">Dostęp</span>
-      <h2 style="margin-top: 8px;">Bez triala. Bez kredytówki na start.</h2>
-      <p style="margin: 8px auto 0;">Dwa odcinki za darmo. Pełen dostęp gdy uznasz, że warto.</p>
+      <span class="label">Cennik</span>
+      <h2 style="margin-top: 8px;">Płacisz raz. Masz na zawsze.</h2>
+      <p style="margin: 8px auto 0;">Bez subskrypcji, bez automatycznych odnowień. Jeden odcinek demo za darmo.</p>
     </div>
     <div class="pricing-grid">
       <div class="price-card">
         <div class="price-tier">Free</div>
         <div class="price-amount">0<span style="font-size: 1rem; font-weight: 400; color: var(--text-3);"> zł</span></div>
-        <div class="price-period">Zawsze</div>
+        <div class="price-period">Bez kredytówki</div>
         <ul class="price-list">
-          <li><span class="check">✓</span> 2 odcinki Serii 1</li>
-          <li><span class="check">✓</span> 3 pliki z Vault</li>
-          <li><span class="check">✓</span> Quizy + postęp</li>
+          <li><span class="check">✓</span> 1 odcinek demo (S1E01)</li>
+          <li><span class="check">✓</span> Pliki bonusowe do tego odcinka</li>
+          <li><span class="check">✓</span> Pasek postępu i quiz</li>
+          <li class="off"><span class="cross">×</span> Bez pozostałych 35 odcinków</li>
           <li class="off"><span class="cross">×</span> Bez certyfikatu</li>
-          <li class="off"><span class="cross">×</span> Bez Serii 2 i 3</li>
         </ul>
-        <a href="register.html" class="btn btn-secondary btn-xl">Załóż konto</a>
-      </div>
-      <div class="price-card featured">
-        <div class="price-top-label">Najpopularniejsze</div>
-        <div class="price-tier price-featured-tier">Pro</div>
-        <div class="price-amount">29<span style="font-size: 1rem; font-weight: 400; color: var(--text-3);"> $</span></div>
-        <div class="price-period">/miesiąc · lub 199 $/rok</div>
-        <ul class="price-list">
-          <li><span class="check">✓</span> Wszystkie 36 odcinków</li>
-          <li><span class="check">✓</span> Pełny Vault (100+ plików)</li>
-          <li><span class="check">✓</span> Certyfikat na LinkedIn</li>
-          <li><span class="check">✓</span> Nowe odcinki co tydzień</li>
-          <li><span class="check">✓</span> Email support</li>
-        </ul>
-        <a href="register.html?plan=pro" class="btn btn-primary btn-xl">Wykup Pro</a>
+        <a href="register.html" class="btn btn-secondary btn-xl" style="margin-top: auto;">Załóż konto</a>
       </div>
       <div class="price-card">
-        <div class="price-tier">Team</div>
-        <div class="price-amount">99<span style="font-size: 1rem; font-weight: 400; color: var(--text-3);"> $</span></div>
-        <div class="price-period">/miesiąc · 5 stanowisk</div>
+        <div class="price-tier">Pojedyncza seria</div>
+        <div class="price-amount">19,99<span style="font-size: 1rem; font-weight: 400; color: var(--text-3);"> zł</span></div>
+        <div class="price-period">Jednorazowo · dożywotni dostęp</div>
         <ul class="price-list">
-          <li><span class="check">✓</span> Wszystko z Pro</li>
-          <li><span class="check">✓</span> 5 kont z osobnymi sesjami</li>
-          <li><span class="check">✓</span> Dashboard administratora</li>
-          <li><span class="check">✓</span> Onboarding call (30 min)</li>
-          <li><span class="check">✓</span> Faktura VAT</li>
+          <li><span class="check">✓</span> 12 odcinków wybranej serii</li>
+          <li><span class="check">✓</span> Vault tej serii (~30 plików)</li>
+          <li><span class="check">✓</span> Quizy i certyfikat serii</li>
+          <li><span class="check">✓</span> Aktualizacje na zawsze</li>
+          <li class="off"><span class="cross">×</span> Tylko 1 z 3 serii</li>
         </ul>
-        <a href="mailto:hello@wojciech.io?subject=Akademia%20AI%20Team" class="btn btn-secondary btn-xl">Napisz do nas</a>
+        <a href="register.html?plan=single" class="btn btn-secondary btn-xl" style="margin-top: auto;">Wybierz serię</a>
+      </div>
+      <div class="price-card featured">
+        <div class="price-top-label">Najlepszy wybór</div>
+        <div class="price-tier price-featured-tier">Wszystkie 3 serie</div>
+        <div class="price-amount">35,00<span style="font-size: 1rem; font-weight: 400; color: var(--text-3);"> zł</span></div>
+        <div class="price-period">Jednorazowo · pełen dostęp</div>
+        <ul class="price-list">
+          <li><span class="check">✓</span> Wszystkie 36 odcinków</li>
+          <li><span class="check">✓</span> Pełen Vault (100+ plików)</li>
+          <li><span class="check">✓</span> Certyfikat ukończenia (LinkedIn + PDF)</li>
+          <li><span class="check">✓</span> Nowe odcinki bez dopłat</li>
+          <li><span class="check">✓</span> Token-secured · jedna sesja na konto</li>
+        </ul>
+        <a href="register.html?plan=full" class="btn btn-primary btn-xl" style="margin-top: auto;">Kup wszystko za 35 zł</a>
       </div>
     </div>
+    <p style="text-align: center; margin-top: 24px; font-size: 0.8125rem; color: var(--text-3);">
+      Płacisz w PLN · Faktura VAT na życzenie · Zwrot w 14 dni bez pytań
+    </p>
   </div>
 </section>
 
@@ -312,13 +316,13 @@
   const TX = {
     pl: {
       eyebrow: 'Sezon 1 — start maj 2026',
-      title: 'Narzędzia AI<br>które naprawdę działają<br>w marketingu B2B',
-      desc: 'Akademia AI to 36 odcinków rozmów, case studies i gotowych workflow. Growth marketing, outbound, AI stack — testowane na własnym budżecie i klientach. Po polsku i angielsku.'
+      title: 'Narzędzia AI<br>które <span class="gradient">naprawdę działają</span><br>w marketingu B2B',
+      desc: '36 odcinków audio, gotowe workflow, prompty i blueprinty. 20 lat w growth marketingu skondensowane w trzech seriach. Płacisz raz — masz na zawsze.'
     },
     en: {
       eyebrow: 'Season 1 — launching May 2026',
-      title: 'AI tools<br>that actually work<br>in B2B marketing',
-      desc: 'Akademia AI is 36 episodes of conversations, case studies and ready workflows. Growth marketing, outbound, AI stack — tested on real budgets with real clients. Polish and English.'
+      title: 'AI tools<br>that <span class="gradient">actually work</span><br>in B2B marketing',
+      desc: '36 audio episodes, ready workflows, prompts and blueprints. 20 years in growth marketing condensed into three series. Pay once — own forever.'
     }
   };
   function setLang(lang) {
