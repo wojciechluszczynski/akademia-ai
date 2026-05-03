@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logowanie — Akademia AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="auth-bg"></div>
+
+<div class="auth-page">
+  <div class="auth-card">
+    <div class="auth-logo">
+      <a href="index.html" class="logo">🎓 Akademia AI <span class="logo-badge">BETA</span></a>
+    </div>
+
+    <h1 class="auth-title">Witaj z powrotem</h1>
+    <p class="auth-subtitle" id="auth-subtitle">Zaloguj się do swojego konta.</p>
+
+    <div class="alert alert-error" id="alert-error"></div>
+    <div class="alert alert-success" id="alert-success"></div>
+
+    <!-- Session invalidated notice -->
+    <div class="alert alert-error" id="alert-session" style="display:none">
+      ⚠️ Twoja sesja wygasła — ktoś zalogował się na to konto z innego urządzenia.
+    </div>
+
+    <form id="login-form" onsubmit="handleLogin(event)">
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-input" id="login-email" placeholder="wojciech@firma.pl" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Hasło</label>
+        <input type="password" class="form-input" id="login-password" placeholder="Twoje hasło" required>
+      </div>
+
+      <div style="display:flex;justify-content:flex-end;margin-bottom:20px">
+        <a href="#" style="font-size:0.8rem;color:var(--accent-light);text-decoration:none">Zapomniałem hasła</a>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-full btn-lg" id="submit-btn">
+        Zaloguj się →
+      </button>
+    </form>
+
+    <!-- Demo credentials -->
+    <div style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-top:16px;font-size:0.8rem">
+      <div style="color:var(--text-muted);margin-bottom:6px;font-weight:600">🧪 Demo — kliknij aby wypełnić:</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button onclick="fillDemo('pro')" class="btn btn-secondary btn-sm">
+          ⭐ Pro: DEMO_EMAIL_REMOVED
+        </button>
+        <button onclick="fillDemo('free')" class="btn btn-secondary btn-sm">
+          ⚪ Free: demo@akademia.ai
+        </button>
+      </div>
+      <div style="color:var(--text-muted);margin-top:6px">Hasło: <code style="color:var(--accent-light)">demo123</code></div>
+    </div>
+
+    <div class="security-note" style="margin-top:16px">
+      <span class="icon">🔒</span>
+      <span>Każde logowanie generuje nowy token sesji i unieważnia poprzednie. Nie możesz współdzielić dostępu.</span>
+    </div>
+
+    <div class="auth-footer">
+      Nie masz konta? <a href="register.html">Zarejestruj się za darmo</a>
+    </div>
+  </div>
+</div>
+
+<div id="toast-container" class="toast-container"></div>
+<script src="js/auth.js"></script>
+<script>
+  window.AkademiaAuth.redirectIfLoggedIn();
+
+  // Show session expired notice if redirected from guard
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('reason') === 'auth') {
+    document.getElementById('alert-session').style.display = 'block';
+  }
+
+  function fillDemo(plan) {
+    if (plan === 'pro') {
+      document.getElementById('login-email').value = 'DEMO_EMAIL_REMOVED';
+    } else {
+      document.getElementById('login-email').value = 'demo@akademia.ai';
+    }
+    document.getElementById('login-password').value = 'demo123';
+  }
+
+  async function handleLogin(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    const email = document.getElementById('login-email').value.trim();
+    const password = document.getElementById('login-password').value;
+
+    document.getElementById('alert-error').classList.remove('show');
+    btn.textContent = 'Logowanie...';
+    btn.disabled = true;
+
+    try {
+      await window.AkademiaAuth.login(email, password);
+      document.getElementById('alert-success').textContent = '✅ Zalogowano! Przekierowuję...';
+      document.getElementById('alert-success').classList.add('show');
+      setTimeout(() => window.location.href = 'dashboard.html', 1000);
+    } catch (err) {
+      const alertEl = document.getElementById('alert-error');
+      alertEl.textContent = '❌ ' + err.message;
+      alertEl.classList.add('show');
+      btn.textContent = 'Zaloguj się →';
+      btn.disabled = false;
+    }
+  }
+</script>
+</body>
+</html>
