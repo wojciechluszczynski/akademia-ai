@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Akademia AI — Wojciech Łuszczyński</title>
-  <meta name="description" content="36 odcinków audio o AI, growth i outbound B2B. Gotowe workflow, prompty i blueprinty od praktyka.">
+  <meta name="description" content="36 odcinków audio o narzędziach AI, automatyzacji i contencie. Gotowe workflow, prompty i blueprinty od praktyka.">
   <meta property="og:title" content="Akademia AI — Wojciech Łuszczyński">
-  <meta property="og:description" content="AI w marketingu B2B. Bez bullshitu. Gotowe flow, audio, certyfikat.">
+  <meta property="og:description" content="Naucz się AI od praktyka. Nie influencera. Gotowe workflow, audio, certyfikat.">
   <meta property="og:image" content="https://academy.wojciech.io/assets/og.png">
   <meta property="og:url" content="https://academy.wojciech.io">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -376,6 +376,127 @@
 
     .bento-card h3 { font-size: 1.125rem; font-weight: 700; margin-bottom: 8px; }
     .bento-card p { font-size: 0.875rem; color: var(--text-3); line-height: 1.6; }
+
+    /* Bento visual illustrations */
+    .bento-visual {
+      margin-top: 20px;
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .bento-waveform {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 60px;
+      padding: 0 4px;
+    }
+
+    .bento-waveform-bar {
+      flex: 1;
+      border-radius: 2px 2px 0 0;
+      background: var(--line-1);
+      transition: background 0.3s;
+    }
+
+    .bento-waveform-bar.hi { background: var(--orange); }
+    .bento-waveform-bar.mid { background: rgba(249,115,22,0.45); }
+
+    .bento-stack-visual {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-top: 18px;
+    }
+
+    .bento-stack-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-input);
+      border: 1px solid var(--line-1);
+      border-radius: var(--r-md);
+      padding: 7px 12px;
+      font-size: 0.78rem;
+      color: var(--text-3);
+    }
+
+    .bento-stack-icon {
+      width: 20px; height: 20px;
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.6rem; font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .bento-stack-bar {
+      flex: 1;
+      height: 4px;
+      border-radius: 99px;
+      background: var(--line-1);
+      overflow: hidden;
+    }
+
+    .bento-stack-bar-fill {
+      height: 100%;
+      border-radius: 99px;
+      background: var(--orange);
+    }
+
+    /* Series card cover visuals */
+    .sc2-cover {
+      position: absolute;
+      top: 0; right: 0; bottom: 0;
+      width: 140px;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .sc2-cover svg {
+      width: 100%; height: 100%;
+      opacity: 0.18;
+    }
+
+    .series-card-v2 { position: relative; overflow: hidden; }
+
+    /* Stat strip in hero */
+    .hero-stat-strip {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 56px;
+      padding-top: 40px;
+      border-top: 1px solid var(--line-1);
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .hero-stat {
+      text-align: center;
+    }
+
+    .hero-stat-num {
+      font-size: 1.75rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: var(--text-1);
+      font-family: var(--mono);
+    }
+
+    .hero-stat-num em {
+      font-style: normal;
+      color: var(--orange);
+      -webkit-text-fill-color: var(--orange);
+      background: none;
+    }
+
+    .hero-stat-label {
+      font-size: 0.75rem;
+      color: var(--text-4);
+      margin-top: 2px;
+    }
 
     .bento-big-num {
       font-size: 4.5rem; font-weight: 900;
@@ -944,16 +1065,35 @@
     <span id="badge-text">Sezon 1 · maj 2026</span>
   </div>
   <h1 class="lp-h1" id="hero-h1">
-    AI w marketingu B2B.<br>
-    <em>Bez bullshitu.</em>
+    Naucz się AI od praktyka.<br>
+    <em>Nie influencera.</em>
   </h1>
   <p class="lp-sub" id="hero-sub">
-    36 odcinków audio, gotowe workflow i pliki do pobrania.
-    20 lat w B2B skondensowane w jednym miejscu.
+    36 odcinków audio z gotowymi workflow, promptami i plikami do pobrania.
+    Narzędzia, które naprawdę działają — testowane na własnych klientach.
   </p>
   <div class="lp-cta-row">
     <a href="register.html" class="btn btn-primary btn-lg">Zacznij za darmo</a>
     <a href="#program" class="btn btn-ghost btn-lg">Zobacz program</a>
+  </div>
+
+  <div class="hero-stat-strip">
+    <div class="hero-stat">
+      <div class="hero-stat-num"><em>36</em></div>
+      <div class="hero-stat-label">odcinków audio</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num"><em>4</em></div>
+      <div class="hero-stat-label">serie tematyczne</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num"><em>10x</em></div>
+      <div class="hero-stat-label">szybciej z AI</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num"><em>0</em></div>
+      <div class="hero-stat-label">teorii bez pokrycia</div>
+    </div>
   </div>
 
   <div class="product-mockup reveal">
@@ -1166,8 +1306,20 @@
         <div class="bento-label">Audio</div>
         <h3>36 odcinków. Każdy 10-15 min.</h3>
         <p>Słuchasz w drodze, w pracy, na siłowni. Transkrypt do skanowania w 30 sekund. PL i EN jednym kliknięciem.</p>
-        <div class="bento-big-num"><span>36</span></div>
-        <div style="font-size: 0.78rem; color: var(--text-3);">odcinków w 4 seriach · PL + EN</div>
+        <div class="bento-visual">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px;">
+            <div style="width:36px;height:36px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0;">▶</div>
+            <div>
+              <div style="font-size:0.8125rem;font-weight:600;color:var(--text-1);">S1E01 · AI Stack 2026 — Które modele wygrywają</div>
+              <div style="font-size:0.75rem;color:var(--text-4);">13:42 min · PL · Seria 1</div>
+            </div>
+          </div>
+          <div class="bento-waveform" id="bento-wave"></div>
+          <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:0.7rem;font-family:var(--mono);color:var(--text-4);">
+            <span>0:00</span><span style="color:var(--orange);">▶ odtwarzanie</span><span>13:42</span>
+          </div>
+        </div>
+        <div style="font-size: 0.78rem; color: var(--text-3); margin-top: 14px;">36 odcinków w 4 seriach · PL + EN</div>
       </div>
       <div class="bento-card bento-span-5 reveal reveal-delay-1">
         <div class="bento-label">Vault</div>
@@ -1200,8 +1352,15 @@
             <span style="font-size: 0.35rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;">Verified</span>
             <span style="font-size: 0.7rem; font-weight: 900;">AI</span>
           </div>
-          <div class="bento-cert-name">Wojciech Łuszczyński</div>
-          <div class="bento-cert-course">AI Stack 2026 · Seria 1</div>
+          <div>
+            <div class="bento-cert-name">Wojciech Łuszczyński</div>
+            <div class="bento-cert-course">AI Stack 2026 · Seria 1</div>
+            <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;">
+              <span style="font-size:0.65rem;background:rgba(74,222,128,0.1);color:#4ade80;border:1px solid rgba(74,222,128,0.2);padding:2px 8px;border-radius:99px;font-weight:600;">✓ 12/12 odcinków</span>
+              <span style="font-size:0.65rem;background:rgba(74,222,128,0.1);color:#4ade80;border:1px solid rgba(74,222,128,0.2);padding:2px 8px;border-radius:99px;font-weight:600;">✓ Quizy zaliczone</span>
+              <span style="font-size:0.65rem;background:var(--orange-soft);color:var(--orange);border:1px solid var(--orange-line);padding:2px 8px;border-radius:99px;font-weight:600;">PDF · LinkedIn</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1218,6 +1377,16 @@
     </div>
     <div class="series-grid" style="grid-template-columns: repeat(2, 1fr);">
       <div class="series-card-v2 reveal">
+        <div class="sc2-cover">
+          <svg viewBox="0 0 140 200" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="110" cy="40" r="60" fill="#f97316"/>
+            <circle cx="30" cy="160" r="40" fill="#f97316"/>
+            <rect x="60" y="80" width="4" height="80" rx="2" fill="#f97316"/>
+            <rect x="72" y="60" width="4" height="100" rx="2" fill="#f97316"/>
+            <rect x="84" y="90" width="4" height="70" rx="2" fill="#f97316"/>
+            <rect x="96" y="70" width="4" height="90" rx="2" fill="#f97316"/>
+          </svg>
+        </div>
         <span class="sc2-num">01</span>
         <div class="sc2-badge free">1 odcinek free</div>
         <div class="sc2-title">AI Stack 2026 · porównania, które robią różnicę</div>
@@ -1228,6 +1397,17 @@
         </div>
       </div>
       <div class="series-card-v2 reveal reveal-delay-1">
+        <div class="sc2-cover">
+          <svg viewBox="0 0 140 200" xmlns="http://www.w3.org/2000/svg">
+            <line x1="20" y1="50" x2="120" y2="50" stroke="#f97316" stroke-width="2"/>
+            <line x1="20" y1="80" x2="120" y2="80" stroke="#f97316" stroke-width="2"/>
+            <line x1="20" y1="110" x2="120" y2="110" stroke="#f97316" stroke-width="2"/>
+            <circle cx="120" cy="50" r="8" fill="#f97316"/>
+            <circle cx="120" cy="80" r="8" fill="#f97316"/>
+            <circle cx="120" cy="110" r="8" fill="#f97316"/>
+            <path d="M30 140 Q70 100 110 140" stroke="#f97316" stroke-width="3" fill="none"/>
+          </svg>
+        </div>
         <span class="sc2-num">02</span>
         <div class="sc2-badge pro">97 PLN</div>
         <div class="sc2-title">Outbound Machine · od ICP do podpisanej umowy</div>
@@ -1238,6 +1418,17 @@
         </div>
       </div>
       <div class="series-card-v2 reveal reveal-delay-2">
+        <div class="sc2-cover">
+          <svg viewBox="0 0 140 200" xmlns="http://www.w3.org/2000/svg">
+            <rect x="30" y="30" width="80" height="55" rx="6" fill="#f97316"/>
+            <rect x="40" y="40" width="60" height="35" rx="3" fill="#1a1714"/>
+            <rect x="55" y="95" width="30" height="5" rx="2" fill="#f97316"/>
+            <rect x="45" y="105" width="50" height="5" rx="2" fill="#f97316"/>
+            <circle cx="70" cy="145" r="18" fill="#f97316"/>
+            <rect x="68" y="135" width="4" height="12" rx="2" fill="#1a1714"/>
+            <polygon points="67,145 73,141 73,149" fill="#1a1714"/>
+          </svg>
+        </div>
         <span class="sc2-num">03</span>
         <div class="sc2-badge pro">97 PLN</div>
         <div class="sc2-title">Voice, Video, Brand · produkcja contentu z AI</div>
@@ -1248,6 +1439,15 @@
         </div>
       </div>
       <div class="series-card-v2 reveal reveal-delay-3" style="border-color: var(--orange-line); background: rgba(249,115,22,0.03);">
+        <div class="sc2-cover">
+          <svg viewBox="0 0 140 200" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 160 L50 100 L80 130 L110 60 L130 80" stroke="#f97316" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="50" cy="100" r="5" fill="#f97316"/>
+            <circle cx="80" cy="130" r="5" fill="#f97316"/>
+            <circle cx="110" cy="60" r="5" fill="#f97316"/>
+            <circle cx="130" cy="80" r="5" fill="#f97316"/>
+          </svg>
+        </div>
         <span class="sc2-num" style="color: rgba(249,115,22,0.15);">04</span>
         <div class="sc2-badge coming">Wkrótce</div>
         <div class="sc2-title">B2B Marketing Masterclass · poza AI</div>
@@ -1273,30 +1473,42 @@
       <a href="https://www.youtube.com/@MarketingAgainstTheGrain" target="_blank" class="video-card reveal">
         <div class="video-thumb">
           <div class="video-thumb-bg" style="background: linear-gradient(135deg, #1a0533, #2d1b69);"></div>
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);text-align:center;z-index:2;">
+            <div style="width:52px;height:52px;border-radius:50%;background:rgba(255,74,0,0.9);display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:900;margin:0 auto 8px;letter-spacing:-0.02em;">KF</div>
+            <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.7);">Marketing Against The Grain</div>
+          </div>
           <div class="video-play">▶</div>
         </div>
         <div class="video-info">
-          <div class="video-channel">Marketing Against The Grain</div>
-          <div class="video-title">Kieran Flanagan · jak zbudować AI-native marketing team od podstaw</div>
+          <div class="video-channel">Kieran Flanagan · CMO Zapier</div>
+          <div class="video-title">Jak zbudować AI-native marketing team od podstaw</div>
         </div>
       </a>
       <a href="https://www.lennyspodcast.com" target="_blank" class="video-card reveal reveal-delay-1">
         <div class="video-thumb">
           <div class="video-thumb-bg" style="background: linear-gradient(135deg, #0a1628, #1e3a5f);"></div>
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);text-align:center;z-index:2;">
+            <div style="width:52px;height:52px;border-radius:50%;background:rgba(10,102,194,0.9);display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:900;margin:0 auto 8px;letter-spacing:-0.02em;">LR</div>
+            <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.7);">Lenny's Podcast</div>
+          </div>
           <div class="video-play">▶</div>
         </div>
         <div class="video-info">
-          <div class="video-channel">Lenny's Podcast</div>
-          <div class="video-title">Lenny Rachitsky · nowy AI growth playbook dla 2026</div>
+          <div class="video-channel">Lenny Rachitsky · ex-Airbnb</div>
+          <div class="video-title">Nowy AI growth playbook · co zmienia się w 2026</div>
         </div>
       </a>
       <a href="https://sparktoro.com/blog" target="_blank" class="video-card reveal reveal-delay-2">
         <div class="video-thumb">
           <div class="video-thumb-bg" style="background: linear-gradient(135deg, #1a0a00, #3d1a00);"></div>
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);text-align:center;z-index:2;">
+            <div style="width:52px;height:52px;border-radius:50%;background:rgba(249,115,22,0.9);display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:900;margin:0 auto 8px;letter-spacing:-0.02em;">AN</div>
+            <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.7);">SparkToro</div>
+          </div>
           <div class="video-play">▶</div>
         </div>
         <div class="video-info">
-          <div class="video-channel">SparkToro · Amanda Natividad</div>
+          <div class="video-channel">Amanda Natividad · VP Marketing SparkToro</div>
           <div class="video-title">Zero-Click Content · jak wygrywać w erze AI search</div>
         </div>
       </a>
@@ -1381,11 +1593,11 @@
         <div class="host-name">Wojciech Łuszczyński</div>
         <div class="host-role">Founder · Growth Marketer · Host</div>
         <div class="host-bio">
-          20 lat w B2B SaaS. Buduję i testuję AI stacki na własnym budżecie i własnych klientach.
-          Piszę o tym na Substack. Prowadzę Akademię AI, bo nie chcę tłumaczyć każdemu z osobna tego samego.
+          14 lat w marketingu i sprzedaży. Buduję i testuję AI stacki na własnym budżecie i własnych klientach.
+          Piszę o tym na Substack. Prowadzę Akademię AI, bo najszybciej uczysz się na cudzych błędach.
         </div>
         <div class="host-creds">
-          <div class="host-cred"><div class="host-cred-dot"></div>Growth marketing B2B SaaS · 20 lat</div>
+          <div class="host-cred"><div class="host-cred-dot"></div>Marketing · growth · sprzedaż · 14 lat doświadczenia</div>
           <div class="host-cred"><div class="host-cred-dot"></div>Clay · Claude · n8n · Apollo w codziennej pracy</div>
           <div class="host-cred"><div class="host-cred-dot"></div>Substack · wojciech.io · app.wojciech.io</div>
           <div class="host-cred"><div class="host-cred-dot"></div>LinkedIn: 5k+ obserwujących</div>
@@ -1502,6 +1714,26 @@
   window.addEventListener('scroll', () => {
     if (document.getElementById('mobile-nav').classList.contains('open')) closeMenu();
   }, { passive: true });
+
+  // ── BENTO WAVEFORM ILLUSTRATION ──────────────
+  (function() {
+    const container = document.getElementById('bento-wave');
+    if (!container) return;
+    const BARS = 48;
+    const played = 16; // show ~1/3 as "already played"
+    for (let i = 0; i < BARS; i++) {
+      const h = 10 + Math.abs(
+        Math.sin(i * 0.45 + 0.8) * 18 +
+        Math.sin(i * 1.1 + 0.3) * 10 +
+        (i % 5 === 0 ? 8 : 0)
+      );
+      const bar = document.createElement('div');
+      bar.className = 'bento-waveform-bar' +
+        (i < played ? ' hi' : i < played + 4 ? ' mid' : '');
+      bar.style.height = Math.round(h) + 'px';
+      container.appendChild(bar);
+    }
+  })();
 
   // ── DEMO AUDIO PLAYER ────────────────────────
   (function() {
@@ -1632,13 +1864,13 @@
   const TX = {
     pl: {
       badge: 'Sezon 1 · maj 2026',
-      h1: 'AI w marketingu B2B.<br><em>Bez bullshitu.</em>',
-      sub: '36 odcinków audio, gotowe workflow i pliki do pobrania. 20 lat w B2B skondensowane w jednym miejscu.'
+      h1: 'Naucz się AI od praktyka.<br><em>Nie influencera.</em>',
+      sub: '36 odcinków audio z gotowymi workflow, promptami i plikami do pobrania. Narzędzia, które naprawdę działają — testowane na własnych klientach.'
     },
     en: {
       badge: 'Season 1 · May 2026',
-      h1: 'AI in B2B marketing.<br><em>Without the hype.</em>',
-      sub: '36 audio episodes, ready workflows and downloadable files. 20 years of B2B experience in one place.'
+      h1: 'Learn AI from a practitioner.<br><em>Not an influencer.</em>',
+      sub: '36 audio episodes with ready-to-use workflows, prompts and files. Tools that actually work — tested on real clients.'
     }
   };
   function setLang(lang) {
