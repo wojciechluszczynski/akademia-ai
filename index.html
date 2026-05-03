@@ -4,122 +4,112 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Akademia AI — Wojciech Łuszczyński</title>
-  <meta name="description" content="20 lat w marketingu. Brutalne porównania narzędzi AI. Gotowe flow, prompty i stacki do pobrania.">
+  <meta name="description" content="20 lat w marketingu. Brutalne porównania narzędzi AI, gotowe flow i stacki. Bez bullshitu.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<!-- NAVBAR -->
+<div class="glow-bg"></div>
+
 <nav class="navbar">
   <div class="container">
     <a href="index.html" class="logo">
-      🎓 Akademia AI <span class="logo-badge">BETA</span>
+      <span class="logo-mark">AA</span>
+      Akademia AI
     </a>
-    <div class="nav-links">
-      <a href="#serie">Serie</a>
-      <a href="#features">Co zyskujesz</a>
-      <a href="#pricing">Dostęp</a>
-      <div class="lang-toggle">
+    <div class="nav-right">
+      <a href="#serie" class="nav-link">Serie</a>
+      <a href="#features" class="nav-link">Co dostajesz</a>
+      <a href="#pricing" class="nav-link">Dostęp</a>
+      <div class="lang-switch">
         <button class="lang-btn active" onclick="setLang('pl')">PL</button>
         <button class="lang-btn" onclick="setLang('en')">EN</button>
       </div>
-      <a href="login.html" class="btn btn-secondary btn-sm">Zaloguj się</a>
-      <a href="register.html" class="btn btn-primary btn-sm">Dołącz →</a>
+      <a href="login.html" class="btn btn-secondary btn-sm">Zaloguj</a>
+      <a href="register.html" class="btn btn-primary btn-sm">Dołącz</a>
     </div>
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"></div>
   <div class="container">
-    <div class="hero-grid">
-      <div class="hero-content">
-        <div class="hero-label">
-          <span class="dot"></span>
-          <span id="label-text">20 lat w marketingu. Bez bullshitu.</span>
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow">
+          <span class="live-dot"></span>
+          <span id="eyebrow">Sezon 1 — start maj 2026</span>
         </div>
         <h1 id="hero-title">
-          Narzędzia AI,<br>
-          które <span class="gradient-text">naprawdę działają</span><br>
-          w marketingu
+          Narzędzia AI<br>
+          które naprawdę działają<br>
+          w marketingu B2B
         </h1>
-        <p id="hero-desc">
-          Akademia AI to seria rozmów, case studies i gotowych flow od Wojtka Łuszczyńskiego —
-          growth marketera, który przetestował to wszystko na własnej skórze i własnym budżecie.
-          Zero teorii. Tylko to co działa w B2B SaaS.
+        <p class="hero-desc" id="hero-desc">
+          Akademia AI to 36 odcinków rozmów, case studies i gotowych workflow.
+          Growth marketing, outbound, AI stack — testowane na własnym budżecie i klientach.
+          Po polsku i angielsku.
         </p>
-        <div class="hero-cta">
-          <a href="register.html" class="btn btn-primary btn-lg">
-            🎓 Zacznij za darmo →
-          </a>
-          <a href="#serie" class="btn btn-ghost btn-lg">
-            Zobacz program ↓
-          </a>
+        <div class="hero-actions">
+          <a href="register.html" class="btn btn-primary btn-lg">Zacznij za darmo</a>
+          <a href="#serie" class="btn btn-ghost btn-lg">Zobacz program</a>
         </div>
-        <div class="hero-stats">
-          <div class="stat">
-            <div class="stat-num gradient-text">36</div>
-            <div class="stat-label">Odcinków</div>
+        <div class="hero-proof">
+          <div>
+            <div class="proof-num">36</div>
+            <div class="proof-label">Odcinków audio</div>
           </div>
-          <div class="stat">
-            <div class="stat-num gradient-text">3</div>
-            <div class="stat-label">Serie tematyczne</div>
+          <div>
+            <div class="proof-num">3</div>
+            <div class="proof-label">Serie tematyczne</div>
           </div>
-          <div class="stat">
-            <div class="stat-num gradient-text">PL+EN</div>
-            <div class="stat-label">Dwujęzycznie</div>
+          <div>
+            <div class="proof-num">PL/EN</div>
+            <div class="proof-label">Dwujęzycznie</div>
           </div>
-          <div class="stat">
-            <div class="stat-num gradient-text">100+</div>
-            <div class="stat-label">Pliki do pobrania</div>
+          <div>
+            <div class="proof-num">100+</div>
+            <div class="proof-label">Plików w Vault</div>
           </div>
         </div>
       </div>
 
-      <!-- HERO VISUAL — mini player -->
-      <div class="hero-visual">
-        <div class="player-card">
-          <div class="player-episode-label">🎙 Odcinek S1E01 · Na żywo</div>
-          <div class="player-title">ChatGPT vs Claude vs Gemini vs Grok: mój werdykt po 20 latach</div>
-          <div class="player-host">Wojciech Łuszczyński × AI Host</div>
-          <div class="player-waveform" id="mini-waveform"></div>
-          <div class="player-controls">
-            <span class="player-time" id="mini-time">03:42 / 11:24</span>
-            <div class="player-btns">
-              <button class="ctrl-btn" onclick="demoSkip(-15)">⏮ 15s</button>
-              <button class="ctrl-btn play-main" id="demo-play-btn" onclick="demoTogglePlay()">▶</button>
-              <button class="ctrl-btn" onclick="demoSkip(15)">15s ⏭</button>
+      <div class="player-preview">
+        <div class="pp-header">
+          <span class="pp-serie">Seria 1 · Odcinek 01</span>
+          <span class="pp-status"><span class="live-dot"></span> Demo</span>
+        </div>
+        <div class="pp-body">
+          <div class="pp-title">ChatGPT vs Claude vs Gemini vs Grok</div>
+          <div class="pp-host">Wojciech Łuszczyński</div>
+          <div class="pp-waveform" id="waveform"></div>
+          <div class="pp-controls">
+            <span class="pp-time" id="pp-time">03:42 / 11:24</span>
+            <div class="pp-btns">
+              <button class="pp-btn" onclick="demoSkip(-15)">−15</button>
+              <button class="pp-btn play" id="demo-play" onclick="demoToggle()">▶</button>
+              <button class="pp-btn" onclick="demoSkip(15)">+15</button>
             </div>
-            <span class="player-time">⚡ 1x</span>
+            <span class="pp-time">1.0×</span>
           </div>
-          <div class="player-series-list">
-            <div class="series-item active">
-              <span class="series-num">S1E01</span>
-              <div class="series-info">
-                <div class="series-name">ChatGPT vs Claude vs Gemini...</div>
-                <div class="series-meta">11:24 · AI Stack Wars</div>
-              </div>
-              <span class="series-lock unlocked">🔓</span>
-            </div>
-            <div class="series-item">
-              <span class="series-num">S1E02</span>
-              <div class="series-info">
-                <div class="series-name">Perplexity zjadło Google'a</div>
-                <div class="series-meta">09:47 · AI Stack Wars</div>
-              </div>
-              <span class="series-lock unlocked">🔓</span>
-            </div>
-            <div class="series-item">
-              <span class="series-num">S1E03</span>
-              <div class="series-info">
-                <div class="series-name">NotebookLM: 3 miesiące ignorowania</div>
-                <div class="series-meta">10:12 · AI Stack Wars</div>
-              </div>
-              <span class="series-lock">🔒 Pro</span>
-            </div>
+        </div>
+        <div class="pp-playlist">
+          <div class="pp-ep active">
+            <span class="pp-ep-num">S1E01</span>
+            <span class="pp-ep-title">LLM Battle: werdykt po 20 latach</span>
+            <span class="pp-ep-dur">11:24</span>
+          </div>
+          <div class="pp-ep">
+            <span class="pp-ep-num">S1E02</span>
+            <span class="pp-ep-title">Perplexity zjadło Google</span>
+            <span class="pp-ep-dur">09:47</span>
+          </div>
+          <div class="pp-ep">
+            <span class="pp-ep-num">S1E03</span>
+            <span class="pp-ep-title">NotebookLM — ignorowałem 3 miesiące</span>
+            <span class="pp-ep-lock">●</span>
           </div>
         </div>
       </div>
@@ -127,225 +117,219 @@
   </div>
 </section>
 
-<!-- FEATURES -->
-<section class="section" id="features">
+<section id="features" style="padding: 96px 0; position: relative; z-index: 1;">
   <div class="container">
-    <div style="text-align:center;margin-bottom:56px">
-      <h2 id="features-title">Co dostajesz w Akademii AI</h2>
-      <p style="margin-top:12px;max-width:540px;margin-left:auto;margin-right:auto" id="features-desc">
-        Nie kolejny kurs teoretyczny. Biblioteka wiedzy od praktyka, który codziennie używa tych narzędzi.
-      </p>
+    <div class="section-header">
+      <span class="label">Co dostajesz</span>
+      <h2 style="margin-top: 8px;">Praktyka, nie teoria</h2>
+      <p>Każdy odcinek z konkretnym workflow, plikiem do pobrania i mini quizem.</p>
     </div>
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon">🎙</div>
-        <h3>36 odcinków audio/wideo</h3>
-        <p>Trzecia seria obejmuje narzędzia wideo AI. Każdy odcinek po polsku i angielsku. 10–12 minut, zero lania wody.</p>
+    <div class="feature-grid">
+      <div class="feature-cell">
+        <h3>Audio + transkrypt</h3>
+        <p>Każdy odcinek 10–15 min, słuchasz w drodze, transkrypt do skanowania w 30s.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">⚙️</div>
-        <h3>Gotowe flow do pobrania</h3>
-        <p>Blueprinty Make, n8n, JSON do Clay, promptów do Claude — wgrywasz i działasz. Żadnego odtwarzania od zera.</p>
+      <div class="feature-cell">
+        <h3>Vault z materiałami</h3>
+        <p>Gotowe prompty (.md), workflow Clay (.json), blueprinty n8n. Importujesz i działasz.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">📊</div>
-        <h3>Brutalne porównania narzędzi</h3>
-        <p>ChatGPT vs Claude vs Gemini. Apollo vs Clay. Cursor vs Claude Code. Testowane na realnych zadaniach marketingowych.</p>
+      <div class="feature-cell">
+        <h3>Mini quizy</h3>
+        <p>Po każdym odcinku 3 pytania. 60% = zaliczone. Bez bullshitu, bez certyfikatów uczestnictwa.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">🌐</div>
-        <h3>PL + EN równolegle</h3>
-        <p>Każdy odcinek dostępny po polsku i angielsku. Przełączasz język jednym kliknięciem w playerze.</p>
+      <div class="feature-cell">
+        <h3>Pasek postępu</h3>
+        <p>Widzisz ile zostało. Dashboard pokazuje co masz zrobić następnie. Zero zgadywania.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">🔒</div>
-        <h3>Jedno konto = jeden dostęp</h3>
-        <p>Token security — każde logowanie generuje unikalny token i unieważnia poprzednie sesje. Nie da się dzielić loginem.</p>
+      <div class="feature-cell">
+        <h3>Certyfikat ukończenia</h3>
+        <p>Po przejściu serii — certyfikat z unikalnym ID. PDF z podpisem, deep link na LinkedIn.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">🐙</div>
-        <h3>GitHub Vault</h3>
-        <p>Wszystkie materiały dostępne też na GitHubie jako public repo. Fork, clone, używaj jak chcesz.</p>
+      <div class="feature-cell">
+        <h3>Token-secured</h3>
+        <p>Jedna sesja na konto. Logujesz się gdzie indziej — poprzednia sesja wygasa. Koniec ze sharingiem.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SERIES -->
-<section class="section" id="serie" style="background:var(--bg-secondary)">
+<section id="serie" style="padding: 96px 0; position: relative; z-index: 1; background: rgba(22, 20, 18, 0.4);">
   <div class="container">
-    <div style="text-align:center;margin-bottom:56px">
-      <h2>3 serie. 36 odcinków. Jeden praktyk.</h2>
-      <p style="margin-top:12px">Każda seria to osobny temat. Możesz zacząć od dowolnej.</p>
+    <div class="section-header">
+      <span class="label">Program</span>
+      <h2 style="margin-top: 8px;">3 serie · 36 odcinków</h2>
+      <p>Każda seria to 12 odcinków + materiały bonus. Możesz przerabiać sekwencyjnie albo skakać.</p>
     </div>
-    <div class="series-cards">
-      <div class="serie-card" onclick="window.location.href='register.html'">
-        <div class="serie-number" style="color:var(--accent)">01</div>
-        <div>
-          <h3>AI Stack Wars: Kto Naprawdę Wygrywa w 2026</h3>
-          <div class="serie-episodes">12 odcinków · ChatGPT, Claude, Gemini, Grok, DeepSeek, Perplexity, NotebookLM, Cursor, Midjourney, FLUX, Notion, Airtable</div>
-          <div class="serie-tags">
-            <span class="tag">LLM Battle</span>
-            <span class="tag">Tool Comparison</span>
-            <span class="tag">Stack Review</span>
+    <div class="series-list">
+      <div class="series-card">
+        <div class="series-num">01</div>
+        <div class="series-info">
+          <h3>AI Stack 2026 — porównania, które robią różnicę</h3>
+          <div class="series-tools">ChatGPT · Claude · Gemini · Grok · Perplexity · NotebookLM · Cursor · Claude Code</div>
+          <div class="series-tags">
+            <span class="tag">Research</span>
+            <span class="tag">Productivity</span>
+            <span class="tag">Code</span>
           </div>
         </div>
-        <span class="serie-badge badge-free">2 odcinki free</span>
+        <span class="series-badge badge-free">2 odcinki free</span>
       </div>
-      <div class="serie-card" onclick="window.location.href='register.html'">
-        <div class="serie-number" style="color:var(--accent-2)">02</div>
-        <div>
-          <h3>Outbound na Sterydach: AI w Procesach Sprzedażowych</h3>
-          <div class="serie-episodes">12 odcinków · Apollo, Clay, n8n, Make, Zapier, Instantly, Airtable, LinkedIn Sales Nav, HubSpot, RevOps</div>
-          <div class="serie-tags">
-            <span class="tag">Outbound</span>
-            <span class="tag">Sales Pipeline</span>
+      <div class="series-card">
+        <div class="series-num">02</div>
+        <div class="series-info">
+          <h3>Outbound Machine — od ICP do podpisanej umowy</h3>
+          <div class="series-tools">Apollo · Clay · Hunter · Smartlead · n8n · Zapier · Make · Airtable · HubSpot</div>
+          <div class="series-tags">
+            <span class="tag">Sales</span>
             <span class="tag">Automation</span>
+            <span class="tag">Enrichment</span>
           </div>
         </div>
-        <span class="serie-badge badge-pro">Pro</span>
+        <span class="series-badge badge-pro">Pro</span>
       </div>
-      <div class="serie-card" onclick="window.location.href='register.html'">
-        <div class="serie-number" style="color:#ff6b6b">03</div>
-        <div>
-          <h3>AI Video & Audio: Akademia Produkcji Treści</h3>
-          <div class="serie-episodes">12 odcinków · ElevenLabs, HeyGen, Veo 3, Runway, Kling, Descript, Fathom, Suno, NotebookLM, Content Pipeline</div>
-          <div class="serie-tags">
-            <span class="tag">Video AI</span>
+      <div class="series-card">
+        <div class="series-num">03</div>
+        <div class="series-info">
+          <h3>Voice, Video, Brand — produkcja contentu z AI</h3>
+          <div class="series-tools">ElevenLabs · HeyGen · Veo 3.1 · Midjourney · Runway · Descript · Notion</div>
+          <div class="series-tags">
             <span class="tag">Audio</span>
-            <span class="tag">Content Production</span>
+            <span class="tag">Video</span>
+            <span class="tag">Brand</span>
           </div>
         </div>
-        <span class="serie-badge badge-pro">Pro</span>
+        <span class="series-badge badge-pro">Pro</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PRICING -->
-<section class="section" id="pricing">
+<section id="pricing" style="padding: 96px 0; position: relative; z-index: 1;">
   <div class="container">
-    <div style="text-align:center;margin-bottom:56px">
-      <h2>Dostęp do Akademii</h2>
-      <p style="margin-top:12px">Bez subskrypcji na start. Pierwsze odcinki za darmo.</p>
+    <div class="section-header" style="text-align: center;">
+      <span class="label">Dostęp</span>
+      <h2 style="margin-top: 8px;">Bez triala. Bez kredytówki na start.</h2>
+      <p style="margin: 8px auto 0;">Dwa odcinki za darmo. Pełen dostęp gdy uznasz, że warto.</p>
     </div>
     <div class="pricing-grid">
       <div class="price-card">
-        <div class="price-label">Free</div>
-        <div class="price-amount">$0</div>
-        <div class="price-period">na zawsze</div>
-        <ul class="price-features">
-          <li>2 odcinki Serii 1 (PL+EN)</li>
-          <li>3 podstawowe materiały do pobrania</li>
-          <li>Dostęp do playera</li>
-          <li class="no">Seria 2 i 3</li>
-          <li class="no">Bonus Vault (100+ plików)</li>
-          <li class="no">GitHub repo download</li>
+        <div class="price-tier">Free</div>
+        <div class="price-amount">0<span style="font-size: 1rem; font-weight: 400; color: var(--text-3);"> zł</span></div>
+        <div class="price-period">Zawsze</div>
+        <ul class="price-list">
+          <li><span class="check">✓</span> 2 odcinki Serii 1</li>
+          <li><span class="check">✓</span> 3 pliki z Vault</li>
+          <li><span class="check">✓</span> Quizy + postęp</li>
+          <li class="off"><span class="cross">×</span> Bez certyfikatu</li>
+          <li class="off"><span class="cross">×</span> Bez Serii 2 i 3</li>
         </ul>
-        <a href="register.html" class="btn btn-secondary btn-full">Zacznij za darmo</a>
+        <a href="register.html" class="btn btn-secondary btn-xl">Załóż konto</a>
       </div>
       <div class="price-card featured">
-        <div class="popular-badge">⭐ Najpopularniejszy</div>
-        <div class="price-label featured-label">Pro</div>
-        <div class="price-amount">$29<span>/mies.</span></div>
-        <div class="price-period">lub $199/rok — oszczędzasz $149</div>
-        <ul class="price-features">
-          <li>Wszystkie 36 odcinków (PL+EN)</li>
-          <li>Bonus Vault — 100+ plików</li>
-          <li>JSON flow do Make, n8n, Clay</li>
-          <li>Nowe odcinki co tydzień</li>
-          <li>GitHub repo (private fork)</li>
-          <li>Discord community dostęp</li>
+        <div class="price-top-label">Najpopularniejsze</div>
+        <div class="price-tier price-featured-tier">Pro</div>
+        <div class="price-amount">29<span style="font-size: 1rem; font-weight: 400; color: var(--text-3);"> $</span></div>
+        <div class="price-period">/miesiąc · lub 199 $/rok</div>
+        <ul class="price-list">
+          <li><span class="check">✓</span> Wszystkie 36 odcinków</li>
+          <li><span class="check">✓</span> Pełny Vault (100+ plików)</li>
+          <li><span class="check">✓</span> Certyfikat na LinkedIn</li>
+          <li><span class="check">✓</span> Nowe odcinki co tydzień</li>
+          <li><span class="check">✓</span> Email support</li>
         </ul>
-        <a href="register.html" class="btn btn-primary btn-full">Dołącz do Pro →</a>
+        <a href="register.html?plan=pro" class="btn btn-primary btn-xl">Wykup Pro</a>
       </div>
       <div class="price-card">
-        <div class="price-label">Team / Agency</div>
-        <div class="price-amount">$99<span>/mies.</span></div>
-        <div class="price-period">do 5 osób</div>
-        <ul class="price-features">
-          <li>Wszystko z Pro × 5 kont</li>
-          <li>Osobne tokeny dla każdego</li>
-          <li>Team dashboard</li>
-          <li>Priorytetowy support</li>
-          <li>Custom onboarding call</li>
-          <li>Faktury B2B</li>
+        <div class="price-tier">Team</div>
+        <div class="price-amount">99<span style="font-size: 1rem; font-weight: 400; color: var(--text-3);"> $</span></div>
+        <div class="price-period">/miesiąc · 5 stanowisk</div>
+        <ul class="price-list">
+          <li><span class="check">✓</span> Wszystko z Pro</li>
+          <li><span class="check">✓</span> 5 kont z osobnymi sesjami</li>
+          <li><span class="check">✓</span> Dashboard administratora</li>
+          <li><span class="check">✓</span> Onboarding call (30 min)</li>
+          <li><span class="check">✓</span> Faktura VAT</li>
         </ul>
-        <a href="mailto:hello@wojciech.io" class="btn btn-secondary btn-full">Napisz do nas</a>
+        <a href="mailto:hello@wojciech.io?subject=Akademia%20AI%20Team" class="btn btn-secondary btn-xl">Napisz do nas</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer style="border-top:1px solid var(--border);padding:40px 0">
-  <div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px">
-    <div class="logo">🎓 Akademia AI <span class="logo-badge">BETA</span></div>
-    <div style="display:flex;gap:24px;font-size:0.85rem">
-      <a href="https://wojciech.io" style="color:var(--text-muted);text-decoration:none">wojciech.io</a>
-      <a href="https://linkedin.com/in/wojciech-luszczynski" style="color:var(--text-muted);text-decoration:none">LinkedIn</a>
-      <a href="https://github.com/wojciech-luszczynski/akademia-ai" style="color:var(--text-muted);text-decoration:none">GitHub</a>
+<footer style="padding: 48px 0; border-top: 1px solid var(--line-1); position: relative; z-index: 1;">
+  <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <span class="logo-mark">AA</span>
+      <span style="font-size: 0.875rem; color: var(--text-3);">© 2026 Wojciech Łuszczyński · <a href="https://wojciech.io" style="color: var(--orange);">wojciech.io</a></span>
     </div>
-    <div style="font-size:0.8rem;color:var(--text-muted)">© 2026 Wojciech Łuszczyński. Made with Claude.</div>
+    <div style="display: flex; gap: 20px;">
+      <a href="https://www.linkedin.com/in/wojciech-luszczynski/" class="nav-link">LinkedIn</a>
+      <a href="https://github.com/wojciechluszczynski/akademia-ai" class="nav-link">GitHub</a>
+      <a href="mailto:hello@wojciech.io" class="nav-link">Kontakt</a>
+    </div>
   </div>
 </footer>
 
-<div id="toast-container" class="toast-container"></div>
-
-<script src="js/auth.js"></script>
 <script>
-  // Mini waveform animation
-  const waveform = document.getElementById('mini-waveform');
-  const heights = [20,35,60,45,80,55,70,40,90,65,50,75,30,85,45,60,35,70,55,40,80,65,50,75,30,85,45,60,35,70,55,40];
-  heights.forEach((h, i) => {
-    const bar = document.createElement('div');
-    bar.className = 'wave-bar' + (i < 12 ? ' played' : i === 12 ? ' current' : '');
-    bar.style.height = h + '%';
-    waveform.appendChild(bar);
-  });
-
-  // Demo player
-  let demoPlaying = false;
-  let demoProgress = 12;
-  let demoInterval;
-
-  function demoTogglePlay() {
-    demoPlaying = !demoPlaying;
-    document.getElementById('demo-play-btn').textContent = demoPlaying ? '⏸' : '▶';
-    if (demoPlaying) {
-      demoInterval = setInterval(() => {
-        if (demoProgress < 100) { demoProgress += 0.3; updateDemoTime(); }
-        else { clearInterval(demoInterval); demoPlaying = false; document.getElementById('demo-play-btn').textContent = '▶'; }
-      }, 200);
-    } else { clearInterval(demoInterval); }
-  }
-
-  function demoSkip(s) {
-    demoProgress = Math.max(0, Math.min(100, demoProgress + (s/684)*100));
-    updateDemoTime();
-  }
-
-  function updateDemoTime() {
-    const total = 684;
-    const elapsed = Math.floor(total * demoProgress / 100);
-    const m = Math.floor(elapsed/60), sec = elapsed%60;
-    document.getElementById('mini-time').textContent = `${m}:${sec.toString().padStart(2,'0')} / 11:24`;
-  }
-
-  // Language toggle
-  function setLang(lang) {
-    document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent === lang.toUpperCase()));
-    const isEN = lang === 'en';
-    if (document.getElementById('hero-title')) {
-      document.getElementById('label-text').textContent = isEN ? '20 years in marketing. Zero bullshit.' : '20 lat w marketingu. Bez bullshitu.';
-      document.getElementById('hero-title').innerHTML = isEN
-        ? 'AI Tools that<br><span class="gradient-text">Actually Work</span><br>in Marketing'
-        : 'Narzędzia AI,<br>które <span class="gradient-text">naprawdę działają</span><br>w marketingu';
-      document.getElementById('hero-desc').textContent = isEN
-        ? 'Akademia AI is a series of real talks, case studies and ready-made flows from Wojciech Łuszczyński — a growth marketer who tested all of this with his own money and time. Zero theory. Only what works in B2B SaaS.'
-        : 'Akademia AI to seria rozmów, case studies i gotowych flow od Wojtka Łuszczyńskiego — growth marketera, który przetestował to wszystko na własnej skórze i własnym budżecie. Zero teorii. Tylko to co działa w B2B SaaS.';
+  (function buildWave() {
+    const wf = document.getElementById('waveform');
+    if (!wf) return;
+    const bars = 56;
+    let html = '';
+    for (let i = 0; i < bars; i++) {
+      const h = 20 + Math.random() * 70;
+      const cls = i < 18 ? 'pp-bar played' : (i === 18 ? 'pp-bar current' : 'pp-bar');
+      html += `<div class="${cls}" style="height: ${h}%;"></div>`;
     }
+    wf.innerHTML = html;
+  })();
+
+  let demoPlaying = false;
+  let demoTime = 222;
+  const demoTotal = 684;
+
+  function fmt(s) {
+    s = Math.max(0, Math.floor(s));
+    return String(Math.floor(s/60)).padStart(2,'0') + ':' + String(s%60).padStart(2,'0');
+  }
+  function demoToggle() {
+    demoPlaying = !demoPlaying;
+    document.getElementById('demo-play').textContent = demoPlaying ? '❚❚' : '▶';
+    if (demoPlaying) demoTick();
+  }
+  function demoTick() {
+    if (!demoPlaying) return;
+    demoTime = Math.min(demoTotal, demoTime + 1);
+    document.getElementById('pp-time').textContent = fmt(demoTime) + ' / ' + fmt(demoTotal);
+    if (demoTime >= demoTotal) { demoPlaying = false; document.getElementById('demo-play').textContent = '▶'; return; }
+    setTimeout(demoTick, 1000);
+  }
+  function demoSkip(s) {
+    demoTime = Math.max(0, Math.min(demoTotal, demoTime + s));
+    document.getElementById('pp-time').textContent = fmt(demoTime) + ' / ' + fmt(demoTotal);
+  }
+
+  const TX = {
+    pl: {
+      eyebrow: 'Sezon 1 — start maj 2026',
+      title: 'Narzędzia AI<br>które naprawdę działają<br>w marketingu B2B',
+      desc: 'Akademia AI to 36 odcinków rozmów, case studies i gotowych workflow. Growth marketing, outbound, AI stack — testowane na własnym budżecie i klientach. Po polsku i angielsku.'
+    },
+    en: {
+      eyebrow: 'Season 1 — launching May 2026',
+      title: 'AI tools<br>that actually work<br>in B2B marketing',
+      desc: 'Akademia AI is 36 episodes of conversations, case studies and ready workflows. Growth marketing, outbound, AI stack — tested on real budgets with real clients. Polish and English.'
+    }
+  };
+  function setLang(lang) {
+    const t = TX[lang];
+    document.getElementById('eyebrow').textContent = t.eyebrow;
+    document.getElementById('hero-title').innerHTML = t.title;
+    document.getElementById('hero-desc').textContent = t.desc;
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
   }
 </script>
+
 </body>
 </html>
