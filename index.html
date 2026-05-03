@@ -4,17 +4,780 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Akademia AI — Wojciech Łuszczyński</title>
-  <meta name="description" content="20 lat w marketingu. Brutalne porównania narzędzi AI, gotowe flow i stacki. Bez bullshitu.">
+  <meta name="description" content="36 odcinków audio, gotowe workflow i blueprinty. AI w marketingu B2B od praktyka — nie teoretyka.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── LANDING-ONLY OVERRIDES ─────────────────── */
+
+    /* Centered hero */
+    .lp-hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 24px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .lp-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--orange);
+      background: var(--orange-soft);
+      border: 1px solid var(--orange-line);
+      padding: 5px 14px;
+      border-radius: var(--r-full);
+      margin-bottom: 32px;
+    }
+
+    .lp-h1 {
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 1.0;
+      color: var(--text-1);
+      max-width: 900px;
+      margin-bottom: 24px;
+    }
+
+    .lp-h1 em {
+      font-style: normal;
+      background: linear-gradient(115deg, #fff 0%, #fcd9b6 40%, var(--orange) 70%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .lp-sub {
+      font-size: 1.0625rem;
+      color: var(--text-3);
+      max-width: 520px;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+
+    .lp-cta-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 80px;
+    }
+
+    /* Product UI mockup */
+    .product-mockup {
+      width: 100%;
+      max-width: 1000px;
+      background: var(--bg-card);
+      border: 1px solid var(--line-2);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow:
+        0 0 0 1px rgba(249,115,22,0.08),
+        0 40px 120px -20px rgba(0,0,0,0.8),
+        0 0 80px -20px rgba(249,115,22,0.15);
+      position: relative;
+    }
+
+    .mock-topbar {
+      height: 40px;
+      background: rgba(12,11,10,0.9);
+      border-bottom: 1px solid var(--line-1);
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      gap: 8px;
+    }
+
+    .mock-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+    }
+    .mock-dot.r { background: #ff5f57; }
+    .mock-dot.y { background: #febc2e; }
+    .mock-dot.g { background: #28c840; }
+
+    .mock-url {
+      flex: 1;
+      text-align: center;
+      font-size: 0.6875rem;
+      font-family: var(--mono);
+      color: var(--text-4);
+    }
+
+    .mock-body {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      height: 360px;
+    }
+
+    .mock-sidebar {
+      background: var(--bg-card);
+      border-right: 1px solid var(--line-1);
+      padding: 16px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .mock-logo {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 8px;
+      margin-bottom: 12px;
+    }
+
+    .mock-logo-mark {
+      width: 22px; height: 22px;
+      background: var(--orange);
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      font-weight: 900;
+      color: #fff;
+    }
+
+    .mock-logo-text {
+      font-size: 0.8125rem;
+      font-weight: 700;
+    }
+
+    .mock-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 8px;
+      border-radius: 7px;
+      font-size: 0.78rem;
+      color: var(--text-3);
+    }
+
+    .mock-nav-item.active {
+      background: var(--orange-soft);
+      color: var(--orange);
+      font-weight: 600;
+    }
+
+    .mock-nav-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--line-2);
+      flex-shrink: 0;
+    }
+
+    .mock-nav-item.active .mock-nav-dot { background: var(--orange); }
+
+    .mock-content {
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    .mock-ep-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mock-ep {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      background: var(--bg-input);
+      border-radius: 10px;
+      border: 1px solid var(--line-1);
+      transition: border-color 0.15s;
+    }
+
+    .mock-ep.playing {
+      border-color: var(--orange-line);
+      background: var(--orange-soft);
+    }
+
+    .mock-ep-play {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--bg-hover);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.625rem;
+      color: var(--text-3);
+      flex-shrink: 0;
+    }
+
+    .mock-ep.playing .mock-ep-play {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    .mock-ep-info { flex: 1; min-width: 0; }
+
+    .mock-ep-num {
+      font-size: 0.5625rem;
+      font-family: var(--mono);
+      color: var(--text-4);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 1px;
+    }
+
+    .mock-ep.playing .mock-ep-num { color: var(--orange); }
+
+    .mock-ep-title {
+      font-size: 0.78rem;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .mock-ep-dur {
+      font-size: 0.5625rem;
+      font-family: var(--mono);
+      color: var(--text-4);
+      flex-shrink: 0;
+    }
+
+    .mock-progress-bar {
+      height: 2px;
+      background: var(--line-1);
+      border-radius: 1px;
+      margin-top: 6px;
+    }
+
+    .mock-progress-fill {
+      height: 100%;
+      border-radius: 1px;
+      background: var(--orange);
+    }
+
+    .mock-player {
+      grid-column: 1 / -1;
+      height: 52px;
+      background: rgba(12,11,10,0.95);
+      border-top: 1px solid var(--line-1);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 0 16px 0 212px;
+    }
+
+    .mock-pb-info { flex: 1; min-width: 0; }
+    .mock-pb-serie { font-size: 0.5625rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--orange); }
+    .mock-pb-title { font-size: 0.8rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    .mock-pb-controls { display: flex; align-items: center; gap: 8px; }
+
+    .mock-pb-btn {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--bg-input);
+      border: none;
+      color: var(--text-3);
+      font-size: 0.6rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .mock-pb-btn.play {
+      background: var(--orange);
+      color: #fff;
+      width: 32px; height: 32px;
+    }
+
+    .mock-pb-track {
+      width: 180px; height: 2px;
+      background: var(--line-1);
+      border-radius: 1px;
+      position: relative;
+    }
+
+    .mock-pb-fill {
+      width: 42%;
+      height: 100%;
+      background: var(--orange);
+      border-radius: 1px;
+    }
+
+    /* Logo bar */
+    .logo-bar {
+      position: relative;
+      z-index: 1;
+      padding: 32px 0;
+      border-top: 1px solid var(--line-1);
+      border-bottom: 1px solid var(--line-1);
+      overflow: hidden;
+    }
+
+    .logo-bar-label {
+      text-align: center;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-4);
+      margin-bottom: 20px;
+    }
+
+    .logo-bar-track {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 0 24px;
+    }
+
+    .tool-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: var(--r-full);
+      background: var(--bg-card);
+      border: 1px solid var(--line-1);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--text-2);
+      transition: all 0.15s;
+    }
+
+    .tool-chip:hover { border-color: var(--orange-line); color: var(--text-1); }
+    .tool-chip .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--orange); opacity: 0.6; }
+
+    /* Bento grid */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+
+    .bento-card {
+      background: var(--bg-card);
+      border: 1px solid var(--line-1);
+      border-radius: var(--r-xl);
+      padding: 28px;
+      transition: border-color 0.15s, transform 0.15s;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .bento-card:hover { border-color: var(--line-3); transform: translateY(-2px); }
+
+    .bento-span-7  { grid-column: span 7; }
+    .bento-span-5  { grid-column: span 5; }
+    .bento-span-4  { grid-column: span 4; }
+    .bento-span-8  { grid-column: span 8; }
+    .bento-span-6  { grid-column: span 6; }
+    .bento-span-12 { grid-column: span 12; }
+
+    .bento-label {
+      font-size: 0.625rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 10px;
+    }
+
+    .bento-card h3 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .bento-card p {
+      font-size: 0.875rem;
+      color: var(--text-3);
+      line-height: 1.6;
+    }
+
+    .bento-big-num {
+      font-size: 4.5rem;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      color: var(--text-1);
+      margin: 16px 0 8px;
+    }
+
+    .bento-big-num span { color: var(--orange); }
+
+    .bento-visual {
+      margin-top: 20px;
+      border-radius: var(--r-md);
+      overflow: hidden;
+    }
+
+    .bento-cert-preview {
+      background: var(--bg-input);
+      border: 1px solid var(--orange-line);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      margin-top: 16px;
+    }
+
+    .bento-cert-ring {
+      width: 44px; height: 44px;
+      border: 2px solid var(--orange-line);
+      border-radius: 50%;
+      margin: 0 auto 10px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      transform: rotate(-12deg);
+      color: var(--orange);
+    }
+
+    .bento-cert-name {
+      font-family: Georgia, serif;
+      font-style: italic;
+      font-size: 1.125rem;
+      margin-bottom: 4px;
+    }
+
+    .bento-cert-course {
+      font-size: 0.6875rem;
+      color: var(--orange);
+      font-weight: 600;
+    }
+
+    .bento-quiz-preview {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .bento-quiz-option {
+      padding: 8px 12px;
+      border-radius: 7px;
+      font-size: 0.78rem;
+      border: 1px solid var(--line-1);
+      background: var(--bg-input);
+      color: var(--text-2);
+    }
+
+    .bento-quiz-option.correct {
+      border-color: rgba(74,222,128,0.4);
+      background: rgba(74,222,128,0.07);
+      color: #4ade80;
+    }
+
+    .bento-file-list {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .bento-file {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      background: var(--bg-input);
+      border-radius: 7px;
+      font-size: 0.78rem;
+    }
+
+    .bento-file-ext {
+      font-family: var(--mono);
+      font-size: 0.5625rem;
+      font-weight: 700;
+      padding: 2px 5px;
+      border-radius: 3px;
+      letter-spacing: 0.04em;
+    }
+
+    .ext-md   { background: rgba(249,115,22,0.12); color: var(--orange); }
+    .ext-json { background: rgba(96,165,250,0.12); color: #60a5fa; }
+    .ext-zip  { background: rgba(234,179,8,0.12);  color: #eab308; }
+
+    /* Section spacing */
+    .lp-section {
+      padding: 120px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .lp-section-alt { background: rgba(22,20,18,0.5); }
+
+    .lp-section-head {
+      margin-bottom: 60px;
+    }
+
+    .lp-section-head .label { display: block; margin-bottom: 12px; }
+    .lp-section-head h2 { margin-bottom: 12px; }
+    .lp-section-head p  { max-width: 480px; }
+
+    .lp-section-head.centered { text-align: center; }
+    .lp-section-head.centered p { margin: 0 auto; }
+
+    /* Series cards v2 */
+    .series-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .series-card-v2 {
+      background: var(--bg-card);
+      border: 1px solid var(--line-1);
+      border-radius: var(--r-xl);
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.15s;
+      cursor: pointer;
+    }
+
+    .series-card-v2:hover {
+      border-color: var(--orange-line);
+      transform: translateY(-3px);
+    }
+
+    .series-card-v2::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 160px; height: 160px;
+      background: radial-gradient(circle at top right, rgba(249,115,22,0.12), transparent 70%);
+      pointer-events: none;
+    }
+
+    .sc2-num {
+      font-size: 5rem;
+      font-weight: 900;
+      font-family: var(--mono);
+      line-height: 1;
+      letter-spacing: -0.05em;
+      color: var(--line-1);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .sc2-badge {
+      display: inline-flex;
+      font-size: 0.625rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: var(--r-full);
+      margin-bottom: 12px;
+    }
+
+    .sc2-badge.free { background: rgba(74,222,128,0.1); color: #4ade80; border: 1px solid rgba(74,222,128,0.2); }
+    .sc2-badge.pro  { background: var(--orange-soft); color: var(--orange); border: 1px solid var(--orange-line); }
+
+    .sc2-title {
+      font-size: 1.0625rem;
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 10px;
+    }
+
+    .sc2-tools {
+      font-size: 0.78rem;
+      color: var(--text-3);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .sc2-ep-count {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-3);
+      padding-top: 16px;
+      border-top: 1px solid var(--line-1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .sc2-ep-count span { color: var(--orange); }
+
+    /* Host section */
+    .host-section {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .host-card-main {
+      background: var(--bg-card);
+      border: 1px solid var(--line-2);
+      border-radius: var(--r-2xl);
+      padding: 32px;
+      position: relative;
+    }
+
+    .host-avatar-large {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--orange), #fb923c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .host-name {
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .host-role {
+      font-size: 0.8125rem;
+      color: var(--orange);
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    .host-bio {
+      font-size: 0.9rem;
+      color: var(--text-2);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .host-creds {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .host-cred {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8125rem;
+      color: var(--text-3);
+    }
+
+    .host-cred-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
+
+    .host-guests {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .guest-card {
+      background: var(--bg-card);
+      border: 1px solid var(--line-1);
+      border-radius: var(--r-lg);
+      padding: 20px 18px;
+      text-align: center;
+      transition: all 0.15s;
+    }
+
+    .guest-card:hover { border-color: var(--line-3); }
+
+    .guest-avatar {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--bg-input);
+      border: 1px solid var(--line-2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--text-3);
+      margin: 0 auto 10px;
+    }
+
+    .guest-name {
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    .guest-role {
+      font-size: 0.75rem;
+      color: var(--text-3);
+      margin-bottom: 8px;
+    }
+
+    .guest-chip {
+      font-size: 0.625rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: var(--r-full);
+      background: var(--bg-input);
+      color: var(--text-4);
+      border: 1px solid var(--line-1);
+    }
+
+    /* CTA block */
+    .lp-cta-block {
+      text-align: center;
+      padding: 120px 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .lp-cta-block h2 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      margin-bottom: 16px;
+    }
+
+    .lp-cta-block p {
+      font-size: 1.0625rem;
+      color: var(--text-3);
+      margin-bottom: 36px;
+    }
+
+    /* Pricing v2 */
+    .pricing-v2 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Scroll animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+  </style>
 </head>
 <body>
 
 <div class="grid-bg"></div>
 <div class="glow-bg"></div>
 
+<!-- NAVBAR -->
 <nav class="navbar">
   <div class="container">
     <a href="index.html" class="logo">
@@ -22,503 +785,416 @@
       Akademia AI
     </a>
     <div class="nav-right">
-      <a href="#serie" class="nav-link">Serie</a>
-      <a href="#features" class="nav-link">Co dostajesz</a>
-      <a href="#host" class="nav-link">Prowadzący</a>
-      <a href="#pricing" class="nav-link">Dostęp</a>
+      <a href="#program" class="nav-link">Program</a>
+      <a href="#pricing" class="nav-link">Cennik</a>
+      <a href="#prowadzacy" class="nav-link">Prowadzący</a>
       <div class="lang-switch">
         <button class="lang-btn active" onclick="setLang('pl')">PL</button>
         <button class="lang-btn" onclick="setLang('en')">EN</button>
       </div>
       <a href="login.html" class="btn btn-secondary btn-sm">Zaloguj</a>
-      <a href="register.html" class="btn btn-primary btn-sm">Dołącz</a>
+      <a href="register.html" class="btn btn-primary btn-sm">Zacznij za darmo</a>
     </div>
   </div>
 </nav>
 
-<section class="hero">
-  <div class="container">
-    <div class="hero-inner">
-      <div>
-        <div class="hero-eyebrow">
-          <span class="live-dot"></span>
-          <span id="eyebrow">Sezon 1 — start maj 2026</span>
+<!-- HERO -->
+<section class="lp-hero">
+  <div class="lp-badge">
+    <span class="live-dot"></span>
+    <span id="badge-text">Sezon 1 — maj 2026</span>
+  </div>
+  <h1 class="lp-h1" id="hero-h1">
+    AI w marketingu B2B.<br>
+    <em>Bez bullshitu.</em>
+  </h1>
+  <p class="lp-sub" id="hero-sub">
+    36 odcinków audio, gotowe workflow i pliki do pobrania.
+    20 lat w growth marketingu skondensowane w jednym miejscu.
+  </p>
+  <div class="lp-cta-row">
+    <a href="register.html" class="btn btn-primary btn-lg">Zacznij za darmo</a>
+    <a href="#program" class="btn btn-ghost btn-lg">Zobacz program</a>
+  </div>
+
+  <!-- Product UI mockup -->
+  <div class="product-mockup reveal">
+    <div class="mock-topbar">
+      <div class="mock-dot r"></div>
+      <div class="mock-dot y"></div>
+      <div class="mock-dot g"></div>
+      <div class="mock-url">academy.wojciech.io/dashboard</div>
+    </div>
+    <div class="mock-body">
+      <div class="mock-sidebar">
+        <div class="mock-logo">
+          <div class="mock-logo-mark">AA</div>
+          <div class="mock-logo-text">Akademia AI</div>
         </div>
-        <h1 id="hero-title">
-          Narzędzia AI<br>
-          które <span class="gradient">naprawdę działają</span><br>
-          w marketingu B2B
-        </h1>
-        <p class="hero-desc" id="hero-desc">
-          36 odcinków audio, gotowe workflow, prompty i blueprinty.
-          20 lat w growth marketingu skondensowane w trzech seriach.
-          Płacisz raz — masz na zawsze.
-        </p>
-        <div class="hero-actions">
-          <a href="register.html" class="btn btn-primary btn-lg">Zacznij za darmo</a>
-          <a href="#serie" class="btn btn-ghost btn-lg">Zobacz program</a>
+        <div class="mock-nav-item active">
+          <div class="mock-nav-dot"></div>
+          AI Stack 2026
         </div>
-        <div class="hero-proof">
-          <div>
-            <div class="proof-num">36</div>
-            <div class="proof-label">Odcinków audio</div>
-          </div>
-          <div>
-            <div class="proof-num">3</div>
-            <div class="proof-label">Serie tematyczne</div>
-          </div>
-          <div>
-            <div class="proof-num">PL/EN</div>
-            <div class="proof-label">Dwujęzycznie</div>
-          </div>
-          <div>
-            <div class="proof-num">100+</div>
-            <div class="proof-label">Plików w Vault</div>
-          </div>
+        <div class="mock-nav-item">
+          <div class="mock-nav-dot"></div>
+          Outbound Machine
+        </div>
+        <div class="mock-nav-item">
+          <div class="mock-nav-dot"></div>
+          Voice &amp; Video
+        </div>
+        <div class="mock-nav-item" style="margin-top: 8px;">
+          <div class="mock-nav-dot"></div>
+          Vault
+        </div>
+        <div class="mock-nav-item">
+          <div class="mock-nav-dot"></div>
+          Certyfikat
         </div>
       </div>
-
-      <div class="player-preview">
-        <div class="pp-header">
-          <span class="pp-serie">Seria 1 · Odcinek 01</span>
-          <span class="pp-status"><span class="live-dot"></span> Demo</span>
-        </div>
-        <div class="pp-body">
-          <div class="pp-title">ChatGPT vs Claude vs Gemini vs Grok</div>
-          <div class="pp-host">Wojciech Łuszczyński</div>
-          <div class="pp-waveform" id="waveform"></div>
-          <div class="pp-controls">
-            <span class="pp-time" id="pp-time">03:42 / 11:24</span>
-            <div class="pp-btns">
-              <button class="pp-btn" onclick="demoSkip(-15)">−15</button>
-              <button class="pp-btn play" id="demo-play" onclick="demoToggle()">▶</button>
-              <button class="pp-btn" onclick="demoSkip(15)">+15</button>
+      <div class="mock-content">
+        <div style="font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-4); margin-bottom: 12px;">Seria 1 — AI Stack 2026</div>
+        <div class="mock-ep-list">
+          <div class="mock-ep playing">
+            <div class="mock-ep-play">▶</div>
+            <div class="mock-ep-info">
+              <div class="mock-ep-num">S1E01 · odtwarzane</div>
+              <div class="mock-ep-title">ChatGPT vs Claude vs Gemini vs Grok: mój werdykt</div>
+              <div class="mock-progress-bar"><div class="mock-progress-fill" style="width: 42%;"></div></div>
             </div>
-            <span class="pp-time">1.0×</span>
+            <div class="mock-ep-dur">11:24</div>
           </div>
-        </div>
-        <div class="pp-playlist">
-          <div class="pp-ep active">
-            <span class="pp-ep-num">S1E01</span>
-            <span class="pp-ep-title">LLM Battle: werdykt po 20 latach</span>
-            <span class="pp-ep-dur">11:24</span>
+          <div class="mock-ep">
+            <div class="mock-ep-play">▶</div>
+            <div class="mock-ep-info">
+              <div class="mock-ep-num">S1E02</div>
+              <div class="mock-ep-title">Perplexity zjadło Google. Ale nie do końca.</div>
+            </div>
+            <div class="mock-ep-dur">09:47</div>
           </div>
-          <div class="pp-ep">
-            <span class="pp-ep-num">S1E02</span>
-            <span class="pp-ep-title">Perplexity zjadło Google</span>
-            <span class="pp-ep-dur">09:47</span>
-          </div>
-          <div class="pp-ep">
-            <span class="pp-ep-num">S1E03</span>
-            <span class="pp-ep-title">NotebookLM — ignorowałem 3 miesiące</span>
-            <span class="pp-ep-lock">●</span>
+          <div class="mock-ep" style="opacity: 0.5;">
+            <div class="mock-ep-play" style="font-size: 0.7rem;">●</div>
+            <div class="mock-ep-info">
+              <div class="mock-ep-num">S1E03 · zablokowane</div>
+              <div class="mock-ep-title">NotebookLM: ignorowałem 3 miesiące. Błąd.</div>
+            </div>
+            <div class="mock-ep-dur">10:12</div>
           </div>
         </div>
       </div>
     </div>
+    <div class="mock-player">
+      <div class="mock-pb-info">
+        <div class="mock-pb-serie">Seria 1 · Odcinek 01</div>
+        <div class="mock-pb-title">ChatGPT vs Claude vs Gemini vs Grok: mój werdykt po 20 latach</div>
+      </div>
+      <div class="mock-pb-controls">
+        <div class="mock-pb-btn">−15</div>
+        <div class="mock-pb-btn play">▶</div>
+        <div class="mock-pb-btn">+15</div>
+      </div>
+      <div class="mock-pb-track"><div class="mock-pb-fill"></div></div>
+      <div style="font-family: var(--mono); font-size: 0.625rem; color: var(--text-4);">04:47 / 11:24</div>
+    </div>
   </div>
 </section>
 
-<section id="features" style="padding: 96px 0; position: relative; z-index: 1;">
+<!-- LOGO BAR -->
+<div class="logo-bar">
+  <div class="logo-bar-label">Narzędzia w programie</div>
+  <div class="logo-bar-track">
+    <span class="tool-chip"><span class="dot"></span>Claude</span>
+    <span class="tool-chip"><span class="dot"></span>ChatGPT</span>
+    <span class="tool-chip"><span class="dot"></span>Gemini</span>
+    <span class="tool-chip"><span class="dot"></span>Perplexity</span>
+    <span class="tool-chip"><span class="dot"></span>NotebookLM</span>
+    <span class="tool-chip"><span class="dot"></span>Clay</span>
+    <span class="tool-chip"><span class="dot"></span>Apollo</span>
+    <span class="tool-chip"><span class="dot"></span>n8n</span>
+    <span class="tool-chip"><span class="dot"></span>ElevenLabs</span>
+    <span class="tool-chip"><span class="dot"></span>HeyGen</span>
+    <span class="tool-chip"><span class="dot"></span>Cursor</span>
+    <span class="tool-chip"><span class="dot"></span>Midjourney</span>
+  </div>
+</div>
+
+<!-- BENTO FEATURES -->
+<section class="lp-section" id="features">
   <div class="container">
-    <div class="section-header">
+    <div class="lp-section-head reveal">
       <span class="label">Co dostajesz</span>
-      <h2 style="margin-top: 8px;">Praktyka, nie teoria</h2>
-      <p>Każdy odcinek z konkretnym workflow, plikiem do pobrania i mini quizem.</p>
+      <h2>Wszystko co potrzebne,<br>żeby zacząć działać jutro</h2>
+      <p>Nie kurs teoretyczny. Każdy odcinek kończy się plikiem do użycia w pracy.</p>
     </div>
-    <div class="feature-grid">
-      <div class="feature-cell">
-        <h3>Audio + transkrypt</h3>
-        <p>Każdy odcinek 10–15 min, słuchasz w drodze, transkrypt do skanowania w 30s.</p>
+    <div class="bento-grid">
+      <div class="bento-card bento-span-7 reveal">
+        <div class="bento-label">Audio</div>
+        <h3>36 odcinków. Każdy 10–15 min.</h3>
+        <p>Słuchasz w drodze, w pracy, na siłowni. Transkrypt do skanowania w 30 sekund. PL i EN — przełączasz jednym kliknięciem.</p>
+        <div class="bento-big-num"><span>36</span></div>
+        <div style="font-size: 0.78rem; color: var(--text-3);">odcinków w 3 seriach · PL + EN</div>
       </div>
-      <div class="feature-cell">
-        <h3>Vault z materiałami</h3>
-        <p>Gotowe prompty (.md), workflow Clay (.json), blueprinty n8n. Importujesz i działasz.</p>
-      </div>
-      <div class="feature-cell">
-        <h3>Mini quizy</h3>
-        <p>Po każdym odcinku 3 pytania. 60% = zaliczone. Bez bullshitu, bez certyfikatów uczestnictwa.</p>
-      </div>
-      <div class="feature-cell">
-        <h3>Pasek postępu</h3>
-        <p>Widzisz ile zostało. Dashboard pokazuje co masz zrobić następnie. Zero zgadywania.</p>
-      </div>
-      <div class="feature-cell">
-        <h3>Certyfikat ukończenia</h3>
-        <p>Po przejściu serii — certyfikat z unikalnym ID. PDF z podpisem, deep link na LinkedIn.</p>
-      </div>
-      <div class="feature-cell">
-        <h3>Token-secured</h3>
-        <p>Jedna sesja na konto. Logujesz się gdzie indziej — poprzednia sesja wygasa. Koniec ze sharingiem.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="transform" style="padding: 96px 0; position: relative; z-index: 1; background: rgba(22, 20, 18, 0.4);">
-  <div class="container">
-    <div class="section-header" style="text-align: center; max-width: 560px; margin: 0 auto 48px;">
-      <span class="label">Transformacja</span>
-      <h2 style="margin-top: 8px;">Przed AI vs Po AI</h2>
-      <p>Nie optymalizacja. Zmiana kategorii. Konkretne zadania, zmierzone w realnych projektach.</p>
-    </div>
-    <div class="transform-table" id="transform-table">
-      <div class="transform-header">
-        <div></div>
-        <div class="transform-col-label before">Przed</div>
-        <div></div>
-        <div class="transform-col-label after">Po AI</div>
-      </div>
-
-      <div class="transform-row">
-        <div>
-          <div class="transform-label">Research ICP</div>
-          <div class="transform-sublabel">Analiza segmentu + zebranie danych</div>
-        </div>
-        <div class="transform-before">45 godz.</div>
-        <div class="transform-arrow">→</div>
-        <div class="transform-after">
-          <span class="transform-after-num" data-target="8">8</span>
-          <span class="transform-after-unit">min</span>
+      <div class="bento-card bento-span-5 reveal reveal-delay-1">
+        <div class="bento-label">Vault</div>
+        <h3>Pliki gotowe do użycia</h3>
+        <p>Importujesz i działasz.</p>
+        <div class="bento-file-list">
+          <div class="bento-file"><span class="bento-file-ext ext-json">JSON</span> Clay Enrichment Flow</div>
+          <div class="bento-file"><span class="bento-file-ext ext-md">MD</span> Perplexity Research SOP</div>
+          <div class="bento-file"><span class="bento-file-ext ext-json">JSON</span> Marketing Stack 2026</div>
+          <div class="bento-file"><span class="bento-file-ext ext-md">MD</span> LLM Comparison Matrix</div>
+          <div class="bento-file"><span class="bento-file-ext ext-zip">ZIP</span> Series 1 Complete Vault</div>
         </div>
       </div>
-
-      <div class="transform-row">
-        <div>
-          <div class="transform-label">Outbound setup</div>
-          <div class="transform-sublabel">Apollo · Clay · Smartlead od zera</div>
-        </div>
-        <div class="transform-before">5 dni</div>
-        <div class="transform-arrow">→</div>
-        <div class="transform-after">
-          <span class="transform-after-num" data-target="3">3</span>
-          <span class="transform-after-unit">godz.</span>
+      <div class="bento-card bento-span-5 reveal reveal-delay-2">
+        <div class="bento-label">Quizy</div>
+        <h3>Sprawdź czy wiesz co robisz</h3>
+        <p>3 pytania po każdym odcinku. Pojawia się automatycznie na 95% postępu.</p>
+        <div class="bento-quiz-preview">
+          <div class="bento-quiz-option">Claude — ma 200k context window</div>
+          <div class="bento-quiz-option correct">Gemini 2.5 Pro — ma 1M context window</div>
+          <div class="bento-quiz-option">ChatGPT — ma 128k context window</div>
         </div>
       </div>
-
-      <div class="transform-row">
-        <div>
-          <div class="transform-label">Produkcja contentu</div>
-          <div class="transform-sublabel">Post LinkedIn + newsletter + brief graficzny</div>
-        </div>
-        <div class="transform-before">4 godz./dzień</div>
-        <div class="transform-arrow">→</div>
-        <div class="transform-after">
-          <span class="transform-after-num" data-target="40">40</span>
-          <span class="transform-after-unit">min</span>
-        </div>
-      </div>
-
-      <div class="transform-row">
-        <div>
-          <div class="transform-label">Analiza konkurencji</div>
-          <div class="transform-sublabel">10 konkurentów, pricing, pozycjonowanie</div>
-        </div>
-        <div class="transform-before">8 godz.</div>
-        <div class="transform-arrow">→</div>
-        <div class="transform-after">
-          <span class="transform-after-num" data-target="28">28</span>
-          <span class="transform-after-unit">min</span>
+      <div class="bento-card bento-span-7 reveal reveal-delay-3">
+        <div class="bento-label">Certyfikat</div>
+        <h3>Certyfikat który coś znaczy</h3>
+        <p>Unikalny ID, PDF z podpisem, link na LinkedIn — generowany po zaliczeniu wszystkich quizów w serii. Nie możesz go dostać bez rzeczywistego ukończenia.</p>
+        <div class="bento-cert-preview">
+          <div class="bento-cert-ring">
+            <span style="font-size: 0.35rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;">Verified</span>
+            <span style="font-size: 0.7rem; font-weight: 900;">AI</span>
+          </div>
+          <div class="bento-cert-name">Wojciech Łuszczyński</div>
+          <div class="bento-cert-course">AI Stack 2026 — Seria 1</div>
         </div>
       </div>
-
-      <div class="transform-row">
-        <div>
-          <div class="transform-label">Cold email sequence</div>
-          <div class="transform-sublabel">10 wiadomości z personalizacją</div>
-        </div>
-        <div class="transform-before">5 godz.</div>
-        <div class="transform-arrow">→</div>
-        <div class="transform-after">
-          <span class="transform-after-num" data-target="45">45</span>
-          <span class="transform-after-unit">min</span>
-        </div>
-      </div>
-
-      <div class="transform-row">
-        <div>
-          <div class="transform-label">Propozycja handlowa</div>
-          <div class="transform-sublabel">Deck + kalkulacja ROI dla klienta</div>
-        </div>
-        <div class="transform-before">3 godz.</div>
-        <div class="transform-arrow">→</div>
-        <div class="transform-after">
-          <span class="transform-after-num" data-target="22">22</span>
-          <span class="transform-after-unit">min</span>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
 
-<section id="host" style="padding: 96px 0; position: relative; z-index: 1;">
+<!-- SERIES -->
+<section class="lp-section lp-section-alt" id="program">
   <div class="container">
-    <div class="section-header">
-      <span class="label">Prowadzący</span>
-      <h2 style="margin-top: 8px;">Kto za tym stoi</h2>
-      <p>Praktyk, nie teoretyk. 20 lat w B2B, ostatnie 3 lata — obsesja na punkcie narzędzi AI.</p>
-    </div>
-    <div class="host-grid">
-
-      <div class="host-card host-card--main">
-        <div class="host-avatar host-avatar--main">WL</div>
-        <div class="host-name">Wojciech Łuszczyński</div>
-        <div class="host-role">Prowadzący · Growth Marketer</div>
-        <p class="host-bio">20 lat w marketingu B2B. Buduję pipeline'y sprzedażowe z AI, testuję każde narzędzie na prawdziwych klientach — nie na slajdach konferencyjnych.</p>
-        <div class="host-credentials">
-          <span class="host-cred">Clay pipeline → $12M</span>
-          <span class="host-cred">B2B SaaS · 20 lat</span>
-          <span class="host-cred">Substack</span>
-        </div>
-        <a href="https://www.linkedin.com/in/wojciech-luszczynski/" target="_blank" rel="noopener" class="host-link">LinkedIn →</a>
-      </div>
-
-      <div class="host-card host-card--ai">
-        <div class="host-avatar host-avatar--ai">AI</div>
-        <div class="host-name">Atlas</div>
-        <div class="host-role">AI Co-host · Research & Fact-check</div>
-        <p class="host-bio">Weryfikuje dane na żywo, porównuje benchmarki narzędzi, odpowiada na pytania słuchaczy między odcinkami. Napędzany przez Claude — z głosem ElevenLabs.</p>
-        <div class="host-credentials">
-          <span class="host-cred">Powered by Claude</span>
-          <span class="host-cred">Real-time research</span>
-          <span class="host-cred">ElevenLabs voice</span>
-        </div>
-        <span class="host-badge">AI</span>
-      </div>
-
-      <div class="host-card host-card--guest">
-        <div class="host-avatar host-avatar--guest">?</div>
-        <div class="host-name">Gość serii 2</div>
-        <div class="host-role">Outbound Machine</div>
-        <p class="host-bio">Apollo + Clay + Smartlead w praktyce. Jak zbudować maszynę outboundową od zera.</p>
-        <span class="host-soon">Coming soon</span>
-      </div>
-
-      <div class="host-card host-card--guest">
-        <div class="host-avatar host-avatar--guest">?</div>
-        <div class="host-name">Gość serii 3</div>
-        <div class="host-role">Voice & Video AI</div>
-        <p class="host-bio">ElevenLabs, HeyGen, Veo w codziennej produkcji contentu. ROI z AI w brandingu.</p>
-        <span class="host-soon">Coming soon</span>
-      </div>
-
-      <div class="host-card host-card--guest">
-        <div class="host-avatar host-avatar--guest">?</div>
-        <div class="host-name">Gość specjalny</div>
-        <div class="host-role">AI w firmie 50+ osób</div>
-        <p class="host-bio">Perspektywa CTO/Head of Ops — jak wdrożyć AI stack w organizacji bez chaosu.</p>
-        <span class="host-soon">Coming soon</span>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section id="serie" style="padding: 96px 0; position: relative; z-index: 1; background: rgba(22, 20, 18, 0.4);">
-  <div class="container">
-    <div class="section-header">
+    <div class="lp-section-head reveal">
       <span class="label">Program</span>
-      <h2 style="margin-top: 8px;">3 serie · 36 odcinków</h2>
-      <p>Każda seria to 12 odcinków + materiały bonus. Możesz przerabiać sekwencyjnie albo skakać.</p>
+      <h2>3 serie · 12 odcinków każda</h2>
+      <p>Możesz kupić jedną serię lub całość. Płacisz raz, masz dożywotnio.</p>
     </div>
-    <div class="series-list">
-      <div class="series-card">
-        <div class="series-num">01</div>
-        <div class="series-info">
-          <h3>AI Stack 2026 — porównania, które robią różnicę</h3>
-          <div class="series-tools">ChatGPT · Claude · Gemini · Grok · Perplexity · NotebookLM · Cursor · Claude Code</div>
-          <div class="series-tags">
-            <span class="tag">Research</span>
-            <span class="tag">Productivity</span>
-            <span class="tag">Code</span>
-          </div>
+    <div class="series-grid">
+      <div class="series-card-v2 reveal">
+        <span class="sc2-num">01</span>
+        <div class="sc2-badge free">1 odcinek free</div>
+        <div class="sc2-title">AI Stack 2026 — porównania, które robią różnicę</div>
+        <div class="sc2-tools">ChatGPT · Claude · Gemini · Grok · Perplexity · NotebookLM · Cursor · Claude Code</div>
+        <div class="sc2-ep-count">
+          <span>12 odcinków</span>
+          <a href="register.html" class="btn btn-secondary btn-sm">Zacznij</a>
         </div>
-        <span class="series-badge badge-free">2 odcinki free</span>
       </div>
-      <div class="series-card">
-        <div class="series-num">02</div>
-        <div class="series-info">
-          <h3>Outbound Machine — od ICP do podpisanej umowy</h3>
-          <div class="series-tools">Apollo · Clay · Hunter · Smartlead · n8n · Zapier · Make · Airtable · HubSpot</div>
-          <div class="series-tags">
-            <span class="tag">Sales</span>
-            <span class="tag">Automation</span>
-            <span class="tag">Enrichment</span>
-          </div>
+      <div class="series-card-v2 reveal reveal-delay-1">
+        <span class="sc2-num">02</span>
+        <div class="sc2-badge pro">Pro · 19,99 zł</div>
+        <div class="sc2-title">Outbound Machine — od ICP do podpisanej umowy</div>
+        <div class="sc2-tools">Apollo · Clay · Hunter · Smartlead · n8n · Zapier · Make · Airtable · HubSpot</div>
+        <div class="sc2-ep-count">
+          <span>12 odcinków</span>
+          <a href="register.html?plan=single&serie=2" class="btn btn-secondary btn-sm">Kup serię</a>
         </div>
-        <span class="series-badge badge-pro">Pro</span>
       </div>
-      <div class="series-card">
-        <div class="series-num">03</div>
-        <div class="series-info">
-          <h3>Voice, Video, Brand — produkcja contentu z AI</h3>
-          <div class="series-tools">ElevenLabs · HeyGen · Veo 3.1 · Midjourney · Runway · Descript · Notion</div>
-          <div class="series-tags">
-            <span class="tag">Audio</span>
-            <span class="tag">Video</span>
-            <span class="tag">Brand</span>
-          </div>
+      <div class="series-card-v2 reveal reveal-delay-2">
+        <span class="sc2-num">03</span>
+        <div class="sc2-badge pro">Pro · 19,99 zł</div>
+        <div class="sc2-title">Voice, Video, Brand — produkcja contentu z AI</div>
+        <div class="sc2-tools">ElevenLabs · HeyGen · Veo 3.1 · Midjourney · Runway · Descript · Notion</div>
+        <div class="sc2-ep-count">
+          <span>12 odcinków</span>
+          <a href="register.html?plan=single&serie=3" class="btn btn-secondary btn-sm">Kup serię</a>
         </div>
-        <span class="series-badge badge-pro">Pro</span>
       </div>
     </div>
   </div>
 </section>
 
-<section id="pricing" style="padding: 96px 0; position: relative; z-index: 1;">
+<!-- PRICING -->
+<section class="lp-section" id="pricing">
   <div class="container">
-    <div class="section-header" style="text-align: center;">
+    <div class="lp-section-head centered reveal">
       <span class="label">Cennik</span>
-      <h2 style="margin-top: 8px;">Płacisz raz. Masz na zawsze.</h2>
-      <p style="margin: 8px auto 0;">Bez subskrypcji, bez automatycznych odnowień. Jeden odcinek demo za darmo.</p>
+      <h2>Płacisz raz. Masz na zawsze.</h2>
+      <p>Bez subskrypcji. Bez automatycznych odnowień. Bez kredytówki na start.</p>
     </div>
-    <div class="pricing-grid">
-      <div class="price-card">
+    <div class="pricing-v2">
+      <div class="price-card reveal">
         <div class="price-tier">Free</div>
-        <div class="price-amount">0<span style="font-size: 1rem; font-weight: 400; color: var(--text-3);"> zł</span></div>
-        <div class="price-period">Bez kredytówki</div>
+        <div class="price-amount">0 <sub style="font-size:1rem;color:var(--text-3);vertical-align:baseline;">zł</sub></div>
+        <div class="price-period">Zawsze · bez karty</div>
         <ul class="price-list">
           <li><span class="check">✓</span> 1 odcinek demo (S1E01)</li>
-          <li><span class="check">✓</span> Pliki bonusowe do tego odcinka</li>
-          <li><span class="check">✓</span> Pasek postępu i quiz</li>
-          <li class="off"><span class="cross">×</span> Bez pozostałych 35 odcinków</li>
-          <li class="off"><span class="cross">×</span> Bez certyfikatu</li>
+          <li><span class="check">✓</span> Pliki bonusowe do odcinka</li>
+          <li><span class="check">✓</span> Quiz + pasek postępu</li>
+          <li class="off"><span class="cross">×</span> Pozostałe 35 odcinków</li>
+          <li class="off"><span class="cross">×</span> Certyfikat</li>
         </ul>
-        <a href="register.html" class="btn btn-secondary btn-xl" style="margin-top: auto;">Załóż konto</a>
+        <a href="register.html" class="btn btn-secondary btn-xl" style="margin-top:auto;">Załóż konto</a>
       </div>
-      <div class="price-card">
+      <div class="price-card reveal reveal-delay-1">
         <div class="price-tier">Pojedyncza seria</div>
-        <div class="price-amount">19,99<span style="font-size: 1rem; font-weight: 400; color: var(--text-3);"> zł</span></div>
+        <div class="price-amount">19,99 <sub style="font-size:1rem;color:var(--text-3);vertical-align:baseline;">zł</sub></div>
         <div class="price-period">Jednorazowo · dożywotni dostęp</div>
         <ul class="price-list">
           <li><span class="check">✓</span> 12 odcinków wybranej serii</li>
           <li><span class="check">✓</span> Vault tej serii (~30 plików)</li>
-          <li><span class="check">✓</span> Quizy i certyfikat serii</li>
-          <li><span class="check">✓</span> Aktualizacje na zawsze</li>
+          <li><span class="check">✓</span> Quiz + certyfikat serii</li>
+          <li><span class="check">✓</span> Aktualizacje dożywotnio</li>
           <li class="off"><span class="cross">×</span> Tylko 1 z 3 serii</li>
         </ul>
-        <a href="register.html?plan=single" class="btn btn-secondary btn-xl" style="margin-top: auto;">Wybierz serię</a>
+        <a href="register.html?plan=single" class="btn btn-secondary btn-xl" style="margin-top:auto;">Wybierz serię</a>
       </div>
-      <div class="price-card featured">
+      <div class="price-card featured reveal reveal-delay-2">
         <div class="price-top-label">Najlepszy wybór</div>
         <div class="price-tier price-featured-tier">Wszystkie 3 serie</div>
-        <div class="price-amount">35,00<span style="font-size: 1rem; font-weight: 400; color: var(--text-3);"> zł</span></div>
+        <div class="price-amount">35,00 <sub style="font-size:1rem;color:var(--text-3);vertical-align:baseline;">zł</sub></div>
         <div class="price-period">Jednorazowo · pełen dostęp</div>
         <ul class="price-list">
           <li><span class="check">✓</span> Wszystkie 36 odcinków</li>
-          <li><span class="check">✓</span> Pełen Vault (100+ plików)</li>
-          <li><span class="check">✓</span> Certyfikat ukończenia (LinkedIn + PDF)</li>
+          <li><span class="check">✓</span> Pełny Vault (100+ plików)</li>
+          <li><span class="check">✓</span> Certyfikat LinkedIn + PDF</li>
           <li><span class="check">✓</span> Nowe odcinki bez dopłat</li>
-          <li><span class="check">✓</span> Token-secured · jedna sesja na konto</li>
+          <li><span class="check">✓</span> Token-secured · 1 sesja/konto</li>
         </ul>
-        <a href="register.html?plan=full" class="btn btn-primary btn-xl" style="margin-top: auto;">Kup wszystko za 35 zł</a>
+        <a href="register.html?plan=full" class="btn btn-primary btn-xl" style="margin-top:auto;">Kup wszystko — 35 zł</a>
       </div>
     </div>
-    <p style="text-align: center; margin-top: 24px; font-size: 0.8125rem; color: var(--text-3);">
-      Płacisz w PLN · Faktura VAT na życzenie · Zwrot w 14 dni bez pytań
+    <p style="text-align:center; margin-top:20px; font-size:0.8125rem; color:var(--text-4);">
+      Płatność w PLN · Faktura VAT na życzenie · Zwrot w 14 dni bez pytań
     </p>
   </div>
 </section>
 
-<footer style="padding: 48px 0; border-top: 1px solid var(--line-1); position: relative; z-index: 1;">
-  <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
-    <div style="display: flex; align-items: center; gap: 8px;">
-      <span class="logo-mark">AA</span>
-      <span style="font-size: 0.875rem; color: var(--text-3);">© 2026 Wojciech Łuszczyński · <a href="https://wojciech.io" style="color: var(--orange);">wojciech.io</a></span>
+<!-- HOST -->
+<section class="lp-section lp-section-alt" id="prowadzacy">
+  <div class="container">
+    <div class="lp-section-head reveal">
+      <span class="label">Prowadzący</span>
+      <h2>Ludzie za Akademią AI</h2>
     </div>
-    <div style="display: flex; gap: 20px;">
-      <a href="https://www.linkedin.com/in/wojciech-luszczynski/" class="nav-link">LinkedIn</a>
-      <a href="https://github.com/wojciechluszczynski/akademia-ai" class="nav-link">GitHub</a>
-      <a href="mailto:hello@wojciech.io" class="nav-link">Kontakt</a>
+    <div class="host-section">
+      <div class="host-card-main reveal">
+        <div class="host-avatar-large">W</div>
+        <div class="host-name">Wojciech Łuszczyński</div>
+        <div class="host-role">Founder · Growth Marketer · Host</div>
+        <div class="host-bio">
+          20+ lat w B2B SaaS. Buduję i testuję AI stacki na własnym budżecie i własnych klientach.
+          Piszę o tym na Substack. Prowadzę Akademię AI żeby nie musieć tłumaczyć każdemu z osobna.
+        </div>
+        <div class="host-creds">
+          <div class="host-cred"><div class="host-cred-dot"></div>Growth marketing B2B SaaS — 20 lat</div>
+          <div class="host-cred"><div class="host-cred-dot"></div>Clay · Claude · n8n w codziennej pracy</div>
+          <div class="host-cred"><div class="host-cred-dot"></div>Substack: wojciech.io · app.wojciech.io</div>
+          <div class="host-cred"><div class="host-cred-dot"></div>LinkedIn: 5k+ obserwujących</div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:0.75rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-4); margin-bottom:16px;">Goście — wkrótce</div>
+        <div class="host-guests">
+          <div class="guest-card reveal reveal-delay-1">
+            <div class="guest-avatar">?</div>
+            <div class="guest-name">Gość serii 2</div>
+            <div class="guest-role">Outbound Specialist</div>
+            <span class="guest-chip">Wkrótce</span>
+          </div>
+          <div class="guest-card reveal reveal-delay-2">
+            <div class="guest-avatar">?</div>
+            <div class="guest-name">Gość serii 3</div>
+            <div class="guest-role">AI Video Creator</div>
+            <span class="guest-chip">Wkrótce</span>
+          </div>
+          <div class="guest-card reveal reveal-delay-3">
+            <div class="guest-avatar">?</div>
+            <div class="guest-name">Gość specjalny</div>
+            <div class="guest-role">B2B SaaS Founder</div>
+            <span class="guest-chip">Wkrótce</span>
+          </div>
+        </div>
+        <div style="margin-top:16px; padding:16px 18px; background:var(--bg-card); border:1px solid var(--line-1); border-radius:var(--r-lg);">
+          <div style="font-size:0.8125rem; color:var(--text-3); line-height:1.6;">
+            Zapraszam ekspertów z konkretnych narzędzi na pogłębione rozmowy. Chcesz pojawić się jako gość?
+            <a href="mailto:hello@wojciech.io" style="color:var(--orange);">Napisz do mnie.</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<div class="lp-cta-block">
+  <div class="container">
+    <h2>Jeden odcinek.<br><em style="font-style:normal; color:var(--orange);">Za darmo. Teraz.</em></h2>
+    <p>Bez kredytówki. Zaloguj się, posłuchaj S1E01, pobierz pliki.</p>
+    <div class="lp-cta-row">
+      <a href="register.html" class="btn btn-primary btn-lg">Zacznij za darmo</a>
+      <a href="login.html" class="btn btn-ghost btn-lg">Mam już konto</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span class="logo-mark">AA</span>
+        <span class="footer-copy">© 2026 Wojciech Łuszczyński</span>
+        <span class="footer-sep">·</span>
+        <a href="https://wojciech.io" class="nav-link" style="color:var(--orange);">wojciech.io</a>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/wojciech-luszczynski/">LinkedIn</a>
+        <a href="https://github.com/wojciechluszczynski/akademia-ai">GitHub</a>
+        <a href="mailto:hello@wojciech.io">Kontakt</a>
+      </div>
     </div>
   </div>
 </footer>
 
 <script>
-  (function buildWave() {
-    const wf = document.getElementById('waveform');
-    if (!wf) return;
-    const bars = 56;
-    let html = '';
-    for (let i = 0; i < bars; i++) {
-      const h = 20 + Math.random() * 70;
-      const cls = i < 18 ? 'pp-bar played' : (i === 18 ? 'pp-bar current' : 'pp-bar');
-      html += `<div class="${cls}" style="height: ${h}%;"></div>`;
-    }
-    wf.innerHTML = html;
-  })();
+  // Scroll reveal
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-  let demoPlaying = false;
-  let demoTime = 222;
-  const demoTotal = 684;
-
-  function fmt(s) {
-    s = Math.max(0, Math.floor(s));
-    return String(Math.floor(s/60)).padStart(2,'0') + ':' + String(s%60).padStart(2,'0');
-  }
-  function demoToggle() {
-    demoPlaying = !demoPlaying;
-    document.getElementById('demo-play').textContent = demoPlaying ? '❚❚' : '▶';
-    if (demoPlaying) demoTick();
-  }
-  function demoTick() {
-    if (!demoPlaying) return;
-    demoTime = Math.min(demoTotal, demoTime + 1);
-    document.getElementById('pp-time').textContent = fmt(demoTime) + ' / ' + fmt(demoTotal);
-    if (demoTime >= demoTotal) { demoPlaying = false; document.getElementById('demo-play').textContent = '▶'; return; }
-    setTimeout(demoTick, 1000);
-  }
-  function demoSkip(s) {
-    demoTime = Math.max(0, Math.min(demoTotal, demoTime + s));
-    document.getElementById('pp-time').textContent = fmt(demoTime) + ' / ' + fmt(demoTotal);
-  }
-
-  (function initCountUp() {
-    const nums = document.querySelectorAll('.transform-after-num[data-target]');
-    if (!nums.length) return;
-    const observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (!entry.isIntersecting) return;
-        observer.unobserve(entry.target);
-        const el = entry.target;
-        const target = parseInt(el.dataset.target, 10);
-        const duration = 900;
-        const start = performance.now();
-        function tick(now) {
-          const elapsed = now - start;
-          const progress = Math.min(elapsed / duration, 1);
-          const ease = 1 - Math.pow(1 - progress, 3);
-          el.textContent = Math.round(ease * target);
-          if (progress < 1) requestAnimationFrame(tick);
-        }
-        el.textContent = '0';
-        requestAnimationFrame(tick);
-      });
-    }, { threshold: 0.3 });
-    nums.forEach(function(el) { observer.observe(el); });
-  })();
-
+  // Language
   const TX = {
     pl: {
-      eyebrow: 'Sezon 1 — start maj 2026',
-      title: 'Narzędzia AI<br>które <span class="gradient">naprawdę działają</span><br>w marketingu B2B',
-      desc: '36 odcinków audio, gotowe workflow, prompty i blueprinty. 20 lat w growth marketingu skondensowane w trzech seriach. Płacisz raz — masz na zawsze.'
+      badge: 'Sezon 1 — maj 2026',
+      h1: 'AI w marketingu B2B.<br><em>Bez bullshitu.</em>',
+      sub: '36 odcinków audio, gotowe workflow i pliki do pobrania. 20 lat w growth marketingu skondensowane w jednym miejscu.'
     },
     en: {
-      eyebrow: 'Season 1 — launching May 2026',
-      title: 'AI tools<br>that <span class="gradient">actually work</span><br>in B2B marketing',
-      desc: '36 audio episodes, ready workflows, prompts and blueprints. 20 years in growth marketing condensed into three series. Pay once — own forever.'
+      badge: 'Season 1 — May 2026',
+      h1: 'AI in B2B marketing.<br><em>Without the hype.</em>',
+      sub: '36 audio episodes, ready workflows and downloadable files. 20 years of growth marketing in one place.'
     }
   };
   function setLang(lang) {
     const t = TX[lang];
-    document.getElementById('eyebrow').textContent = t.eyebrow;
-    document.getElementById('hero-title').innerHTML = t.title;
-    document.getElementById('hero-desc').textContent = t.desc;
+    document.getElementById('badge-text').textContent = t.badge;
+    document.getElementById('hero-h1').innerHTML = t.h1;
+    document.getElementById('hero-sub').textContent = t.sub;
     document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
     document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
   }
+
+  // Make the reveal happen immediately for first visible elements
+  setTimeout(() => {
+    document.querySelectorAll('.reveal').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight) el.classList.add('visible');
+    });
+  }, 100);
 </script>
 
 </body>
