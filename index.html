@@ -668,8 +668,92 @@
     /* Host */
     .host-section {
       display: grid;
-      grid-template-columns: 400px 1fr;
-      gap: 60px; align-items: start;
+      grid-template-columns: 420px 1fr;
+      gap: 60px; align-items: center;
+    }
+
+    /* ── Host visual: cutout on dark atmospheric bg ── */
+    .host-visual {
+      position: relative;
+      height: 520px;
+      border-radius: var(--r-2xl);
+      overflow: hidden;
+    }
+
+    /* Dark base */
+    .host-visual-bg {
+      position: absolute; inset: 0;
+      background: #0c0b0a;
+      border-radius: inherit;
+    }
+
+    /* Dot grid pattern */
+    .host-visual-bg::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+      background-size: 22px 22px;
+      border-radius: inherit;
+    }
+
+    /* Orange glow from bottom-left */
+    .host-visual-bg::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: -40px;
+      width: 340px; height: 340px;
+      background: radial-gradient(circle, rgba(249,115,22,0.22) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Grain overlay via SVG filter */
+    .host-visual-grain {
+      position: absolute; inset: 0; z-index: 3;
+      border-radius: inherit;
+      pointer-events: none;
+      opacity: 0.55;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+    }
+
+    /* Vignette on edges */
+    .host-visual-vignette {
+      position: absolute; inset: 0; z-index: 4;
+      border-radius: inherit;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at center, transparent 40%, rgba(8,7,6,0.7) 100%);
+    }
+
+    /* Fade to bg at bottom so card info bleeds in */
+    .host-visual-fade {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 180px; z-index: 5;
+      background: linear-gradient(to top, #0c0b0a 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    /* The cutout photo */
+    .host-cutout {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 96%;
+      width: auto;
+      object-fit: contain;
+      object-position: bottom center;
+      z-index: 2;
+      filter: brightness(0.95) contrast(1.05);
+    }
+
+    /* Name/role overlaid on photo at bottom */
+    .host-overlay-info {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      z-index: 6;
+      padding: 28px 28px 24px;
+      background: linear-gradient(to top, rgba(10,9,8,0.95) 60%, transparent);
     }
 
     .host-card-main {
@@ -678,14 +762,6 @@
       border-radius: var(--r-2xl);
       overflow: hidden;
       position: relative;
-    }
-
-    .host-photo-full {
-      width: 100%;
-      aspect-ratio: 3/4;
-      object-fit: cover;
-      object-position: top center;
-      display: block;
     }
 
     .host-card-body { padding: 24px 28px 28px; }
@@ -1017,6 +1093,7 @@
       .series-grid { grid-template-columns: 1fr; }
       .inspiration-grid { grid-template-columns: 1fr; }
       .host-section { grid-template-columns: 1fr; gap: 32px; }
+      .host-visual { height: 420px; }
       .pricing-v2 { grid-template-columns: 1fr; max-width: 420px; }
       .video-grid { grid-template-columns: 1fr; }
       .lp-section { padding: 80px 0; }
@@ -1308,14 +1385,14 @@
   <div class="container">
     <div class="lp-section-head reveal">
       <span class="label">Co dostajesz</span>
-      <h2>Wszystko żeby zacząć działać jutro</h2>
-      <p>Nie kurs teoretyczny. Każdy odcinek kończy się plikiem do użycia w pracy.</p>
+      <h2>Co dostajesz w każdym odcinku</h2>
+      <p>Audio + quiz + plik do pobrania. Żadnego odcinka bez czegoś gotowego do wdrożenia.</p>
     </div>
     <div class="bento-grid">
       <div class="bento-card bento-span-7 reveal">
         <div class="bento-label">Audio</div>
-        <h3>36 odcinków. Każdy 10-15 min.</h3>
-        <p>Słuchasz w drodze, w pracy, na siłowni. Transkrypt do skanowania w 30 sekund. PL i EN jednym kliknięciem.</p>
+        <h3>36 odcinków po 10–15 minut.</h3>
+        <p>Słuchasz w drodze, w pracy, na siłowni. Do każdego odcinka transkrypt do przeskanowania w 30 sekund. Wersja PL i EN jednym kliknięciem.</p>
         <div class="bento-visual">
           <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px;">
             <div style="width:36px;height:36px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0;">▶</div>
@@ -1345,8 +1422,8 @@
       </div>
       <div class="bento-card bento-span-5 reveal reveal-delay-2">
         <div class="bento-label">Quizy</div>
-        <h3>Sprawdź wiedzę w praktyce</h3>
-        <p>3 pytania po każdym odcinku. Pojawia się automatycznie na 95% postępu.</p>
+        <h3>3 pytania po każdym odcinku</h3>
+        <p>Pojawia się automatycznie na 95% postępu. 60% poprawnych = zaliczone. Bez tego nie ma certyfikatu.</p>
         <div class="bento-quiz-preview">
           <div class="bento-quiz-option">Claude ma 128k context window</div>
           <div class="bento-quiz-option correct">Gemini 2.5 Pro ma 1M context window ✓</div>
@@ -1355,8 +1432,8 @@
       </div>
       <div class="bento-card bento-span-7 reveal reveal-delay-3">
         <div class="bento-label">Certyfikat</div>
-        <h3>Certyfikat który coś znaczy</h3>
-        <p>Unikalny ID, PDF z podpisem, link na LinkedIn. Generowany po zaliczeniu wszystkich quizów w serii. Nie możesz go dostać bez rzeczywistego ukończenia.</p>
+        <h3>Certyfikat z unikalnym ID</h3>
+        <p>PDF z podpisem + link na LinkedIn. Generuje się dopiero po zaliczeniu wszystkich quizów w serii. Nie da się go kupić osobno.</p>
         <div class="bento-cert-preview">
           <div class="bento-cert-ring">
             <span style="font-size: 0.35rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;">Verified</span>
@@ -1476,8 +1553,8 @@
   <div class="container">
     <div class="lp-section-head reveal">
       <span class="label">Inspiracje video</span>
-      <h2>Skąd czerpiemy</h2>
-      <p>Odcinki nagrywane w duchu tych rozmów. Konkret, bez panelowych ogólników.</p>
+      <h2>Kogo słucham, zanim nagram odcinek</h2>
+      <p>3 głosy, które wymuszają konkret. Bez konferencyjnych ogólników.</p>
     </div>
     <div class="video-grid">
       <a href="https://www.youtube.com/@MarketingAgainstTheGrain" target="_blank" class="video-card reveal">
@@ -1593,29 +1670,43 @@
   <div class="container">
     <div class="lp-section-head reveal">
       <span class="label">Prowadzący</span>
-      <h2>Kto za tym stoi</h2>
+      <h2>14 lat w terenie, nie w PowerPoint</h2>
     </div>
     <div class="host-section">
-      <div class="host-card-main reveal">
-        <img src="assets/wojciech-blue.png" alt="Wojciech Łuszczyński" class="host-photo-full">
-        <div class="host-card-body">
-          <div class="host-name">Wojciech Łuszczyński</div>
-          <div class="host-role">Founder · Growth Marketer · Host</div>
-          <div class="host-bio">
-            14 lat w marketingu i sprzedaży. Buduję i testuję AI stacki na własnym budżecie i własnych klientach.
-            Prowadzę Akademię AI, bo najszybciej uczysz się na cudzych błędach.
-          </div>
-          <div class="host-creds">
-            <div class="host-cred"><div class="host-cred-dot"></div>Marketing · growth · sprzedaż · 14 lat</div>
-            <div class="host-cred"><div class="host-cred-dot"></div>Clay · Claude · n8n · Apollo na co dzień</div>
-            <div class="host-cred"><div class="host-cred-dot"></div>Substack · wojciech.io</div>
-            <div class="host-cred"><div class="host-cred-dot"></div>LinkedIn: 5k+ obserwujących</div>
-          </div>
+      <div class="host-visual reveal">
+        <!-- Dark atmospheric background -->
+        <div class="host-visual-bg"></div>
+
+        <!-- Cutout photo blending into dark bg -->
+        <img src="assets/wojciech-cutout.png" alt="Wojciech Łuszczyński" class="host-cutout">
+
+        <!-- Atmospheric overlays -->
+        <div class="host-visual-grain"></div>
+        <div class="host-visual-vignette"></div>
+        <div class="host-visual-fade"></div>
+
+        <!-- Name overlaid at bottom -->
+        <div class="host-overlay-info">
+          <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--orange);margin-bottom:6px;">Prowadzący</div>
+          <div style="font-size:1.25rem;font-weight:900;letter-spacing:-0.03em;color:#fff;margin-bottom:2px;">Wojciech Łuszczyński</div>
+          <div style="font-size:0.8125rem;color:var(--text-3);">Founder · Growth Marketer · Host</div>
         </div>
       </div>
 
       <div>
-        <div style="font-size:0.75rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-4); margin-bottom:20px;">Eksperci i głosy inspirujące ten program</div>
+        <div style="margin-bottom: 32px;">
+          <div style="font-size:0.875rem;color:var(--text-3);line-height:1.8;margin-bottom:20px;">
+            14 lat w marketingu i sprzedaży. Testuję AI stacki na własnych klientach i własnym budżecie — nie na benchmarkach.
+            Prowadzę Akademię AI bo chcę skrócić Twoją krzywą uczenia o kilka miesięcy.
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:24px;">
+            <div class="host-cred"><div class="host-cred-dot"></div>Clay · Claude · n8n · Apollo · Perplexity w codziennej pracy</div>
+            <div class="host-cred"><div class="host-cred-dot"></div>Substack: wojciech.io · LinkedIn: 5k+ obserwujących</div>
+            <div class="host-cred"><div class="host-cred-dot"></div>Growth marketing · demand gen · outbound · content</div>
+          </div>
+          <a href="https://wojciech.io" target="_blank" class="btn btn-ghost btn-sm">wojciech.io →</a>
+        </div>
+        <div style="font-size:0.75rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-4); margin-bottom:20px;">Eksperci inspirujący ten program</div>
         <div class="inspiration-grid">
           <div class="inspiration-card reveal">
             <div class="insp-avatar" style="background: rgba(255,74,0,0.12); color: #FF4A00;">KF</div>
@@ -1891,6 +1982,20 @@
     document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
     document.querySelector(`.lang-btn[onclick*="${lang}"]`).classList.add('active');
   }
+</script>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "Akademia AI",
+  "description": "36 odcinków audio o narzędziach AI, automatyzacji i contencie. Gotowe workflow, prompty i blueprinty testowane na własnych klientach. 4 serie tematyczne: AI Stack 2026, Outbound Machine, Voice & Video, B2B Marketing.",
+  "provider": { "@type": "Person", "name": "Wojciech Łuszczyński", "url": "https://wojciech.io" },
+  "url": "https://academy.wojciech.io",
+  "inLanguage": "pl",
+  "offers": { "@type": "Offer", "price": "97", "priceCurrency": "PLN" }
+}
 </script>
 
 </body>
