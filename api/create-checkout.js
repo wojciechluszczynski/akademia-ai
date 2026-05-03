@@ -7,6 +7,7 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const PRICES = {
   serie1: 'price_1TT5atIyEDJsP5xxupzUGnda',
   serie2: 'price_1TT5cZIyEDJsP5xxm1XPvS8B',
+  serie3: process.env.STRIPE_PRICE_SERIE3 || '', // dodaj w Vercel env po utworzeniu produktu
   all:    'price_1TT5dCIyEDJsP5xxqjcBMjlW',
 };
 
@@ -29,6 +30,7 @@ module.exports = async function handler(req, res) {
   const planNames = {
     serie1: 'Akademia AI — Seria 1 (AI Stack 2026)',
     serie2: 'Akademia AI — Seria 2 (Outbound Machine)',
+    serie3: 'Akademia AI — Seria 3 (Voice, Video, Brand)',
     all:    'Akademia AI — Wszystkie serie',
   };
 
@@ -44,10 +46,16 @@ module.exports = async function handler(req, res) {
         planName: planNames[plan],
       },
       payment_intent_data: {
-        metadata: {
-          userId: userId || '',
-          plan,
-        }
+        metadata: { userId: userId || '', plan },
+      },
+      // Automatyczna faktura PDF wysyłana na email kupującego przez Stripe
+      invoice_creation: {
+        enabled: true,
+        invoice_data: {
+          description: `${planNames[plan]} — dożywotni dostęp`,
+          footer: 'Akademia AI · Wojciech Łuszczyński · wojciech.io · Zwolnienie z VAT art. 113 ustawy o VAT',
+          rendering_options: { amount_tax_display: 'exclude_tax' },
+        },
       },
       allow_promotion_codes: true,
     };

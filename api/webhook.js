@@ -16,6 +16,7 @@ const RESEND_KEY        = process.env.RESEND_API_KEY;
 const PLAN_MAP = {
   serie1: 'serie1',
   serie2: 'serie2',
+  serie3: 'serie3',
   all:    'pro',      // full access
 };
 

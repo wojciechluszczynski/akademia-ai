@@ -668,21 +668,32 @@
     /* Host */
     .host-section {
       display: grid;
-      grid-template-columns: 360px 1fr;
+      grid-template-columns: 400px 1fr;
       gap: 60px; align-items: start;
     }
 
     .host-card-main {
       background: var(--bg-card);
       border: 1px solid var(--line-2);
-      border-radius: var(--r-2xl); padding: 32px;
+      border-radius: var(--r-2xl);
+      overflow: hidden;
       position: relative;
     }
 
+    .host-photo-full {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    .host-card-body { padding: 24px 28px 28px; }
+
     .host-photo-circle {
-      width: 88px; height: 88px; border-radius: 50%;
+      width: 72px; height: 72px; border-radius: 50%;
       border: 2px solid var(--orange-line);
-      overflow: hidden; margin-bottom: 16px;
+      overflow: hidden; margin-bottom: 14px;
       background: var(--bg-input);
     }
 
@@ -1022,8 +1033,7 @@
 <nav class="navbar">
   <div class="container">
     <a href="index.html" class="logo">
-      <span class="logo-mark">AA</span>
-      Akademia AI
+      <img src="assets/logo.svg" alt="Akademia AI" style="height:36px;width:auto;">
     </a>
     <div class="nav-right">
       <a href="#program" class="nav-link">Program</a>
@@ -1569,7 +1579,7 @@
     <div style="text-align:center; margin-top:20px; display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap;">
       <span style="font-size:0.8125rem; color:var(--text-4);">Płatność w PLN</span>
       <span style="color:var(--text-4);">·</span>
-      <span style="font-size:0.8125rem; color:var(--text-4);">Faktura VAT na życzenie</span>
+      <span style="font-size:0.8125rem; color:var(--text-4);">Ceny netto = brutto (zwolnienie art. 113)</span>
       <span style="color:var(--text-4);">·</span>
       <span style="font-size:0.8125rem; color:var(--text-4);">Zwrot w 14 dni bez pytań</span>
       <span style="color:var(--text-4);">·</span>
@@ -1587,20 +1597,20 @@
     </div>
     <div class="host-section">
       <div class="host-card-main reveal">
-        <div class="host-photo-circle">
-          <img src="assets/wojciech-avatar.png" alt="Wojciech Łuszczyński">
-        </div>
-        <div class="host-name">Wojciech Łuszczyński</div>
-        <div class="host-role">Founder · Growth Marketer · Host</div>
-        <div class="host-bio">
-          14 lat w marketingu i sprzedaży. Buduję i testuję AI stacki na własnym budżecie i własnych klientach.
-          Piszę o tym na Substack. Prowadzę Akademię AI, bo najszybciej uczysz się na cudzych błędach.
-        </div>
-        <div class="host-creds">
-          <div class="host-cred"><div class="host-cred-dot"></div>Marketing · growth · sprzedaż · 14 lat doświadczenia</div>
-          <div class="host-cred"><div class="host-cred-dot"></div>Clay · Claude · n8n · Apollo w codziennej pracy</div>
-          <div class="host-cred"><div class="host-cred-dot"></div>Substack · wojciech.io · app.wojciech.io</div>
-          <div class="host-cred"><div class="host-cred-dot"></div>LinkedIn: 5k+ obserwujących</div>
+        <img src="assets/wojciech-blue.png" alt="Wojciech Łuszczyński" class="host-photo-full">
+        <div class="host-card-body">
+          <div class="host-name">Wojciech Łuszczyński</div>
+          <div class="host-role">Founder · Growth Marketer · Host</div>
+          <div class="host-bio">
+            14 lat w marketingu i sprzedaży. Buduję i testuję AI stacki na własnym budżecie i własnych klientach.
+            Prowadzę Akademię AI, bo najszybciej uczysz się na cudzych błędach.
+          </div>
+          <div class="host-creds">
+            <div class="host-cred"><div class="host-cred-dot"></div>Marketing · growth · sprzedaż · 14 lat</div>
+            <div class="host-cred"><div class="host-cred-dot"></div>Clay · Claude · n8n · Apollo na co dzień</div>
+            <div class="host-cred"><div class="host-cred-dot"></div>Substack · wojciech.io</div>
+            <div class="host-cred"><div class="host-cred-dot"></div>LinkedIn: 5k+ obserwujących</div>
+          </div>
         </div>
       </div>
 

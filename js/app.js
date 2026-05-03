@@ -674,6 +674,19 @@ function showUpgrade() {
           <div style="font-size:1rem;font-weight:900;color:var(--orange);flex-shrink:0;margin-left:16px;">97 PLN</div>
         </a>
 
+        <a href="/api/create-checkout?plan=serie3&userId=${userId}&email=${email}"
+          style="display:flex;align-items:center;justify-content:space-between;
+          background:var(--bg-input);border:1px solid var(--line-1);border-radius:10px;
+          padding:14px 18px;text-decoration:none;transition:border-color .15s;"
+          onmouseover="this.style.borderColor='var(--orange-line)'"
+          onmouseout="this.style.borderColor='var(--line-1)'">
+          <div>
+            <div style="font-size:0.875rem;font-weight:700;color:var(--text-1);">Seria 3 — Voice, Video, Brand</div>
+            <div style="font-size:0.75rem;color:var(--text-3);">12 odcinków · ElevenLabs, HeyGen, Midjourney, Runway...</div>
+          </div>
+          <div style="font-size:1rem;font-weight:900;color:var(--orange);flex-shrink:0;margin-left:16px;">97 PLN</div>
+        </a>
+
         <a href="/api/create-checkout?plan=all&userId=${userId}&email=${email}"
           style="display:flex;align-items:center;justify-content:space-between;
           background:linear-gradient(135deg,rgba(249,115,22,0.12),rgba(249,115,22,0.04));
