@@ -1,0 +1,174 @@
+{
+  "_meta": {
+    "name": "Akademia AI — Clay Enrichment Flow v1",
+    "description": "B2B SaaS ICP enrichment workflow. Import do Clay i modyfikuj wg własnego ICP.",
+    "author": "Wojciech Łuszczyński",
+    "source": "akademia.wojciech.io",
+    "series": "Seria 2 — Outbound Machine",
+    "version": "1.0.0",
+    "last_updated": "2026-05"
+  },
+
+  "workflow": {
+    "name": "B2B SaaS ICP Enrichment & Personalization",
+    "description": "Wzbogaca listę kontaktów z Apollo o dane z LinkedIn, Clearbit i generuje personalizowany opening line przez Claude API",
+    "trigger": "csv_import",
+
+    "steps": [
+      {
+        "step": 1,
+        "name": "Import from Apollo",
+        "type": "data_source",
+        "provider": "apollo_io",
+        "fields_imported": [
+          "first_name", "last_name", "email", "title",
+          "company_name", "company_domain", "company_size",
+          "linkedin_url", "phone"
+        ],
+        "filters": {
+          "company_size": ["11-50", "51-200", "201-500"],
+          "title_keywords": ["Head of", "VP", "Director", "CMO", "CRO", "CEO", "Founder"],
+          "industry": ["SaaS", "Software", "Technology"],
+          "location": ["Poland", "Germany", "UK", "Netherlands", "Czech Republic"]
+        },
+        "note": "Eksportuj max 500 kontaktów na raz dla lepszej jakości enrichmentu"
+      },
+
+      {
+        "step": 2,
+        "name": "LinkedIn Profile Scrape",
+        "type": "enrichment",
+        "provider": "proxycurl_linkedin",
+        "input": "linkedin_url",
+        "fields_fetched": [
+          "headline", "summary", "current_company_description",
+          "tenure_months", "connections", "recent_activity_summary"
+        ],
+        "fallback": "skip_if_no_linkedin",
+        "note": "Proxycurl ~$0.01/profil. Przy 500 kontaktach = $5. Warto."
+      },
+
+      {
+        "step": 3,
+        "name": "Company Enrichment — Clearbit",
+        "type": "enrichment",
+        "provider": "clearbit",
+        "input": "company_domain",
+        "fields_fetched": [
+          "company_description", "tech_stack", "funding_total",
+          "funding_stage", "employee_count", "annual_revenue_estimate",
+          "categories", "alexa_rank"
+        ],
+        "fallback": "apollo_company_data",
+        "note": "Clearbit daje tech stack — kluczowy do personalizacji"
+      },
+
+      {
+        "step": 4,
+        "name": "Recent News — Perplexity API",
+        "type": "enrichment",
+        "provider": "perplexity_api",
+        "input": "company_name",
+        "prompt": "What are the most recent (last 90 days) business developments for {{company_name}}? Focus on: funding, new products, leadership changes, expansion. Return 2-3 bullet points max, be concise.",
+        "output_field": "company_recent_news",
+        "run_for": "top_50_percent_by_company_size",
+        "note": "Uruchamiaj tylko dla firm >50 pracowników — mniejsze rzadko mają news coverage"
+      },
+
+      {
+        "step": 5,
+        "name": "Personalized Opening Line — Claude API",
+        "type": "ai_enrichment",
+        "provider": "anthropic_claude",
+        "model": "claude-sonnet-4-6",
+        "temperature": 0.7,
+        "prompt": "Write a personalized cold email opening line for {{first_name}} {{last_name}}, {{title}} at {{company_name}}.\n\nContext available:\n- LinkedIn headline: {{headline}}\n- Company description: {{company_description}}\n- Tech stack: {{tech_stack}}\n- Recent news: {{company_recent_news}}\n- Company size: {{employee_count}} employees\n\nRules:\n- Max 2 sentences, max 25 words\n- Reference ONE specific detail (not generic like 'saw your profile')\n- No compliments, no 'I hope this email finds you well'\n- In Polish if company is Polish, in English otherwise\n- Tone: peer-to-peer, not salesy\n\nReturn ONLY the opening line, nothing else.",
+        "output_field": "personalized_opener",
+        "note": "Claude Sonnet 4.6 = $3/1M input tokens. 500 leads = ~$0.30. Opłaca się zawsze."
+      },
+
+      {
+        "step": 6,
+        "name": "Lead Scoring",
+        "type": "formula",
+        "output_field": "icp_score",
+        "formula": {
+          "base": 0,
+          "scoring_rules": [
+            { "condition": "company_size >= 50", "points": 20 },
+            { "condition": "company_size >= 200", "points": 20 },
+            { "condition": "title contains ['VP', 'Director', 'Head of', 'CMO', 'CRO']", "points": 25 },
+            { "condition": "title contains ['CEO', 'Founder', 'Co-Founder']", "points": 15 },
+            { "condition": "tech_stack contains ['HubSpot', 'Salesforce', 'Outreach']", "points": 20 },
+            { "condition": "tenure_months >= 6 AND tenure_months <= 24", "points": 15 },
+            { "condition": "has_email = true", "points": 10 },
+            { "condition": "has_linkedin = true", "points": 5 },
+            { "condition": "funding_stage in ['Series A', 'Series B', 'Series C']", "points": 20 }
+          ],
+          "max_score": 100
+        },
+        "note": "Score 60+ = priorytetowy, 40-59 = normalny, <40 = depriorytetyzuj"
+      },
+
+      {
+        "step": 7,
+        "name": "Export to Smartlead",
+        "type": "export",
+        "provider": "smartlead",
+        "filter": "icp_score >= 40",
+        "campaign_field": "icp_score_bucket",
+        "campaign_mapping": {
+          "high_priority": "icp_score >= 60",
+          "normal": "icp_score 40-59"
+        },
+        "fields_exported": [
+          "first_name", "last_name", "email", "title",
+          "company_name", "personalized_opener", "icp_score"
+        ],
+        "note": "Smartlead używa personalized_opener jako {{custom_variable_1}} w szablonie"
+      }
+    ]
+  },
+
+  "email_sequence": {
+    "name": "B2B SaaS Cold Outbound — 5 kroków",
+    "sender_rotation": 3,
+    "steps": [
+      {
+        "day": 1,
+        "type": "email",
+        "subject": "{{personalized_opener_subject}}",
+        "note": "Temat generowany przez Claude na bazie opener — max 8 słów, bez pytajnika"
+      },
+      {
+        "day": 4,
+        "type": "email",
+        "subject": "Re: {{first_name}} — szybka odpowiedź?",
+        "note": "Follow-up z dodatkowym social proof (case study 1 zdanie)"
+      },
+      {
+        "day": 9,
+        "type": "email",
+        "subject": "Ostatni raz — {{company_name}}",
+        "note": "Break-up email. Najwyższy open rate w sekwencji."
+      }
+    ]
+  },
+
+  "setup_instructions": {
+    "1_clay": "Stwórz nowy Table w Clay, zaimportuj ten JSON przez 'Import Workflow'",
+    "2_api_keys": "Dodaj w Clay Settings: Anthropic API Key, Clearbit API Key, Proxycurl API Key",
+    "3_apollo": "Wyeksportuj listę z Apollo jako CSV (max 500 wierszy), wgraj do Clay",
+    "4_run": "Uruchom kolejno kroki 1-6, sprawdź 5 sample rows ręcznie przed krokiem 7",
+    "5_smartlead": "Skonfiguruj webhook Clay → Smartlead lub eksportuj CSV i importuj ręcznie"
+  },
+
+  "estimated_costs_per_500_leads": {
+    "proxycurl_linkedin": "$5.00",
+    "clearbit": "$0.00 (free tier do 100/mo, potem $99/mo flat)",
+    "perplexity_api_top50pct": "$1.25",
+    "claude_api_opening_lines": "$0.30",
+    "total": "~$6.55",
+    "note": "Przy conversion rate 2% i ACV $5000: ROI = 1527x"
+  }
+}

@@ -1,0 +1,229 @@
+{
+  "_meta": {
+    "name": "Marketing Stack 2026 — Wojciech Łuszczyński",
+    "description": "Pełny stack narzędzi B2B SaaS growth marketera. Każde narzędzie z ceną, alternatywami i oceną ROI.",
+    "author": "Wojciech Łuszczyński",
+    "source": "akademia.wojciech.io",
+    "last_updated": "2026-05",
+    "note": "Stack aktywnie używany. Aktualizowany co kwartał."
+  },
+
+  "categories": {
+
+    "ai_models": {
+      "label": "Modele AI",
+      "tools": [
+        {
+          "name": "Claude (Anthropic)",
+          "plan": "Pro $20/mo + API usage",
+          "use_cases": ["Długie dokumenty", "Cold email copy", "Claude Code (CLI dev)", "Research synthesis"],
+          "rating": 9,
+          "verdict": "Primary model. Najlepszy context window, najniższe hallucynacje.",
+          "alternatives": ["ChatGPT", "Gemini"]
+        },
+        {
+          "name": "ChatGPT / GPT-4o",
+          "plan": "Plus $20/mo",
+          "use_cases": ["DALL·E image generation", "Code Interpreter (CSV/Excel analysis)", "Quick web search"],
+          "rating": 7,
+          "verdict": "Secondary. Trzymam głównie dla multimodalności i ekosystemu.",
+          "alternatives": ["Claude", "Gemini"]
+        },
+        {
+          "name": "Perplexity Pro",
+          "plan": "$20/mo",
+          "use_cases": ["Company research przed cold outbound", "Trend monitoring", "Competitor analysis"],
+          "rating": 9,
+          "verdict": "Niezastąpiony do researchu z weryfikowalnymi źródłami. Google killer dla B2B.",
+          "alternatives": ["Google Search", "Grok"]
+        },
+        {
+          "name": "Grok 3 (xAI)",
+          "plan": "$30/mo (SuperGrok)",
+          "use_cases": ["Real-time Twitter/X data", "Breaking news analysis", "Market sentiment"],
+          "rating": 7,
+          "verdict": "Specjalistyczny. Używam tylko do real-time social + news.",
+          "alternatives": ["Perplexity", "Brand24"]
+        },
+        {
+          "name": "NotebookLM (Google)",
+          "plan": "Free / Plus $20/mo",
+          "use_cases": ["Long document analysis (raporty, kontrakty)", "Audio summaries", "Research base"],
+          "rating": 8,
+          "verdict": "Niedoceniony. Audio overview funkcja = absurdnie dobra.",
+          "alternatives": ["Claude (upload)", "ChatGPT canvas"]
+        }
+      ]
+    },
+
+    "prospecting_enrichment": {
+      "label": "Prospecting & Enrichment",
+      "tools": [
+        {
+          "name": "Clay",
+          "plan": "Starter $149/mo → Pro $800/mo",
+          "use_cases": ["Waterfall enrichment", "AI opening lines", "Lead scoring", "Workflow automation"],
+          "rating": 10,
+          "verdict": "Game changer. Centralny hub całego outboundu. Nic nie zastąpi.",
+          "alternatives": ["Apollo AI features (słabsze)", "n8n + API (DIY)"],
+          "learning_curve": "Wysoka — pierwsze 2 tygodnie trudne, potem nie wyobrażasz sobie bez"
+        },
+        {
+          "name": "Apollo.io",
+          "plan": "Basic $49/mo",
+          "use_cases": ["Baza leadów (ICP search)", "Email verification", "Basic sequences (nie polecam)"],
+          "rating": 7,
+          "verdict": "Baza danych B2B — dobra. Jako tool do sekwencji — odpuść, Smartlead lepszy.",
+          "alternatives": ["Lusha", "ZoomInfo (drogie)", "Hunter"]
+        },
+        {
+          "name": "Hunter.io",
+          "plan": "Free 25/mo → Starter $34/mo",
+          "use_cases": ["Email finding dla SMB/startup", "Domain email patterns", "Email verification"],
+          "rating": 7,
+          "verdict": "Najlepszy stosunek ceny do jakości dla małych list.",
+          "alternatives": ["Apollo", "Clearbit"]
+        }
+      ]
+    },
+
+    "outbound_sequences": {
+      "label": "Cold Outbound",
+      "tools": [
+        {
+          "name": "Smartlead",
+          "plan": "Basic $39/mo",
+          "use_cases": ["Cold email sequences", "Email warm-up", "Multi-sender rotation", "Analytics"],
+          "rating": 9,
+          "verdict": "Najlepszy stosunek ceny/funkcji. Deliverability lepsza niż Instantly.",
+          "alternatives": ["Instantly", "Lemlist", "Outreach (enterprise)"]
+        }
+      ]
+    },
+
+    "automation": {
+      "label": "Automatyzacja & Integracje",
+      "tools": [
+        {
+          "name": "n8n (self-hosted)",
+          "plan": "$0 (self-hosted) / $20/mo cloud",
+          "use_cases": ["Clay → CRM sync", "Webhook automations", "Multi-step AI workflows", "Slack alerts"],
+          "rating": 9,
+          "verdict": "Make/Zapier killer dla tech-savy. Kod Pythona w nodach = nieograniczone możliwości.",
+          "alternatives": ["Make (Integromat)", "Zapier (za drogie)"],
+          "note": "Self-host na Railway.app lub Render — $5-7/mo"
+        },
+        {
+          "name": "Make (Integromat)",
+          "plan": "Core $9/mo",
+          "use_cases": ["Proste integracje", "Nietech team", "Szybkie prototypy"],
+          "rating": 7,
+          "verdict": "Prostszy od n8n. Dla nie-technicznych team memberów.",
+          "alternatives": ["n8n", "Zapier"]
+        },
+        {
+          "name": "Airtable",
+          "plan": "Plus $10/mo",
+          "use_cases": ["Content calendar", "Campaign tracking", "Lead pipeline (lightweight CRM)"],
+          "rating": 8,
+          "verdict": "Najlepszy 'spreadsheet with superpowers'. Integracje Clay → Airtable działają natywnie.",
+          "alternatives": ["Notion databases", "Google Sheets (słabsze)"]
+        }
+      ]
+    },
+
+    "content_creation": {
+      "label": "Content & Kreacja",
+      "tools": [
+        {
+          "name": "ElevenLabs",
+          "plan": "Creator $22/mo",
+          "use_cases": ["Voice cloning", "Audio kursy", "Podcast", "Voiceover do video"],
+          "rating": 9,
+          "verdict": "State of the art. Głos nie do odróżnienia od oryginału przy dobrej próbce.",
+          "alternatives": ["Play.ht", "Murf (tańsze, słabsze)"]
+        },
+        {
+          "name": "HeyGen",
+          "plan": "Creator $29/mo",
+          "use_cases": ["AI avatar video", "Personalizowane video outreach", "Course presenter"],
+          "rating": 8,
+          "verdict": "Rewolucyjne do video at scale. Avatar 1:1 spersonalizowane video = 5x reply rate.",
+          "alternatives": ["Synthesia", "D-ID"]
+        },
+        {
+          "name": "Midjourney v7",
+          "plan": "Basic $10/mo",
+          "use_cases": ["Brand visuals", "LinkedIn post graphics", "Prezentacje"],
+          "rating": 9,
+          "verdict": "Niezrównana jakość. v7 = fotorealizm dla celów marketingowych.",
+          "alternatives": ["DALL·E 3 (w ChatGPT)", "Ideogram", "Flux"]
+        },
+        {
+          "name": "Descript",
+          "plan": "Creator $24/mo",
+          "use_cases": ["Podcast editing", "Video editing (tekst → cut)", "Overdub AI"],
+          "rating": 8,
+          "verdict": "Editing przez edycję transkryptu = 10x szybciej. Obowiązkowy przy audio/video.",
+          "alternatives": ["Adobe Premiere (drogie)", "Riverside.fm"]
+        }
+      ]
+    },
+
+    "productivity_knowledge": {
+      "label": "Produktywność & Wiedza",
+      "tools": [
+        {
+          "name": "Notion",
+          "plan": "Plus $10/mo",
+          "use_cases": ["Knowledge base", "SOPs", "Project management", "AI Q&A po dokumentach"],
+          "rating": 8,
+          "verdict": "Centralny OS dla treści i procesów. Notion AI = przydatne do SOPs.",
+          "alternatives": ["Obsidian (tech)", "Coda"]
+        },
+        {
+          "name": "Superhuman",
+          "plan": "$30/mo",
+          "use_cases": ["Email management", "Quick replies", "AI drafts", "Snooze + reminders"],
+          "rating": 8,
+          "verdict": "Drogie ale zwraca się w zaoszczędzonym czasie (1-2h/tydzień). Tylko dla heavy email users.",
+          "alternatives": ["Gmail + extensions", "Hey.com"]
+        },
+        {
+          "name": "Claude Code (CLI)",
+          "plan": "Wliczone w Claude Pro/API",
+          "use_cases": ["Automatyzacja skryptów", "Budowanie MVP bez devów", "File operations", "Git workflows"],
+          "rating": 10,
+          "verdict": "Marketera supermoc. Buduję aplikacje, automatyzacje i scrapery bez zatrudniania devs.",
+          "alternatives": ["Cursor", "GitHub Copilot"]
+        }
+      ]
+    }
+  },
+
+  "monthly_cost_summary": {
+    "core_stack": {
+      "claude_pro": 20,
+      "chatgpt_plus": 20,
+      "perplexity_pro": 20,
+      "clay_starter": 149,
+      "apollo_basic": 49,
+      "smartlead_basic": 39,
+      "n8n_cloud": 20,
+      "elevenlabs_creator": 22,
+      "notion_plus": 10,
+      "total": 349,
+      "note": "Clay dominuje kosztem — ale bez Clay połowa stacka traci sens"
+    },
+    "nice_to_have_addons": {
+      "heygen_creator": 29,
+      "midjourney_basic": 10,
+      "descript_creator": 24,
+      "superhuman": 30,
+      "airtable_plus": 10,
+      "total_addons": 103
+    },
+    "total_full_stack": 452,
+    "roi_note": "Przy 1 zamkniętej deal/miesiąc z outboundu (ACV >$1000) cały stack się zwraca"
+  }
+}
