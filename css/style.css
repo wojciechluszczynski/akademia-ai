@@ -1002,17 +1002,15 @@ p { color: var(--text-2); font-size: 0.9375rem; }
 .nav-item {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 10px;
+  gap: 10px;
+  padding: 8px 12px;
   border-radius: var(--r-md);
-  color: var(--text-3);
   font-size: 0.875rem;
-  font-weight: 500;
+  color: var(--text-3);
   cursor: pointer;
-  text-decoration: none;
   transition: all var(--t);
-  border: 1px solid transparent;
-  margin-bottom: 1px;
+  text-decoration: none;
+  margin-bottom: 2px;
 }
 
 .nav-item:hover {
@@ -1022,9 +1020,8 @@ p { color: var(--text-2); font-size: 0.9375rem; }
 
 .nav-item.active {
   background: var(--orange-soft);
-  border-color: var(--orange-line);
   color: var(--orange);
-  font-weight: 600;
+  border: 1px solid var(--orange-line);
 }
 
 .nav-item .nav-icon {
@@ -1165,9 +1162,24 @@ p { color: var(--text-2); font-size: 0.9375rem; }
 .stat-card {
   background: var(--bg-card);
   border: 1px solid var(--line-1);
-  border-radius: var(--r-lg);
-  padding: 16px 18px;
+  border-radius: var(--r-xl);
+  padding: 20px 24px;
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  transition: border-color var(--t), background var(--t);
 }
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--orange), transparent);
+  opacity: 0;
+  transition: opacity var(--t);
+}
+.stat-card:hover { background: var(--bg-hover); border-color: var(--line-2); }
+.stat-card:hover::before { opacity: 1; }
 
 .stat-num {
   font-size: 1.75rem;
@@ -1194,14 +1206,22 @@ p { color: var(--text-2); font-size: 0.9375rem; }
   background: var(--bg-card);
   border: 1px solid var(--line-1);
   border-radius: var(--r-xl);
-  overflow: hidden;
+  padding: 18px 20px;
   cursor: pointer;
-  transition: all var(--t);
+  transition: background var(--t), border-color var(--t), transform 0.15s var(--ease);
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  position: relative;
 }
-
 .ep-card:hover {
-  border-color: var(--line-3);
-  transform: translateY(-2px);
+  background: var(--bg-hover);
+  border-color: var(--line-2);
+  transform: translateY(-1px);
+}
+.ep-card.active {
+  border-color: var(--orange-line);
+  background: var(--orange-soft);
 }
 
 .ep-card.locked { opacity: 0.6; }
@@ -1709,6 +1729,7 @@ p { color: var(--text-2); font-size: 0.9375rem; }
   background: rgba(22, 20, 18, 0.96);
   backdrop-filter: blur(20px);
   border-top: 1px solid var(--line-2);
+  box-shadow: 0 -1px 0 var(--line-1), 0 -12px 40px rgba(0,0,0,0.4);
   display: none;
   align-items: center;
   gap: 20px;

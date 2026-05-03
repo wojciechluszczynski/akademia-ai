@@ -715,32 +715,6 @@
       overflow: hidden;
     }
 
-    /* Dark base */
-    .host-visual-bg {
-      position: absolute; inset: 0;
-      background: #0c0b0a;
-      border-radius: inherit;
-    }
-
-    /* Dot grid pattern */
-    .host-visual-bg::before {
-      content: '';
-      position: absolute; inset: 0;
-      background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
-      background-size: 22px 22px;
-      border-radius: inherit;
-    }
-
-    /* Orange glow from bottom-left */
-    .host-visual-bg::after {
-      content: '';
-      position: absolute;
-      bottom: -60px; left: -40px;
-      width: 340px; height: 340px;
-      background: radial-gradient(circle, rgba(249,115,22,0.22) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
     /* Grain overlay via SVG filter */
     .host-visual-grain {
       position: absolute; inset: 0; z-index: 3;
@@ -768,24 +742,15 @@
       pointer-events: none;
     }
 
-    /* The cutout photo */
-    .host-cutout {
+    /* Full-cover host photo */
+    .host-photo-full {
       position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      height: 95%;
-      width: auto;
-      max-width: 100%;
-      object-fit: contain;
-      object-position: bottom center;
-      z-index: 2;
-      filter: brightness(0.95) contrast(1.04);
-    }
-
-    /* Second image layer — hidden for transparent PNG */
-    .host-cutout-color {
-      display: none;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      z-index: 1;
     }
 
     /* Name/role overlaid on photo at bottom */
@@ -1257,7 +1222,7 @@
   </h1>
   <p class="lp-sub" id="hero-sub">
     36 odcinków audio z gotowymi workflow, promptami i plikami do pobrania.
-    Narzędzia, które naprawdę działają — testowane na własnych klientach.
+    Narzędzia, które naprawdę działają. Testowane na własnych klientach.
   </p>
   <div class="lp-cta-row">
     <a href="register.html" class="btn btn-primary btn-lg">Zacznij za darmo</a>
@@ -1789,18 +1754,7 @@
     </div>
     <div class="host-section">
       <div class="host-visual reveal">
-        <!-- Dark atmospheric background -->
-        <div class="host-visual-bg"></div>
-
-        <!-- Real photo — luminosity layer for blending -->
-        <img src="assets/wojciech-blue.png" alt="" class="host-cutout">
-        <!-- Color layer on top -->
-        <img src="assets/wojciech-blue.png" alt="Wojciech Łuszczyński" class="host-cutout-color">
-
-        <!-- Atmospheric overlays -->
-        <div class="host-visual-grain"></div>
-        <div class="host-visual-vignette"></div>
-        <div class="host-visual-fade"></div>
+        <img src="assets/wio_bg.png" alt="Wojciech Łuszczyński" class="host-photo-full">
 
         <!-- Name overlaid at bottom -->
         <div class="host-overlay-info">
@@ -1813,7 +1767,7 @@
       <div>
         <div style="margin-bottom: 32px;">
           <div style="font-size:0.875rem;color:var(--text-3);line-height:1.8;margin-bottom:20px;">
-            14 lat w marketingu i sprzedaży. Testuję AI stacki na własnych klientach i własnym budżecie — nie na benchmarkach.
+            14 lat w marketingu i sprzedaży. Testuję AI stacki na własnych klientach i własnym budżecie, nie na benchmarkach.
             Prowadzę Akademię AI bo chcę skrócić Twoją krzywą uczenia o kilka miesięcy.
           </div>
           <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:24px;">
@@ -1978,8 +1932,8 @@
 <!-- CTA FINAL -->
 <div class="lp-cta-block">
   <div class="container">
-    <h2 id="cta-head">Zanim kupisz — posłuchaj.<br><em style="font-style:normal; color:var(--orange);">Pierwszy odcinek jest bezpłatny.</em></h2>
-    <p id="cta-sub">Bez rejestracji, bez karty. Jeśli po pierwszym odcinku poczujesz, że to styl dla Ciebie — wróć i weź resztę. Jeśli nie — nie ma żalu.</p>
+    <h2 id="cta-head">Zanim kupisz, posłuchaj.<br><em style="font-style:normal; color:var(--orange);">Pierwszy odcinek jest bezpłatny.</em></h2>
+    <p id="cta-sub">Bez rejestracji, bez karty. Jeśli po pierwszym odcinku poczujesz, że to styl dla Ciebie, wróć i weź resztę. Jeśli nie, nie ma żalu.</p>
     <div class="lp-cta-row">
       <a href="register.html" class="btn btn-primary btn-lg" id="cta-btn">Zacznij za darmo</a>
       <a href="login.html" class="btn btn-ghost btn-lg" id="cta-login">Mam już konto</a>
@@ -1992,7 +1946,7 @@
   <div class="container">
     <div class="footer-inner">
       <div style="display:flex; align-items:center; gap:8px;">
-        <span class="logo-mark">AA</span>
+        <img src="assets/logo-aa.svg" width="28" height="28" alt="AA" style="border-radius:6px;">
         <span class="footer-copy">© 2026 Wojciech Łuszczyński</span>
         <span class="footer-sep">·</span>
         <a href="https://wojciech.io" style="font-size:0.875rem; color:var(--orange);">wojciech.io</a>
@@ -2189,27 +2143,27 @@
     pl: {
       badge:   'Sezon 1 · maj 2026',
       h1:      'Naucz się AI od praktyka.<br><em>Nie influencera.</em>',
-      sub:     '36 odcinków audio z gotowymi workflow, promptami i plikami do pobrania. Narzędzia, które naprawdę działają — testowane na własnych klientach.',
+      sub:     '36 odcinków audio z gotowymi workflow, promptami i plikami do pobrania. Narzędzia, które naprawdę działają. Testowane na własnych klientach.',
       nav1:    'Program', nav2: 'Jak to działa', nav3: 'Cennik', nav4: 'Prowadzący',
       login:   'Zaloguj', register: 'Zacznij za darmo →',
       demoHead:'Posłuchaj próbki', demoSub: 'Pierwszy odcinek za darmo',
       demoDesc:'Sprawdź styl i poziom zanim zdecydujesz. Bez rejestracji.',
-      ctaHead: 'Zanim kupisz — posłuchaj.',
+      ctaHead: 'Zanim kupisz, posłuchaj.',
       ctaOrange:'Pierwszy odcinek jest bezpłatny.',
-      ctaSub:  'Bez rejestracji, bez karty. Jeśli po pierwszym odcinku poczujesz, że to styl dla Ciebie — wróć i weź resztę. Jeśli nie — nie ma żalu.',
+      ctaSub:  'Bez rejestracji, bez karty. Jeśli po pierwszym odcinku poczujesz, że to styl dla Ciebie, wróć i weź resztę. Jeśli nie, nie ma żalu.',
       ctaBtn:  'Zacznij za darmo', ctaLogin: 'Mam już konto',
     },
     en: {
       badge:   'Season 1 · May 2026',
       h1:      'Learn AI from a practitioner.<br><em>Not an influencer.</em>',
-      sub:     '36 audio episodes with ready-to-use workflows, prompts and files. Tools that actually work — tested on real clients.',
+      sub:     '36 audio episodes with ready-to-use workflows, prompts and files. Tools that actually work. Tested on real clients.',
       nav1:    'Curriculum', nav2: 'How it works', nav3: 'Pricing', nav4: 'Host',
       login:   'Log in', register: 'Start for free →',
       demoHead:'Listen to a sample', demoSub: 'Episode 1 is free',
       demoDesc:'Check the style and depth before you decide. No registration needed.',
       ctaHead: "Listen before you buy.",
       ctaOrange:"Episode one is completely free.",
-      ctaSub:  "No signup, no card. If after the first episode you feel it's for you — come back and get the rest. If not — no hard feelings.",
+      ctaSub:  "No signup, no card. If after the first episode you feel it's for you, come back and get the rest. If not, no hard feelings.",
       ctaBtn:  'Start for free', ctaLogin: 'I already have an account',
     }
   };
