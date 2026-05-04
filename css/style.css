@@ -234,12 +234,11 @@ body::before {
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 10px;
 }
 
 .nav-cta-register {
   border-radius: var(--r-full) !important;
-  margin-left: 6px;
   font-size: 0.875rem !important;
   padding: 9px 20px !important;
 }
@@ -253,7 +252,7 @@ body::before {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 36px;
 }
 
 .nav-link {
