@@ -3,71 +3,744 @@
 // Quiz + Progress + Certificate + Kinetic Typography + Real Audio
 // ============================================
 
+// ── ICONS ─────────────────────────────────────
+const IC = {
+  play:  `<svg width="10" height="12" viewBox="0 0 10 12" fill="currentColor"><path d="M0 0l10 6-10 6z"/></svg>`,
+  pause: `<svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><rect x="0" y="0" width="3.5" height="10" rx="1"/><rect x="6.5" y="0" width="3.5" height="10" rx="1"/></svg>`,
+  lock:  `<svg width="12" height="14" viewBox="0 0 12 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="1" y="6" width="10" height="7" rx="2"/><path d="M3 6V4a3 3 0 0 1 6 0v2"/></svg>`,
+  check: `<svg width="11" height="9" viewBox="0 0 11 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4.5l3.5 3L10 1"/></svg>`,
+};
+
 // ── DATA ─────────────────────────────────────
+// AKADEMIA AI — UPDATED DATA SNIPPET · 2026-05-04
+// Podmień w platform/js/app.js stałe: EPISODES, MATERIALS, QUIZZES.
+
 const EPISODES = [
-  { id:1,  serie:1, num:'01', emoji:'⚔',  title_pl:'ChatGPT vs Claude vs Gemini vs Grok: mój werdykt po 20 latach',        title_en:'The LLM Battle: A 20-Year Marketer\'s Verdict',              desc_pl:'Testuję te same 12 zadań marketingowych w ChatGPT, Claude, Gemini i Grok. Daję konkretny werdykt: który model do czego i dlaczego.',        desc_en:'I run 12 identical marketing tasks through ChatGPT, Claude, Gemini and Grok. My honest verdict on what to use and when.',        duration:'11:24', tools:['ChatGPT','Claude','Gemini','Grok'], locked:false, hasQuiz:true  },
-  { id:2,  serie:1, num:'02', emoji:'◎',  title_pl:'Perplexity zjadło Google\'a. Ale nie do końca.',                        title_en:'Perplexity Killed Google. Almost.',                          desc_pl:'Research ICP który zajmował mi 45 minut — robię w 8. Pokazuję gdzie Perplexity wygrywa z Google i gdzie odpada.',                         desc_en:'ICP research that used to take 45 minutes now takes 8. Where Perplexity wins and where it falls flat.',   duration:'09:47', tools:['Perplexity','NotebookLM'],         locked:false, hasQuiz:true  },
-  { id:3,  serie:1, num:'03', emoji:'◈',  title_pl:'NotebookLM: ignorowałem go przez 3 miesiące. Błąd.',                  title_en:'NotebookLM: I Ignored It for 3 Months. Big Mistake.',        desc_pl:'Wrzucam 40-stronnicowy raport branżowy do NotebookLM i wyciągam kluczowe insights w 15 minut. Błąd który kosztował mnie 3 miesiące.',                        desc_en:'I feed a 40-page industry report into NotebookLM and extract key insights in 15 minutes. The mistake that cost me 3 months.',    duration:'10:12', tools:['NotebookLM','Gemini'],              locked:true,  hasQuiz:true  },
-  { id:4,  serie:1, num:'04', emoji:'▣',  title_pl:'Claude Code vs Cursor: który wygrał moje projekty?',                  title_en:'Claude Code vs Cursor: My 6-Month Non-Dev Review',           desc_pl:'Marketer bez tła programistycznego testuje Claude Code i Cursor przez 6 miesięcy. Który z nich faktycznie działa dla nie-developerów.',                           desc_en:'A non-developer tests Claude Code and Cursor for 6 months. Which one actually works when you can\'t code.',        duration:'12:03', tools:['Claude Code','Cursor','GitHub'],    locked:true,  hasQuiz:false },
-  { id:5,  serie:2, num:'01', emoji:'▶',  title_pl:'Apollo vs Clay vs Hunter: gdzie szukam leadów w 2026',                title_en:'Apollo vs Clay vs Hunter: Where I Find Leads',               desc_pl:'500 kontaktów ICP dla B2B SaaS przez Apollo, Clay i Hunter. Porównam koszt, jakość danych i czas pracy przy tym samym briefie.',                    desc_en:'500 ICP contacts for B2B SaaS via Apollo, Clay and Hunter. Same brief, real cost and quality comparison.', duration:'10:55', tools:['Apollo','Clay','Hunter'],        locked:true,  hasQuiz:true  },
-  { id:6,  serie:2, num:'02', emoji:'◫',  title_pl:'Clay + Claude = personalizacja której nie odróżnisz od ręcznej',      title_en:'Clay + Claude: Personalization at Scale That Feels Human',   desc_pl:'1000 kontaktów, 6 źródeł danych, każdy opening line przez Claude API. Pokaże jak zbudować to od zera bez kodowania.',                     desc_en:'1k contacts, 6 data sources, Claude API writing every opening line. How to build this from scratch without coding.', duration:'11:38', tools:['Clay','Claude API'],             locked:true,  hasQuiz:false },
+  {
+    "id": 1,
+    "serie": 1,
+    "num": "01",
+    "emoji": "⚔️",
+    "title_pl": "GPT-5.5 vs Claude Opus 4.7 vs Gemini 3.1 vs Grok 4.3: routing modeli zamiast jednego zwycięzcy",
+    "title_en": "GPT-5.5 vs Claude Opus 4.7 vs Gemini 3.1 vs Grok 4.3: Model Routing Beats One Winner",
+    "desc_pl": "Aktualny werdykt: nie ma jednego najlepszego modelu. Pokazuję, jak routować zadania między GPT-5.5, Claude, Gemini i Grok w realnej pracy growth/marketing/founder.",
+    "desc_en": "GPT-5.5 vs Claude Opus 4.7 vs Gemini 3.1 vs Grok 4.3: Model Routing Beats One Winner",
+    "duration": "13:40",
+    "tools": [
+      "GPT-5.5",
+      "Claude Opus 4.7",
+      "Claude Sonnet 4.6",
+      "Gemini 3.1 Pro",
+      "Grok 4.3"
+    ],
+    "locked": false,
+    "hasQuiz": true
+  },
+  {
+    "id": 2,
+    "serie": 1,
+    "num": "02",
+    "emoji": "🔎",
+    "title_pl": "Perplexity w 2026: research layer, nie zamiennik Google’a",
+    "title_en": "Perplexity in 2026: Research Layer, Not a Google Replacement",
+    "desc_pl": "ICP research, competitive intelligence, monitoring rynku i szybkie briefingi. Pokazuję, gdzie Perplexity skraca pracę, a gdzie nadal trzeba wrócić do Google, SERP i źródeł pierwotnych.",
+    "desc_en": "Perplexity in 2026: Research Layer, Not a Google Replacement",
+    "duration": "11:10",
+    "tools": [
+      "Perplexity",
+      "Perplexity Computer",
+      "Google",
+      "Grok"
+    ],
+    "locked": true,
+    "hasQuiz": true
+  },
+  {
+    "id": 3,
+    "serie": 1,
+    "num": "03",
+    "emoji": "📚",
+    "title_pl": "NotebookLM: prywatny research room dla własnych źródeł",
+    "title_en": "NotebookLM: A Private Research Room for Your Own Sources",
+    "desc_pl": "NotebookLM jako system pracy na PDF-ach, transkryptach, notatkach, raportach i materiałach kursowych. Audio Overviews, Mind Maps, Reports i source-grounded QA.",
+    "desc_en": "NotebookLM: A Private Research Room for Your Own Sources",
+    "duration": "12:20",
+    "tools": [
+      "NotebookLM",
+      "Gemini",
+      "Google Workspace"
+    ],
+    "locked": true,
+    "hasQuiz": true
+  },
+  {
+    "id": 4,
+    "serie": 1,
+    "num": "04",
+    "emoji": "💻",
+    "title_pl": "Claude Code, Cursor i GPT Codex: vibe coding po stronie marketera",
+    "title_en": "Claude Code, Cursor and GPT Codex: Vibe Coding for Marketers",
+    "desc_pl": "Jak marketer/founder może sensownie budować, poprawiać i wdrażać małe aplikacje bez udawania senior developera. Granice, workflow, testy i ryzyka.",
+    "desc_en": "Claude Code, Cursor and GPT Codex: Vibe Coding for Marketers",
+    "duration": "14:05",
+    "tools": [
+      "Claude Code",
+      "Cursor",
+      "GitHub",
+      "GPT-5.5",
+      "Gemini 3.1"
+    ],
+    "locked": true,
+    "hasQuiz": false
+  },
+  {
+    "id": 5,
+    "serie": 2,
+    "num": "01",
+    "emoji": "🎯",
+    "title_pl": "Clay, Apollo, Hunter i źródła danych: gdzie naprawdę zaczyna się outbound",
+    "title_en": "Clay, Apollo, Hunter and Data Sources: Where Outbound Really Starts",
+    "desc_pl": "Outbound nie zaczyna się od sekwencji maili. Zaczyna się od ICP, danych, sygnałów i jakości listy. Porównuję rolę Apollo, Clay i Hunter bez magicznego myślenia.",
+    "desc_en": "Clay, Apollo, Hunter and Data Sources: Where Outbound Really Starts",
+    "duration": "12:30",
+    "tools": [
+      "Clay",
+      "Apollo",
+      "Hunter",
+      "LinkedIn",
+      "CRM"
+    ],
+    "locked": true,
+    "hasQuiz": true
+  },
+  {
+    "id": 6,
+    "serie": 2,
+    "num": "02",
+    "emoji": "🧱",
+    "title_pl": "Clay jako GTM workflow layer: enrichment, sygnały i personalizacja",
+    "title_en": "Clay as a GTM Workflow Layer: Enrichment, Signals and Personalization",
+    "desc_pl": "Buduję workflow: firma → enrichment → sygnały → scoring → personalizacja → SDR handoff. Clay nie jest tylko narzędziem do maili, ale warstwą operacyjną GTM.",
+    "desc_en": "Clay as a GTM Workflow Layer: Enrichment, Signals and Personalization",
+    "duration": "13:15",
+    "tools": [
+      "Clay",
+      "Claygent",
+      "Claude API",
+      "GPT-5.5",
+      "CRM"
+    ],
+    "locked": true,
+    "hasQuiz": true
+  },
+  {
+    "id": 7,
+    "serie": 2,
+    "num": "03",
+    "emoji": "✉️",
+    "title_pl": "Cold email 2026: deliverability, reputacja i personalizacja bez spamu",
+    "title_en": "Cold Email 2026: Deliverability, Reputation and Personalization Without Spam",
+    "desc_pl": "Co działa w cold mailu, co niszczy domenę i gdzie AI pomaga, a gdzie szkodzi. Krótkie wiadomości, sygnał, kontekst, deliverability i follow-up bez slopu.",
+    "desc_en": "Cold Email 2026: Deliverability, Reputation and Personalization Without Spam",
+    "duration": "12:55",
+    "tools": [
+      "Smartlead",
+      "Instantly",
+      "Clay",
+      "Google Workspace",
+      "SPF/DKIM/DMARC"
+    ],
+    "locked": true,
+    "hasQuiz": false
+  },
+  {
+    "id": 8,
+    "serie": 2,
+    "num": "04",
+    "emoji": "📈",
+    "title_pl": "Inbound enrichment i lead scoring: jak AI skraca drogę do SQL",
+    "title_en": "Inbound Enrichment and Lead Scoring: How AI Shortens the Path to SQL",
+    "desc_pl": "AI w sprzedaży nie musi zaczynać się od outboundu. Pokazuję enrichment inboundów, score fitu, routing i lepsze przygotowanie SDR-a przed pierwszym kontaktem.",
+    "desc_en": "Inbound Enrichment and Lead Scoring: How AI Shortens the Path to SQL",
+    "duration": "13:00",
+    "tools": [
+      "Clay",
+      "HubSpot",
+      "Pipedrive",
+      "n8n",
+      "GPT-5.5"
+    ],
+    "locked": true,
+    "hasQuiz": false
+  },
+  {
+    "id": 9,
+    "serie": 3,
+    "num": "01",
+    "emoji": "🎙️",
+    "title_pl": "Eleven v3 i klon głosu: produkcja audio bez utraty wiarygodności",
+    "title_en": "Eleven v3 and Voice Cloning: Audio Production Without Losing Trust",
+    "desc_pl": "Głos AI jako produkcyjny workflow: skrypt, tagi audio, emocje, wielojęzyczność, kontrola jakości, disclosure i granice etyczne.",
+    "desc_en": "Eleven v3 and Voice Cloning: Audio Production Without Losing Trust",
+    "duration": "12:25",
+    "tools": [
+      "ElevenLabs",
+      "Eleven v3",
+      "Descript",
+      "NotebookLM"
+    ],
+    "locked": true,
+    "hasQuiz": true
+  },
+  {
+    "id": 10,
+    "serie": 3,
+    "num": "02",
+    "emoji": "🧑‍💼",
+    "title_pl": "HeyGen Avatar V: avatar jako format, nie sztuczka",
+    "title_en": "HeyGen Avatar V: Avatar as a Format, Not a Gimmick",
+    "desc_pl": "Avatar ma sens tylko wtedy, gdy rozwiązuje problem skali, lokalizacji albo repurposingu. Pokazuję workflow i ryzyka wiarygodności.",
+    "desc_en": "HeyGen Avatar V: Avatar as a Format, Not a Gimmick",
+    "duration": "11:50",
+    "tools": [
+      "HeyGen Avatar V",
+      "ElevenLabs",
+      "Canva",
+      "CapCut"
+    ],
+    "locked": true,
+    "hasQuiz": false
+  },
+  {
+    "id": 11,
+    "serie": 3,
+    "num": "03",
+    "emoji": "🎬",
+    "title_pl": "Runway Gen-4.5, Veo 3.1 i AI video: od efektu wow do pipeline’u",
+    "title_en": "Runway Gen-4.5, Veo 3.1 and AI Video: From Wow Effect to Pipeline",
+    "desc_pl": "AI video jako system: brief, storyboard, obraz referencyjny, klip, warianty, montaż i dystrybucja. Nie demo, tylko powtarzalny proces.",
+    "desc_en": "Runway Gen-4.5, Veo 3.1 and AI Video: From Wow Effect to Pipeline",
+    "duration": "13:35",
+    "tools": [
+      "Runway Gen-4.5",
+      "Veo 3.1",
+      "Gemini",
+      "Midjourney",
+      "Nano Banana Pro"
+    ],
+    "locked": true,
+    "hasQuiz": false
+  },
+  {
+    "id": 12,
+    "serie": 3,
+    "num": "04",
+    "emoji": "🧩",
+    "title_pl": "Repurposing contentu z AI: jeden materiał, dziesięć formatów",
+    "title_en": "AI Content Repurposing: One Asset, Ten Formats",
+    "desc_pl": "Jak z jednego odcinka zrobić newsletter, LinkedIn post, short video, checklistę, lead magnet i materiał sprzedażowy bez produkowania generycznego slopu.",
+    "desc_en": "AI Content Repurposing: One Asset, Ten Formats",
+    "duration": "12:40",
+    "tools": [
+      "GPT-5.5",
+      "Claude",
+      "NotebookLM",
+      "Descript",
+      "Canva",
+      "n8n"
+    ],
+    "locked": true,
+    "hasQuiz": false
+  },
+  {
+    "id": 13,
+    "serie": 4,
+    "num": "01",
+    "emoji": "🧭",
+    "title_pl": "AI w strategii B2B: od hype’u do revenue architecture",
+    "title_en": "AI in B2B Strategy: From Hype to Revenue Architecture",
+    "desc_pl": "Jak wybierać use case’y AI przez wpływ na przychód, koszt i czas zespołu, a nie przez atrakcyjność narzędzia.",
+    "desc_en": "AI in B2B Strategy: From Hype to Revenue Architecture",
+    "duration": "14:10",
+    "tools": [
+      "GPT-5.5",
+      "Claude",
+      "Perplexity",
+      "CRM",
+      "BI"
+    ],
+    "locked": true,
+    "hasQuiz": true
+  },
+  {
+    "id": 14,
+    "serie": 4,
+    "num": "02",
+    "emoji": "📊",
+    "title_pl": "AI Visibility, SEO i content 2026: jak być cytowanym przez modele",
+    "title_en": "AI Visibility, SEO and Content 2026: How to Be Cited by Models",
+    "desc_pl": "SEO nie umarło, ale zmienił się układ gry. Pokazuję content, który buduje entity, citations, topical authority i widoczność w AI answers.",
+    "desc_en": "AI Visibility, SEO and Content 2026: How to Be Cited by Models",
+    "duration": "13:50",
+    "tools": [
+      "GSC",
+      "GA4",
+      "Perplexity",
+      "ChatGPT",
+      "Gemini",
+      "Ahrefs/Semrush"
+    ],
+    "locked": true,
+    "hasQuiz": true
+  },
+  {
+    "id": 15,
+    "serie": 4,
+    "num": "03",
+    "emoji": "⚙️",
+    "title_pl": "Marketing automation z AI: n8n, CRM i agentic workflows",
+    "title_en": "AI Marketing Automation: n8n, CRM and Agentic Workflows",
+    "desc_pl": "Automatyzacja, która realnie oszczędza czas i poprawia jakość procesu. Trigger, dane, decyzja, akcja, log, alert i człowiek w pętli.",
+    "desc_en": "AI Marketing Automation: n8n, CRM and Agentic Workflows",
+    "duration": "14:00",
+    "tools": [
+      "n8n",
+      "Make",
+      "Zapier",
+      "HubSpot",
+      "Pipedrive",
+      "GPT-5.5",
+      "Claude"
+    ],
+    "locked": true,
+    "hasQuiz": false
+  },
+  {
+    "id": 16,
+    "serie": 4,
+    "num": "04",
+    "emoji": "🏗️",
+    "title_pl": "AI operating system dla marketingu: governance, jakość i skalowanie",
+    "title_en": "AI Operating System for Marketing: Governance, Quality and Scale",
+    "desc_pl": "Jak zbudować system AI w zespole: use case backlog, prompt library, SOP, QA, permissions, source policy, koszty i odpowiedzialność.",
+    "desc_en": "AI Operating System for Marketing: Governance, Quality and Scale",
+    "duration": "13:30",
+    "tools": [
+      "Notion",
+      "Airtable",
+      "Slack",
+      "CRM",
+      "LLMs",
+      "BI"
+    ],
+    "locked": true,
+    "hasQuiz": false
+  }
 ];
 
 const MATERIALS = [
-  { id:1, title:'LLM Comparison Matrix 2026',   file:'llm-comparison-matrix.md',       desc:'Pełna tabela 6 modeli AI',            type:'md',   icon:'vi-md',   locked:false, serie:1 },
-  { id:2, title:'Perplexity Research SOP',       file:'perplexity-research-sop.md',     desc:'Gotowy SOP do researchu',             type:'md',   icon:'vi-md',   locked:false, serie:1 },
-  { id:3, title:'Clay Enrichment Flow',          file:'clay-enrichment-flow.json',      desc:'Blueprint do importu w Clay',         type:'json', icon:'vi-json', locked:false, serie:1 },
-  { id:4, title:'Marketing Stack 2026',          file:'marketing-stack-2026.json',      desc:'Pełny stack w formacie JSON',         type:'json', icon:'vi-json', locked:true,  serie:1 },
-  { id:5, title:'Outbound Machine Complete',     file:'outbound-machine-complete.json', desc:'End-to-end: ICP → signed deal',       type:'json', icon:'vi-json', locked:true,  serie:2 },
-  { id:6, title:'Cold Email Framework 2026',     file:'cold-email-framework-2026.md',   desc:'Co działa, co spamuje',               type:'md',   icon:'vi-md',   locked:true,  serie:2 },
-  { id:7, title:'Series 1 Complete Vault',       file:'series-1-vault.zip',             desc:'Wszystkie materiały Serii 1',         type:'zip',  icon:'vi-zip',  locked:true,  serie:1 },
-  { id:8, title:'ElevenLabs Full Guide',         file:'elevenlabs-full-guide.md',       desc:'Voices, Clones, Agents, Sound FX',   type:'md',   icon:'vi-md',   locked:true,  serie:3 },
+  {
+    "id": 1,
+    "title": "Llm Comparison Matrix 2026",
+    "file": "llm-comparison-matrix-2026.md",
+    "desc": "Materiał Vault · aktualizacja 2026",
+    "type": "md",
+    "icon": "vi-md",
+    "locked": false,
+    "serie": 1
+  },
+  {
+    "id": 2,
+    "title": "Ai Routing Cheatsheet",
+    "file": "ai-routing-cheatsheet.md",
+    "desc": "Materiał Vault · aktualizacja 2026",
+    "type": "md",
+    "icon": "vi-md",
+    "locked": false,
+    "serie": 1
+  },
+  {
+    "id": 3,
+    "title": "Perplexity Research Sop 2026",
+    "file": "perplexity-research-sop-2026.md",
+    "desc": "Materiał Vault · aktualizacja 2026",
+    "type": "md",
+    "icon": "vi-md",
+    "locked": true,
+    "serie": 1
+  },
+  {
+    "id": 4,
+    "title": "Source Verification Checklist",
+    "file": "source-verification-checklist.md",
+    "desc": "Materiał Vault · aktualizacja 2026",
+    "type": "md",
+    "icon": "vi-md",
+    "locked": true,
+    "serie": 1
+  },
+  {
+    "id": 5,
+    "title": "Notebooklm Source Workflow",
+    "file": "notebooklm-source-workflow.md",
+    "desc": "Materiał Vault · aktualizacja 2026",
+    "type": "md",
+    "icon": "vi-md",
+    "locked": true,
+    "serie": 1
+  },
+  {
+    "id": 6,
+    "title": "Source Pack Template",
+    "file": "source-pack-template.md",
+    "desc": "Materiał Vault · aktualizacja 2026",
+    "type": "md",
+    "icon": "vi-md",
+    "locked": true,
+    "serie": 1
+  },
+  {
+    "id": 7,
+    "title": "Vibe Coding Playbook",
+    "file": "vibe-coding-playbook.md",
+    "desc": "Materiał Vault · aktualizacja 2026",
+    "type": "md",
+    "icon": "vi-md",
+    "locked": true,
+    "serie": 1
+  },
+  {
+    "id": 8,
+    "title": "Claude Code Update Manifest",
+    "file": "claude-code-update-manifest.json",
+    "desc": "Materiał Vault · aktualizacja 2026",
+    "type": "json",
+    "icon": "vi-json",
+    "locked": true,
+    "serie": 1
+  },
+  {
+    "id": 9,
+    "title": "Gtm Data Source Scorecard",
+    "file": "gtm-data-source-scorecard.md",
+    "desc": "Materiał Vault · aktualizacja 2026",
+    "type": "md",
+    "icon": "vi-md",
+    "locked": true,
+    "serie": 2
+  },
+  {
+    "id": 10,
+    "title": "Outbound Data Quality Checklist",
+    "file": "outbound-data-quality-checklist.md",
+    "desc": "Materiał Vault · aktualizacja 2026",
+    "type": "md",
+    "icon": "vi-md",
+    "locked": true,
+    "serie": 2
+  },
+  {
+    "id": 11,
+    "title": "Clay Enrichment Flow 2026",
+    "file": "clay-enrichment-flow-2026.json",
+    "desc": "Materiał Vault · aktualizacja 2026",
+    "type": "json",
+    "icon": "vi-json",
+    "locked": true,
+    "serie": 2
+  },
+  {
+    "id": 12,
+    "title": "Clay Personalization Prompts",
+    "file": "clay-personalization-prompts.md",
+    "desc": "Materiał Vault · aktualizacja 2026",
+    "type": "md",
+    "icon": "vi-md",
+    "locked": true,
+    "serie": 2
+  },
+  {
+    "id": 13,
+    "title": "Cold Email Framework 2026",
+    "file": "cold-email-framework-2026.md",
+    "desc": "Materiał Vault · aktualizacja 2026",
+    "type": "md",
+    "icon": "vi-md",
+    "locked": true,
+    "serie": 2
+  },
+  {
+    "id": 14,
+    "title": "Deliverability Checklist 2026",
+    "file": "deliverability-checklist-2026.md",
+    "desc": "Materiał Vault · aktualizacja 2026",
+    "type": "md",
+    "icon": "vi-md",
+    "locked": true,
+    "serie": 2
+  },
+  {
+    "id": 15,
+    "title": "Inbound Enrichment Blueprint",
+    "file": "inbound-enrichment-blueprint.json",
+    "desc": "Materiał Vault · aktualizacja 2026",
+    "type": "json",
+    "icon": "vi-json",
+    "locked": true,
+    "serie": 2
+  },
+  {
+    "id": 16,
+    "title": "Sql Scoring Model",
+    "file": "sql-scoring-model.md",
+    "desc": "Materiał Vault · aktualizacja 2026",
+    "type": "md",
+    "icon": "vi-md",
+    "locked": true,
+    "serie": 2
+  },
+  {
+    "id": 17,
+    "title": "Elevenlabs V3 Production Guide",
+    "file": "elevenlabs-v3-production-guide.md",
+    "desc": "Materiał Vault · aktualizacja 2026",
+    "type": "md",
+    "icon": "vi-md",
+    "locked": true,
+    "serie": 3
+  },
+  {
+    "id": 18,
+    "title": "Voice Disclosure Policy",
+    "file": "voice-disclosure-policy.md",
+    "desc": "Materiał Vault · aktualizacja 2026",
+    "type": "md",
+    "icon": "vi-md",
+    "locked": true,
+    "serie": 3
+  },
+  {
+    "id": 19,
+    "title": "Avatar Video Production Checklist",
+    "file": "avatar-video-production-checklist.md",
+    "desc": "Materiał Vault · aktualizacja 2026",
+    "type": "md",
+    "icon": "vi-md",
+    "locked": true,
+    "serie": 3
+  },
+  {
+    "id": 20,
+    "title": "Avatar Script Template",
+    "file": "avatar-script-template.md",
+    "desc": "Materiał Vault · aktualizacja 2026",
+    "type": "md",
+    "icon": "vi-md",
+    "locked": true,
+    "serie": 3
+  },
+  {
+    "id": 21,
+    "title": "Ai Video Pipeline Checklist",
+    "file": "ai-video-pipeline-checklist.md",
+    "desc": "Materiał Vault · aktualizacja 2026",
+    "type": "md",
+    "icon": "vi-md",
+    "locked": true,
+    "serie": 3
+  },
+  {
+    "id": 22,
+    "title": "Video Prompt Templates",
+    "file": "video-prompt-templates.md",
+    "desc": "Materiał Vault · aktualizacja 2026",
+    "type": "md",
+    "icon": "vi-md",
+    "locked": true,
+    "serie": 3
+  },
+  {
+    "id": 23,
+    "title": "Content Repurposing System",
+    "file": "content-repurposing-system.md",
+    "desc": "Materiał Vault · aktualizacja 2026",
+    "type": "md",
+    "icon": "vi-md",
+    "locked": true,
+    "serie": 3
+  },
+  {
+    "id": 24,
+    "title": "Distribution Checklist",
+    "file": "distribution-checklist.md",
+    "desc": "Materiał Vault · aktualizacja 2026",
+    "type": "md",
+    "icon": "vi-md",
+    "locked": true,
+    "serie": 3
+  },
+  {
+    "id": 25,
+    "title": "Ai Growth Operating Model",
+    "file": "ai-growth-operating-model.md",
+    "desc": "Materiał Vault · aktualizacja 2026",
+    "type": "md",
+    "icon": "vi-md",
+    "locked": true,
+    "serie": 4
+  },
+  {
+    "id": 26,
+    "title": "Revenue Ai Use Case Map",
+    "file": "revenue-ai-use-case-map.md",
+    "desc": "Materiał Vault · aktualizacja 2026",
+    "type": "md",
+    "icon": "vi-md",
+    "locked": true,
+    "serie": 4
+  },
+  {
+    "id": 27,
+    "title": "Ai Visibility Seo Playbook",
+    "file": "ai-visibility-seo-playbook.md",
+    "desc": "Materiał Vault · aktualizacja 2026",
+    "type": "md",
+    "icon": "vi-md",
+    "locked": true,
+    "serie": 4
+  },
+  {
+    "id": 28,
+    "title": "Content Entity Checklist",
+    "file": "content-entity-checklist.md",
+    "desc": "Materiał Vault · aktualizacja 2026",
+    "type": "md",
+    "icon": "vi-md",
+    "locked": true,
+    "serie": 4
+  },
+  {
+    "id": 29,
+    "title": "N8N Growth Automation Blueprint",
+    "file": "n8n-growth-automation-blueprint.json",
+    "desc": "Materiał Vault · aktualizacja 2026",
+    "type": "json",
+    "icon": "vi-json",
+    "locked": true,
+    "serie": 4
+  },
+  {
+    "id": 30,
+    "title": "Automation Risk Register",
+    "file": "automation-risk-register.md",
+    "desc": "Materiał Vault · aktualizacja 2026",
+    "type": "md",
+    "icon": "vi-md",
+    "locked": true,
+    "serie": 4
+  },
+  {
+    "id": 31,
+    "title": "Ai Marketing Os Template",
+    "file": "ai-marketing-os-template.md",
+    "desc": "Materiał Vault · aktualizacja 2026",
+    "type": "md",
+    "icon": "vi-md",
+    "locked": true,
+    "serie": 4
+  },
+  {
+    "id": 32,
+    "title": "Governance And Qa Checklist",
+    "file": "governance-and-qa-checklist.md",
+    "desc": "Materiał Vault · aktualizacja 2026",
+    "type": "md",
+    "icon": "vi-md",
+    "locked": true,
+    "serie": 4
+  }
 ];
 
 const QUIZZES = {
-  1: {
-    title: 'Sprawdź wiedzę: LLM Battle',
-    questions: [
-      { q: 'Który model AI najlepiej sprawdza się do analizy długich dokumentów prawnych i naukowych?',
-        options: ['ChatGPT-4o','Claude Opus','Gemini 2.5 Pro','Grok 3'], correct: 1,
-        explanation: 'Claude ma największe okno kontekstowe i najwyższą precyzję przy dokumentach wymagających dokładności.' },
-      { q: 'Czym wyróżnia się Perplexity na tle innych modeli AI?',
-        options: ['Generowaniem kodu','Weryfikowalnymi źródłami w czasie rzeczywistym','Najszybszym działaniem','Klonowaniem głosu'], correct: 1,
-        explanation: 'Perplexity specjalizuje się w wyszukiwaniu z cytowalnymi, weryfikowalnymi źródłami.' },
-      { q: 'Który model wygrywa przy analizie sentymentu rynku i breaking news w czasie rzeczywistym?',
-        options: ['Claude','DeepSeek','Grok','ChatGPT'], correct: 2,
-        explanation: 'Grok ma bezpośredni dostęp do X (Twitter) i najszybszy dostęp do live data.' },
+  "1": {
+    "title": "Sprawdź wiedzę: Model routing 2026",
+    "questions": [
+      {
+        "q": "Jaki jest najważniejszy wniosek z porównania modeli w 2026?",
+        "options": [
+          "Zawsze używaj jednego najlepszego modelu",
+          "Claude 3.7 nadal jest głównym punktem odniesienia",
+          "Wygrywa routing modeli do zadań",
+          "Benchmark MMLU wystarczy do decyzji"
+        ],
+        "correct": 2,
+        "explanation": "Największą przewagą jest dobór modelu do typu zadania: strategia, copy, kod, research, multimodalność, real-time."
+      },
+      {
+        "q": "Który model jest najlepszym defaultem do złożonej pracy strategicznej i analitycznej?",
+        "options": [
+          "GPT-5.5 Thinking",
+          "Grok 3",
+          "Gemini 2.5",
+          "Eleven v3"
+        ],
+        "correct": 0,
+        "explanation": "GPT-5.5 Thinking jest rekomendowany jako default do strategii, analizy, researchu i dokumentów."
+      },
+      {
+        "q": "Do czego najbezpieczniej pozycjonować Gemini 3.1 Pro?",
+        "options": [
+          "Tylko cold email",
+          "Voice cloning",
+          "Multimodalność, Google Workspace i duży kontekst",
+          "Wyłącznie X/Twitter"
+        ],
+        "correct": 2,
+        "explanation": "Gemini 3.1 Pro ma największy sens przy PDF, audio, video, obrazach, repozytoriach i pracy w ekosystemie Google."
+      }
     ]
   },
-  2: {
-    title: 'Sprawdź wiedzę: Perplexity',
-    questions: [
-      { q: 'Jaka jest główna przewaga Perplexity nad Google w B2B research?',
-        options: ['Jest darmowy','Podaje bezpośrednie odpowiedzi z cytowanymi źródłami','Ma lepszy UI','Działa offline'], correct: 1,
-        explanation: 'Perplexity syntetyzuje informacje i podaje skąd pochodzi każda odpowiedź — Google daje tylko linki.' },
-      { q: 'Do czego NIE powinieneś używać Perplexity?',
-        options: ['Research konkurencji','SEO lokalne i intencja zakupowa','Academic literature','Monitoring trendów'], correct: 1,
-        explanation: 'Perplexity słabo radzi sobie z intencją zakupową i lokalnymi wynikami — tu Google nadal wygrywa.' },
+  "2": {
+    "title": "Sprawdź wiedzę: Perplexity",
+    "questions": [
+      {
+        "q": "Jak najlepiej opisać Perplexity w 2026?",
+        "options": [
+          "Pełny zamiennik Google",
+          "Research layer i narzędzie do syntezy źródeł",
+          "Narzędzie wyłącznie do kodowania",
+          "CRM"
+        ],
+        "correct": 1,
+        "explanation": "Perplexity skraca research i pomaga w syntezie, ale źródła nadal trzeba weryfikować."
+      }
     ]
   },
-  5: {
-    title: 'Sprawdź wiedzę: Lead Generation',
-    questions: [
-      { q: 'Czym głównie różni się Clay od Apollo w kontekście lead gen?',
-        options: ['Clay jest darmowy','Clay to silnik enrichmentu, Apollo to baza leadów','Apollo ma lepszy UI','Clay nie integruje się z CRM'], correct: 1,
-        explanation: 'Clay jest narzędziem do enrichmentu i budowania workflow, Apollo to przede wszystkim baza kontaktów.' },
+  "3": {
+    "title": "Sprawdź wiedzę: NotebookLM",
+    "questions": [
+      {
+        "q": "Największą siłą NotebookLM jest:",
+        "options": [
+          "Praca na własnych źródłach",
+          "Real-time X search",
+          "Wysyłka cold maili",
+          "Generowanie kinowego video"
+        ],
+        "correct": 0,
+        "explanation": "NotebookLM jest prywatnym research roomem opartym o załączone, zaufane źródła."
+      }
     ]
-  },
+  }
+};
+
+const KINETIC_SCRIPTS = {
+  1: `W 2026 przestałem pytać, który model AI jest najlepszy. To pytanie ma coraz mniej sensu. GPT-5.5 jest moim defaultem do złożonej pracy biznesowej, strategii, analizy danych i syntezy. Claude Opus i Sonnet biorę tam, gdzie liczy się kod, jakość tekstu, długi dokument i naturalny styl. Gemini ma największy sens przy Google Workspace, multimodalności, PDF-ach, audio, video i dużym kontekście. Grok ma sens wtedy, gdy potrzebuję real-time web, X i szybkiego kontekstu z tego, co dzieje się teraz. Perplexity zostaje narzędziem do researchu, ale nie jako zamiennik myślenia. NotebookLM jest prywatnym research roomem dla własnych źródeł. Clay jest GTM workflow layerem, a nie tylko narzędziem do szukania maili. Największy błąd zespołów w 2026 to używanie jednego modelu do wszystkiego. Największa przewaga to routing zadań do właściwego narzędzia.`
 };
 
 // ── AUDIO FILES ───────────────────────────────
 const AUDIO_FILES = {
   1: '/audio/s1e01.mp3',
-};
-
-// ── KINETIC SCRIPTS ───────────────────────────
-const KINETIC_SCRIPTS = {
-  1: 'Przez sześć miesięcy testowałem ChatGPT Claude Gemini i Grok na prawdziwych projektach klientów Nie na benchmarkach nie na demo Prawdziwy research ICP prawdziwe cold emaile prawdziwe propozycje handlowe Wyniki są inne niż myślisz ChatGPT jest najlepiej znany ale to nie znaczy że jest najlepszy Claude bije go w analizie długich dokumentów o kilka długości Gemini ma dostęp do Google ale w B2B research przegrywa z Perplexity Grok jest zaskakująco dobry przy analizie sentymentu i live data Oto mój werdykt po dwudziestu latach w marketingu i sześciu miesiącach obsesji na punkcie AI Każdy model ma swoją niszę Używanie jednego do wszystkiego to błąd który kosztuje cię godziny tygodniowo Pokażę wam dokładnie kiedy używać którego i dlaczego to zmieni sposób w jaki pracujesz Na początku byłem sceptyczny Myślałem że to kolejny hype że za rok wszyscy zapomną Myliłem się Fundamentalnie zmieniły sposób mojej pracy i moich klientów Zaoszczędzamy godziny każdego dnia Ale kluczem jest wiedza które narzędzie do czego Zacznijmy od ChatGPT Wszyscy go znają wszyscy używają Ale większość używa go źle Najlepsza funkcja to Advanced Data Analysis i generowanie kodu Przy analizie dokumentów traci z Claude Przy web research traci z Perplexity Claude to mój domyślny model do pracy z tekstem Długie dokumenty analizy prawne propozycje handlowe Tutaj nie ma konkurencji Gemini 2.5 Pro zaskakuje przy zadaniach multimodalnych ale w czystym B2B text work przegrywa I wreszcie Grok Niedoceniany przez większość marketerów Ale jeśli pracujesz z danymi z X albo potrzebujesz live market sentiment to jest twój model',
 };
 
 // ── STATE ─────────────────────────────────────
@@ -141,6 +814,9 @@ function initApp(user) {
   } else if (params.get('payment') === 'cancelled') {
     window.history.replaceState({}, '', window.location.pathname);
     toast('Płatność anulowana.', 'err');
+  } else if (params.get('upgrade') === '1') {
+    window.history.replaceState({}, '', window.location.pathname);
+    setTimeout(() => showUpgrade(), 600);
   }
 
   const isPro = user.plan === 'pro' || user.plan === 'serie1' || user.plan === 'serie2';
@@ -161,7 +837,7 @@ function onAudioTimeUpdate() {
   if (currentProgress >= 95 && currentEpisode.hasQuiz && !getQuizResults()[currentEpisode.id]) {
     audioEl.pause(); isPlaying = false;
     const btn = document.getElementById('pb-play');
-    if (btn) btn.textContent = '▶';
+    if (btn) btn.innerHTML = IC.play;
     setTimeout(() => openQuiz(currentEpisode.id), 800);
   }
 }
@@ -169,7 +845,7 @@ function onAudioTimeUpdate() {
 function onAudioEnded() {
   isPlaying = false;
   const btn = document.getElementById('pb-play');
-  if (btn) btn.textContent = '▶';
+  if (btn) btn.innerHTML = IC.play;
   markCompleted(currentEpisode.id);
   renderAll(currentUser?.plan === 'pro');
   toast('Odcinek ukończony!');
@@ -235,16 +911,27 @@ function renderEpCard(ep, isPro, prog) {
 
   const quizBadge = quizRes ? `<span class="tag" style="font-size:.55rem;padding:2px 7px;background:${quizRes.passed ? 'rgba(74,222,128,.1)' : 'rgba(248,113,113,.1)'};color:${quizRes.passed ? 'var(--green)' : 'var(--red)'};border-color:${quizRes.passed ? 'rgba(74,222,128,.2)' : 'rgba(248,113,113,.2)'}">${quizRes.passed ? '✓' : '✗'} Quiz</span>` : '';
 
-  const audioBadge = hasAudio && !isLocked ? `<span class="tag" style="font-size:.55rem;padding:2px 7px;background:rgba(96,165,250,.08);color:var(--blue);border-color:rgba(96,165,250,.18)">▶ Audio</span>` : '';
+  const audioBadge = hasAudio && !isLocked ? `<span class="tag" style="font-size:.55rem;padding:2px 7px;background:rgba(96,165,250,.08);color:var(--blue);border-color:rgba(96,165,250,.18)">Audio</span>` : '';
 
-  const actionLabel = isLocked ? '● Pro' : completed ? '✓ Done' : prog > 0 ? '▶ Wznów' : '▶ Odtwórz';
-  const actionStyle = isLocked ? '' : completed ? 'background:rgba(74,222,128,.1);color:var(--green);border-color:rgba(74,222,128,.2)' : 'background:var(--orange-soft);color:var(--orange);border-color:var(--orange-line)';
+  const actionLabel = isLocked ? 'Pro' : completed ? 'Ukończono' : prog > 0 ? 'Wznów' : 'Odtwórz';
+  const actionStyle = isLocked ? 'color:var(--text-4);border-color:var(--line-2)' : completed ? 'background:rgba(74,222,128,.1);color:var(--green);border-color:rgba(74,222,128,.2)' : 'background:var(--orange-soft);color:var(--orange);border-color:var(--orange-line)';
 
   return `
     <div class="ep-card ${isLocked ? 'locked' : ''}" onclick="${isLocked ? 'showUpgrade()' : `playEpisode(${ep.id})`}" style="cursor:pointer">
-      <div class="ep-thumb">
-        <span style="font-size:1.75rem">${ep.emoji}</span>
-        ${isLocked ? '<div class="ep-thumb-lock">●</div>' : ''}
+      <div class="ep-thumb" data-serie="${ep.serie}">
+        <svg class="ep-thumb-wave" width="60" height="36" viewBox="0 0 60 36" fill="currentColor">
+          <rect x="0"  y="13" width="5" height="10" rx="2.5" opacity=".22"/>
+          <rect x="8"  y="7"  width="5" height="22" rx="2.5" opacity=".38"/>
+          <rect x="16" y="10" width="5" height="16" rx="2.5" opacity=".3"/>
+          <rect x="24" y="2"  width="5" height="32" rx="2.5" opacity=".55"/>
+          <rect x="32" y="8"  width="5" height="20" rx="2.5" opacity=".38"/>
+          <rect x="40" y="12" width="5" height="12" rx="2.5" opacity=".28"/>
+          <rect x="48" y="16" width="5" height="8"  rx="2.5" opacity=".18"/>
+          <rect x="56" y="14" width="4" height="8"  rx="2"   opacity=".14"/>
+        </svg>
+        <div class="ep-thumb-ep">E${ep.num}</div>
+        <div class="ep-thumb-play">${IC.play}</div>
+        ${isLocked ? `<div class="ep-thumb-lock">${IC.lock}</div>` : ''}
       </div>
       <div class="ep-body">
         <div class="ep-meta">
@@ -330,14 +1017,14 @@ function playEpisode(id) {
   }
 
   togglePlay();
-  toast(`▶ ${(currentLang === 'pl' ? ep.title_pl : ep.title_en).substring(0, 50)}...`);
+  toast(`Odtwarzam: ${(currentLang === 'pl' ? ep.title_pl : ep.title_en).substring(0, 48)}...`);
 }
 
 function togglePlay() {
   if (!currentEpisode) return;
   isPlaying = !isPlaying;
   const btn = document.getElementById('pb-play');
-  if (btn) btn.textContent = isPlaying ? '❚❚' : '▶';
+  if (btn) btn.innerHTML = isPlaying ? IC.pause : IC.play;
 
   if (hasRealAudio()) {
     if (isPlaying) audioEl.play().catch(() => {});
@@ -352,12 +1039,12 @@ function togglePlay() {
           updatePlayerUI();
           if (currentProgress >= 95 && currentEpisode.hasQuiz && !getQuizResults()[currentEpisode.id]) {
             clearInterval(progressInterval); isPlaying = false;
-            if (btn) btn.textContent = '▶';
+            if (btn) btn.innerHTML = IC.play;
             setTimeout(() => openQuiz(currentEpisode.id), 800);
           }
         } else {
           clearInterval(progressInterval); isPlaying = false;
-          if (btn) btn.textContent = '▶';
+          if (btn) btn.innerHTML = IC.play;
           markCompleted(currentEpisode.id);
           renderAll(currentUser?.plan === 'pro');
           toast('Odcinek ukończony!');
@@ -734,7 +1421,7 @@ window.playerClose  = () => {
   const bar = document.getElementById('player-bar'), kPanel = document.getElementById('kinetic-panel'), btn = document.getElementById('pb-play');
   if (bar)    bar.style.display = 'none';
   if (kPanel) kPanel.style.display = 'none';
-  if (btn)    btn.textContent = '▶';
+  if (btn)    btn.innerHTML = IC.play;
 };
 
 // ── EXPORTS ───────────────────────────────────

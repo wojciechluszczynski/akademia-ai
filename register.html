@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/style.css">
   <script src="js/config.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -21,8 +22,8 @@
         <img src="assets/logo-aa.svg" width="28" height="28" alt="AA" style="border-radius:6px;">
         Akademia AI
       </a>
-      <div class="auth-title">Załóż darmowe konto</div>
-      <div class="auth-sub">2 odcinki · 3 pliki Vault · zero kredytówki</div>
+      <div class="auth-title" id="page-title">Załóż darmowe konto</div>
+      <div class="auth-sub" id="page-sub">2 odcinki · 3 pliki Vault · zero karty kredytowej</div>
     </div>
 
     <div class="alert alert-err" id="err"></div>
@@ -45,7 +46,7 @@
 
     <div class="security-note">
       <span style="color: var(--orange);">●</span>
-      <div>Twoje konto chronione tokenem sesyjnym. Każde nowe logowanie unieważnia poprzednie sesje — koniec z dzieleniem hasła.</div>
+      <div>Twoje konto chronione tokenem sesyjnym. Każde nowe logowanie unieważnia poprzednie sesje.</div>
     </div>
 
     <div class="auth-footer-note">
@@ -60,6 +61,20 @@
     await window.AkademiaAuth.redirectIfLoggedIn();
   })();
 
+  // Detect plan from URL and adjust copy
+  const urlParams = new URLSearchParams(window.location.search);
+  const plan = urlParams.get('plan'); // 'all' | 'single' | null
+
+  if (plan === 'all') {
+    document.getElementById('page-title').textContent = 'Kup dostęp do wszystkich serii';
+    document.getElementById('page-sub').textContent = 'Załóż konto — zostaniesz przekierowany do płatności';
+    document.getElementById('submit-btn').textContent = 'Dalej → płatność';
+  } else if (plan === 'single') {
+    document.getElementById('page-title').textContent = 'Kup dostęp do wybranej serii';
+    document.getElementById('page-sub').textContent = 'Załóż konto — wybierzesz serię w kolejnym kroku';
+    document.getElementById('submit-btn').textContent = 'Dalej → wybierz serię';
+  }
+
   document.getElementById('register-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = document.getElementById('submit-btn');
@@ -68,16 +83,25 @@
     btn.disabled = true;
     btn.textContent = 'Tworzenie konta...';
     try {
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
+      const name     = document.getElementById('name').value.trim();
+      const email    = document.getElementById('email').value.trim();
       const password = document.getElementById('password').value;
-      await window.AkademiaAuth.register(name, email, password);
-      window.location.href = 'dashboard.html';
+      const { user } = await window.AkademiaAuth.register(name, email, password);
+
+      if (plan === 'all') {
+        // Go straight to Stripe checkout
+        window.location.href = `/api/create-checkout?plan=all&userId=${user.id}&email=${encodeURIComponent(email)}`;
+      } else if (plan === 'single') {
+        // Go to dashboard with upgrade modal open
+        window.location.href = 'dashboard.html?upgrade=1';
+      } else {
+        window.location.href = 'dashboard.html';
+      }
     } catch (e) {
       err.textContent = e.message;
       err.classList.add('show');
       btn.disabled = false;
-      btn.textContent = 'Załóż konto';
+      btn.textContent = plan === 'all' ? 'Dalej → płatność' : plan === 'single' ? 'Dalej → wybierz serię' : 'Załóż konto';
     }
   });
 </script>
