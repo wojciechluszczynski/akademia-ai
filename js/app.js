@@ -1258,38 +1258,30 @@ function checkCertificate() {
 function renderCertificate() {
   const el = document.getElementById('cert-container');
   if (!el) return;
-  const certId = 'AKAI-' + (currentUser?.id || 'DEMO').toUpperCase().substring(0, 8) + '-2026';
-  const date   = new Date().toLocaleDateString('pl-PL', { year:'numeric', month:'long', day:'numeric' });
-  const liUrl  = `https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name=Akademia+AI+%E2%80%93+AI+Stack+Wars&organizationId=wojciech-luszczynski&issueYear=2026&certUrl=https://akademia-ai.vercel.app/certificate/${certId}`;
-
+  if (!currentUser?.id) {
+    el.innerHTML = `<p style="color:var(--text-3);text-align:center;padding:32px 0;">Zaloguj się aby pobrać certyfikat.</p>`;
+    return;
+  }
   el.innerHTML = `
-    <div class="certificate" id="cert-print">
-      <div class="cert-inner-border"></div>
-      <div class="cert-logo-text">Akademia AI · Certyfikat Ukończenia</div>
-      <div class="cert-verbiage">Niniejszym zaświadcza się, że</div>
-      <div class="cert-name">${currentUser?.name || 'Wojciech Łuszczyński'}</div>
-      <div class="cert-series-name">ukończył/a Serię 1 — AI Stack Wars 2026</div>
-      <div class="cert-rule"></div>
-      <div class="cert-facts">
-        <div><div class="cert-fact-label">Data ukończenia</div><div class="cert-fact-val">${date}</div></div>
-        <div><div class="cert-fact-label">Odcinki</div><div class="cert-fact-val">12 / 12</div></div>
-        <div><div class="cert-fact-label">Język</div><div class="cert-fact-val">PL + EN</div></div>
+    <div style="text-align:center;padding:32px 0;">
+      <div style="font-size:0.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:12px;">Certyfikat ukończenia</div>
+      <p style="color:var(--text-3);font-size:.875rem;line-height:1.6;margin-bottom:24px;max-width:360px;margin-inline:auto;">
+        Twój certyfikat jest generowany z unikalnym tokenem weryfikacyjnym. Otwiera się w nowej karcie — możesz go wydrukować lub zapisać jako PDF.
+      </p>
+      <div style="display:flex;flex-direction:column;gap:10px;max-width:280px;margin:0 auto;">
+        <a href="/api/cert?userId=${currentUser.id}&serie=1" target="_blank"
+           class="btn btn-primary" style="justify-content:center;">
+          Pobierz certyfikat — Seria 1
+        </a>
+        <a href="/api/cert?userId=${currentUser.id}&serie=all" target="_blank"
+           class="btn btn-secondary" style="justify-content:center;">
+          Certyfikat pełny (wszystkie serie)
+        </a>
+        <a href="/verify" target="_blank"
+           class="btn btn-ghost btn-sm" style="justify-content:center;margin-top:4px;">
+          Weryfikator tokenów →
+        </a>
       </div>
-      <div class="cert-stamp-ring">
-        <span class="stamp-top">Akademia</span>
-        <span class="stamp-middle">AI</span>
-        <span class="stamp-bottom">2026</span>
-      </div>
-      <div class="cert-signature">
-        <div class="sig-name">Wojciech Łuszczyński</div>
-        <div class="sig-title">Growth Marketer · 20 lat doświadczenia · wojciech.io</div>
-      </div>
-      <div class="cert-actions">
-        <a href="${liUrl}" target="_blank" class="btn btn-primary">Dodaj do LinkedIn</a>
-        <button class="btn btn-secondary" onclick="window.print()">Pobierz PDF</button>
-        <button class="btn btn-ghost btn-sm" onclick="navigator.clipboard.writeText('https://akademia-ai.vercel.app/certificate/${certId}').then(()=>toast('Link skopiowany!'))">Skopiuj link</button>
-      </div>
-      <div class="cert-id">ID: ${certId}</div>
     </div>`;
 }
 
