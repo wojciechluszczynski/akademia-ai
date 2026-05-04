@@ -170,7 +170,7 @@ body::before {
   border: 1px solid rgba(255,255,255,0.10);
   border-radius: 999px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06);
-  padding: 0 10px 0 26px;
+  padding: 0 12px 0 20px;
   white-space: nowrap;
   transition: box-shadow 0.3s var(--ease), background 0.3s var(--ease);
 }
@@ -184,11 +184,18 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 36px;
   max-width: none;
   padding: 0;
   margin: 0;
-  width: auto;
+  width: 100%;
+}
+
+.navbar .container .logo {
+  flex: 0 0 auto;
+}
+
+.navbar .container .nav-right {
+  flex: 0 0 auto;
 }
 
 .logo {
@@ -216,10 +223,18 @@ body::before {
 
 .logo-ai { color: var(--orange); }
 
+.nav-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+}
+
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 16px;
 }
 
 .nav-cta-register {
