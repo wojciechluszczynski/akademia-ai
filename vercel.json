@@ -2,10 +2,13 @@
   "rewrites": [
     { "source": "/api/create-checkout", "destination": "/api/create-checkout.js" },
     { "source": "/api/webhook",         "destination": "/api/webhook.js" },
+    { "source": "/api/cert",            "destination": "/api/cert.js" },
     { "source": "/",                    "destination": "/index.html" },
     { "source": "/login",               "destination": "/login.html" },
     { "source": "/register",            "destination": "/register.html" },
-    { "source": "/dashboard",           "destination": "/dashboard.html" }
+    { "source": "/dashboard",           "destination": "/dashboard.html" },
+    { "source": "/verify",              "destination": "/verify.html" },
+    { "source": "/cert",               "destination": "/cert-view.html" }
   ],
   "headers": [
     {

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certyfikat — Akademia AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0c0b0a;
+      color: #e8e0d8;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 16px;
+      gap: 24px;
+    }
+
+    /* ── Action bar (hidden on print) ── */
+    .action-bar {
+      display: flex; gap: 12px; align-items: center;
+      width: 100%; max-width: 1000px;
+    }
+    .action-bar a {
+      font-size: .8125rem; color: #8c8279; text-decoration: none;
+    }
+    .action-bar a:hover { color: #e8e0d8; }
+    .spacer { flex: 1; }
+    .btn-print {
+      background: #f97316; color: #fff;
+      border: none; border-radius: 8px;
+      padding: 9px 20px; font-weight: 700; font-size: .875rem;
+      cursor: pointer; transition: opacity .15s;
+    }
+    .btn-print:hover { opacity: .85; }
+    .btn-verify {
+      background: transparent; color: #e8e0d8;
+      border: 1px solid #2a2520; border-radius: 8px;
+      padding: 9px 20px; font-weight: 600; font-size: .875rem;
+      cursor: pointer; text-decoration: none;
+    }
+
+    /* ── Certificate sheet — A4 landscape ── */
+    .cert-sheet {
+      width: 297mm;
+      height: 210mm;
+      background: #0f0e0d;
+      border: 1px solid #2a2520;
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 14mm 16mm 12mm;
+    }
+
+    /* Decorative elements */
+    .cert-glow {
+      position: absolute;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(249,115,22,.12), transparent 70%);
+      top: -80px; right: -60px;
+      pointer-events: none;
+    }
+    .cert-glow-2 {
+      position: absolute;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(249,115,22,.07), transparent 70%);
+      bottom: -40px; left: 60px;
+      pointer-events: none;
+    }
+    .cert-border-top {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #f97316, transparent);
+    }
+
+    /* Content */
+    .cert-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+    .cert-logo {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 1rem; font-weight: 900; color: #e8e0d8;
+    }
+    .cert-logo-box {
+      width: 28px; height: 28px;
+      background: #f97316;
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .6rem; font-weight: 900; color: #fff; letter-spacing: -.02em;
+    }
+    .cert-issued-label {
+      font-size: .6rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: #4a4440;
+      text-align: right;
+    }
+    .cert-issued-date {
+      font-size: .75rem; color: #8c8279; text-align: right; margin-top: 3px;
+    }
+
+    .cert-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      padding: 0 12mm;
+    }
+    .cert-label {
+      font-size: .6rem; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: #f97316;
+      margin-bottom: 12px;
+    }
+    .cert-presents {
+      font-size: .75rem; color: #6b6460; margin-bottom: 6px;
+    }
+    .cert-name {
+      font-size: 2.4rem; font-weight: 900;
+      letter-spacing: -.04em; color: #fff;
+      margin-bottom: 14px;
+      line-height: 1;
+    }
+    .cert-completed {
+      font-size: .75rem; color: #6b6460; margin-bottom: 6px;
+    }
+    .cert-course {
+      font-size: 1.1rem; font-weight: 800;
+      letter-spacing: -.025em; color: #e8e0d8;
+      margin-bottom: 6px;
+    }
+    .cert-subtitle {
+      font-size: .7rem; color: #4a4440;
+    }
+
+    .cert-footer {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+    .cert-sig {
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .cert-sig-name {
+      font-size: .875rem; font-weight: 800; color: #e8e0d8;
+    }
+    .cert-sig-role {
+      font-size: .625rem; color: #6b6460;
+      letter-spacing: .06em; text-transform: uppercase;
+    }
+    .cert-sig-line {
+      width: 100px; height: 1px;
+      background: #2a2520;
+      margin-bottom: 8px;
+    }
+
+    .cert-token-block {
+      text-align: right;
+    }
+    .cert-token-label {
+      font-size: .55rem; letter-spacing: .1em; text-transform: uppercase;
+      color: #4a4440; margin-bottom: 4px;
+    }
+    .cert-token-val {
+      font-family: monospace;
+      font-size: .75rem; font-weight: 700;
+      color: #f97316; letter-spacing: .08em;
+    }
+    .cert-verify-url {
+      font-size: .55rem; color: #4a4440; margin-top: 4px;
+    }
+
+    /* Loading / error states */
+    .loading, .error-state {
+      width: 100%; max-width: 480px;
+      text-align: center;
+      color: #8c8279;
+      padding: 60px 0;
+    }
+
+    /* ── Print styles ── */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+      .action-bar { display: none; }
+      .cert-sheet {
+        width: 297mm; height: 210mm;
+        border: none;
+        border-radius: 0;
+        page-break-after: avoid;
+      }
+      @page { size: A4 landscape; margin: 0; }
+    }
+
+    /* Scale down on small screens */
+    @media (max-width: 1060px) {
+      .cert-sheet {
+        transform: scale(0.72);
+        transform-origin: top center;
+        margin-bottom: -60mm;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="action-bar" id="action-bar" style="display:none">
+  <a href="dashboard.html">← Wróć do kursu</a>
+  <span class="spacer"></span>
+  <a class="btn-verify" id="verify-link" href="#">Zweryfikuj token</a>
+  <button class="btn-print" onclick="window.print()">Pobierz PDF</button>
+</div>
+
+<div class="loading" id="loading">Ładowanie certyfikatu…</div>
+<div class="error-state" id="error-state" style="display:none">Nie znaleziono certyfikatu.</div>
+
+<div class="cert-sheet" id="cert-sheet" style="display:none">
+  <div class="cert-glow"></div>
+  <div class="cert-glow-2"></div>
+  <div class="cert-border-top"></div>
+
+  <div class="cert-header">
+    <div class="cert-logo">
+      <div class="cert-logo-box">AA</div>
+      Akademia AI
+    </div>
+    <div>
+      <div class="cert-issued-label">Data ukończenia</div>
+      <div class="cert-issued-date" id="cert-date">—</div>
+    </div>
+  </div>
+
+  <div class="cert-body">
+    <div class="cert-label">Certyfikat ukończenia</div>
+    <div class="cert-presents">niniejszym zaświadcza, że</div>
+    <div class="cert-name" id="cert-name">—</div>
+    <div class="cert-completed">ukończył/a z wyróżnieniem program</div>
+    <div class="cert-course" id="cert-course">—</div>
+    <div class="cert-subtitle">Akademia AI · 36 odcinków audio · narzędzia AI w praktyce growth marketingu</div>
+  </div>
+
+  <div class="cert-footer">
+    <div class="cert-sig">
+      <div class="cert-sig-line"></div>
+      <div class="cert-sig-name">Wojciech Łuszczyński</div>
+      <div class="cert-sig-role">Founder · Akademia AI · wojciech.io</div>
+    </div>
+    <div class="cert-token-block">
+      <div class="cert-token-label">Token weryfikacyjny</div>
+      <div class="cert-token-val" id="cert-token">—</div>
+      <div class="cert-verify-url">academy.wojciech.io/verify</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const SERIE_NAMES = {
+    '1': 'AI Stack 2026 — Seria 1',
+    '2': 'Outbound Machine — Seria 2',
+    '3': 'Voice, Video & Brand — Seria 3',
+    '4': 'B2B Marketing AI — Seria 4',
+    'all': 'Wszystkie serie (pełny program)',
+  };
+
+  async function load() {
+    const token = new URLSearchParams(window.location.search).get('token');
+    if (!token) { showError(); return; }
+
+    try {
+      const res  = await fetch(`/api/cert?verify=1&token=${encodeURIComponent(token)}`);
+      const data = await res.json();
+      if (!data.valid) { showError(); return; }
+
+      const date = new Date(data.issued_at).toLocaleDateString('pl-PL', {
+        day: 'numeric', month: 'long', year: 'numeric'
+      });
+
+      document.getElementById('cert-name').textContent   = data.name;
+      document.getElementById('cert-course').textContent = `Akademia AI — ${data.serie_name}`;
+      document.getElementById('cert-date').textContent   = date;
+      document.getElementById('cert-token').textContent  = data.token;
+      document.getElementById('verify-link').href        = `/verify.html?token=${data.token}`;
+
+      document.getElementById('loading').style.display    = 'none';
+      document.getElementById('cert-sheet').style.display = 'flex';
+      document.getElementById('action-bar').style.display = 'flex';
+    } catch (e) {
+      showError();
+    }
+  }
+
+  function showError() {
+    document.getElementById('loading').style.display    = 'none';
+    document.getElementById('error-state').style.display = 'block';
+  }
+
+  load();
+</script>
+</body>
+</html>

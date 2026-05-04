@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weryfikacja certyfikatu — Akademia AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="glow-bg"></div>
+
+<div style="min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:32px 16px;">
+
+  <!-- Logo / nav -->
+  <a href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text-1);font-weight:900;font-size:1.1rem;margin-bottom:40px;">
+    <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" fill="none" width="32" height="32" style="border-radius:8px;">
+      <rect width="36" height="36" rx="8" fill="#f97316"/>
+      <polyline points="4,26 9.5,11 15,26" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="6.5" y1="21" x2="13" y2="21" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+      <polyline points="15,26 20.5,11 26,26" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="17.5" y1="21" x2="24" y2="21" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+      <circle cx="30.5" cy="25" r="2.2" fill="white"/>
+    </svg>
+    Akademia AI
+  </a>
+
+  <!-- Card -->
+  <div style="width:100%;max-width:500px;">
+    <div style="text-align:center;margin-bottom:28px;">
+      <div style="font-size:0.6875rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:8px;">Weryfikator certyfikatów</div>
+      <h1 style="font-size:1.75rem;font-weight:900;letter-spacing:-.04em;color:var(--text-1);margin-bottom:8px;">Sprawdź certyfikat</h1>
+      <p style="font-size:0.875rem;color:var(--text-3);line-height:1.6;">Wpisz token z certyfikatu — potwierdzimy jego autentyczność i pokażemy kto i kiedy go uzyskał.</p>
+    </div>
+
+    <!-- Input -->
+    <div style="display:flex;gap:8px;margin-bottom:20px;">
+      <input type="text" id="token-input"
+        placeholder="AA-S1-2026-XXXXXXXX"
+        autocomplete="off" spellcheck="false"
+        style="flex:1;background:var(--bg-input);border:1px solid var(--line-1);border-radius:10px;padding:12px 16px;color:var(--text-1);font-size:0.9rem;font-family:var(--mono);letter-spacing:.06em;outline:none;transition:border-color var(--t);"
+        onfocus="this.style.borderColor='var(--orange-line)'"
+        onblur="this.style.borderColor='var(--line-1)'"
+      >
+      <button onclick="verify()" id="verify-btn"
+        style="background:var(--orange);color:#fff;border:none;border-radius:10px;padding:12px 22px;font-weight:700;font-size:.875rem;cursor:pointer;white-space:nowrap;transition:opacity .15s;"
+        onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+        Sprawdź
+      </button>
+    </div>
+
+    <!-- Result -->
+    <div id="result"></div>
+
+    <!-- Footer note -->
+    <p style="text-align:center;font-size:.75rem;color:var(--text-4);margin-top:32px;">
+      Certyfikaty wystawia Akademia AI · <a href="https://wojciech.io" style="color:var(--orange);text-decoration:none;">wojciech.io</a>
+    </p>
+  </div>
+
+</div>
+
+<script>
+  const urlToken = new URLSearchParams(window.location.search).get('token');
+  if (urlToken) {
+    document.getElementById('token-input').value = urlToken;
+    verify();
+  }
+
+  document.getElementById('token-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter') verify();
+  });
+
+  async function verify() {
+    const token = document.getElementById('token-input').value.trim().toUpperCase();
+    if (!token) return;
+
+    const btn    = document.getElementById('verify-btn');
+    const result = document.getElementById('result');
+    btn.disabled = true; btn.textContent = '…';
+    result.innerHTML = '';
+
+    try {
+      const res  = await fetch(`/api/cert?verify=1&token=${encodeURIComponent(token)}`);
+      const data = await res.json();
+
+      if (data.valid) {
+        const date = new Date(data.issued_at).toLocaleDateString('pl-PL', {
+          day: 'numeric', month: 'long', year: 'numeric'
+        });
+        result.innerHTML = `
+          <div style="background:rgba(74,222,128,.06);border:1px solid rgba(74,222,128,.18);border-radius:12px;padding:16px 20px;margin-bottom:12px;display:flex;align-items:center;gap:14px;">
+            <div style="font-size:1.5rem;flex-shrink:0;">✅</div>
+            <div>
+              <div style="font-weight:700;color:#4ade80;font-size:.9rem;margin-bottom:2px;">Certyfikat jest autentyczny</div>
+              <div style="font-size:.75rem;color:var(--text-4);">Token zweryfikowany w bazie Akademii AI</div>
+            </div>
+          </div>
+          <div style="background:var(--bg-card);border:1px solid var(--line-1);border-radius:12px;overflow:hidden;">
+            ${row('Uczestnik', data.name)}
+            ${row('Program', 'Akademia AI — ' + data.serie_name)}
+            ${row('Data ukończenia', date)}
+            ${row('Token', `<span style="font-family:var(--mono);color:var(--orange);letter-spacing:.06em;font-size:.8rem;">${data.token}</span>`)}
+          </div>
+          <div style="margin-top:14px;text-align:center;">
+            <a href="/cert-view.html?token=${data.token}" style="display:inline-block;background:var(--bg-input);border:1px solid var(--line-1);border-radius:8px;padding:9px 20px;font-size:.8125rem;font-weight:600;color:var(--text-1);text-decoration:none;transition:border-color var(--t);"
+              onmouseover="this.style.borderColor='var(--orange-line)'" onmouseout="this.style.borderColor='var(--line-1)'">
+              Zobacz certyfikat PDF →
+            </a>
+          </div>`;
+      } else {
+        result.innerHTML = `
+          <div style="background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.18);border-radius:12px;padding:16px 20px;display:flex;align-items:center;gap:14px;">
+            <div style="font-size:1.5rem;">❌</div>
+            <div>
+              <div style="font-weight:700;color:#f87171;font-size:.9rem;margin-bottom:2px;">Token nieprawidłowy lub nieistniejący</div>
+              <div style="font-size:.75rem;color:var(--text-4);">Sprawdź czy token został przepisany poprawnie.</div>
+            </div>
+          </div>`;
+      }
+    } catch (e) {
+      result.innerHTML = `
+        <div style="background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.18);border-radius:12px;padding:16px 20px;">
+          <div style="font-weight:700;color:#fbbf24;">Błąd połączenia — spróbuj ponownie</div>
+        </div>`;
+    }
+
+    btn.disabled = false; btn.textContent = 'Sprawdź';
+  }
+
+  function row(label, value) {
+    return `<div style="display:flex;justify-content:space-between;align-items:center;padding:11px 18px;border-bottom:1px solid var(--line-1);">
+      <span style="font-size:.75rem;color:var(--text-4);">${label}</span>
+      <span style="font-size:.875rem;font-weight:600;color:var(--text-1);">${value}</span>
+    </div>`;
+  }
+</script>
+
+</body>
+</html>
