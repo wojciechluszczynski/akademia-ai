@@ -67,12 +67,12 @@
 
   if (plan === 'all') {
     document.getElementById('page-title').textContent = 'Kup dostęp do wszystkich serii';
-    document.getElementById('page-sub').textContent = 'Załóż konto — zostaniesz przekierowany do płatności';
-    document.getElementById('submit-btn').textContent = 'Dalej → płatność';
+    document.getElementById('page-sub').textContent = '36 odcinków · dożywotni dostęp · płacisz raz';
+    document.getElementById('submit-btn').textContent = 'Kup dostęp · 249 PLN →';
   } else if (plan === 'single') {
     document.getElementById('page-title').textContent = 'Kup dostęp do wybranej serii';
-    document.getElementById('page-sub').textContent = 'Załóż konto — wybierzesz serię w kolejnym kroku';
-    document.getElementById('submit-btn').textContent = 'Dalej → wybierz serię';
+    document.getElementById('page-sub').textContent = '12 odcinków · dożywotni dostęp · płacisz raz';
+    document.getElementById('submit-btn').textContent = 'Wybierz serię · 97 PLN →';
   }
 
   document.getElementById('register-form').addEventListener('submit', async (e) => {
@@ -86,13 +86,17 @@
       const name     = document.getElementById('name').value.trim();
       const email    = document.getElementById('email').value.trim();
       const password = document.getElementById('password').value;
-      const { user } = await window.AkademiaAuth.register(name, email, password);
+      const result   = await window.AkademiaAuth.register(name, email, password);
+      const user     = result?.user;
 
       if (plan === 'all') {
-        // Go straight to Stripe checkout
-        window.location.href = `/api/create-checkout?plan=all&userId=${user.id}&email=${encodeURIComponent(email)}`;
+        if (user?.id) {
+          window.location.href = `/api/create-checkout?plan=all&userId=${user.id}&email=${encodeURIComponent(email)}`;
+        } else {
+          // Email confirmation still pending — send to login with hint
+          window.location.href = `login.html?plan=all&email=${encodeURIComponent(email)}&msg=confirm`;
+        }
       } else if (plan === 'single') {
-        // Go to dashboard with upgrade modal open
         window.location.href = 'dashboard.html?upgrade=1';
       } else {
         window.location.href = 'dashboard.html';
@@ -101,7 +105,7 @@
       err.textContent = e.message;
       err.classList.add('show');
       btn.disabled = false;
-      btn.textContent = plan === 'all' ? 'Dalej → płatność' : plan === 'single' ? 'Dalej → wybierz serię' : 'Załóż konto';
+      btn.textContent = plan === 'all' ? 'Kup dostęp · 249 PLN →' : plan === 'single' ? 'Wybierz serię · 97 PLN →' : 'Załóż konto';
     }
   });
 </script>
