@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Akademia AI — Wojciech Łuszczyński</title>
+  <title>Akademia AI · Wojciech Łuszczyński</title>
   <meta name="description" content="36 odcinków audio o narzędziach AI, automatyzacji i contencie. Gotowe workflow, prompty i blueprinty od praktyka.">
-  <meta property="og:title" content="Akademia AI — Wojciech Łuszczyński">
+  <meta property="og:title" content="Akademia AI · Wojciech Łuszczyński">
   <meta property="og:description" content="Naucz się AI od praktyka. Nie influencera. Gotowe workflow, audio, certyfikat.">
   <meta property="og:image" content="https://academy.wojciech.io/assets/og.png">
   <meta property="og:url" content="https://academy.wojciech.io">
@@ -23,7 +23,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 140px 24px 80px;
+      padding: 120px 24px 48px;
       position: relative;
       z-index: 1;
     }
@@ -44,13 +44,14 @@
     }
 
     .lp-h1 {
-      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-size: clamp(2.8rem, 6vw, 5rem);
       font-weight: 900;
       letter-spacing: -0.05em;
-      line-height: 1.0;
+      line-height: 1.05;
       color: var(--text-1);
-      max-width: 860px;
+      max-width: none;
       margin-bottom: 24px;
+      white-space: nowrap;
     }
 
     .lp-h1 em {
@@ -74,7 +75,7 @@
       gap: 10px;
       justify-content: center;
       flex-wrap: wrap;
-      margin-bottom: 80px;
+      margin-bottom: 40px;
     }
 
     /* Product UI mockup */
@@ -276,7 +277,7 @@
 
     /* Animated workflow */
     .workflow-section {
-      padding: 120px 0;
+      padding: 72px 0;
       position: relative; z-index: 1;
     }
 
@@ -469,40 +470,121 @@
     /* Stat strip in hero */
     .hero-stat-strip {
       display: flex;
-      gap: 32px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 56px;
-      padding-top: 40px;
-      border-top: 1px solid var(--line-1);
+      flex-direction: column;
+      gap: 0;
+      align-items: stretch;
+      margin-top: 32px;
+      padding: 20px 24px;
+      border: 1px solid var(--line-1);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.025);
       width: 100%;
-      max-width: 600px;
+      max-width: 680px;
     }
 
-    .hero-stat {
-      text-align: center;
-    }
-
-    .hero-stat-num {
-      font-size: 1.75rem;
-      font-weight: 900;
-      letter-spacing: -0.04em;
-      color: var(--text-1);
-      font-family: var(--mono);
-    }
-
-    .hero-stat-num em {
-      font-style: normal;
-      color: var(--orange);
-      -webkit-text-fill-color: var(--orange);
-      background: none;
-    }
-
-    .hero-stat-label {
-      font-size: 0.75rem;
+    .bench-header {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
       color: var(--text-4);
-      margin-top: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      text-align: left;
     }
+
+    .bench-row {
+      display: grid;
+      grid-template-columns: 160px 1fr 52px;
+      align-items: center;
+      gap: 16px;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--line-1);
+    }
+    .bench-row:last-child { border-bottom: none; }
+
+    .bench-tool {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-1);
+      white-space: nowrap;
+    }
+
+    .bench-icon {
+      width: 28px; height: 28px;
+      border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+    }
+    .bench-icon img {
+      width: 18px; height: 18px;
+      object-fit: contain;
+    }
+
+    .bench-sub {
+      font-size: 0.7rem;
+      color: var(--text-4);
+      font-weight: 400;
+      margin-top: 1px;
+    }
+
+    .bench-tool-col {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .bench-bar-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .bench-category {
+      font-size: 0.7rem;
+      color: var(--text-4);
+    }
+
+    .bench-bar-track {
+      width: 100%;
+      height: 7px;
+      background: var(--line-1);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .bench-bar-fill {
+      height: 100%;
+      border-radius: 99px;
+      background: var(--orange);
+    }
+    .bench-row.dim .bench-bar-fill { background: rgba(255,255,255,0.15); }
+    .bench-row.dim .bench-tool { color: var(--text-3); }
+
+    .bench-score {
+      font-size: 1rem;
+      font-weight: 900;
+      color: var(--orange);
+      text-align: right;
+      font-family: var(--mono);
+      letter-spacing: -0.03em;
+    }
+    .bench-row.dim .bench-score { color: var(--text-4); font-size: 0.85rem; font-weight: 700; }
+
+    .bench-rank {
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: var(--orange);
+      background: rgba(249,115,22,0.12);
+      border-radius: 4px;
+      padding: 1px 5px;
+      margin-left: 2px;
+    }
+    .bench-row.dim .bench-rank { display: none; }
 
     .bento-big-num {
       font-size: 4.5rem; font-weight: 900;
@@ -535,14 +617,25 @@
     .bento-quiz-preview { margin-top: 16px; display: flex; flex-direction: column; gap: 6px; }
 
     .bento-quiz-option {
-      padding: 8px 12px; border-radius: 7px;
-      font-size: 0.78rem; border: 1px solid var(--line-1);
-      background: var(--bg-input); color: var(--text-2);
+      display: flex; align-items: center; gap: 9px;
+      padding: 7px 10px; border-radius: 7px;
+      font-size: 0.775rem; border: 1px solid var(--line-1);
+      background: var(--bg-input); color: var(--text-3);
     }
-
+    .bento-quiz-letter {
+      width: 18px; height: 18px; border-radius: 4px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.625rem; font-weight: 700; letter-spacing: 0;
+      background: var(--bg-hover); border: 1px solid var(--line-1);
+      color: var(--text-4);
+    }
     .bento-quiz-option.correct {
-      border-color: rgba(74,222,128,0.4);
-      background: rgba(74,222,128,0.07); color: #4ade80;
+      border-color: rgba(74,222,128,0.35);
+      background: rgba(74,222,128,0.06); color: var(--text-2);
+    }
+    .bento-quiz-option.correct .bento-quiz-letter {
+      background: rgba(74,222,128,0.15); border-color: rgba(74,222,128,0.4);
+      color: #4ade80;
     }
 
     .bento-file-list { margin-top: 16px; display: flex; flex-direction: column; gap: 7px; }
@@ -565,10 +658,10 @@
     .ext-zip  { background: rgba(234,179,8,0.12);  color: #eab308; }
 
     /* Section */
-    .lp-section { padding: 120px 0; position: relative; z-index: 1; }
+    .lp-section { padding: 72px 0; position: relative; z-index: 1; }
     .lp-section-alt { background: rgba(22,20,18,0.5); }
 
-    .lp-section-head { margin-bottom: 60px; }
+    .lp-section-head { margin-bottom: 40px; }
     .lp-section-head .label { display: block; margin-bottom: 12px; }
     .lp-section-head h2 { margin-bottom: 12px; }
     .lp-section-head p { max-width: 480px; }
@@ -615,8 +708,9 @@
     .sc2-badge.pro  { background: var(--orange-soft); color: var(--orange); border: 1px solid var(--orange-line); }
     .sc2-badge.coming { background: var(--bg-input); color: var(--text-4); border: 1px solid var(--line-1); }
 
-    .sc2-title { font-size: 1.0625rem; font-weight: 700; line-height: 1.35; margin-bottom: 10px; }
-    .sc2-tools { font-size: 0.78rem; color: var(--text-3); line-height: 1.6; margin-bottom: 20px; }
+    .sc2-title { font-size: 1.0625rem; font-weight: 700; line-height: 1.35; margin-bottom: 8px; }
+    .sc2-desc { font-size: 0.8125rem; color: var(--text-3); line-height: 1.65; margin-bottom: 12px; }
+    .sc2-tools { font-size: 0.75rem; color: var(--text-4); line-height: 1.6; margin-bottom: 16px; }
 
     .sc2-ep-count {
       font-size: 0.75rem; font-weight: 600; color: var(--text-3);
@@ -703,8 +797,8 @@
     /* Host */
     .host-section {
       display: grid;
-      grid-template-columns: 420px 1fr;
-      gap: 60px; align-items: center;
+      grid-template-columns: minmax(0, 380px) 1fr;
+      gap: 48px; align-items: start;
     }
 
     /* ── Host visual: cutout on dark atmospheric bg ── */
@@ -896,7 +990,7 @@
 
     /* CTA block */
     .lp-cta-block {
-      text-align: center; padding: 120px 24px;
+      text-align: center; padding: 72px 24px;
       position: relative; z-index: 1;
     }
 
@@ -1139,8 +1233,8 @@
     @media (max-width: 768px) {
       .nav-right { display: none; }
       .hamburger { display: flex; }
-      .lp-hero { padding: 120px 20px 60px; }
-      .lp-h1 { font-size: clamp(2.2rem, 9vw, 3.2rem); }
+      .lp-hero { padding: 100px 20px 40px; }
+      .lp-h1 { font-size: clamp(2.2rem, 9vw, 3.2rem); white-space: normal; }
       .lp-sub { font-size: 0.9375rem; }
       .mock-sidebar { display: none; }
       .mock-body { grid-template-columns: 1fr; height: auto; }
@@ -1154,13 +1248,28 @@
       .host-visual { height: 420px; }
       .pricing-v2 { grid-template-columns: 1fr; max-width: 420px; }
       .video-grid { grid-template-columns: 1fr; }
-      .lp-section { padding: 80px 0; }
+      .lp-section { padding: 56px 0; }
       .workflow-track { gap: 8px; }
+
+      /* Benchmark mobile */
+      .hero-stat-strip { margin-top: 36px; padding-top: 28px; }
+      .bench-row {
+        display: flex; flex-direction: column; gap: 6px;
+        padding: 12px 0;
+      }
+      .bench-tool { font-size: 0.8rem; }
+      .bench-tool-col span:first-child { font-size: 0.82rem; }
+      .bench-sub { display: none; }
+      .bench-bar-wrap { width: 100%; }
+      .bench-bar-track { height: 6px; }
+      .bench-category { font-size: 0.7rem; }
+      .bench-score { font-size: 0.85rem; align-self: flex-end; margin-top: -20px; }
     }
     @media (max-width: 1024px) and (min-width: 769px) {
       .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -1171,14 +1280,18 @@
 <nav class="navbar">
   <div class="container">
     <a href="index.html" class="logo">
-      <img src="assets/logo.svg" alt="Akademia AI" style="height:36px;width:auto;">
+      <svg class="logo-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="nav-lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF8C42"/><stop offset="100%" stop-color="#D94A0E"/></linearGradient></defs>
+        <rect width="32" height="32" rx="7" fill="url(#nav-lg)"/>
+        <text x="16" y="21.5" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-weight="800" font-size="11.5" fill="white" letter-spacing="-0.3">.AI</text>
+      </svg>
+      <span class="logo-name" id="logo-name-text">Akademia<span class="logo-ai">.AI</span></span>
     </a>
     <div class="nav-right">
       <div class="nav-links">
         <a href="#program" class="nav-link">Program</a>
         <a href="#workflow" class="nav-link">Jak to działa</a>
         <a href="#pricing" class="nav-link">Cennik</a>
-        <a href="#prowadzacy" class="nav-link">Prowadzący</a>
         <a href="#opinie" class="nav-link">Opinie</a>
       </div>
       <div class="lang-switch">
@@ -1198,7 +1311,6 @@
   <a href="#program" class="mobile-nav-link" onclick="closeMenu()">Program</a>
   <a href="#workflow" class="mobile-nav-link" onclick="closeMenu()">Jak to działa</a>
   <a href="#pricing" class="mobile-nav-link" onclick="closeMenu()">Cennik</a>
-  <a href="#prowadzacy" class="mobile-nav-link" onclick="closeMenu()">Prowadzący</a>
   <a href="#opinie" class="mobile-nav-link" onclick="closeMenu()">Opinie</a>
   <div class="mobile-nav-divider"></div>
   <div class="mobile-nav-lang">
@@ -1212,17 +1324,12 @@
 
 <!-- HERO -->
 <section class="lp-hero">
-  <div class="lp-badge">
-    <span class="live-dot"></span>
-    <span id="badge-text">Sezon 1 · maj 2026</span>
-  </div>
   <h1 class="lp-h1" id="hero-h1">
     Naucz się AI od praktyka.<br>
     <em>Nie influencera.</em>
   </h1>
   <p class="lp-sub" id="hero-sub">
-    36 odcinków audio z gotowymi workflow, promptami i plikami do pobrania.
-    Narzędzia, które naprawdę działają. Testowane na własnych klientach.
+    36 krótkich odcinków audio o tym, jak realnie używać AI w marketingu, sprzedaży i pracy founderów B2B. Modele, workflowy, prompty, automatyzacje i pliki do wdrożenia. Bez teorii z konferencji.
   </p>
   <div class="lp-cta-row">
     <a href="register.html" class="btn btn-primary btn-lg">Zacznij za darmo</a>
@@ -1230,21 +1337,81 @@
   </div>
 
   <div class="hero-stat-strip">
-    <div class="hero-stat">
-      <div class="hero-stat-num"><em>36</em></div>
-      <div class="hero-stat-label">odcinków audio</div>
+    <div class="bench-header">W 2026 nie wygrywa jeden model. Wygrywa routing zadań.</div>
+
+    <div class="bench-row">
+      <div class="bench-tool">
+        <div class="bench-icon"><img src="https://www.google.com/s2/favicons?domain=claude.ai&sz=64" alt="Claude"></div>
+        <div class="bench-tool-col">
+          <span>Claude Opus 4.7 <span class="bench-rank">TOP</span></span>
+          <span class="bench-sub">Anthropic</span>
+        </div>
+      </div>
+      <div class="bench-bar-wrap">
+        <div class="bench-category">Kodowanie, jakościowe teksty, długie dokumenty</div>
+        <div class="bench-bar-track"><div class="bench-bar-fill" style="width:95%"></div></div>
+      </div>
+      <div class="bench-score">95</div>
     </div>
-    <div class="hero-stat">
-      <div class="hero-stat-num"><em>4</em></div>
-      <div class="hero-stat-label">serie tematyczne</div>
+
+    <div class="bench-row">
+      <div class="bench-tool">
+        <div class="bench-icon"><img src="https://www.google.com/s2/favicons?domain=perplexity.ai&sz=64" alt="Perplexity"></div>
+        <div class="bench-tool-col">
+          <span>Perplexity <span class="bench-rank">TOP</span></span>
+          <span class="bench-sub">AI Search</span>
+        </div>
+      </div>
+      <div class="bench-bar-wrap">
+        <div class="bench-category">Research w czasie rzeczywistym</div>
+        <div class="bench-bar-track"><div class="bench-bar-fill" style="width:97%"></div></div>
+      </div>
+      <div class="bench-score">97</div>
     </div>
-    <div class="hero-stat">
-      <div class="hero-stat-num"><em>10x</em></div>
-      <div class="hero-stat-label">szybciej z AI</div>
+
+    <div class="bench-row">
+      <div class="bench-tool">
+        <div class="bench-icon"><img src="https://www.google.com/s2/favicons?domain=openai.com&sz=64" alt="OpenAI"></div>
+        <div class="bench-tool-col">
+          <span>GPT-5.5 Thinking <span class="bench-rank">TOP</span></span>
+          <span class="bench-sub">OpenAI</span>
+        </div>
+      </div>
+      <div class="bench-bar-wrap">
+        <div class="bench-category">Strategia, analiza, reasoning, praca profesjonalna</div>
+        <div class="bench-bar-track"><div class="bench-bar-fill" style="width:88%"></div></div>
+      </div>
+      <div class="bench-score">88</div>
     </div>
-    <div class="hero-stat">
-      <div class="hero-stat-num"><em>0</em></div>
-      <div class="hero-stat-label">teorii bez pokrycia</div>
+
+    <div class="bench-row dim">
+      <div class="bench-tool">
+        <div class="bench-icon"><img src="https://www.google.com/s2/favicons?domain=gemini.google.com&sz=64" alt="Gemini"></div>
+        <div class="bench-tool-col">
+          <span>Gemini 3.1 Pro</span>
+          <span class="bench-sub">Google</span>
+        </div>
+      </div>
+      <div class="bench-bar-wrap">
+        <div class="bench-category">Google Workspace, multimodal, 1M context</div>
+        <div class="bench-bar-track"><div class="bench-bar-fill" style="width:81%"></div></div>
+      </div>
+      <div class="bench-score">81</div>
+    </div>
+
+    <div class="bench-row dim">
+      <div class="bench-tool">
+        <div class="bench-icon"><img src="https://www.google.com/s2/favicons?domain=x.ai&sz=64" alt="Grok"></div>
+        <div class="bench-tool-col">
+          <span>Grok 4.3</span>
+          <span class="bench-sub">xAI / X</span>
+        </div>
+      </div>
+      <div class="bench-bar-wrap">
+        <div class="bench-category">Real-time X, sygnały rynkowe, social intel</div>
+        <div class="bench-bar-track"><div class="bench-bar-fill" style="width:74%"></div></div>
+      </div>
+      <div class="bench-score">74</div>
     </div>
   </div>
 
@@ -1258,8 +1425,8 @@
     <div class="mock-body">
       <div class="mock-sidebar">
         <div class="mock-logo">
-          <div class="mock-logo-mark">AA</div>
-          <div class="mock-logo-text">Akademia AI</div>
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="none" style="flex-shrink:0"><defs><linearGradient id="mk-lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF8C42"/><stop offset="100%" stop-color="#D94A0E"/></linearGradient></defs><rect width="32" height="32" rx="7" fill="url(#mk-lg)"/><text x="16" y="21.5" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-weight="800" font-size="11.5" fill="white" letter-spacing="-0.3">.AI</text></svg>
+          <div class="mock-logo-text">Akademia<span style="color:#f97316">.AI</span></div>
         </div>
         <div class="mock-nav-item active">
           <div class="mock-nav-dot"></div> AI Stack 2026
@@ -1284,7 +1451,7 @@
             <div class="mock-ep-play">▶</div>
             <div class="mock-ep-info">
               <div class="mock-ep-num">S1E01 · odtwarzane</div>
-              <div class="mock-ep-title">ChatGPT vs Claude vs Gemini vs Grok: mój werdykt</div>
+              <div class="mock-ep-title">GPT-5.5 vs Claude Opus 4.7 vs Gemini 3.1 vs Grok 4.3: routing modeli</div>
               <div class="mock-progress-bar"><div class="mock-progress-fill" style="width: 42%;"></div></div>
             </div>
             <div class="mock-ep-dur">11:24</div>
@@ -1311,7 +1478,7 @@
     <div class="mock-player">
       <div class="mock-pb-info">
         <div class="mock-pb-serie">Seria 1 · Odcinek 01</div>
-        <div class="mock-pb-title">ChatGPT vs Claude vs Gemini vs Grok: mój werdykt po 20 latach</div>
+        <div class="mock-pb-title">GPT-5.5 vs Claude Opus 4.7 vs Gemini 3.1 vs Grok 4.3: routing modeli zamiast jednego zwycięzcy</div>
       </div>
       <div class="mock-pb-controls">
         <div class="mock-pb-btn">-15</div>
@@ -1328,18 +1495,18 @@
 <div class="logo-bar">
   <div class="logo-bar-label">Narzędzia w programie</div>
   <div class="logo-bar-track">
-    <span class="tool-chip"><span class="tc-dot" style="background:#f97316"></span>Claude</span>
-    <span class="tool-chip"><span class="tc-dot" style="background:#10a37f"></span>ChatGPT</span>
-    <span class="tool-chip"><span class="tc-dot" style="background:#4285F4"></span>Gemini</span>
-    <span class="tool-chip"><span class="tc-dot" style="background:#20B2AA"></span>Perplexity</span>
-    <span class="tool-chip"><span class="tc-dot" style="background:#e84d3d"></span>NotebookLM</span>
-    <span class="tool-chip"><span class="tc-dot" style="background:#FFBF00"></span>Clay</span>
-    <span class="tool-chip"><span class="tc-dot" style="background:#ea4b23"></span>n8n</span>
-    <span class="tool-chip"><span class="tc-dot" style="background:#f97316"></span>ElevenLabs</span>
-    <span class="tool-chip"><span class="tc-dot" style="background:#7c6cf6"></span>Cursor</span>
-    <span class="tool-chip"><span class="tc-dot" style="background:#5e6ad2"></span>Midjourney</span>
-    <span class="tool-chip"><span class="tc-dot" style="background:#FF7A59"></span>HubSpot</span>
-    <span class="tool-chip"><span class="tc-dot" style="background:#0A66C2"></span>LinkedIn</span>
+    <span class="tool-chip"><img src="https://favicon.im/claude.ai?larger=true" alt="">Claude</span>
+    <span class="tool-chip"><img src="https://favicon.im/chat.openai.com?larger=true" alt="">ChatGPT</span>
+    <span class="tool-chip"><img src="https://favicon.im/gemini.google.com?larger=true" alt="">Gemini</span>
+    <span class="tool-chip"><img src="https://favicon.im/perplexity.ai?larger=true" alt="">Perplexity</span>
+    <span class="tool-chip"><img src="https://favicon.im/notebooklm.google?larger=true" alt="">NotebookLM</span>
+    <span class="tool-chip"><img src="https://favicon.im/clay.com?larger=true" alt="">Clay</span>
+    <span class="tool-chip"><img src="https://favicon.im/n8n.io?larger=true" alt="">n8n</span>
+    <span class="tool-chip"><img src="https://favicon.im/elevenlabs.io?larger=true" alt="">ElevenLabs</span>
+    <span class="tool-chip"><img src="https://favicon.im/cursor.com?larger=true" alt="">Cursor</span>
+    <span class="tool-chip"><img src="https://favicon.im/midjourney.com?larger=true" alt="">Midjourney</span>
+    <span class="tool-chip"><img src="https://favicon.im/hubspot.com?larger=true" alt="">HubSpot</span>
+    <span class="tool-chip"><img src="https://favicon.im/linkedin.com?larger=true" alt="">LinkedIn</span>
   </div>
 </div>
 
@@ -1505,28 +1672,28 @@
         <h3>3 pytania po każdym odcinku</h3>
         <p>Pojawia się automatycznie na 95% postępu. 60% poprawnych = zaliczone. Bez tego nie ma certyfikatu.</p>
         <div class="bento-quiz-preview">
-          <div class="bento-quiz-option">Claude ma 128k context window</div>
-          <div class="bento-quiz-option correct">Gemini 2.5 Pro ma 1M context window ✓</div>
-          <div class="bento-quiz-option">GPT-4o ma największy context</div>
+          <div class="bento-quiz-option"><span class="bento-quiz-letter">A</span>Claude Opus 4.7 ma 128k context window</div>
+          <div class="bento-quiz-option correct"><span class="bento-quiz-letter">B</span>Gemini 3.1 Pro ma 1M context window</div>
+          <div class="bento-quiz-option"><span class="bento-quiz-letter">C</span>GPT-5.5 ma największy context</div>
         </div>
       </div>
-      <div class="bento-card bento-span-7 reveal reveal-delay-3">
-        <div class="bento-label">Certyfikat</div>
-        <h3>Certyfikat z unikalnym ID</h3>
-        <p>PDF z podpisem + link na LinkedIn. Generuje się dopiero po zaliczeniu wszystkich quizów w serii. Nie da się go kupić osobno.</p>
-        <div class="bento-cert-preview">
-          <div class="bento-cert-ring">
-            <span style="font-size: 0.35rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;">Verified</span>
-            <span style="font-size: 0.7rem; font-weight: 900;">AI</span>
+      <div class="bento-card bento-span-12 reveal reveal-delay-3" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;">
+        <div>
+          <div class="bento-label">Certyfikat</div>
+          <h3 style="font-size:1.75rem;margin-bottom:12px;">Certyfikat z unikalnym ID</h3>
+          <p style="color:var(--text-3);line-height:1.65;">PDF z podpisem + link na LinkedIn. Generuje się dopiero po zaliczeniu wszystkich quizów w serii. Nie da się go kupić osobno.</p>
+        </div>
+        <div style="background:var(--bg-page);border:1px solid var(--orange-line);border-radius:16px;padding:32px;text-align:center;">
+          <div style="width:64px;height:64px;border:2px solid var(--orange-line);border-radius:50%;margin:0 auto 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--orange);transform:rotate(-8deg);">
+            <span style="font-size:0.4rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;line-height:1;">VERIFIED</span>
+            <span style="font-size:0.9rem;font-weight:900;line-height:1.2;">AI</span>
           </div>
-          <div>
-            <div class="bento-cert-name">Wojciech Łuszczyński</div>
-            <div class="bento-cert-course">AI Stack 2026 · Seria 1</div>
-            <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;">
-              <span style="font-size:0.65rem;background:rgba(74,222,128,0.1);color:#4ade80;border:1px solid rgba(74,222,128,0.2);padding:2px 8px;border-radius:99px;font-weight:600;">✓ 12/12 odcinków</span>
-              <span style="font-size:0.65rem;background:rgba(74,222,128,0.1);color:#4ade80;border:1px solid rgba(74,222,128,0.2);padding:2px 8px;border-radius:99px;font-weight:600;">✓ Quizy zaliczone</span>
-              <span style="font-size:0.65rem;background:var(--orange-soft);color:var(--orange);border:1px solid var(--orange-line);padding:2px 8px;border-radius:99px;font-weight:600;">PDF · LinkedIn</span>
-            </div>
+          <div style="font-family:Georgia,serif;font-style:italic;font-size:1.4rem;margin-bottom:6px;">Wojciech Łuszczyński</div>
+          <div style="font-size:0.75rem;color:var(--orange);font-weight:700;letter-spacing:0.04em;margin-bottom:20px;">AI Stack 2026 · Seria 1</div>
+          <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+            <span style="font-size:0.7rem;background:rgba(74,222,128,0.1);color:#4ade80;border:1px solid rgba(74,222,128,0.25);padding:4px 12px;border-radius:99px;font-weight:600;">✓ 12/12 odcinków</span>
+            <span style="font-size:0.7rem;background:rgba(74,222,128,0.1);color:#4ade80;border:1px solid rgba(74,222,128,0.25);padding:4px 12px;border-radius:99px;font-weight:600;">✓ Quizy zaliczone</span>
+            <span style="font-size:0.7rem;background:var(--orange-soft);color:var(--orange);border:1px solid var(--orange-line);padding:4px 12px;border-radius:99px;font-weight:600;">PDF · LinkedIn</span>
           </div>
         </div>
       </div>
@@ -1540,7 +1707,7 @@
     <div class="lp-section-head reveal">
       <span class="label">Program</span>
       <h2>4 serie · 12 odcinków każda</h2>
-      <p>Kup jedną serię lub całość. Płacisz raz, masz dożywotnio. Nowe odcinki bez dopłat.</p>
+      <p>Każda seria to osobny temat — możesz zacząć od jednej albo wziąć cały pakiet. Płacisz raz, dostęp na zawsze.</p>
     </div>
     <div class="series-grid" style="grid-template-columns: repeat(2, 1fr);">
       <div class="series-card-v2 reveal">
@@ -1555,8 +1722,9 @@
           </svg>
         </div>
         <span class="sc2-num">01</span>
-        <div class="sc2-badge free">1 odcinek free</div>
+        <div class="sc2-badge free">Zacznij za darmo</div>
         <div class="sc2-title">AI Stack 2026 · porównania, które robią różnicę</div>
+        <div class="sc2-desc">Modele, research i coding bez hype'u. Pokazuję, kiedy użyć GPT-5.5, kiedy Claude'a, kiedy Gemini, kiedy Groka, a kiedy w ogóle przestać gadać z chatbotem i zbudować workflow.</div>
         <div class="sc2-tools">ChatGPT · Claude · Gemini · Grok · Perplexity · NotebookLM · Cursor · Claude Code</div>
         <div class="sc2-ep-count">
           <span>12 odcinków</span>
@@ -1576,12 +1744,13 @@
           </svg>
         </div>
         <span class="sc2-num">02</span>
-        <div class="sc2-badge pro">97 PLN</div>
+        <div class="sc2-badge pro">Prospecting z AI</div>
         <div class="sc2-title">Outbound Machine · od ICP do podpisanej umowy</div>
+        <div class="sc2-desc">Od ICP do SQL quality. Buduję system, który znajduje właściwe firmy, wzbogaca dane, rozpoznaje sygnały zakupowe, kwalifikuje fit i tworzy personalizację, której SDR nie musi pisać od zera.</div>
         <div class="sc2-tools">Apollo · Clay · Hunter · Smartlead · n8n · Zapier · Make · Airtable · HubSpot</div>
         <div class="sc2-ep-count">
           <span>12 odcinków</span>
-          <a href="register.html?plan=single&serie=2" class="btn btn-secondary btn-sm">Kup serię</a>
+          <a href="register.html?plan=single&serie=2" class="btn btn-secondary btn-sm">Zobacz serię</a>
         </div>
       </div>
       <div class="series-card-v2 reveal reveal-delay-2">
@@ -1597,12 +1766,13 @@
           </svg>
         </div>
         <span class="sc2-num">03</span>
-        <div class="sc2-badge pro">97 PLN</div>
+        <div class="sc2-badge pro">Content z AI</div>
         <div class="sc2-title">Voice, Video, Brand · produkcja contentu z AI</div>
+        <div class="sc2-desc">Produkcja contentu z AI jako pipeline: skrypt, głos, avatar, ujęcia, warianty, montaż, repurposing i dystrybucja. Nie chodzi o jeden efekt wow, tylko o powtarzalny system.</div>
         <div class="sc2-tools">ElevenLabs · HeyGen · Veo 3.1 · Midjourney · Runway · Descript · Notion</div>
         <div class="sc2-ep-count">
           <span>12 odcinków</span>
-          <a href="register.html?plan=single&serie=3" class="btn btn-secondary btn-sm">Kup serię</a>
+          <a href="register.html?plan=single&serie=3" class="btn btn-secondary btn-sm">Zobacz serię</a>
         </div>
       </div>
       <div class="series-card-v2 reveal reveal-delay-3" style="border-color: var(--orange-line); background: rgba(249,115,22,0.03);">
@@ -1616,8 +1786,9 @@
           </svg>
         </div>
         <span class="sc2-num" style="color: rgba(249,115,22,0.15);">04</span>
-        <div class="sc2-badge coming">Wkrótce</div>
+        <div class="sc2-badge coming">Wkrótce · Q3 2026</div>
         <div class="sc2-title">B2B Marketing Masterclass · poza AI</div>
+        <div class="sc2-desc">AI jako warstwa revenue architecture: strategia, SEO/AI visibility, marketing automation, RevOps i governance. Mniej AI theater, więcej wpływu na pipeline, koszty i jakość pracy zespołu.</div>
         <div class="sc2-tools">Demand Gen · ABM · Content · Positioning · GTM · RevOps · SEO · Brand</div>
         <div class="sc2-ep-count">
           <span style="color: var(--text-4);">Q3 2026</span>
@@ -1640,43 +1811,40 @@
       <a href="https://www.youtube.com/@MarketingAgainstTheGrain" target="_blank" class="video-card reveal">
         <div class="video-thumb">
           <div class="video-thumb-bg" style="background: linear-gradient(135deg, #1a0533, #2d1b69);"></div>
-          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);text-align:center;z-index:2;">
-            <div style="width:52px;height:52px;border-radius:50%;background:rgba(255,74,0,0.9);display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:900;margin:0 auto 8px;letter-spacing:-0.02em;">KF</div>
-            <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.7);">Marketing Against The Grain</div>
-          </div>
           <div class="video-play">▶</div>
         </div>
         <div class="video-info">
-          <div class="video-channel">Kieran Flanagan · CMO Zapier</div>
-          <div class="video-title">Jak zbudować AI-native marketing team od podstaw</div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+            <div style="width:28px;height:28px;border-radius:50%;background:rgba(255,74,0,0.9);display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:900;flex-shrink:0;">KF</div>
+            <div class="video-channel" style="margin:0;">Kieran Flanagan · CMO Zapier</div>
+          </div>
+          <div class="video-title">Marketing Against The Grain · Jak zbudować AI-native marketing team od podstaw</div>
         </div>
       </a>
       <a href="https://www.lennyspodcast.com" target="_blank" class="video-card reveal reveal-delay-1">
         <div class="video-thumb">
           <div class="video-thumb-bg" style="background: linear-gradient(135deg, #0a1628, #1e3a5f);"></div>
-          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);text-align:center;z-index:2;">
-            <div style="width:52px;height:52px;border-radius:50%;background:rgba(10,102,194,0.9);display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:900;margin:0 auto 8px;letter-spacing:-0.02em;">LR</div>
-            <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.7);">Lenny's Podcast</div>
-          </div>
           <div class="video-play">▶</div>
         </div>
         <div class="video-info">
-          <div class="video-channel">Lenny Rachitsky · ex-Airbnb</div>
-          <div class="video-title">Nowy AI growth playbook · co zmienia się w 2026</div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+            <div style="width:28px;height:28px;border-radius:50%;background:rgba(10,102,194,0.9);display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:900;flex-shrink:0;">LR</div>
+            <div class="video-channel" style="margin:0;">Lenny Rachitsky · ex-Airbnb</div>
+          </div>
+          <div class="video-title">Lenny's Podcast · Nowy AI growth playbook — co zmienia się w 2026</div>
         </div>
       </a>
       <a href="https://sparktoro.com/blog" target="_blank" class="video-card reveal reveal-delay-2">
         <div class="video-thumb">
           <div class="video-thumb-bg" style="background: linear-gradient(135deg, #1a0a00, #3d1a00);"></div>
-          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);text-align:center;z-index:2;">
-            <div style="width:52px;height:52px;border-radius:50%;background:rgba(249,115,22,0.9);display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:900;margin:0 auto 8px;letter-spacing:-0.02em;">AN</div>
-            <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.7);">SparkToro</div>
-          </div>
           <div class="video-play">▶</div>
         </div>
         <div class="video-info">
-          <div class="video-channel">Amanda Natividad · VP Marketing SparkToro</div>
-          <div class="video-title">Zero-Click Content · jak wygrywać w erze AI search</div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+            <div style="width:28px;height:28px;border-radius:50%;background:rgba(249,115,22,0.9);display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:900;flex-shrink:0;">AN</div>
+            <div class="video-channel" style="margin:0;">Amanda Natividad · VP Marketing SparkToro</div>
+          </div>
+          <div class="video-title">SparkToro · Zero-Click Content — jak wygrywać w erze AI search</div>
         </div>
       </a>
     </div>
@@ -1736,8 +1904,6 @@
     <div style="text-align:center; margin-top:20px; display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap;">
       <span style="font-size:0.8125rem; color:var(--text-4);">Płatność w PLN</span>
       <span style="color:var(--text-4);">·</span>
-      <span style="font-size:0.8125rem; color:var(--text-4);">Ceny netto = brutto (zwolnienie art. 113)</span>
-      <span style="color:var(--text-4);">·</span>
       <span style="font-size:0.8125rem; color:var(--text-4);">Zwrot w 14 dni bez pytań</span>
       <span style="color:var(--text-4);">·</span>
       <span style="font-size:0.8125rem; color:var(--text-4);">Przelew · karta · BLIK</span>
@@ -1750,10 +1916,10 @@
   <div class="container">
     <div class="lp-section-head reveal">
       <span class="label">Prowadzący</span>
-      <h2>14 lat w terenie, nie w PowerPoint</h2>
+      <h2>20 lat w terenie, nie w PowerPoint</h2>
     </div>
     <div class="host-section">
-      <div class="host-visual reveal">
+      <div class="host-visual">
         <img src="assets/wio_bg.png" alt="Wojciech Łuszczyński" class="host-photo-full">
 
         <!-- Name overlaid at bottom -->
@@ -1767,7 +1933,7 @@
       <div>
         <div style="margin-bottom: 32px;">
           <div style="font-size:0.875rem;color:var(--text-3);line-height:1.8;margin-bottom:20px;">
-            14 lat w marketingu i sprzedaży. Testuję AI stacki na własnych klientach i własnym budżecie, nie na benchmarkach.
+            20 lat w marketingu i sprzedaży. Testuję AI stacki na własnych klientach i własnym budżecie, nie na benchmarkach.
             Prowadzę Akademię AI bo chcę skrócić Twoją krzywą uczenia o kilka miesięcy.
           </div>
           <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:24px;">
@@ -1850,7 +2016,7 @@
 <section class="lp-section" id="opinie">
   <div class="container">
     <div class="section-label">OPINIE</div>
-    <h2 class="section-title">Co mówią po pierwszym odcinku</h2>
+    <h2 class="section-title">Pierwsze wrażenia słuchaczy</h2>
     <div class="testimonials-grid">
 
       <div class="testi-card reveal">
@@ -1946,7 +2112,7 @@
   <div class="container">
     <div class="footer-inner">
       <div style="display:flex; align-items:center; gap:8px;">
-        <img src="assets/logo-aa.svg" width="28" height="28" alt="AA" style="border-radius:6px;">
+        <svg width="24" height="24" viewBox="0 0 32 32" fill="none"><defs><linearGradient id="ft-lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF8C42"/><stop offset="100%" stop-color="#D94A0E"/></linearGradient></defs><rect width="32" height="32" rx="7" fill="url(#ft-lg)"/><text x="16" y="21.5" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-weight="800" font-size="11.5" fill="white" letter-spacing="-0.3">.AI</text></svg>
         <span class="footer-copy">© 2026 Wojciech Łuszczyński</span>
         <span class="footer-sep">·</span>
         <a href="https://wojciech.io" style="font-size:0.875rem; color:var(--orange);">wojciech.io</a>
@@ -2141,10 +2307,11 @@
   // Language switch
   const TX = {
     pl: {
+      logoName: 'Akademia<span class="logo-ai">.AI</span>',
       badge:   'Sezon 1 · maj 2026',
       h1:      'Naucz się AI od praktyka.<br><em>Nie influencera.</em>',
-      sub:     '36 odcinków audio z gotowymi workflow, promptami i plikami do pobrania. Narzędzia, które naprawdę działają. Testowane na własnych klientach.',
-      nav1:    'Program', nav2: 'Jak to działa', nav3: 'Cennik', nav4: 'Prowadzący',
+      sub:     '36 krótkich odcinków audio o tym, jak realnie używać AI w marketingu, sprzedaży i pracy founderów B2B. Modele, workflowy, prompty, automatyzacje i pliki do wdrożenia. Bez teorii z konferencji.',
+      nav1:    'Program', nav2: 'Jak to działa', nav3: 'Cennik', nav4: 'Opinie',
       login:   'Zaloguj', register: 'Zacznij za darmo →',
       demoHead:'Posłuchaj próbki', demoSub: 'Pierwszy odcinek za darmo',
       demoDesc:'Sprawdź styl i poziom zanim zdecydujesz. Bez rejestracji.',
@@ -2154,10 +2321,11 @@
       ctaBtn:  'Zacznij za darmo', ctaLogin: 'Mam już konto',
     },
     en: {
+      logoName: '<span class="logo-ai">AI.</span>Academy',
       badge:   'Season 1 · May 2026',
       h1:      'Learn AI from a practitioner.<br><em>Not an influencer.</em>',
-      sub:     '36 audio episodes with ready-to-use workflows, prompts and files. Tools that actually work. Tested on real clients.',
-      nav1:    'Curriculum', nav2: 'How it works', nav3: 'Pricing', nav4: 'Host',
+      sub:     '36 short audio episodes on how to actually use AI in B2B marketing, sales and founder work. Models, workflows, prompts, automations and files to deploy. No conference theory.',
+      nav1:    'Curriculum', nav2: 'How it works', nav3: 'Pricing', nav4: 'Reviews',
       login:   'Log in', register: 'Start for free →',
       demoHead:'Listen to a sample', demoSub: 'Episode 1 is free',
       demoDesc:'Check the style and depth before you decide. No registration needed.',
@@ -2171,6 +2339,10 @@
   function setLang(lang) {
     const t = TX[lang];
     localStorage.setItem('ak_lang', lang);
+
+    // Logo name (PL: Akademia.AI / EN: AI.Academy)
+    const logoName = document.getElementById('logo-name-text');
+    if (logoName) logoName.innerHTML = t.logoName;
 
     // Hero
     const badge = document.getElementById('badge-text');
