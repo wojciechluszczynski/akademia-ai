@@ -7,7 +7,7 @@ const { createClient } = require('@supabase/supabase-js');
 // Raw body needed for Stripe signature verification
 module.exports.config = { api: { bodyParser: false } };
 
-const SUPABASE_URL      = 'https://SUPABASE_URL_REMOVED';
+const SUPABASE_URL      = process.env.SUPABASE_URL;
 const SUPABASE_SRV_KEY  = process.env.SUPABASE_SERVICE_ROLE_KEY;
 const WEBHOOK_SECRET    = process.env.STRIPE_WEBHOOK_SECRET;
 const RESEND_KEY        = process.env.RESEND_API_KEY;

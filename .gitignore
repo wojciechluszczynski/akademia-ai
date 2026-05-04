@@ -2,6 +2,6 @@
 .DS_Store
 *.local
 node_modules/
-# config.js zawiera credentials — NIE commituj z prawdziwymi kluczami
-# js/config.js
+# config.js pobiera klucze z /api/config — nie commituj lokalnych nadpisań
+js/config.js
 .env*.local

@@ -1,5 +1,6 @@
 {
   "rewrites": [
+    { "source": "/api/config",          "destination": "/api/config.js" },
     { "source": "/api/create-checkout", "destination": "/api/create-checkout.js" },
     { "source": "/api/webhook",         "destination": "/api/webhook.js" },
     { "source": "/api/cert",            "destination": "/api/cert.js" },

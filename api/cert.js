@@ -3,7 +3,7 @@
 
 const { createClient } = require('@supabase/supabase-js');
 
-const SUPABASE_URL     = 'https://SUPABASE_URL_REMOVED';
+const SUPABASE_URL     = process.env.SUPABASE_URL;
 const SUPABASE_SRV_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 const SERIE_NAMES = {

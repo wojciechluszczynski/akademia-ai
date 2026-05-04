@@ -36,8 +36,7 @@ function clearSession() {
 // Te konta zawsze działają — niezależnie od Supabase.
 // Wystarczą do prezentacji i testów.
 const DEMO_ACCOUNTS = {
-  'DEMO_EMAIL_REMOVED': { password:'demo123', name:'Wojciech Łuszczyński', plan:'pro',  id:'demo-001' },
-  'demo@akademia.ai':     { password:'demo123', name:'Demo User',           plan:'free', id:'demo-002' },
+  'demo@akademia.ai': { password:'demo123', name:'Demo User', plan:'free', id:'demo-002' },
 };
 const _demoTokens = {};
 
@@ -129,7 +128,7 @@ async function login(email, password) {
   // Demo accounts zawsze mock, reszta przez Supabase (lub mock fallback)
   if (isDemoAccount(email)) return demoLogin(email, password);
   if (USE_SUPABASE && sb)   return sbLogin(email, password);
-  throw new Error('Demo: użyj konta DEMO_EMAIL_REMOVED lub demo@akademia.ai');
+  throw new Error('Demo: użyj konta demo@akademia.ai');
 }
 
 async function register(name, email, password) {
