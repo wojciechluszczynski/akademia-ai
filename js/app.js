@@ -88,7 +88,7 @@ const EPISODES = [
       "Cursor",
       "GitHub",
       "GPT-5.5",
-      "Gemini 3.1"
+      "Skillta"
     ],
     "locked": true,
     "hasQuiz": false
@@ -658,6 +658,16 @@ const MATERIALS = [
     "icon": "vi-md",
     "locked": true,
     "serie": 4
+  },
+  {
+    "id": 33,
+    "title": "Skillta — Katalog Skilli dla Claude Code",
+    "file": "skillta-skills-directory.md",
+    "desc": "Jak znaleźć, zainstalować i ocenić gotowe skille z Skillta.com · S1E04",
+    "type": "md",
+    "icon": "vi-md",
+    "locked": true,
+    "serie": 1
   }
 ];
 
@@ -902,6 +912,22 @@ function renderEpCard(ep, isPro, prog) {
   const quizRes   = getQuizResults()[ep.id];
   const hasProg   = prog > 0 && !completed;
   const hasAudio  = !!AUDIO_FILES[ep.id];
+  const title     = currentLang === 'pl' ? ep.title_pl : ep.title_en;
+  const desc      = currentLang === 'pl' ? ep.desc_pl  : ep.desc_en;
+
+  const statusDot = completed
+    ? `<span style="color:var(--green);font-size:.65rem;">✓ Ukończono</span>`
+    : hasProg
+    ? `<span style="color:var(--orange);font-size:.65rem;">▶ ${Math.round(prog)}%</span>`
+    : '';
+
+  const quizDot = quizRes
+    ? `<span style="color:${quizRes.passed ? 'var(--green)' : 'var(--red)'};font-size:.65rem;">${quizRes.passed ? '✓' : '✗'} Quiz</span>`
+    : '';
+
+  const audioDot = hasAudio && !isLocked
+    ? `<span style="color:var(--blue);font-size:.65rem;">● Audio</span>`
+    : '';
 
   const progressBar = hasProg ? `
     <div class="ep-progress-wrap">
@@ -909,43 +935,37 @@ function renderEpCard(ep, isPro, prog) {
       <div class="progress-bar"><div class="progress-fill" style="width:${prog}%"></div></div>
     </div>` : '';
 
-  const quizBadge = quizRes ? `<span class="tag" style="font-size:.55rem;padding:2px 7px;background:${quizRes.passed ? 'rgba(74,222,128,.1)' : 'rgba(248,113,113,.1)'};color:${quizRes.passed ? 'var(--green)' : 'var(--red)'};border-color:${quizRes.passed ? 'rgba(74,222,128,.2)' : 'rgba(248,113,113,.2)'}">${quizRes.passed ? '✓' : '✗'} Quiz</span>` : '';
-
-  const audioBadge = hasAudio && !isLocked ? `<span class="tag" style="font-size:.55rem;padding:2px 7px;background:rgba(96,165,250,.08);color:var(--blue);border-color:rgba(96,165,250,.18)">Audio</span>` : '';
-
-  const actionLabel = isLocked ? 'Pro' : completed ? 'Ukończono' : prog > 0 ? 'Wznów' : 'Odtwórz';
-  const actionStyle = isLocked ? 'color:var(--text-4);border-color:var(--line-2)' : completed ? 'background:rgba(74,222,128,.1);color:var(--green);border-color:rgba(74,222,128,.2)' : 'background:var(--orange-soft);color:var(--orange);border-color:var(--orange-line)';
+  const actionBtn = isLocked
+    ? `<button class="btn btn-sm" onclick="event.stopPropagation();showUpgrade()" style="font-size:.75rem;padding:6px 14px;">Odblokuj Pro</button>`
+    : `<button class="btn btn-primary btn-sm" onclick="event.stopPropagation();playEpisode(${ep.id})" style="font-size:.75rem;padding:6px 14px;">${completed ? '↺ Odtwórz' : hasProg ? '▶ Wznów' : '▶ Odtwórz'}</button>`;
 
   return `
-    <div class="ep-card ${isLocked ? 'locked' : ''}" onclick="${isLocked ? 'showUpgrade()' : `playEpisode(${ep.id})`}" style="cursor:pointer">
-      <div class="ep-thumb" data-serie="${ep.serie}">
-        <svg class="ep-thumb-wave" width="60" height="36" viewBox="0 0 60 36" fill="currentColor">
-          <rect x="0"  y="13" width="5" height="10" rx="2.5" opacity=".22"/>
-          <rect x="8"  y="7"  width="5" height="22" rx="2.5" opacity=".38"/>
-          <rect x="16" y="10" width="5" height="16" rx="2.5" opacity=".3"/>
-          <rect x="24" y="2"  width="5" height="32" rx="2.5" opacity=".55"/>
-          <rect x="32" y="8"  width="5" height="20" rx="2.5" opacity=".38"/>
-          <rect x="40" y="12" width="5" height="12" rx="2.5" opacity=".28"/>
-          <rect x="48" y="16" width="5" height="8"  rx="2.5" opacity=".18"/>
-          <rect x="56" y="14" width="4" height="8"  rx="2"   opacity=".14"/>
-        </svg>
-        <div class="ep-thumb-ep">E${ep.num}</div>
-        <div class="ep-thumb-play">${IC.play}</div>
-        ${isLocked ? `<div class="ep-thumb-lock">${IC.lock}</div>` : ''}
-      </div>
-      <div class="ep-body">
-        <div class="ep-meta">
-          <span class="ep-serie-label">Seria ${ep.serie}</span>
-          <span class="ep-num">· E${ep.num}</span>
-          ${ep.tools.slice(0,2).map(t => `<span class="tag" style="font-size:.55rem;padding:2px 7px">${t}</span>`).join('')}
-          ${audioBadge}${quizBadge}
+    <div class="ep-card ${isLocked ? 'locked' : ''}" id="ep-card-${ep.id}" onclick="toggleEpDetail(${ep.id},${isLocked})">
+      <div class="ep-row">
+        <div class="ep-num-badge" data-serie="${ep.serie}">S${ep.serie}·${ep.num}</div>
+        <div class="ep-row-main">
+          <div class="ep-row-title">${ep.emoji} ${title}</div>
+          <div class="ep-row-sub">
+            ${ep.tools.slice(0,3).map(t => `<span>${t}</span>`).join('<span style="color:var(--line-2)">·</span>')}
+            ${statusDot}${quizDot}${audioDot}
+          </div>
         </div>
-        <h3>${currentLang === 'pl' ? ep.title_pl : ep.title_en}</h3>
-        <p>${currentLang === 'pl' ? ep.desc_pl : ep.desc_en}</p>
-        ${progressBar}
-        <div class="ep-card-footer">
+        <div class="ep-row-right">
           <span class="ep-duration">${ep.duration}</span>
-          <span class="tag" style="${actionStyle}">${actionLabel}</span>
+          ${isLocked
+            ? `<div class="ep-lock-icon">${IC.lock}</div>`
+            : `<div class="ep-play-btn">${IC.play}</div>`}
+        </div>
+      </div>
+      <div class="ep-detail">
+        <p class="ep-detail-desc">${desc}</p>
+        <div class="ep-detail-tools">
+          ${ep.tools.map(t => `<span class="tag" style="font-size:.7rem;padding:3px 9px">${t}</span>`).join('')}
+        </div>
+        ${progressBar}
+        <div class="ep-detail-footer">
+          ${actionBtn}
+          ${ep.hasQuiz && !isLocked ? `<button class="btn btn-ghost btn-sm" onclick="event.stopPropagation();openQuiz(${ep.id})" style="font-size:.75rem;">Quiz →</button>` : ''}
         </div>
       </div>
     </div>`;
@@ -1428,6 +1448,15 @@ window.playerClose  = () => {
 window.initApp           = initApp;
 window.playEpisode       = playEpisode;
 window.openQuiz          = openQuiz;
+window.toggleEpDetail    = function(id, isLocked) {
+  if (isLocked) { showUpgrade(); return; }
+  const card = document.getElementById('ep-card-' + id);
+  if (!card) return;
+  const wasOpen = card.classList.contains('expanded');
+  // Close all
+  document.querySelectorAll('.ep-card.expanded').forEach(c => c.classList.remove('expanded'));
+  if (!wasOpen) card.classList.add('expanded');
+};
 window.closeQuiz         = closeQuiz;
 window.answerQuiz        = answerQuiz;
 window.retryQuiz         = retryQuiz;
