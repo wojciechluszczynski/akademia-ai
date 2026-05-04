@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/style.css">
   <script src="js/config.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -71,10 +72,23 @@
 
 <script src="js/auth.js"></script>
 <script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const loginPlan = urlParams.get('plan');
+
   (async function () {
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('reason') === 'auth') {
+    if (urlParams.get('reason') === 'auth') {
       document.getElementById('reason-alert').classList.add('show');
+    }
+    // Pre-fill email if coming from register
+    const preEmail = urlParams.get('email');
+    if (preEmail) document.getElementById('email').value = preEmail;
+    // Adjust copy if paying
+    if (loginPlan === 'all') {
+      document.querySelector('.auth-title').textContent = 'Zaloguj się i kup dostęp';
+      document.querySelector('.auth-sub').textContent = '36 odcinków · dożywotni dostęp · płacisz raz';
+      document.getElementById('submit-btn').textContent = 'Zaloguj i przejdź do płatności →';
+    } else if (loginPlan === 'single') {
+      document.getElementById('submit-btn').textContent = 'Zaloguj i wybierz serię →';
     }
     await window.AkademiaAuth.redirectIfLoggedIn();
   })();
@@ -94,13 +108,19 @@
     try {
       const email = document.getElementById('email').value.trim();
       const password = document.getElementById('password').value;
-      await window.AkademiaAuth.login(email, password);
-      window.location.href = 'dashboard.html';
+      const { user } = await window.AkademiaAuth.login(email, password);
+      if (loginPlan === 'all') {
+        window.location.href = `/api/create-checkout?plan=all&userId=${user.id}&email=${encodeURIComponent(email)}`;
+      } else if (loginPlan === 'single') {
+        window.location.href = 'dashboard.html?upgrade=1';
+      } else {
+        window.location.href = 'dashboard.html';
+      }
     } catch (e) {
       err.textContent = e.message;
       err.classList.add('show');
       btn.disabled = false;
-      btn.textContent = 'Zaloguj się';
+      btn.textContent = loginPlan === 'all' ? 'Zaloguj i przejdź do płatności →' : loginPlan === 'single' ? 'Zaloguj i wybierz serię →' : 'Zaloguj się';
     }
   });
 </script>

@@ -102,7 +102,13 @@
         window.location.href = 'dashboard.html';
       }
     } catch (e) {
-      err.textContent = e.message;
+      const msg = e.message || '';
+      const isExisting = msg.toLowerCase().includes('invalid') || msg.toLowerCase().includes('already') || msg.toLowerCase().includes('registered');
+      if (isExisting && plan) {
+        err.innerHTML = `Ten email jest już zarejestrowany. <a href="login.html?plan=${plan}&email=${encodeURIComponent(document.getElementById('email').value.trim())}" style="color:var(--orange);font-weight:600;">Zaloguj się →</a>`;
+      } else {
+        err.textContent = msg;
+      }
       err.classList.add('show');
       btn.disabled = false;
       btn.textContent = plan === 'all' ? 'Kup dostęp · 249 PLN →' : plan === 'single' ? 'Wybierz serię · 97 PLN →' : 'Załóż konto';
