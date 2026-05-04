@@ -180,15 +180,16 @@ body::before {
   box-shadow: 0 12px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06);
 }
 
+/* Navbar inner layout — flex, logo left, links absolute center, buttons right */
 .navbar .container {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+  display: flex;
   align-items: center;
-  gap: 0;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
   max-width: none;
   padding: 0;
   margin: 0;
-  width: 100%;
 }
 
 .logo {
@@ -199,13 +200,10 @@ body::before {
   font-size: 0.9375rem;
   color: var(--text-1);
   flex-shrink: 0;
+  z-index: 1;
 }
 
-.logo-mark {
-  width: 30px;
-  height: 30px;
-  flex-shrink: 0;
-}
+.logo-mark { width: 30px; height: 30px; flex-shrink: 0; }
 
 .logo-name {
   font-size: 0.9375rem;
@@ -216,60 +214,60 @@ body::before {
 
 .logo-ai { color: var(--orange); }
 
+/* Links: absolutely centered inside the navbar (which is position:fixed = containing block) */
 .nav-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   align-items: center;
-  justify-content: center;
-}
-
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.nav-cta-register {
-  border-radius: var(--r-full) !important;
-  font-size: 0.875rem !important;
-  padding: 9px 20px !important;
-}
-
-.nav-cta-login {
-  border-radius: var(--r-full) !important;
-  font-size: 0.875rem !important;
-  padding: 9px 18px !important;
+  pointer-events: none;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 44px;
+  gap: 40px;
+  pointer-events: auto;
 }
 
 .nav-link {
   font-size: 0.9375rem;
-  color: var(--text-2);
-  font-weight: 600;
+  color: rgba(255,255,255,0.65);
+  font-weight: 500;
   letter-spacing: -0.01em;
-  transition: color var(--t);
+  transition: color 0.15s;
   white-space: nowrap;
   position: relative;
 }
 
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0; right: 0;
-  height: 1px;
-  background: var(--orange);
-  transform: scaleX(0);
-  transition: transform 0.2s var(--ease);
-  transform-origin: center;
+.nav-link:hover { color: #fff; }
+
+/* Right side: buttons + lang */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  z-index: 1;
 }
 
-.nav-link:hover { color: var(--text-1); }
-.nav-link:hover::after { transform: scaleX(1); }
+.nav-cta-login {
+  border-radius: 999px !important;
+  font-size: 0.875rem !important;
+  padding: 8px 18px !important;
+  border: 1px solid rgba(255,255,255,0.15) !important;
+  background: transparent !important;
+  color: rgba(255,255,255,0.8) !important;
+}
+.nav-cta-login:hover { background: rgba(255,255,255,0.06) !important; color: #fff !important; }
+
+.nav-cta-register {
+  border-radius: 999px !important;
+  font-size: 0.875rem !important;
+  padding: 8px 20px !important;
+}
 
 .lang-switch {
   display: flex;
