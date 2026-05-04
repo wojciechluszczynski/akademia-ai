@@ -220,6 +220,7 @@
   <a href="dashboard.html">← Wróć do kursu</a>
   <span class="spacer"></span>
   <a class="btn-verify" id="verify-link" href="#">Zweryfikuj token</a>
+  <a class="btn-verify" id="linkedin-btn" href="#" target="_blank" rel="noopener" style="display:none">Dodaj do LinkedIn</a>
   <button class="btn-print" onclick="window.print()">Pobierz PDF</button>
 </div>
 
@@ -292,6 +293,20 @@
       document.getElementById('cert-date').textContent   = date;
       document.getElementById('cert-token').textContent  = data.token;
       document.getElementById('verify-link').href        = `/verify.html?token=${data.token}`;
+
+      const issuedDate = new Date(data.issued_at);
+      const liParams = new URLSearchParams({
+        startTask: 'CERTIFICATION_NAME',
+        name: `Akademia AI — ${data.serie_name}`,
+        organizationName: 'Akademia AI',
+        issueYear: issuedDate.getFullYear(),
+        issueMonth: issuedDate.getMonth() + 1,
+        certUrl: `https://academy.wojciech.io/verify.html?token=${data.token}`,
+        certId: data.token,
+      });
+      const liBtn = document.getElementById('linkedin-btn');
+      liBtn.href = `https://www.linkedin.com/profile/add?${liParams}`;
+      liBtn.style.display = '';
 
       document.getElementById('loading').style.display    = 'none';
       document.getElementById('cert-sheet').style.display = 'flex';

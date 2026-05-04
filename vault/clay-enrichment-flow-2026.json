@@ -1,0 +1,104 @@
+{
+  "name": "Akademia AI · Clay GTM Workflow 2026",
+  "version": "2026-05",
+  "description": "ICP → enrichment → signals → scoring → personalization → SDR handoff",
+  "steps": [
+    {
+      "step": 1,
+      "name": "Input accounts",
+      "fields": [
+        "company_domain",
+        "company_name",
+        "country",
+        "segment",
+        "source"
+      ]
+    },
+    {
+      "step": 2,
+      "name": "Firmographic enrichment",
+      "providers": [
+        "Clay waterfalls",
+        "Apollo",
+        "LinkedIn",
+        "company website"
+      ],
+      "outputs": [
+        "industry",
+        "employee_count",
+        "location",
+        "tech_stack",
+        "growth_signals"
+      ]
+    },
+    {
+      "step": 3,
+      "name": "ICP fit scoring",
+      "logic": {
+        "industry_fit": "0-25",
+        "size_fit": "0-25",
+        "pain_fit": "0-25",
+        "geo_fit": "0-15",
+        "data_confidence": "0-10"
+      }
+    },
+    {
+      "step": 4,
+      "name": "Claygent signal research",
+      "outputs": [
+        "signal_type",
+        "signal_summary",
+        "source_url",
+        "confidence",
+        "risk"
+      ]
+    },
+    {
+      "step": 5,
+      "name": "Personalization draft",
+      "model": "Claude Sonnet 4.6 or GPT-5.5",
+      "outputs": [
+        "opening_line",
+        "email_angle",
+        "do_not_send_reason"
+      ]
+    },
+    {
+      "step": 6,
+      "name": "Human QA",
+      "rules": [
+        "no fabrication",
+        "no creepy personalization",
+        "source exists",
+        "ICP score >= 70",
+        "confidence medium/high"
+      ]
+    },
+    {
+      "step": 7,
+      "name": "CRM handoff",
+      "fields": [
+        "icp_score",
+        "signal",
+        "source_url",
+        "recommended_next_action",
+        "owner"
+      ]
+    }
+  ],
+  "quality_gates": [
+    "usable ICP account",
+    "verified source",
+    "non-generic signal",
+    "safe personalization",
+    "CRM logging"
+  ],
+  "metrics": [
+    "usable_record_rate",
+    "verified_email_rate",
+    "icp_fit_rate",
+    "positive_reply_rate",
+    "conversation_rate",
+    "SQL_rate"
+  ]
+}

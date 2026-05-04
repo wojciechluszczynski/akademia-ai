@@ -4,3 +4,4 @@
 node_modules/
 # config.js zawiera credentials — NIE commituj z prawdziwymi kluczami
 # js/config.js
+.env*.local

@@ -66,6 +66,26 @@ CREATE TRIGGER on_auth_user_created
   AFTER INSERT ON auth.users
   FOR EACH ROW EXECUTE FUNCTION public.handle_new_user();
 
+-- 4. CERTIFICATES TABLE
+CREATE TABLE IF NOT EXISTS certificates (
+  id         UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  token      TEXT UNIQUE NOT NULL,
+  user_id    UUID REFERENCES auth.users(id) ON DELETE CASCADE,
+  name       TEXT NOT NULL,
+  email      TEXT NOT NULL,
+  serie      TEXT NOT NULL DEFAULT '1',  -- '1','2','3','4','all'
+  issued_at  TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+-- Indeks dla szybkiego wyszukiwania tokenu (weryfikator)
+CREATE INDEX IF NOT EXISTS certificates_token_idx ON certificates(token);
+-- Indeks dla userId+serie (idempotentne generowanie)
+CREATE INDEX IF NOT EXISTS certificates_user_serie_idx ON certificates(user_id, serie);
+
+-- RLS — tylko service_role może pisać; anonimowi mogą weryfikować token
+ALTER TABLE certificates ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Public verify" ON certificates FOR SELECT USING (true);
+
 -- 5. WAŻNE: w Supabase Dashboard wyłącz email confirmation
 -- Authentication → Settings → Email → "Confirm email" → OFF
 -- (dla MVP — włącz gdy będziesz gotowy na produkcję)

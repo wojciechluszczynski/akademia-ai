@@ -1,0 +1,51 @@
+{
+  "name": "AI Growth Automation Blueprint",
+  "version": "2026-05",
+  "principle": "Process first, data second, AI third, automation last.",
+  "workflows": [
+    {
+      "name": "Inbound enrichment",
+      "trigger": "new CRM lead",
+      "steps": [
+        "validate domain",
+        "enrich company",
+        "score ICP",
+        "summarize fit",
+        "route owner",
+        "log decision"
+      ],
+      "human_in_loop": "required for enterprise/high-value accounts"
+    },
+    {
+      "name": "Weekly pipeline insights",
+      "trigger": "weekly schedule",
+      "steps": [
+        "pull CRM deals",
+        "group by source/stage/owner",
+        "detect anomalies",
+        "generate commentary",
+        "send Slack summary"
+      ],
+      "human_in_loop": "review before leadership distribution"
+    },
+    {
+      "name": "Content QA agent",
+      "trigger": "new draft",
+      "steps": [
+        "check ICP fit",
+        "detect claims",
+        "verify sources",
+        "score clarity",
+        "suggest edits"
+      ],
+      "human_in_loop": "editor approval required"
+    }
+  ],
+  "risk_controls": [
+    "logs",
+    "cost caps",
+    "manual approval",
+    "source verification",
+    "rollback"
+  ]
+}

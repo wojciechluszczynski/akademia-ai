@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/style.css">
   <script src="js/config.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -25,38 +26,38 @@
   <aside class="sidebar">
     <div class="sidebar-top">
       <a href="index.html" class="logo">
-        <img src="assets/logo-aa.svg" width="28" height="28" alt="AA" style="border-radius:6px;">
-        Akademia AI
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none"><defs><linearGradient id="db-lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FF8C42"/><stop offset="100%" stop-color="#D94A0E"/></linearGradient></defs><rect width="32" height="32" rx="7" fill="url(#db-lg)"/><text x="16" y="21.5" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-weight="800" font-size="11.5" fill="white" letter-spacing="-0.3">.AI</text></svg>
+        <span class="logo-name">Akademia<span class="logo-ai">.AI</span></span>
       </a>
     </div>
 
     <nav class="sidebar-nav">
       <div class="nav-group">Główne</div>
       <a class="nav-item active" data-section="dashboard" onclick="showSection('dashboard')">
-        <span class="nav-icon">▣</span> Dashboard
+        <span class="nav-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><rect x="0" y="0" width="6" height="6" rx="1.5"/><rect x="8" y="0" width="6" height="6" rx="1.5"/><rect x="0" y="8" width="6" height="6" rx="1.5"/><rect x="8" y="8" width="6" height="6" rx="1.5"/></svg></span> Dashboard
       </a>
       <a class="nav-item" data-section="episodes" onclick="showSection('episodes')">
-        <span class="nav-icon">▶</span> Wszystkie odcinki
+        <span class="nav-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 4h10M2 7h10M2 10h6"/></svg></span> Wszystkie odcinki
       </a>
       <a class="nav-item" data-section="vault" onclick="showSection('vault')">
-        <span class="nav-icon">◫</span> Vault
+        <span class="nav-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="1" width="12" height="12" rx="2"/><circle cx="7" cy="7" r="2.5"/><path d="M7 1v2M7 11v2M1 7h2M11 7h2"/></svg></span> Vault
         <span class="nav-count" id="vault-count">8</span>
       </a>
 
       <div class="nav-group" style="margin-top: 14px;">Serie</div>
       <a class="nav-item" data-section="serie-1" onclick="showSection('serie-1')">
-        <span class="nav-icon">①</span> AI Stack 2026
+        <span class="nav-serie-num">1</span> AI Stack 2026
       </a>
       <a class="nav-item" data-section="serie-2" onclick="showSection('serie-2')">
-        <span class="nav-icon">②</span> Outbound Machine
+        <span class="nav-serie-num">2</span> Outbound Machine
       </a>
       <a class="nav-item" data-section="serie-3" onclick="showSection('serie-3')">
-        <span class="nav-icon">③</span> Voice & Video
+        <span class="nav-serie-num">3</span> Voice &amp; Video
       </a>
 
       <div class="nav-group" style="margin-top: 14px;">Twoje</div>
       <a class="nav-item" data-section="certificate" onclick="showSection('certificate')">
-        <span class="nav-icon">★</span> Certyfikat
+        <span class="nav-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="5" r="3.5"/><path d="M4.5 8l-2 5 4.5-2 4.5 2-2-5"/></svg></span> Certyfikat
       </a>
     </nav>
 
@@ -76,7 +77,7 @@
         <div class="user-name" id="user-name">Wojciech</div>
         <div class="user-plan" id="user-plan">Pro</div>
       </div>
-      <button class="logout-btn" onclick="doLogout()" title="Wyloguj">⏻</button>
+      <button class="logout-btn" onclick="doLogout()" title="Wyloguj"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h3"/><path d="M10 10l3-3-3-3"/><path d="M13 7H5"/></svg></button>
     </div>
   </aside>
 
@@ -179,7 +180,7 @@
   <div class="pb-center">
     <div class="pb-buttons">
       <button class="pb-btn" onclick="playerSkip(-15)">−15</button>
-      <button class="pb-btn play-btn" id="pb-play" onclick="playerToggle()">▶</button>
+      <button class="pb-btn play-btn" id="pb-play" onclick="playerToggle()"><svg width="10" height="12" viewBox="0 0 10 12" fill="currentColor"><path d="M0 0l10 6-10 6z"/></svg></button>
       <button class="pb-btn" onclick="playerSkip(15)">+15</button>
     </div>
     <div class="pb-seek-row">

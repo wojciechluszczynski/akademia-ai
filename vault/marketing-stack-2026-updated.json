@@ -1,0 +1,244 @@
+{
+  "generated_at": "2026-05-04",
+  "models_and_tools": [
+    {
+      "name": "GPT-5.5 Thinking",
+      "vendor": "OpenAI",
+      "category": "frontier reasoning",
+      "best_for": [
+        "strategia",
+        "analiza danych",
+        "research",
+        "synteza",
+        "dokumenty",
+        "praca profesjonalna"
+      ],
+      "score": 96,
+      "context": "1M tokens",
+      "pricing_api": "$5 input / $30 output per 1M tokens",
+      "positioning": "Najlepszy default do złożonej pracy biznesowej i analitycznej.",
+      "risk": "Nie zawsze najnaturalniejszy styl copy; wymaga redakcji w komunikacji brandowej."
+    },
+    {
+      "name": "Claude Opus 4.7",
+      "vendor": "Anthropic",
+      "category": "frontier coding/reasoning",
+      "best_for": [
+        "kodowanie",
+        "refaktor",
+        "agentic coding",
+        "długie zadania",
+        "review",
+        "wysokiej jakości tekst"
+      ],
+      "score": 95,
+      "context": "zależne od planu/API; Opus line z rozszerzonym kontekstem",
+      "pricing_api": "$5 input / $25 output per 1M tokens",
+      "positioning": "Najmocniejszy wybór do kodowania, długich tasków i pracy jakościowej.",
+      "risk": "Droższy niż modele robocze; nie zawsze potrzebny do prostych zadań."
+    },
+    {
+      "name": "Claude Sonnet 4.6",
+      "vendor": "Anthropic",
+      "category": "workhorse",
+      "best_for": [
+        "codzienna praca marketingowa",
+        "copy",
+        "analiza dokumentów",
+        "agenci",
+        "workflow"
+      ],
+      "score": 94,
+      "context": "1M context w beta dla długiego kontekstu",
+      "pricing_api": "sprawdź bieżące pricing docs",
+      "positioning": "Najlepszy kompromis jakość/koszt w codziennej pracy marketing/growth.",
+      "risk": "Przy najtrudniejszych zadaniach codingowych Opus zwykle będzie bezpieczniejszy."
+    },
+    {
+      "name": "Gemini 3.1 Pro Preview",
+      "vendor": "Google",
+      "category": "multimodal/long-context",
+      "best_for": [
+        "Google Workspace",
+        "PDF",
+        "audio",
+        "video",
+        "obrazy",
+        "duży kontekst",
+        "repozytoria"
+      ],
+      "score": 92,
+      "context": "1,048,576 input tokens / 65,536 output tokens",
+      "pricing_api": "sprawdź Google AI / Vertex pricing",
+      "positioning": "Najmocniejszy tam, gdzie materiał wejściowy jest ciężki i multimodalny.",
+      "risk": "Preview; stabilność i dostępność mogą się zmieniać."
+    },
+    {
+      "name": "Grok 4.3",
+      "vendor": "xAI",
+      "category": "real-time/chat/coding",
+      "best_for": [
+        "real-time web",
+        "X",
+        "sentyment",
+        "szybki research",
+        "agentic search"
+      ],
+      "score": 88,
+      "context": "sprawdź docs.x.ai",
+      "pricing_api": "sprawdź docs.x.ai",
+      "positioning": "Ważny model do tego, co dzieje się teraz, szczególnie web/X.",
+      "risk": "Nie rekomendować jako głównego modelu do spokojnej strategii B2B."
+    },
+    {
+      "name": "Grok 4.1 Fast",
+      "vendor": "xAI",
+      "category": "agent/tool-calling",
+      "best_for": [
+        "agenci",
+        "tool calling",
+        "duży kontekst",
+        "web/X",
+        "tańsze workflows"
+      ],
+      "score": 87,
+      "context": "2M token context w rodzinie Fast",
+      "pricing_api": "sprawdź docs.x.ai",
+      "positioning": "Ciekawy model do agentic workflows i produkcyjnych automatyzacji.",
+      "risk": "Nie zastępuje pełnego research governance i weryfikacji źródeł."
+    },
+    {
+      "name": "Perplexity",
+      "vendor": "Perplexity",
+      "category": "research layer",
+      "best_for": [
+        "research",
+        "competitive intelligence",
+        "briefingi",
+        "monitoring",
+        "źródła"
+      ],
+      "score": 93,
+      "context": "zależne od planu/modelu",
+      "pricing_api": "subscription/API",
+      "positioning": "Nie zamiennik Google, tylko warstwa researchu i syntezy nad webem.",
+      "risk": "Źródła trzeba nadal czytać; automatyczna synteza może uprościć kontekst."
+    },
+    {
+      "name": "NotebookLM",
+      "vendor": "Google",
+      "category": "source-grounded workspace",
+      "best_for": [
+        "własne źródła",
+        "PDF",
+        "notatki",
+        "transkrypty",
+        "kursy",
+        "briefingi",
+        "audio/video overviews"
+      ],
+      "score": 91,
+      "context": "zależne od produktu",
+      "pricing_api": "consumer/Workspace tiers",
+      "positioning": "Prywatny research room oparty o zaufane źródła.",
+      "risk": "Jakość zależy od jakości materiałów źródłowych."
+    },
+    {
+      "name": "Clay",
+      "vendor": "Clay",
+      "category": "GTM workflow/data layer",
+      "best_for": [
+        "outbound",
+        "enrichment",
+        "ICP scoring",
+        "intent",
+        "personalizacja",
+        "CRM enrichment"
+      ],
+      "score": 94,
+      "context": "tabele/akcje/kredyty",
+      "pricing_api": "credit/action based",
+      "positioning": "Nie baza leadów, tylko workflow layer dla GTM.",
+      "risk": "Koszt i złożoność rosną szybko przy wielu krokach enrichmentu."
+    },
+    {
+      "name": "Eleven v3",
+      "vendor": "ElevenLabs",
+      "category": "AI voice",
+      "best_for": [
+        "lektory",
+        "klon głosu",
+        "dialogi",
+        "materiały audio",
+        "lokalizacja"
+      ],
+      "score": 92,
+      "context": "70+ języków",
+      "pricing_api": "subscription/API",
+      "positioning": "Najmocniejszy default do wysokiej jakości głosu i narracji.",
+      "risk": "Trzeba uważać na disclosure, zgodę i nadużycia voice cloningu."
+    },
+    {
+      "name": "HeyGen Avatar V",
+      "vendor": "HeyGen",
+      "category": "avatar video",
+      "best_for": [
+        "avatar",
+        "talking head",
+        "kursy",
+        "sales enablement",
+        "personal brand"
+      ],
+      "score": 90,
+      "context": "15-sec source recording",
+      "pricing_api": "subscription/API",
+      "positioning": "Najmocniejszy kierunek dla realistycznych avatarów i long-form video.",
+      "risk": "Ryzyko uncanny valley i utraty wiarygodności bez jasnego disclosure."
+    },
+    {
+      "name": "Runway Gen-4.5",
+      "vendor": "Runway",
+      "category": "AI video",
+      "best_for": [
+        "cinematic video",
+        "image-to-video",
+        "text-to-video",
+        "kampanie",
+        "visual content"
+      ],
+      "score": 91,
+      "context": "prompt/video model constraints",
+      "pricing_api": "subscription/credits",
+      "positioning": "Mocny model do kinowego wideo i kreatywnej kontroli.",
+      "risk": "Nie zakładać pełnej stabilności przy object permanence i sekwencjach logicznych."
+    },
+    {
+      "name": "Veo 3.1",
+      "vendor": "Google",
+      "category": "AI video",
+      "best_for": [
+        "8s video",
+        "native audio",
+        "720p/1080p/4K",
+        "API workflows"
+      ],
+      "score": 90,
+      "context": "8-second clips",
+      "pricing_api": "Gemini API paid",
+      "positioning": "Dobry do krótkiego, wysokiej jakości video generowanego przez API.",
+      "risk": "Koszty i dostępność API wymagają kontroli limitów."
+    }
+  ],
+  "recommended_default_stack": {
+    "strategy": "GPT-5.5 Thinking",
+    "copy": "Claude Sonnet 4.6",
+    "coding": "Claude Opus 4.7 / Claude Code",
+    "research": "Perplexity + source verification",
+    "own_sources": "NotebookLM",
+    "google_workspace": "Gemini 3.1 Pro",
+    "outbound": "Clay + CRM + Claude/GPT",
+    "voice": "Eleven v3",
+    "avatar": "HeyGen Avatar V",
+    "video": "Runway Gen-4.5 / Veo 3.1"
+  }
+}
