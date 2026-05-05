@@ -668,6 +668,16 @@ const MATERIALS = [
     "icon": "vi-md",
     "locked": true,
     "serie": 1
+  },
+  {
+    "id": 34,
+    "title": "GTM AI Tech Stack 2026 — Bad → Okay → Best",
+    "file": "gtm-ai-stack-2026.md",
+    "desc": "Granola, Klue, Attio, Lovable, Seam AI, Jason AI, Amplitude — jeden tool per job · S2+S4",
+    "type": "md",
+    "icon": "vi-md",
+    "locked": true,
+    "serie": 2
   }
 ];
 
@@ -899,7 +909,7 @@ function renderEpisodes(isPro) {
   const $ = id => document.getElementById(id);
   const all = EPISODES.map(ep => renderEpCard(ep, isPro, progress[ep.id] || 0)).join('');
   if ($('ep-grid-all')) $('ep-grid-all').innerHTML = all;
-  [1, 2, 3].forEach(s => {
+  [1, 2, 3, 4].forEach(s => {
     const g = $('ep-grid-s' + s);
     if (g) g.innerHTML = EPISODES.filter(e => e.serie === s)
       .map(ep => renderEpCard(ep, isPro, progress[ep.id] || 0)).join('');

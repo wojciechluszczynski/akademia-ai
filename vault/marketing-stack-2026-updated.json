@@ -227,6 +227,142 @@
       "pricing_api": "Gemini API paid",
       "positioning": "Dobry do krótkiego, wysokiej jakości video generowanego przez API.",
       "risk": "Koszty i dostępność API wymagają kontroli limitów."
+    },
+    {
+      "name": "Granola",
+      "vendor": "Granola",
+      "category": "meeting intelligence",
+      "best_for": [
+        "notatki ze spotkań",
+        "transkrypcja bez bota",
+        "action items",
+        "sales calls",
+        "spotkania z klientami"
+      ],
+      "score": 88,
+      "context": "lokalnie na urządzeniu, brak bota w calli",
+      "pricing_api": "subscription",
+      "positioning": "Najlepszy wybór gdy dyskrecja i brak bota w calli ma znaczenie (sprzedaż, klienci).",
+      "risk": "Jakość transkrypcji po polsku do weryfikacji; wymaga macOS."
+    },
+    {
+      "name": "Klue",
+      "vendor": "Klue",
+      "category": "competitor intelligence",
+      "best_for": [
+        "battlecardy",
+        "monitoring konkurencji",
+        "sales enablement",
+        "CI w czasie rzeczywistym",
+        "CRM integration"
+      ],
+      "score": 87,
+      "context": "SaaS platform",
+      "pricing_api": "enterprise subscription",
+      "positioning": "Dedykowany CI system; Perplexity to research, Klue to system operacyjny dla całego teamu.",
+      "risk": "Wysoki koszt; sensowny od ~10+ AE w teamie sprzedażowym."
+    },
+    {
+      "name": "Attio",
+      "vendor": "Attio",
+      "category": "CRM / pipeline management",
+      "best_for": [
+        "pipeline management",
+        "elastyczny data model",
+        "automatyzacje bez kodu",
+        "API-first CRM",
+        "startup/scale-up"
+      ],
+      "score": 89,
+      "context": "SaaS CRM",
+      "pricing_api": "per seat subscription",
+      "positioning": "CRM zbudowany natywnie dla ery AI: elastyczny, szybki w wdrożeniu, bez legacy UX.",
+      "risk": "Mniejszy ekosystem integracji niż HubSpot; enterprise może potrzebować HubSpot."
+    },
+    {
+      "name": "Lovable",
+      "vendor": "Lovable",
+      "category": "AI builder / landing pages",
+      "best_for": [
+        "landing pages",
+        "MVP",
+        "campaign LP",
+        "waitlist pages",
+        "szybki prototyp"
+      ],
+      "score": 88,
+      "context": "prompt-to-React app",
+      "pricing_api": "subscription/credits",
+      "positioning": "Najszybszy sposób na działający landing page bez developera. Uzupełnia Webflow, nie zastępuje.",
+      "risk": "Złożone strony z CMS i animacjami nadal lepiej w Webflow."
+    },
+    {
+      "name": "Seam AI",
+      "vendor": "Seam AI",
+      "category": "ABM / account intelligence",
+      "best_for": [
+        "ABM",
+        "account prioritization",
+        "intent signals",
+        "ICP scoring",
+        "pipeline acceleration"
+      ],
+      "score": 85,
+      "context": "SaaS platform",
+      "pricing_api": "subscription",
+      "positioning": "Intent-based ABM: identyfikuje konta które realnie kupują, nie tylko pasują do ICP.",
+      "risk": "Narzędzie stosunkowo nowe; weryfikuj pokrycie dla polskiego/CEE rynku B2B."
+    },
+    {
+      "name": "Jason AI (by Reply)",
+      "vendor": "Reply",
+      "category": "cold outreach / AI agent",
+      "best_for": [
+        "cold outreach automation",
+        "AI-driven follow-up",
+        "lead qualification",
+        "sequence management",
+        "multi-channel outreach"
+      ],
+      "score": 87,
+      "context": "AI agent nad Reply platform",
+      "pricing_api": "subscription",
+      "positioning": "AI agent przejmuje sekwencje i follow-upy; rep skupia się na rozmowach, nie na klikaniu.",
+      "risk": "Deliverability nadal zależy od konfiguracji domeny — Jason AI nie zastępuje SPF/DKIM/DMARC."
+    },
+    {
+      "name": "Amplitude",
+      "vendor": "Amplitude",
+      "category": "product analytics / growth",
+      "best_for": [
+        "funnel analysis",
+        "retencja",
+        "cohort analysis",
+        "A/B testing",
+        "user journey",
+        "product-led growth"
+      ],
+      "score": 91,
+      "context": "SaaS analytics platform",
+      "pricing_api": "free tier + growth/enterprise",
+      "positioning": "Standard do analityki produktowej i growth bez data engineera przy prostych pytaniach.",
+      "risk": "Wymaga poprawnej implementacji eventów; śmieci na wejściu = śmieci w dashboardzie."
+    },
+    {
+      "name": "Rows",
+      "vendor": "Rows",
+      "category": "AI spreadsheet / data",
+      "best_for": [
+        "AI w spreadsheetach",
+        "połączenia z API",
+        "raporty automatyczne",
+        "bridge Excel → BI"
+      ],
+      "score": 82,
+      "context": "cloud spreadsheet",
+      "pricing_api": "free tier + pro",
+      "positioning": "Most między Excelem a prawdziwym BI — spreadsheet z wbudowanymi źródłami danych i AI.",
+      "risk": "Nie zastępuje Amplitude przy analityce produktowej; dobry dla ops/finance/marketing ops."
     }
   ],
   "recommended_default_stack": {
@@ -237,6 +373,13 @@
     "own_sources": "NotebookLM",
     "google_workspace": "Gemini 3.1 Pro",
     "outbound": "Clay + CRM + Claude/GPT",
+    "cold_outreach": "Jason AI (by Reply)",
+    "crm": "Attio (startup/scale-up) / HubSpot (enterprise)",
+    "meeting_notes": "Granola",
+    "competitor_intel": "Klue (team) / Perplexity (solo)",
+    "landing_pages": "Lovable (szybkie) + Webflow (produkcyjne)",
+    "abm": "Seam AI",
+    "analytics": "Amplitude (produkt/growth) / Rows (ops/finance)",
     "voice": "Eleven v3",
     "avatar": "HeyGen Avatar V",
     "video": "Runway Gen-4.5 / Veo 3.1"

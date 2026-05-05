@@ -32,30 +32,35 @@
     </div>
 
     <nav class="sidebar-nav">
-      <div class="nav-group">Główne</div>
       <a class="nav-item active" data-section="dashboard" onclick="showSection('dashboard')">
         <span class="nav-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><rect x="0" y="0" width="6" height="6" rx="1.5"/><rect x="8" y="0" width="6" height="6" rx="1.5"/><rect x="0" y="8" width="6" height="6" rx="1.5"/><rect x="8" y="8" width="6" height="6" rx="1.5"/></svg></span> Dashboard
       </a>
       <a class="nav-item" data-section="episodes" onclick="showSection('episodes')">
-        <span class="nav-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 4h10M2 7h10M2 10h6"/></svg></span> Wszystkie odcinki
+        <span class="nav-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 4h10M2 7h10M2 10h6"/></svg></span> Odcinki
       </a>
       <a class="nav-item" data-section="vault" onclick="showSection('vault')">
         <span class="nav-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="1" width="12" height="12" rx="2"/><circle cx="7" cy="7" r="2.5"/><path d="M7 1v2M7 11v2M1 7h2M11 7h2"/></svg></span> Vault
         <span class="nav-count" id="vault-count">8</span>
       </a>
 
-      <div class="nav-group" style="margin-top: 14px;">Serie</div>
+      <div class="nav-sep"></div>
+      <div class="nav-group">Serie</div>
+
       <a class="nav-item" data-section="serie-1" onclick="showSection('serie-1')">
-        <span class="nav-serie-num">1</span> AI Stack 2026
+        <span class="nav-serie-dot" data-s="1"></span> AI Stack 2026
       </a>
       <a class="nav-item" data-section="serie-2" onclick="showSection('serie-2')">
-        <span class="nav-serie-num">2</span> Outbound Machine
+        <span class="nav-serie-dot" data-s="2"></span> Outbound Machine
       </a>
       <a class="nav-item" data-section="serie-3" onclick="showSection('serie-3')">
-        <span class="nav-serie-num">3</span> Voice &amp; Video
+        <span class="nav-serie-dot" data-s="3"></span> Voice &amp; Video
+      </a>
+      <a class="nav-item" data-section="serie-4" onclick="showSection('serie-4')">
+        <span class="nav-serie-dot" data-s="4"></span> AI w Strategii
       </a>
 
-      <div class="nav-group" style="margin-top: 14px;">Twoje</div>
+      <div class="nav-sep"></div>
+
       <a class="nav-item" data-section="certificate" onclick="showSection('certificate')">
         <span class="nav-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="5" r="3.5"/><path d="M4.5 8l-2 5 4.5-2 4.5 2-2-5"/></svg></span> Certyfikat
       </a>
@@ -160,6 +165,14 @@
         <p>ElevenLabs · HeyGen · Veo 3.1 · Midjourney · Runway · Descript</p>
       </div>
       <div class="ep-grid" id="ep-grid-s3"></div>
+    </section>
+
+    <section class="section-content" id="section-serie-4">
+      <div class="page-header">
+        <h2>Seria 4 — AI w Strategii B2B</h2>
+        <p>Revenue architecture · AI Visibility · n8n · Marketing OS · Governance</p>
+      </div>
+      <div class="ep-grid" id="ep-grid-s4"></div>
     </section>
 
     <section class="section-content" id="section-certificate">

@@ -1269,12 +1269,37 @@
       .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
-  <script defer src="/_vercel/insights/script.js"></script>
+  <!-- Analytics ładowane warunkowo po consent — patrz cookieConsent() w skryptach -->
 </head>
 <body>
 
 <div class="grid-bg"></div>
 <div class="glow-bg"></div>
+
+<!-- PROMO BAR -->
+<div class="promo-bar" id="promo-bar">
+  <span class="promo-bar-text">
+    <strong>Majowa promocja</strong>
+    <span class="promo-bar-long"> — 20% taniej na wszystkie serie.</span>
+    Użyj kodu:
+  </span>
+  <span class="promo-bar-code" id="promo-code" onclick="copyPromoCode()" title="Kliknij, aby skopiować">
+    AKADEMIA20
+    <span class="promo-bar-copy" id="promo-copy-label">kopiuj</span>
+  </span>
+  <button class="promo-bar-close" onclick="dismissPromo()" aria-label="Zamknij">×</button>
+</div>
+
+<!-- COOKIE BANNER -->
+<div class="cookie-banner" id="cookie-banner">
+  <div class="cookie-banner-icon">🍪</div>
+  <h4>Ta strona używa plików cookie</h4>
+  <p>Używamy analityki (Google Analytics, Vercel) do mierzenia ruchu i poprawy treści. Nie sprzedajemy danych. <a href="#" onclick="return false">Polityka prywatności</a>.</p>
+  <div class="cookie-banner-actions">
+    <button class="cookie-btn-accept" onclick="cookieConsent('accept')">Akceptuję</button>
+    <button class="cookie-btn-decline" onclick="cookieConsent('decline')">Odrzucam</button>
+  </div>
+</div>
 
 <!-- NAVBAR -->
 <nav class="navbar">
@@ -2391,6 +2416,84 @@
   // Restore saved lang on load
   const savedLang = localStorage.getItem('ak_lang');
   if (savedLang && savedLang !== 'pl') setLang(savedLang);
+</script>
+
+<script>
+// ── ANALYTICS ────────────────────────────────
+const GA_ID = 'G-H262K93TWK';
+
+function loadAnalytics() {
+  // Google Analytics 4
+  if (GA_ID && GA_ID !== 'G-XXXXXXXXXX') {
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', GA_ID, { anonymize_ip: true });
+  }
+  // Vercel Analytics
+  const va = document.createElement('script');
+  va.defer = true;
+  va.src = '/_vercel/insights/script.js';
+  document.head.appendChild(va);
+}
+
+// ── COOKIE CONSENT ────────────────────────────
+(function initCookies() {
+  const consent = localStorage.getItem('ak_cookie');
+  if (consent === 'accept') { loadAnalytics(); return; }
+  if (consent === 'decline') { return; }
+  // Brak decyzji — pokaż banner po chwili
+  setTimeout(() => {
+    document.getElementById('cookie-banner').classList.add('visible');
+  }, 1500);
+})();
+
+function cookieConsent(choice) {
+  localStorage.setItem('ak_cookie', choice);
+  const banner = document.getElementById('cookie-banner');
+  banner.style.transition = 'opacity 0.3s, transform 0.3s';
+  banner.style.opacity = '0';
+  banner.style.transform = 'translateY(12px)';
+  setTimeout(() => banner.remove(), 300);
+  if (choice === 'accept') loadAnalytics();
+}
+
+// ── PROMO BAR ─────────────────────────────────
+(function initPromo() {
+  if (localStorage.getItem('ak_promo_dismissed') === '1') return;
+  const bar = document.getElementById('promo-bar');
+  bar.style.display = 'flex';
+  document.body.classList.add('has-promo');
+})();
+
+function dismissPromo() {
+  localStorage.setItem('ak_promo_dismissed', '1');
+  const bar = document.getElementById('promo-bar');
+  bar.style.transition = 'transform 0.25s ease, opacity 0.25s ease';
+  bar.style.transform = 'translateY(-100%)';
+  bar.style.opacity = '0';
+  setTimeout(() => {
+    bar.remove();
+    document.body.classList.remove('has-promo');
+  }, 260);
+}
+
+function copyPromoCode() {
+  navigator.clipboard.writeText('AKADEMIA20').then(() => {
+    const label = document.getElementById('promo-copy-label');
+    label.textContent = '✓ skopiowano';
+    label.style.color = 'var(--green)';
+    setTimeout(() => {
+      label.textContent = 'kopiuj';
+      label.style.color = '';
+    }, 2200);
+  });
+}
 </script>
 
 
