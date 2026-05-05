@@ -2754,8 +2754,9 @@ body::before {
     height: 56px;
     padding: 0 12px 0 16px;
   }
-  .nav-right { display: none; }
-  .hamburger { display: flex; }
+  .nav-right  { display: none; }
+  .nav-center { display: none; }
+  .hamburger  { display: flex; }
 
   /* Hero */
   .lp-hero { padding: 120px 20px 60px; }
