@@ -370,12 +370,7 @@ body::before {
   padding: 0 12px 0 16px;
 }
 
-/* Hide on fast scroll down, show on scroll up */
-.navbar.nav-hidden {
-  opacity: 0;
-  transform: translateX(-50%) translateY(-12px);
-  pointer-events: none;
-}
+
 
 /* Compact logo on scroll */
 .navbar.scrolled .logo-name { font-size: 0.875rem; }

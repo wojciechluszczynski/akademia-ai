@@ -2185,23 +2185,8 @@
   // ── SCROLL-AWARE NAVBAR ───────────────────────
   (function() {
     const nav = document.querySelector('.navbar');
-    let lastY = 0, ticking = false;
     function onScroll() {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        const y = window.scrollY;
-        nav.classList.toggle('scrolled', y > 60);
-        if (y < 300) {
-          nav.classList.remove('nav-hidden');
-        } else if (y > lastY + 6) {
-          nav.classList.add('nav-hidden');    // scroll w dol: ukryj
-        } else if (y < lastY - 25) {
-          nav.classList.remove('nav-hidden'); // scroll w gore o 25px: pokaz
-        }
-        lastY = y;
-        ticking = false;
-      });
+      nav.classList.toggle('scrolled', window.scrollY > 60);
     }
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
