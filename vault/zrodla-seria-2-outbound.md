@@ -49,6 +49,15 @@ Seria 2 · Apollo · Clay · Hunter · Smartlead · n8n · Zapier · Make · Air
 - [Lavender Email Data Report](https://www.lavender.ai/report) — co naprawdę działa w cold email
 - [Instantly Deliverability Guide](https://instantly.ai/blog/email-deliverability-guide) — techniczny setup domeny
 - [n8n Workflow Templates](https://n8n.io/workflows/) — gotowe automatyzacje do importu
+- [Autobound: State of AI Sales Prospecting 2026](https://www.autobound.ai/blog/state-of-ai-sales-prospecting-2026) — kluczowy insight: firmy które wdrożyły w pełni autonomicznych AI SDR masowo wracają do modeli hybrydowych; AI wspiera rep, nie zastępuje
+
+## Narzędzia warte znajomości (alternatywy i uzupełnienia stacku)
+
+| Narzędzie | Wyróżnik |
+|-----------|----------|
+| **[Amplemarket Duo](https://www.amplemarket.com/)** | Multi-agent AI z human-in-the-loop; w niezależnych benchmarkach najwyższe wyniki wśród narzędzi outreach; dobry punkt odniesienia przy ocenie Clay vs alternatywy |
+| **[Instantly.ai](https://instantly.ai/)** | 450M+ kontaktów (SuperSearch) + AI campaign engine + auto-warmup; popularny w SMB/mid-market |
+| **[Landbase](https://www.landbase.com/)** | Uznany Gartner Cool Vendor 2025; wytrenowany na 40M+ kampaniach B2B; przykład przejścia od bazy danych do agentic AI |
 
 ---
 

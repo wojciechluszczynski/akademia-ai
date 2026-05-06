@@ -25,6 +25,7 @@ Seria 1 · ChatGPT · Claude · Gemini · Grok · Perplexity · NotebookLM
 - **[Stratechery](https://stratechery.com/)** — Ben Thompson, biznesowy i strategiczny wymiar AI (płatny, warty każdej złotówki)
 - **[One Useful Thing](https://www.oneusefulthing.org/)** — Ethan Mollick, Wharton prof., praktyczne zastosowania AI w pracy
 - **[Every.to](https://every.to/)** — Dan Shipper i team, AI w codziennej pracy knowledge workerów
+- **[There's An AI For That](https://theresanaiforthat.com/)** — 2,5M subskrybentów, największy newsletter kuratujący nowe narzędzia AI; idealne do śledzenia co pojawia się w ekosystemie
 - **[AI Supremacy](https://aisupremacy.substack.com/)** — tygodniowy przegląd modeli i narzędzi
 - **[The Neuron](https://www.theneurondaily.com/)** — codzienne AI news w 5 minut
 
@@ -32,6 +33,7 @@ Seria 1 · ChatGPT · Claude · Gemini · Grok · Perplexity · NotebookLM
 
 ## Podcasty
 
+- **[The Artificial Intelligence Show](https://www.marketingaiinstitute.com/podcast)** — Marketing AI Institute, Paul Roetzer; najczęściej rekomendowany podcast o AI w marketingu dla business leaders
 - **[Latent Space](https://www.latent.space/podcast)** — najlepsza techniczna rozmowa o modelach i infrastrukturze AI
 - **[Lex Fridman Podcast](https://lexfridman.com/podcast/)** — długie rozmowy z założycielami OpenAI, Anthropic, Google DeepMind
 - **[No Priors](https://www.nopriorisvscode.com/)** — Sarah Guo i Elad Gil, inwestorzy AI, perspektywa produktowa

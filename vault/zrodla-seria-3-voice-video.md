@@ -58,6 +58,15 @@ Seria 3 · ElevenLabs · HeyGen · Veo 3 · Midjourney · Runway · Descript
 
 ---
 
+## Narzędzia do brand governance w erze AI
+
+| Narzędzie | Co robi |
+|-----------|---------|
+| **[Adobe Brand Intelligence](https://business.adobe.com/products/brand-intelligence.html)** | Enterprise AI do governance marki: zapewnia spójność contentu generowanego przez AI z brand guidelines; kluczowe dla dużych organizacji |
+| **[Jasper](https://www.jasper.ai/)** | AI content z wbudowanym Brand Voice — uczy się tonu, stylu i słownictwa marki; de facto standard dla enterprise content teamów |
+
+---
+
 ## Standardy disclosure i etyka
 
 Przy każdym projekcie z AI voice/avatar:

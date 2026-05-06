@@ -32,26 +32,40 @@ Seria 4 · Revenue Architecture · AI Visibility · n8n · Marketing OS · Gover
 
 - [McKinsey State of AI 2025](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai) — adopcja AI w firmach, ROI, wyzwania
 - [Gartner Hype Cycle for AI 2025](https://www.gartner.com/en/articles/what-s-new-in-the-2025-gartner-hype-cycle-for-artificial-intelligence) — gdzie jesteśmy w cyklu adopcji
-- [HubSpot State of Marketing 2025](https://www.hubspot.com/state-of-marketing) — jak marketerzy używają AI
+- [HubSpot State of Marketing 2026](https://www.hubspot.com/state-of-marketing) — 87% marketerów używa generative AI w co najmniej jednym workflow (vs 51% rok wcześniej)
+- [Jasper State of AI Marketing 2025](https://www.jasper.ai/state-of-ai-marketing-2025) — adopcja, ROI i wyzwania AI w content marketingu
 - [Salesforce State of Sales 2025](https://www.salesforce.com/resources/research-reports/state-of-sales/) — AI w procesach sprzedażowych
 - [Pavilion GTM Survey 2025](https://www.joinpavilion.com/research) — benchmarki revenue teams
-- [AI Visibility Report — BrightEdge](https://www.brightedge.com/research/) — AI search i LLM visibility
+- [Gartner Market Guide for AI Governance Platforms 2025](https://www.credo.ai/gartner-market-guide-for-ai-governance-platforms) — jak enterprise zarządza ryzykiem i compliance AI
 
 ---
 
 ## AI Visibility i LLM SEO
 
-Nowa dyscyplina: jak sprawić żeby LLM polecały Twój brand/produkt.
+Nowa kategoria 2025-2026: jak sprawić żeby LLM polecały Twój brand/produkt. **62% brandów jest technicznie niewidzialnych w AI search** (Semrush, 2025).
 
-- **[AIO (AI Optimization) — SparkToro](https://sparktoro.com/blog/category/ai-search/)** — najlepsze źródło o AI search
-- **[Perplexity for Business](https://www.perplexity.ai/business)** — jak firmy pojawiają się w Perplexity
-- **[Search Engine Land — AI Search Coverage](https://searchengineland.com/ai-search/)** — bieżące zmiany w AI search
-- **[Wordware AI Visibility Tool](https://wordware.ai/)** — testowanie widoczności brand w LLM
+### Narzędzia do monitorowania widoczności w LLM
 
-Kluczowe pytania do sprawdzenia:
-- Czy Claude/ChatGPT/Gemini poleca Twoją firmę przy zapytaniach kategorii?
-- Jakie źródła cytują LLM przy Twojej niszy?
-- Czy Twoje case studies/treści trafiają do training data?
+| Narzędzie | Co robi | Dla kogo |
+|-----------|---------|----------|
+| **[Profound](https://www.tryprofound.com/)** | Śledzi brand w ChatGPT, Perplexity, Gemini, Claude; używany przez MongoDB i Indeed | Enterprise |
+| **[Otterly.AI](https://otterly.ai/)** | Monitoring w Google AI Overviews, AI Mode, ChatGPT, Gemini, Copilot, Perplexity | Mid-market |
+| **[LLMrefs](https://llmrefs.com/)** | Analytics brand mentions, cytowania i share of voice w LLM | Growth teams |
+| **[Semrush AI Visibility](https://www.semrush.com/)** | AI Visibility Index: pozycje brandów w odpowiedziach ChatGPT, Perplexity, Google AI Mode | SEO teams |
+| **[HubSpot AEO](https://www.hubspot.com/products/aeo)** | Answer Engine Optimization wbudowane w HubSpot | HubSpot users |
+
+### Źródła wiedzy o AEO/AI Search
+
+- **[SparkToro AI Search](https://sparktoro.com/blog/category/ai-search/)** — Rand Fishkin, najlepsza analiza zero-click i AI visibility
+- **[Search Engine Land: AI Search](https://searchengineland.com/ai-search/)** — bieżące zmiany w AI search
+- **[BrightEdge Research](https://www.brightedge.com/research/)** — dane o AI search i LLM visibility
+
+### Pytania do audytu AI Visibility (zrób teraz)
+
+1. Wpisz w ChatGPT/Claude/Perplexity: *"Jakie narzędzia polecasz do [Twoja kategoria]?"* — czy jesteś wymieniony?
+2. Sprawdź co LLM mówią o Twoich konkurentach
+3. Zidentyfikuj źródła, które LLM cytują w Twojej niszy — i pojaw się w nich
+4. Oceń czy Twoje treści są "LLM-readable": konkretne fakty, dane, cytowalne fragmenty
 
 ---
 
@@ -66,8 +80,9 @@ Kluczowe pytania do sprawdzenia:
 
 ## Governance i AI Policy
 
-- **[EU AI Act Official Text](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52021PC0206)** — obowiązujące prawo UE
-- **[NIST AI Risk Management Framework](https://www.nist.gov/artificial-intelligence)** — framework zarządzania ryzykiem
+- **[EU AI Act Official Text](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52021PC0206)** — obowiązujące prawo UE; wchodzi w życie etapami 2025-2026
+- **[NIST AI Risk Management Framework](https://www.nist.gov/artificial-intelligence)** — framework zarządzania ryzykiem (standard de facto w USA i coraz częściej w EU)
+- **[Credo.ai](https://www.credo.ai/)** — platforma AI governance dla enterprise; wymieniona w Gartner Market Guide 2025
 - **[Anthropic Acceptable Use Policy](https://www.anthropic.com/legal/aup)** — co wolno a czego nie z Claude
 - **[OpenAI Usage Policies](https://openai.com/policies/usage-policies)** — limity OpenAI
 - **[AI Policy — Future of Life Institute](https://futureoflife.org/ai-policy/)** — regulacje i governance globalnie
