@@ -15,6 +15,20 @@ Seria 1 · ChatGPT · Claude · Gemini · Grok · Perplexity · NotebookLM
 | **Perplexity** | [docs.perplexity.ai](https://docs.perplexity.ai) |
 | **NotebookLM** | [notebooklm.google.com](https://notebooklm.google.com) · [NotebookLM Blog](https://blog.google/technology/ai/notebooklm-new-features/) |
 | **Cursor / Claude Code** | [cursor.com/docs](https://cursor.com/docs) · [Claude Code docs](https://docs.anthropic.com/en/docs/claude-code) |
+| **Google ADK** | [google.github.io/adk-docs](https://google.github.io/adk-docs/) · [ADK GitHub](https://github.com/google/adk-python) |
+
+---
+
+## Protokoły agentyczne (2026: must-know)
+
+W 2026 wyłoniły się dwa standardy które będą definiować jak agenci AI komunikują się z narzędziami i ze sobą nawzajem. Marketer nie musi ich implementować, ale powinien wiedzieć że istnieją.
+
+| Protokół | Twórca | Co robi |
+|----------|--------|---------|
+| **[MCP — Model Context Protocol](https://modelcontextprotocol.io/)** | Anthropic (open) | Standard jak LLM/agent uzyskuje dostęp do narzędzi, danych i kontekstu; obsługiwany przez Claude, GPT, Gemini, wszystkie główne frameworki |
+| **[A2A — Agent-to-Agent Protocol](https://google.github.io/A2A/)** | Google (open) | Standard komunikacji między agentami zbudowanymi w różnych frameworkach; komplementarny do MCP |
+
+**Dlaczego to ważne dla marketera:** narzędzia GTM (Clay, n8n, HubSpot) będą coraz częściej oferować integracje "MCP-native", co oznacza że podłączenie dowolnego narzędzia do agenta AI stanie się tak proste jak instalacja wtyczki.
 
 ---
 
