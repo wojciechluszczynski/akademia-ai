@@ -268,56 +268,74 @@
 
 <script>
   const SERIE_NAMES = {
-    '1': 'AI Stack 2026 · Seria 1',
-    '2': 'Outbound Machine · Seria 2',
-    '3': 'Voice, Video & Brand · Seria 3',
-    '4': 'B2B Marketing AI · Seria 4',
+    '1':   'AI Stack 2026 · Seria 1',
+    '2':   'Outbound Machine · Seria 2',
+    '3':   'Voice, Video & Brand · Seria 3',
+    '4':   'B2B Marketing AI · Seria 4',
     'all': 'Wszystkie serie (pełny program)',
   };
 
+  function renderCert(data) {
+    const date = new Date(data.issued_at).toLocaleDateString('pl-PL', {
+      day: 'numeric', month: 'long', year: 'numeric'
+    });
+    const serieName = data.serie_name || SERIE_NAMES[data.serie] || `Seria ${data.serie}`;
+
+    document.getElementById('cert-name').textContent   = data.name;
+    document.getElementById('cert-course').textContent = `Akademia AI — ${serieName}`;
+    document.getElementById('cert-date').textContent   = date;
+    document.getElementById('cert-token').textContent  = data.token;
+    document.getElementById('verify-link').href        = `/verify.html?token=${data.token}`;
+
+    const issuedDate = new Date(data.issued_at);
+    const liParams = new URLSearchParams({
+      startTask:        'CERTIFICATION_NAME',
+      name:             `Akademia AI — ${serieName}`,
+      organizationName: 'Akademia AI',
+      issueYear:        issuedDate.getFullYear(),
+      issueMonth:       issuedDate.getMonth() + 1,
+      certUrl:          `https://academy.wojciech.io/verify.html?token=${data.token}`,
+      certId:           data.token,
+    });
+    const liBtn = document.getElementById('linkedin-btn');
+    liBtn.href = `https://www.linkedin.com/profile/add?${liParams}`;
+    liBtn.style.display = '';
+
+    document.getElementById('loading').style.display    = 'none';
+    document.getElementById('cert-sheet').style.display = 'flex';
+    document.getElementById('action-bar').style.display = 'flex';
+  }
+
   async function load() {
-    const token = new URLSearchParams(window.location.search).get('token');
+    const params = new URLSearchParams(window.location.search);
+    const isLocal = params.get('local') === '1';
+
+    // ── LOCAL mode (no API needed) ─────────────
+    if (isLocal) {
+      const name  = decodeURIComponent(params.get('name') || 'Uczestnik');
+      const serie = params.get('serie') || '1';
+      const token = params.get('token') || 'AA-LOCAL-2026-XXXXXXXX';
+      const date  = params.get('date') || new Date().toISOString();
+      renderCert({ name, serie, serie_name: SERIE_NAMES[serie], token, issued_at: date });
+      return;
+    }
+
+    // ── API mode (token from redirect) ─────────
+    const token = params.get('token');
     if (!token) { showError(); return; }
 
     try {
       const res  = await fetch(`/api/cert?verify=1&token=${encodeURIComponent(token)}`);
       const data = await res.json();
       if (!data.valid) { showError(); return; }
-
-      const date = new Date(data.issued_at).toLocaleDateString('pl-PL', {
-        day: 'numeric', month: 'long', year: 'numeric'
-      });
-
-      document.getElementById('cert-name').textContent   = data.name;
-      document.getElementById('cert-course').textContent = `Akademia AI — ${data.serie_name}`;
-      document.getElementById('cert-date').textContent   = date;
-      document.getElementById('cert-token').textContent  = data.token;
-      document.getElementById('verify-link').href        = `/verify.html?token=${data.token}`;
-
-      const issuedDate = new Date(data.issued_at);
-      const liParams = new URLSearchParams({
-        startTask: 'CERTIFICATION_NAME',
-        name: `Akademia AI — ${data.serie_name}`,
-        organizationName: 'Akademia AI',
-        issueYear: issuedDate.getFullYear(),
-        issueMonth: issuedDate.getMonth() + 1,
-        certUrl: `https://academy.wojciech.io/verify.html?token=${data.token}`,
-        certId: data.token,
-      });
-      const liBtn = document.getElementById('linkedin-btn');
-      liBtn.href = `https://www.linkedin.com/profile/add?${liParams}`;
-      liBtn.style.display = '';
-
-      document.getElementById('loading').style.display    = 'none';
-      document.getElementById('cert-sheet').style.display = 'flex';
-      document.getElementById('action-bar').style.display = 'flex';
+      renderCert({ ...data, serie_name: SERIE_NAMES[data.serie] || data.serie_name });
     } catch (e) {
       showError();
     }
   }
 
   function showError() {
-    document.getElementById('loading').style.display    = 'none';
+    document.getElementById('loading').style.display     = 'none';
     document.getElementById('error-state').style.display = 'block';
   }
 

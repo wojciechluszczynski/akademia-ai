@@ -8,7 +8,18 @@
   <meta property="og:title" content="Akademia AI · Wojciech Łuszczyński">
   <meta property="og:description" content="Naucz się AI od praktyka. Nie influencera. Gotowe workflow, audio, certyfikat.">
   <meta property="og:image" content="https://academy.wojciech.io/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:url" content="https://academy.wojciech.io">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Akademia AI · Wojciech Łuszczyński">
+  <meta name="twitter:description" content="Naucz się AI od praktyka. Nie influencera. Gotowe workflow, audio, certyfikat.">
+  <meta name="twitter:image" content="https://academy.wojciech.io/assets/og.png">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -593,6 +604,13 @@
     }
     .bento-big-num span { color: var(--orange); }
 
+    .bento-cert-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
     .bento-cert-preview {
       background: var(--bg-input);
       border: 1px solid var(--orange-line);
@@ -669,7 +687,7 @@
     .lp-section-head.centered p { margin: 0 auto; }
 
     /* Series */
-    .series-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .series-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
 
     .series-card-v2 {
       background: var(--bg-card);
@@ -1233,8 +1251,13 @@
     @media (max-width: 768px) {
       .nav-right { display: none; }
       .hamburger { display: flex; }
-      .lp-hero { padding: 100px 20px 40px; }
-      .lp-h1 { font-size: clamp(2.2rem, 9vw, 3.2rem); white-space: normal; }
+      .lp-hero { min-height: auto; padding: calc(var(--promo-h) + 56px + 36px) 20px 48px; justify-content: flex-start; }
+      .lp-h1 { font-size: clamp(2.2rem, 9vw, 3.2rem); white-space: normal; margin-bottom: 16px; }
+      .lp-sub { margin-bottom: 24px; }
+      .lp-cta-row { margin-bottom: 24px; }
+      .lp-cta-row .btn-lg { width: 100%; justify-content: center; }
+      .hero-stat-strip { margin-top: 20px; padding: 16px 18px; }
+      .bench-header { margin-bottom: 12px; }
       .lp-sub { font-size: 0.9375rem; }
       .mock-sidebar { display: none; }
       .mock-body { grid-template-columns: 1fr; height: auto; }
@@ -1268,6 +1291,19 @@
     @media (max-width: 1024px) and (min-width: 769px) {
       .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
     }
+    @media (max-width: 768px) {
+      /* Certificate card: single column */
+      .bento-cert-card { grid-template-columns: 1fr; gap: 24px; }
+      /* Workflow + demo sections */
+      .workflow-section { padding: 48px 0; }
+      .demo-section { padding: 48px 0 56px; }
+    }
+    @media (max-width: 540px) {
+      /* Very small: pricing max-width full */
+      .pricing-v2 { max-width: 100%; }
+      /* Series single col on small phones */
+      .series-grid { grid-template-columns: 1fr; }
+    }
   </style>
   <!-- Analytics ładowane warunkowo po consent — patrz cookieConsent() w skryptach -->
 </head>
@@ -1292,7 +1328,7 @@
 
 <!-- COOKIE BANNER -->
 <div class="cookie-banner" id="cookie-banner">
-  <div class="cookie-banner-icon">🍪</div>
+  <div class="cookie-banner-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="var(--orange)" stroke-width="1.5" stroke-linecap="round"><circle cx="10" cy="10" r="8.5"/><circle cx="7" cy="7.5" r="1" fill="var(--orange)" stroke="none"/><circle cx="12" cy="6" r="0.75" fill="var(--orange)" stroke="none"/><circle cx="13" cy="11.5" r="1" fill="var(--orange)" stroke="none"/><circle cx="8" cy="13" r="0.75" fill="var(--orange)" stroke="none"/></svg></div>
   <h4>Ta strona używa plików cookie</h4>
   <p>Używamy analityki (Google Analytics, Vercel) do mierzenia ruchu i poprawy treści. Nie sprzedajemy danych. <a href="#" onclick="return false">Polityka prywatności</a>.</p>
   <div class="cookie-banner-actions">
@@ -1718,7 +1754,7 @@
           <div class="bento-quiz-option"><span class="bento-quiz-letter">C</span>GPT-5.5 ma największy context</div>
         </div>
       </div>
-      <div class="bento-card bento-span-12 reveal reveal-delay-3" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;">
+      <div class="bento-card bento-span-12 bento-cert-card reveal reveal-delay-3">
         <div>
           <div class="bento-label">Certyfikat</div>
           <h3 style="font-size:1.75rem;margin-bottom:12px;">Certyfikat z unikalnym ID</h3>
@@ -1750,7 +1786,7 @@
       <h2>4 serie · 12 odcinków każda</h2>
       <p>Każda seria to osobny temat, możesz zacząć od jednej albo wziąć cały pakiet. Płacisz raz, dostęp na zawsze.</p>
     </div>
-    <div class="series-grid" style="grid-template-columns: repeat(2, 1fr);">
+    <div class="series-grid">
       <div class="series-card-v2 reveal">
         <div class="sc2-cover">
           <svg viewBox="0 0 140 200" xmlns="http://www.w3.org/2000/svg">

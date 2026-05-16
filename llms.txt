@@ -1,0 +1,25 @@
+# Akademia AI — academy.wojciech.io
+
+> Praktyczny kurs AI od operatora, nie influencera. 36 odcinków audio, 4 serie tematyczne, gotowe workflow, prompty i certyfikat ukończenia. Prowadzony przez Wojciecha Łuszczyńskiego.
+
+## About
+
+Akademia AI to intensywny kurs online dla marketerów, operatorów i builderów, którzy chcą wdrożyć AI do codziennej pracy — nie jako zabawkę, ale jako system.
+
+Autor: Wojciech Łuszczyński — growth operator z doświadczeniem VP Growth w Brand24, builder narzędzi AI, architekturujący systemy GTM i revenue operations.
+
+## Programme
+
+- **Seria 1** — Fundamenty AI: modele, prompty, workflow
+- **Seria 2** — AI w marketingu i GTM
+- **Seria 3** — Automatyzacja i agenci
+- **Seria 4** — Budowanie z AI: od pomysłu do produktu
+
+## Access
+
+- [academy.wojciech.io](https://academy.wojciech.io) — strona główna i rejestracja
+
+## Links
+
+- [wojciech.io](https://wojciech.io) — główna strona autora
+- [subscribe.wojciech.io](https://subscribe.wojciech.io) — newsletter AI Espresso
