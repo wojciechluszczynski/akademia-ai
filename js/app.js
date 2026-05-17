@@ -795,7 +795,37 @@ const QUIZZES = {
 };
 
 const KINETIC_SCRIPTS = {
-  1: `W 2026 przestałem pytać, który model AI jest najlepszy. To pytanie ma coraz mniej sensu. GPT-5.5 jest moim defaultem do złożonej pracy biznesowej, strategii, analizy danych i syntezy. Claude Opus i Sonnet biorę tam, gdzie liczy się kod, jakość tekstu, długi dokument i naturalny styl. Gemini ma największy sens przy Google Workspace, multimodalności, PDF-ach, audio, video i dużym kontekście. Grok ma sens wtedy, gdy potrzebuję real-time web, X i szybkiego kontekstu z tego, co dzieje się teraz. Perplexity zostaje narzędziem do researchu, ale nie jako zamiennik myślenia. NotebookLM jest prywatnym research roomem dla własnych źródeł. Clay jest GTM workflow layerem, a nie tylko narzędziem do szukania maili. Największy błąd zespołów w 2026 to używanie jednego modelu do wszystkiego. Największa przewaga to routing zadań do właściwego narzędzia.`
+  1: `W 2026 przestałem pytać, który model AI jest najlepszy. To pytanie ma coraz mniej sensu. GPT-5.5 jest moim defaultem do złożonej pracy biznesowej, strategii, analizy danych i syntezy. Claude Opus i Sonnet biorę tam, gdzie liczy się kod, jakość tekstu, długi dokument i naturalny styl. Gemini ma największy sens przy Google Workspace, multimodalności, PDF-ach, audio, video i dużym kontekście. Grok ma sens wtedy, gdy potrzebuję real-time web, X i szybkiego kontekstu z tego, co dzieje się teraz. Perplexity zostaje narzędziem do researchu, ale nie jako zamiennik myślenia. NotebookLM jest prywatnym research roomem dla własnych źródeł. Clay jest GTM workflow layerem, a nie tylko narzędziem do szukania maili. Największy błąd zespołów w 2026 to używanie jednego modelu do wszystkiego. Największa przewaga to routing zadań do właściwego narzędzia.`,
+
+  2: `Perplexity to nie zamiennik Google'a. To research layer, który przyspiesza pierwsze 30 minut pracy nad każdym projektem. Używam go do ICP research, competitive intelligence, monitoringu rynku i szybkich briefingów przed spotkaniami. Kluczowa różnica: Perplexity cytuje źródła i aktualizuje się w czasie rzeczywistym. Google nadal wygrywa przy SEO, długim ogonie i indeksowaniu. Tam gdzie liczą się świeże dane rynkowe, zmiany produktowe u konkurencji albo szybki brief o firmie przed rozmową sprzedażową, Perplexity jest szybszy i lepszy. Ale nie rozumuje. Nie planuje. Nie generuje. Jest narzędziem do zbierania informacji, a nie do ich syntezy. To ważna różnica, którą większość zespołów pomija przy wdrożeniu.`,
+
+  3: `NotebookLM przez trzy miesiące ignorowałem. Uważałem, że to kolejny chatbot do PDF-ów. Myliłem się. NotebookLM to prywatny research room, który działa wyłącznie na twoich źródłach. Wrzucam raporty, transkrypty, notatki, materiały kursowe i briefy. Zadaję pytania. Dostaję odpowiedzi zakorzenione w moich dokumentach, nie w internecie. Audio Overviews to podcast z twoich materiałów. Mind Maps to mapa powiązań. Source-grounded QA to weryfikacja przy każdej odpowiedzi. W praktyce używam go do: onboardingu nowych klientów, przygotowania do wywiadów, syntezy raportów branżowych i budowania bazy wiedzy o rynku. Gemini 2.0 pod spodem daje kontekst 1 miliona tokenów. To oznacza, że możesz wrzucić całą bibliotekę dokumentów i rozmawiać z nimi jak z ekspertem.`,
+
+  4: `Vibe coding to nie jest programowanie. To nowy workflow, który marketerzy i founderzy mogą sensownie używać bez zostania developerami. Claude Code i Cursor pozwalają mi budować małe narzędzia: skrypty, automaty, dashboardy, scrappery, mini-aplikacje. Nie piszę kodu. Opisuję co chcę. Iteruję. Sprawdzam. Wdrażam. Kluczowe: musisz rozumieć co budujesz, nawet jeśli nie rozumiesz każdej linii. Musisz testować na danych testowych zanim wdrożysz. Musisz wiedzieć gdzie jest granica między prostym skryptem a systemem, który wymaga prawdziwego dewelopera. Największy błąd to budowanie zbyt dużo naraz. Zacznij od jednego konkretnego problemu. Jeden output. Jeden workflow. I dopiero gdy działa, dodawaj kolejne elementy.`,
+
+  5: `Outbound nie zaczyna się od maili. Zaczyna się od danych. Clay, Apollo i Hunter to trzy różne warstwy tej samej układanki. Apollo to baza kontaktów i firmografii. Hunter to weryfikacja i znajdowanie maili. Clay to warstwa operacyjna, która łączy dane z wielu źródeł i pozwala budować workflow wzbogacania bez developera. Największy błąd w outboundzie w 2026 to zły ICP. Jeśli strzelasz do złych firm, żadna personalizacja nie pomoże. Najpierw zdefiniuj kto ma ten problem, który rozwiązujesz. Jakie sygnały zakupowe szukasz. Jakie firmowe wydarzenie jest triggerem. Dopiero potem zacznij budować listę. Clay pozwala walidować każdy kontakt w czasie rzeczywistym, zanim mail trafi na serwer Smartleada.`,
+
+  6: `Clay to nie narzędzie do cold emaili. Clay to GTM workflow layer. Pozwala mi budować pipeline od zera: firma wchodzi do tabeli, Clay wzbogaca dane z kilkudziesięciu źródeł, Claygent przegląda stronę i LinkedIn, Claude API pisze opening line, scoring nadaje priorytet, a SDR dostaje gotowy brief zamiast surowy kontakt. Cały proces trwa kilka sekund na kontakt i jest w pełni powtarzalny. Nie ma magii w personalizacji na scale. Jest dobry brief, dobry prompt i dobra weryfikacja. Kluczowe: nie próbuj personalizować wszystkiego. Personalizuj to, co zmienia wskaźnik odpowiedzi. Opening line, wzmianka o sygnale, dostosowanie do roli. Reszta to szablon.`,
+
+  7: `Cold email w 2026 to nie masowość. To sygnał, kontekst i reputacja domeny. Większość kampanii outbound ląduje w spamie nie dlatego, że maile są złe. Ląduje tam, bo domena jest młoda, nie ma historii wysyłkowej, SPF i DKIM są skonfigurowane byle jak, a lista nie była weryfikowana. Techniczne podstawy muszą być na miejscu zanim napiszesz pierwszego maila. Potem liczy się krótko, konkretnie i z kontekstem. Najlepsze cold maile które widziałem w 2026 mają jedną myśl, jedną przyczynę wysyłki i jedno jasne co chcę żebyś zrobił. AI może pisać te maile, ale nie może zastąpić zrozumienia problemu odbiorcy. Jeśli nie wiesz czego ta osoba potrzebuje, żaden prompt nie pomoże.`,
+
+  8: `Inbound enrichment to obszar, który większość firm całkowicie ignoruje. Ktoś wypełnił formularz. Zostawił email i imię. I to wszystko. W 2026 to za mało. Clay może w 30 sekund wzbogacić każdy inbound o firmografię, technologię w stacku, liczbę pracowników, sygnały wzrostu i historię finansowania. HubSpot lub Pipedrive może automatycznie nadać priorytet i przypisać do właściwego SDR-a. Zanim SDR oddzwoni, ma pełny brief. To skraca czas pierwszego kontaktu i poprawia jakość rozmowy. Lead scoring oparty na AI uwzględnia nie tylko dane demograficzne, ale też zachowanie na stronie, timing i dopasowanie produktowe. Efekt: mniej czasu na niskiej jakości leady, więcej na tych, którzy są gotowi do rozmowy.`,
+
+  9: `Klonowanie głosu to nie gimmick. To produkcyjny workflow, który pozwala mi nagrywać odcinki szybciej, tworzyć wersje językowe bez studia i produkować audio bez każdorazowego nagrywania. ElevenLabs v3 to największy skok jakościowy w TTS od lat. Emocje, intonacja, pauzy, wzdychanie, nacisk. Skrypt z tagami audio daje pełną kontrolę nad tym jak głos brzmi. Kluczowe w klonowaniu: jakość próbki wejściowej, brak szumu tła, naturalna mowa, minimum 5-10 minut materiału. Disclosure: zawsze informuję słuchaczy, że dany format używa klonu głosu. To kwestia zaufania. AI voice jako produkcja to narzędzie. Jako zamiennik autentyczności to błąd. Granica jest cienka i świadome jej przekraczanie zawsze kosztuje wiarygodność.`,
+
+  10: `Avatar AI ma sens tylko wtedy, gdy rozwiązuje konkretny problem skali albo lokalizacji. HeyGen Avatar V to najlepsza opcja którą testowałem do tworzenia wideo bez studia. Ale sam avatar to nie treść. Najczęstszy błąd: firma tworzy avatar, bo to fajne, a nie dlatego że ma problem do rozwiązania. Właściwe przypadki użycia: treningi onboardingowe w kilku językach, aktualizacje produktowe dla klientów, personalizowane wideo w outboundzie, lokalizacja contentu bez ponownego nagrywania. Kluczowe dla jakości: dobra oświetlona próbka wideo, naturalny skrypt bez listy punktorów, krótkie zdania i właściwy mikrofon przy nagraniu próbki głosu. Wiarygodność avatara spada przy emotionalnie intensywnych treściach. Trzymaj go od sprzedaży i relacji. Używaj do informacji i procesu.`,
+
+  11: `AI video w 2026 to nie efekt wow. To pipeline. Runway Gen-4.5 i Veo 3.1 to dwa różne narzędzia do różnych zadań. Runway wygrywa przy precyzyjnej kontroli ruchu kamery, długich ujęciach i spójności stylistycznej. Veo 3.1 wygrywa przy realistycznym ruchu, fizyce i szczegółach. Żadne z nich nie zastępuje kamerzysta i montażysty. Ale oba pozwalają tworzyć materia visual na potrzeby reklam, social mediów i prezentacji bez studia. Mój workflow: brief tekstowy, storyboard w Gemini, obraz referencyjny w Midjourney, klip w Runway lub Veo, montaż w Descript lub CapCut. Kluczowe: zawsze zacznij od dobrego promptu z opisem ruchu kamery, oświetlenia i nastroju. Generyczny prompt daje generyczny wynik.`,
+
+  12: `Repurposing contentu z AI to jeden z niewielu obszarów, gdzie AI realnie oszczędza dziesiątki godzin tygodniowo. Z jednego odcinka audio robię: transkrypt w Descript, streszczenie w NotebookLM, newsletter w Claude, trzy posty LinkedIn w GPT-5.5, short video w Runway, checklistę do pobrania, fragment do lead magneta i cytat na grafikę. Brzmi jak dużo. Zajmuje półtorej godziny. Kluczowe: nie każ AI przepisywać contentu. Każ mu go formatować na nowy kanał. Różnica jest fundamentalna. Przepisanie to kopiowanie z innymi słowami. Formatowanie to zmiana struktury, celu i kontekstu. Dobry prompt repurpingowy zawiera: cel kanału, typ odbiorcy, ograniczenia formatu i ton głosu. Bez tego dostajesz slop.`,
+
+  13: `Strategia AI w B2B to nie lista narzędzi do wdrożenia. To architektura decyzji o tym, gdzie AI wpływa na przychód, koszt i czas zespołu. Zaczynam od revenue map: gdzie tracisz deale, gdzie pipeline stoi, gdzie sprzedaż jest zbyt wolna, gdzie marketing nie konwertuje. Potem patrzę, gdzie AI może skrócić ten cykl lub poprawić współczynnik. Nie zaczynam od narzędzia. Zaczynam od problemu. Większość firm robi odwrotnie. Kupują narzędzie, szukają problemu. Stąd niska adopcja, brak ROI i rozczarowanie. Use case AI musi być właścicielem. Musi mieć metrykę sukcesu. Musi mieć datę weryfikacji. Bez tego to projekt pilotażowy, który nigdy nie wychodzi z pilotażu.`,
+
+  14: `SEO nie umarło. Ale zmienił się układ sił. W 2026 optymalizujesz nie tylko dla Google, ale dla odpowiedzi AI w Perplexity, ChatGPT, Gemini i Grok. Bycie cytowanym przez modele wymaga entity, autorytetu tematycznego i unikalnych danych. Treść oparta na cudzych danych i ogólnych spostrzeżeniach nie jest cytowana. Treść oparta na własnych obserwacjach, danych z klientów i specyficznym punkcie widzenia jest. Zmieniają się formaty. Długie artykuły nadal mają sens w kontekście topical authority. Ale krótkie, precyzyjne odpowiedzi na jedno pytanie to format, który AI preferuje jako źródło. Techniczne SEO nadal obowiązuje. Szybkość strony, indeksowalność, struktura nagłówków. Ale fundamentem jest teraz wiarygodność źródła, a nie liczba linków.`,
+
+  15: `Automatyzacja marketingu z AI to nie wymiana człowieka na maszynę. To zwolnienie człowieka od powtarzalnych decyzji niskiej wartości. N8n jest moim narzędziem do budowania agentów workflow. Trigger, dane, decyzja, akcja, log, alert i człowiek w pętli przy wyjątkach. Przykładowy workflow który zbudowałem: inbound lead wchodzi do HubSpot, n8n wzbogaca przez Clay, Claude ocenia fit, jeśli wysoki fit tworzy brief dla SDR i wysyła notyfikację, jeśli niski fit wysyła sekwencję nurturingową i taguje do dalszego monitoringu. Całość działa bez udziału człowieka do momentu, gdy SDR powinien się odezwać. Kluczowe: każda automatyzacja musi mieć fallback gdy coś pójdzie nie tak. Logowanie błędów. Alert na Slacku. I zawsze człowiek w pętli przy decyzjach wysokiej stawki.`,
+
+  16: `AI operating system dla marketingu to nie jedno narzędzie. To system zasad, procesów i governance, który sprawia, że cały zespół używa AI spójnie i bezpiecznie. Składa się z: use case backlogu, gdzie zbierasz i priorytetyzujesz przypadki użycia według wpływu. Prompt library, gdzie przechowujesz przetestowane prompty według tasków. SOP per workflow, żeby każdy wiedział jak używać AI w powtarzalnym procesie. QA checklist, bo AI halucynuje i każdy output wymaga weryfikacji. Source policy, która określa jakich danych AI może używać. I polityki kosztowej, bo bez kontroli wydatki na API rosną szybko. Bez tego systemu AI w zespole to chaos. Z nim to dźwignia.`
 };
 
 // ── AUDIO FILES ───────────────────────────────
@@ -925,6 +955,12 @@ function renderAll(isPro) {
   renderHome(isPro);
   renderEpisodes(isPro);
   renderVault(isPro);
+  // Update mobile topbar user info
+  const mPlan = document.getElementById('mobile-user-plan');
+  if (mPlan && currentUser) {
+    mPlan.textContent = isPro ? 'PRO' : 'FREE';
+    mPlan.style.color = isPro ? 'var(--orange)' : 'var(--text-4)';
+  }
 }
 
 function renderHome(isPro) {
@@ -1305,6 +1341,28 @@ function checkCertificate() {
   }
 }
 
+function genCertToken(userId, serie) {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let rand = '';
+  for (let i = 0; i < 8; i++) rand += chars[Math.floor(Math.random() * chars.length)];
+  const prefix = serie === 'all' ? 'PRO' : `S${serie}`;
+  return `AA-${prefix}-2026-${rand}`;
+}
+
+function openCert(serie) {
+  if (!currentUser?.id) return;
+  const name  = currentUser.name || currentUser.email?.split('@')[0] || 'Uczestnik';
+  const token = genCertToken(currentUser.id, serie);
+  const date  = new Date().toISOString();
+  const params = new URLSearchParams({ local: '1', name, serie, token, date });
+  // Try API first, fallback to local cert
+  const apiUrl   = `/api/cert?userId=${encodeURIComponent(currentUser.id)}&serie=${serie}`;
+  const localUrl = `/cert-view.html?${params}`;
+  fetch(apiUrl, { method: 'HEAD' })
+    .then(r => { window.open(r.ok || r.redirected ? apiUrl : localUrl, '_blank'); })
+    .catch(() => { window.open(localUrl, '_blank'); });
+}
+
 function renderCertificate() {
   const el = document.getElementById('cert-container');
   if (!el) return;
@@ -1312,26 +1370,48 @@ function renderCertificate() {
     el.innerHTML = `<p style="color:var(--text-3);text-align:center;padding:32px 0;">Zaloguj się aby pobrać certyfikat.</p>`;
     return;
   }
+  const accessible = EPISODES.filter(e => !e.locked || currentUser?.plan === 'pro');
+  const completed  = getCompleted();
+  const quizResults = getQuizResults();
+  const doneCount  = accessible.filter(e => completed.includes(e.id)).length;
+  const totalCount = accessible.length;
+  const allDone    = doneCount >= totalCount;
+  const allPassed  = accessible.filter(e => e.hasQuiz).every(e => quizResults[e.id]?.passed);
+  const unlocked   = allDone && allPassed;
+
   el.innerHTML = `
     <div style="text-align:center;padding:32px 0;">
       <div style="font-size:0.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:12px;">Certyfikat ukończenia</div>
-      <p style="color:var(--text-3);font-size:.875rem;line-height:1.6;margin-bottom:24px;max-width:360px;margin-inline:auto;">
-        Twój certyfikat jest generowany z unikalnym tokenem weryfikacyjnym. Otwiera się w nowej karcie — możesz go wydrukować lub zapisać jako PDF.
-      </p>
-      <div style="display:flex;flex-direction:column;gap:10px;max-width:280px;margin:0 auto;">
-        <a href="/api/cert?userId=${currentUser.id}&serie=1" target="_blank"
-           class="btn btn-primary" style="justify-content:center;">
-          Pobierz certyfikat — Seria 1
-        </a>
-        <a href="/api/cert?userId=${currentUser.id}&serie=all" target="_blank"
-           class="btn btn-secondary" style="justify-content:center;">
-          Certyfikat pełny (wszystkie serie)
-        </a>
-        <a href="/verify" target="_blank"
-           class="btn btn-ghost btn-sm" style="justify-content:center;margin-top:4px;">
-          Weryfikator tokenów →
-        </a>
-      </div>
+      ${unlocked ? `
+        <p style="color:var(--text-3);font-size:.875rem;line-height:1.6;margin-bottom:24px;max-width:360px;margin-inline:auto;">
+          Ukończyłeś program. Twój certyfikat jest gotowy — otwiera się w nowej karcie.
+        </p>
+        <div style="display:flex;flex-direction:column;gap:10px;max-width:280px;margin:0 auto;">
+          <button onclick="openCert('1')" class="btn btn-primary" style="justify-content:center;">
+            Pobierz certyfikat — Seria 1
+          </button>
+          ${currentUser?.plan === 'pro' ? `
+          <button onclick="openCert('all')" class="btn btn-secondary" style="justify-content:center;">
+            Certyfikat pełny (wszystkie serie)
+          </button>` : ''}
+          <a href="/verify.html" target="_blank" class="btn btn-ghost btn-sm" style="justify-content:center;margin-top:4px;">
+            Weryfikator tokenów →
+          </a>
+        </div>
+      ` : `
+        <p style="color:var(--text-3);font-size:.875rem;line-height:1.6;margin-bottom:24px;max-width:360px;margin-inline:auto;">
+          Certyfikat odblokowuje się po ukończeniu wszystkich odcinków i zaliczeniu quizów.
+        </p>
+        <div style="background:var(--bg-input);border:1px solid var(--line-1);border-radius:12px;padding:20px;max-width:320px;margin:0 auto;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <span style="font-size:.8125rem;color:var(--text-3);">Odcinki ukończone</span>
+            <span style="font-size:.8125rem;font-weight:700;color:var(--text-1);">${doneCount} / ${totalCount}</span>
+          </div>
+          <div style="height:6px;background:var(--line-1);border-radius:99px;overflow:hidden;">
+            <div style="height:100%;width:${Math.round(doneCount/totalCount*100)}%;background:var(--orange);border-radius:99px;transition:.3s;"></div>
+          </div>
+        </div>
+      `}
     </div>`;
 }
 
@@ -1504,6 +1584,7 @@ window.answerQuiz        = answerQuiz;
 window.retryQuiz         = retryQuiz;
 window.checkCertificate  = checkCertificate;
 window.renderCertificate = renderCertificate;
+window.openCert          = openCert;
 window.switchLang        = switchLang;
 window.filterVault       = filterVault;
 window.showUpgrade       = showUpgrade;
