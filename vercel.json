@@ -1,4 +1,10 @@
 {
+  "redirects": [
+    { "source": "/llms.txt", "destination": "https://wojciech.io/llms.txt", "permanent": true },
+    { "source": "/humans.txt", "destination": "https://wojciech.io/humans.txt", "permanent": true },
+    { "source": "/now", "destination": "https://wojciech.io/now/", "permanent": true },
+    { "source": "/now/", "destination": "https://wojciech.io/now/", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/api/config",          "destination": "/api/config.js" },
     { "source": "/api/create-checkout", "destination": "/api/create-checkout.js" },
